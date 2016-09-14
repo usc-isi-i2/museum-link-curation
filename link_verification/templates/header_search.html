@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Search Header</title>
+
+	<link rel="stylesheet" href="static/css/assets/demo.css">
+	<link rel="stylesheet" href="static/css/assets/header-search.css">
+	<link href='http://fonts.googleapis.com/css?family=Cookie' rel='stylesheet' type='text/css'>
+    <script>
+        function setSelected()
+        {
+            var str = document.URL.match(/.*\/(.*?)$/);
+            str = str[1]
+            if(str == ""){
+                str = "logout"
+        }
+            document.getElementById(str).className += "selected"
+        }
+    </script>
+
+</head>
+
+<body onload="setSelected()">
+
+<header class="header-search">
+
+	<div class="header-limiter">
+
+		<h1><a href="#">Link Verification<span>      Information Integration Group        </span></a></h1>
+
+		<nav style="float:right;">
+            <a href="/about" id = "about">About</a>
+			<a href="/curation" id = "curation">Home</a>
+			<a href="/profile" id = "profile">Profile</a>
+			<a href="{{ url_for('logout') }}" id = "logout">Logout</a>
+            <a href="/support" id = "support">Support</a>
+		</nav>
+	</div>
+
+</header>
+</body>
+</html>

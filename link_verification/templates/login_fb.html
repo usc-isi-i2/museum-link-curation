@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Link Curation Login</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="static/css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div></div>
+            {% for message in get_flashed_messages() %}
+                <p><b>Error</b>: {{ message }}</p>
+            {% endfor %}
+            {% if current_user.is_authenticated %}
+                <div id = "header">{% include 'curation.html' %}</div>
+            {% else %}
+                <div id = "header">{% include 'header_search.html' %}</div>
+                <h1 class="text-center">I don't know you!</h1>
+                <h1 class="text-center"><a href="{{ url_for('oauth_authorize', provider='facebook') }}">Login with Facebook</a></h1>
+            {% endif %}
+        </div>
+    </body>
+</html>
