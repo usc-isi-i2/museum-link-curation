@@ -1,4 +1,4 @@
-# museum_link_curation
+# Museum Link Verification
 
 1. Setup Virtual Environment for python 2.7.X.
 

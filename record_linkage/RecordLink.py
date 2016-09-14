@@ -37,7 +37,7 @@ class RecordLink:
     MAX_BLOCK_SQUARE = 750000 
     LETTERS = map(chr, range(ord('a'), ord('z')+1))
 
-    client = pymongo.MongoClient()
+    client = pymongo.MongoClient('localhost', 12345)
     db = client.test
 
     def loadBlock(self, dataset, name_prefix):

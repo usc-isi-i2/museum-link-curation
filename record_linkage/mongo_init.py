@@ -17,7 +17,7 @@ import re
 
 class MongoInit:
 
-    client = pymongo.MongoClient()
+    client = pymongo.MongoClient('localhost', 12345)
     db = client.test
     path = 'datasets'
     current_year = datetime.datetime.now().year
