@@ -6,7 +6,7 @@
   pip install virtualenv
   virtualenv <env name>
 
-  Unix/Mac OS : 
+  Unix/Linux/Mac OS : 
   source <env name>/bin/activate
 
   Windows:
@@ -14,7 +14,7 @@
   ```
 2. Install dependent python packages using following command
   ```
-  sudo apt-get install python-dev
+  sudo apt-get install python-dev (Unix/Linux/Mac)
   pip install -r packages.txt
   ```
 
@@ -32,6 +32,5 @@
   
 6. Run record linkage between any two datasets
   ```
-  Set class variables DATASET1 and DATASET2
   python RecordLink.py
   ```

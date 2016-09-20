@@ -2,26 +2,24 @@
 
 from __future__ import with_statement
 
-import os
-import glob
-import sys
+import os, sys, datetime, re
+import glob, json, csv
 import logging
 import pymongo
-import json
-import csv
-import datetime
 from bson.json_util import dumps
 from unidecode import unidecode
-import re
-#from RecordLink import RecordLink
 
 class MongoInit:
 
-    client = pymongo.MongoClient('localhost', 12345)
+    # Create MongoDb client and database named "test"
+    # We populate two tables: artists and linkRecords
+    #client = pymongo.MongoClient('localhost', 12345)
+    client = pymongo.MongoClient('localhost', 27017)
     db = client.test
     path = 'datasets'
     current_year = datetime.datetime.now().year
 
+    # Read datasets from "datasets" directory and load all of them into mongoDb
     def load_dataset(self):
         datasets = [dname for dname in os.listdir(self.path) if dname.endswith('.json')]
         for dname in datasets:
@@ -35,24 +33,12 @@ class MongoInit:
                         person['schema:deathDate'] = self.fixDeathDate(person['schema:deathDate'])
                     if 'schema:birthDate' in person:
                         person['schema:birthDate'] = self.getYearDate(person['schema:birthDate'])
-                    person['schema:name'] = unidecode(person['schema:name']) #change names to ASCII
-                    person['dataset'] = dname #record dataset person is from
+                    person['schema:name'] = unidecode(person['schema:name']) 
+                    person['dataset'] = dname 
                     person['schema:familyName'] = person['schema:name'].split(' ')[-1]
-                    person['nameSplit'] = person['schema:name'].split(' ') #split name into array for blocking
+                    #split name into array for blocking
+                    person['nameSplit'] = person['schema:name'].split(' ') 
                     result = self.db.artists.insert(person)
-
-    # Reset deathDate attribute for which date year is higher than current year. 
-    def fixDeathDate(self, deathDate):
-        deathDate = self.getYearDate(deathDate)
-        if deathDate:
-            try:
-                dd = int(deathDate)
-                if dd > self.current_year:
-                    deathDate = ''
-            except ValueError:
-                #print(deathDate)
-                return deathDate
-        return deathDate
 
     # Extract year from dates
     def getYearDate(self, date):
@@ -65,8 +51,21 @@ class MongoInit:
                     return year.group(1)
         else:
             return date
+                    
+    # Reset deathDate attribute for which date year is higher than current year. 
+    def fixDeathDate(self, deathDate):
+        deathDate = self.getYearDate(deathDate)
+        if deathDate:
+            try:
+                dd = int(deathDate)
+                # Set deathDate to empty string when it is in future 
+                if dd > self.current_year:
+                    deathDate = ''
+            except ValueError:
+                return deathDate
+        return deathDate
 
-    # Create Mongo Db indices
+    # Create Mongo Db indexes 
     def create_indexes(self):
         self.db.artists.create_index([("@id", pymongo.ASCENDING)])
         self.db.artists.create_index([("schema:name", pymongo.ASCENDING)])
@@ -76,23 +75,12 @@ class MongoInit:
         self.db.artists.create_index([("schema:deathDate", pymongo.ASCENDING)])
         self.db.artists.create_index([("dataset", pymongo.ASCENDING)])
 
-    def output_links(self, outputFile):
-        cursor = self.db.linkRecords.find()
-        records = (list(cursor))
-        print(len(records))
-        for record in records:
-            record.pop('_id', None)
-        output = {"bulk": len(records), "payload": records}
-        with open(outputFile, 'w') as out :
-            x = json.dumps(output)
-            out.writelines(x)
-
 if __name__ == "__main__":
 
     mongo = MongoInit()
-    #mongo.output_links('newoutput.json')
     mongo.db.artists.drop()
     mongo.load_dataset()
     mongo.create_indexes()
+    
     cursor = mongo.db.artists.find()
     print (len(list(cursor)))

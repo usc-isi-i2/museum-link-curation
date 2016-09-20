@@ -1,73 +1,88 @@
 # Dedupe 
 # Gregg, Forest, and Derek Eder. 2016. Dedupe. https://github.com/datamade/dedupe.
 
-#from __future__ import print_function
-#from future.builtins import next
+from __future__ import print_function
+from future.builtins import next
 
-import glob
-import logging
+import os, re
+import glob, json, csv
 import pymongo
-import json
-import os
-import csv
-import json
-import re
 import collections
-import logging
-import optparse
-import numpy
-import collections
-import dedupe
+import logging, optparse
+import numpy, dedupe
 
 class RecordLink:
 
-    #primary dataset
-    DATASET1 = 'ULAN.json' 
-    DATASET2 = os.path.join('datasets','SAAM.json')
-
-    VERSION_NUM = 1.1
+    # Class variables
+    PRIMARYDATASET = 'ULAN.json' 
+    VERSION_NUM = 1.1 # Version
     BASE = "dedupe"
     OUTPUT_FILE = os.path.join(BASE,'recordlinks.json')
     SETTINGS_FILE = os.path.join(BASE,'data_matching_learned_settings')
     TRAINING_FILE = os.path.join(BASE,'data_match.json')
-    
-    #fields used for comparison
     COMPARE_FIELDS = ['schema:name', 'schema:birthDate', 'schema:deathDate'] 
-    # size of block1 * block2, determines memory usage
-    MAX_BLOCK_SQUARE = 750000 
-    LETTERS = map(chr, range(ord('a'), ord('z')+1))
+    MAX_BLOCK_SQUARE = 750000 # size of block1 * block2, determines memory usage
+    NUM_CORES = 4 # Used only during manual training 
+    SAMPLE_SIZE = 10000 # Sample size for manual training
+    THRESHOLD = 0.5 # dedupe similarity threshold 
+    LETTERS = map(chr, range(ord('a'), ord('z')+1)) # Create a list containing characters from a to z
 
-    client = pymongo.MongoClient('localhost', 12345)
+    # Create MongoDb client and database named "test"
+    # We populate two tables: artists and linkRecords
+    #client = pymongo.MongoClient('localhost', 12345)
+    client = pymongo.MongoClient('localhost', 27017)
     db = client.test
 
+    # Return list of datasets to be linked with ULAN
+    def getDatasets(self) : 
+        cursor = self.db.artists.distinct('dataset')
+        datasets = list(cursor)
+        
+        if 'ULAN.json' in datasets:
+            datasets.remove('ULAN.json')
+        
+        print ("Databases being linked to ULAN: "+str(datasets) )
+        return datasets
+    
+    # Loads block of dataset with matching name_prefix
     def loadBlock(self, dataset, name_prefix):
+        
+        # Add all compare fields and initialize to dummy value, i.e. 1
         selected_fields = {'@id': 1}
         for field in self.COMPARE_FIELDS:
             selected_fields[field] = 1
 
+        # Find records from dataset
+        # filter them if name_prefix matches any element of nameSplit list at beginning case insensitively 
+        # Return selected_fields for matched criteria 
         cursor = self.db.artists.find( {"dataset": dataset, 
-                "nameSplit": { '$regex':'^{0}'.format(name_prefix), '$options': 'i' }},
-                selected_fields)
+                                        "nameSplit": { '$regex':'^{0}'.format(name_prefix), '$options': 'i' }},
+                                        selected_fields )
 
+        # Create dictionary with key as URI and value as non-URI field-value pairs
         data_d = {}
         for person in cursor:
             fields = {}
             #check for missing fields, make them null
             for field_name in self.COMPARE_FIELDS:
                 if field_name in person:
-                    #dedupe comparison requires strings
+                    # dedupe comparison requires strings
                     fields[field_name] = unicode(person[field_name])
                 else:
                     fields[field_name] = 'null'
-
-            #create dictionary for dedupe to work with
+                    
             data_d[person['@id']] = fields
+        
+        # Return dictionary of all records in the selected datablock
         return data_d
 
-    def linkRecords(self, data_1, data_2) :
+    # Call csv dedupe functions to do record linking
+    def linkRecords(self, data_1, data_2):
+        
+        # Train manually if settings file not provided
         if os.path.exists(self.SETTINGS_FILE):
             with open(self.SETTINGS_FILE, 'rb') as sf :
-                linker = dedupe.StaticRecordLink(sf)
+                ddLinker = dedupe.StaticRecordLink(sf)
         else:
             fields = [
                 {'field':unicode('schema:name'), 'type':'String'},
@@ -75,92 +90,121 @@ class RecordLink:
                 {'field':unicode('schema:deathDate'), 'type':'ShortString', 'has missing':True}
             ]
 
-            linker = dedupe.RecordLink(fields, num_cores=2)
+            ddLinker = dedupe.RecordLink(fields, num_cores=self.NUM_CORES)
             print('created linker')
-            linker.sample(data_1, data_2, 10000)
+            ddLinker.sample(data_1, data_2, self.SAMPLE_SIZE)
             print('created linker sample')
 
             if os.path.exists(self.TRAINING_FILE):
                 print('reading labeled examples from ', self.TRAINING_FILE)
                 with open(self.TRAINING_FILE) as tf :
-                    linker.readTraining(tf)
+                    ddLinker.readTraining(tf)
 
             print('starting active labeling...')
 
-            dedupe.consoleLabel(linker)
+            dedupe.consoleLabel(ddLinker)
 
-            linker.train()
+            ddLinker.train()
 
             with open(self.TRAINING_FILE, 'w') as tf : #write training file
-                linker.writeTraining(tf)
+                ddLinker.writeTraining(tf)
 
             with open(self.SETTINGS_FILE, 'wb') as sf : #write dedupe settings file
-                linker.writeSettings(sf)
+                ddLinker.writeSettings(sf)
             
-        for field in linker.blocker.index_fields:
+        # Run Record Blocking 
+        for field in ddLinker.blocker.index_fields:
+            print ('Record blocking with field -> '+field)
+            # Get attributes from first block
             field_data1 = set(record[1][field] for record in data_1.items())
-            field_data = set(record[1][field] for record in data_2.items()) | field_data1
-            linker.blocker.index(field_data, field)
+            # Get attributes from second block
+            field_data2 = set(record[1][field] for record in data_2.items()) 
+            # Union attributes from both blocks
+            field_data = field_data1 | field_data1 
+            
+            # Run csv dedupe blocker
+            # print ('Record blocking on data '+str(field_data))
+            ddLinker.blocker.index(field_data, field)
 
+        # Filter blocker blocks if left or right value is not matched
         blocks = collections.defaultdict(lambda : ([], []) )
-        for block_key, record_id in linker.blocker(data_1.items()) :
+        # Read blocker blocks from left block
+        for block_key, record_id in ddLinker.blocker(data_1.items()) :
             blocks[block_key][0].append((record_id, data_1[record_id], set([])))
-        for block_key, record_id in linker.blocker(data_2.items()) :
+        # Read blocker blocks from right block
+        for block_key, record_id in ddLinker.blocker(data_2.items()) :
             if block_key in blocks:
                 blocks[block_key][1].append((record_id, data_2[record_id], set([])))
+        # Delete blocker blocks if either left or right block is empty
         for k, v in blocks.items():
             if not v[1] or not v[0]:
                 del blocks[k]
 
-        #edit threshold for dedupe link threshold
-        linked_records = linker.matchBlocks(blocks.values(), threshold=.5) 
-
+        # Match blocks with predefined threshold value 
+        linked_records = ddLinker.matchBlocks(blocks.values(), threshold=self.THRESHOLD) 
+        
         return linked_records
 
-    def dbOutput(self, linked_records) :
+    # Write matched records in table linkRecords
+    def dbOutput(self, linked_records, dataset) :
         for record in linked_records:
-            link = {'uri1': record[0][0], 'uri2': record[0][1], 
-            'dedupe': {'version': unicode(self.VERSION_NUM), 'linkscore': unicode(record[1]),
-            'fields': self.COMPARE_FIELDS, 'dataset': self.DATASET2 } }
+            # print ('Writing following record to database')
+            # print (record)
+            
+            link = {'uri1': record[0][0], 
+                    'uri2': record[0][1], 
+                    'dedupe': {'version': unicode(self.VERSION_NUM), 
+                               'linkscore': unicode(record[1]),
+                               'fields': self.COMPARE_FIELDS, 
+                               'dataset': dataset } }
+            
             self.db.linkRecords.insert(link)
+            
+    # Core function running csv dedupe
+    def getLinkedRecords(self, name_prefix, dataset):
+        # Step1: Create blocks of data from both datasets
+        data_1 = self.loadBlock(self.PRIMARYDATASET, name_prefix)
+        data_2 = self.loadBlock(dataset, name_prefix)
+        
+        print ( '[Block1,Block2,Max]:[{},{},{}]'.format(len(data_1), len(data_2),self.MAX_BLOCK_SQUARE) )
+        
+        # Return if either of the blocks are empty
+        if len(data_1) == 0 or len(data_2) == 0:
+            return 
+        
+        # Step2: if block1*block2 has more block then predefined MAX
+        if (len(data_1) * len(data_2)) > self.MAX_BLOCK_SQUARE:
+            # recursively call this function with new name_prefix
+            for letter in self.LETTERS:
+                new_name_prefix = name_prefix + letter
+                self.getLinkedRecords(new_name_prefix, dataset)
+        
+        else:
+            # link records from both blocks and load them into database
+            linked_records = linker.linkRecords(data_1, data_2)
+            # Store matched records in linkRecords table
+            self.dbOutput(linked_records, dataset)
+            print('linked {} records from dataset {} on blocking {}'.format(dataset,len(linked_records),name_prefix) )
 
+    # Output bulk pair of entities matched by csv dedupe
     def output_links(self, outputFile):
         cursor = self.db.linkRecords.find()
         records = (list(cursor))
-        print(len(records))
+        
+        # Remove entries missing _id
         for record in records:
             record.pop('_id', None)
+            
+        # Format json with bulk=record count and payload=actual records 
+        # This format is consistent with one used with REST API to load records 
         output = {"bulk": len(records), "payload": records}
+        
         with open(outputFile, 'w') as out :
             x = json.dumps(output)
             out.writelines(x)
 
-    def getLinkedRecords(self, name_prefix, dataset1, dataset2) :
-        data_1 = self.loadBlock(dataset1, name_prefix)
-        data_2 = self.loadBlock(dataset2, name_prefix)
-        print (len(data_1), len(data_2), self.MAX_BLOCK_SQUARE)
-        if len(data_1) == 0 or len(data_2) == 0:
-            return #founds empty blocks
-        
-        if (len(data_1) * len(data_2)) > self.MAX_BLOCK_SQUARE:
-            for letter in self.LETTERS:
-                new_name_prefix = name_prefix + letter
-                self.getLinkedRecords(new_name_prefix, dataset1, dataset2)
-        else:
-            linked_records = linker.linkRecords(data_1, data_2)
-            self.dbOutput(linked_records)
-            print(self.DATASET2, ' # linked records:', len(linked_records), 'on blocking: ', name_prefix)
-
-    #return list of datasets to link with ULAN
-    def getDatasets(self) : 
-        cursor = self.db.artists.distinct('dataset')
-        datasets = list(cursor)
-        print(datasets)
-        #datasets.remove('ULAN.json')
-        datasets = ["SAAM.json"]
-        return datasets
-
-    def AutryMakers(self):
+    # Evaluate precision and recall and other useful parameters
+    def evaluatePerformance(self):
         cursor = self.db.linkRecords.find({'dedupe.dataset':'AutryMakers.json'}, {'uri1': 1, 'uri2':1})
         links = list(cursor)
         foundLinks = []
@@ -181,10 +225,10 @@ if __name__ == "__main__":
 
     optp = optparse.OptionParser()
     optp.add_option('-v', '--verbose', dest='verbose', action='count',
-                    help='Increase verbosity (specify multiple times for more)'
-                    )
+                        help='Increase verbosity (specify multiple times for more)')
     (opts, args) = optp.parse_args()
     log_level = logging.WARNING 
+    
     if opts.verbose :
         if opts.verbose == 1:
             log_level = logging.INFO
@@ -192,19 +236,23 @@ if __name__ == "__main__":
             log_level = logging.DEBUG
     logging.getLogger().setLevel(log_level)
 
+    # Initialize RecordLink Object and drop old linkRecords table 
     linker = RecordLink()
     linker.db.linkRecords.drop()
 
+    # Get list of datasets to be compared with ULAN
     datasets = linker.getDatasets()
-    for dataset in datasets: #link ULAN to every dataset in db
-        linker.DATASET2 = dataset
+    
+    # Link records of every dataset with ULAN and populate linkRecords table
+    for dataset in datasets: 
         for letter1 in linker.LETTERS:
             #initially block by first two letter of each name
             for letter2 in linker.LETTERS:
-                linker.getLinkedRecords(letter1+letter2, linker.DATASET1, linker.DATASET2)
+                linker.getLinkedRecords(letter1+letter2, dataset)
 
         cursor = linker.db.linkRecords.find()
         print('Total linked records: ', len(list(cursor)))
 
+    # Write linked records (questions) to output file
     linker.output_links(linker.OUTPUT_FILE)
-    #linker.AutryMakers() #print precision and recall for AutryMakers
+    #linker.evaluatePerformance()
