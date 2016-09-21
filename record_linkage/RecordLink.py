@@ -67,13 +67,16 @@ class RecordLink:
             for field_name in self.COMPARE_FIELDS:
                 if field_name in person:
                     # dedupe comparison requires strings
-                    fields[field_name] = unicode(person[field_name])
+                    if str(person[field_name]) == "":
+                        fields[field_name] = None
+                    else:
+                        fields[field_name] = unicode(person[field_name])
                 else:
-                    fields[field_name] = 'null'
+                    fields[field_name] = None
                     
             data_d[person['@id']] = fields
         
-        # Return dictionary of all records in the selected datablock
+        # Return dictionary of all records in the selected data block
         return data_d
 
     # Call csv dedupe functions to do record linking
@@ -166,6 +169,7 @@ class RecordLink:
         data_1 = self.loadBlock(self.PRIMARYDATASET, name_prefix)
         data_2 = self.loadBlock(dataset, name_prefix)
         
+        print ( 'Blocking for name prefix: {}'.format(name_prefix) )
         print ( '[Block1,Block2,Max]:[{},{},{}]'.format(len(data_1), len(data_2),self.MAX_BLOCK_SQUARE) )
         
         # Return if either of the blocks are empty
@@ -184,7 +188,7 @@ class RecordLink:
             linked_records = linker.linkRecords(data_1, data_2)
             # Store matched records in linkRecords table
             self.dbOutput(linked_records, dataset)
-            print('linked {} records from dataset {} on blocking {}'.format(dataset,len(linked_records),name_prefix) )
+            print('linked {} records from dataset {} on blocking {}'.format(len(linked_records),dataset,name_prefix) )
 
     # Output bulk pair of entities matched by csv dedupe
     def output_links(self, outputFile):
@@ -205,11 +209,14 @@ class RecordLink:
 
     # Evaluate precision and recall and other useful parameters
     def evaluatePerformance(self):
+        # Load URI1 and URI2 records from linkRecords table 
         cursor = self.db.linkRecords.find({'dedupe.dataset':'AutryMakers.json'}, {'uri1': 1, 'uri2':1})
         links = list(cursor)
         foundLinks = []
         for link in links:
             foundLinks.append((link['uri1'], link['uri2']))
+        
+        # Load URI listed in input data
         autryUlan = []
         with open(os.path.join("datasets","AutryMakers.json")) as f:
             people = json.loads(f.read())["people"]

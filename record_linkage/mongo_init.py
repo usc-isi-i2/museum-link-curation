@@ -60,7 +60,7 @@ class MongoInit:
                 dd = int(deathDate)
                 # Set deathDate to empty string when it is in future 
                 if dd > self.current_year:
-                    deathDate = ''
+                    deathDate = None
             except ValueError:
                 return deathDate
         return deathDate
