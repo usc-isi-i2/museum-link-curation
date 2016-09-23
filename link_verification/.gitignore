@@ -4,3 +4,4 @@ __pycache__/
 server/
 data/viaf.zip
 db.sqlite
+pyenv2

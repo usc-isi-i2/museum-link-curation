@@ -35,7 +35,7 @@ def cleanDatabases():
         dbC[dname][cname].drop()
     print "\n"
 
-# Print particular Document from a Collection        
+# Print particular Document from a Collection
 def printDatabase(docname):
     print "\nPrinting Collection ",docname
     for val in dbC[dname][docname].find():
@@ -65,15 +65,27 @@ def createDatabase():
     else:
         populateQuestionsFromJSON(os.path.join('data','questions_v2.json'))
     
+    dbC[dname]["question"].create_index([("uri1", ASCENDING)])
+    dbC[dname]["question"].create_index([("uri2", ASCENDING)])
+    dbC[dname]["question"].create_index([("tags", ASCENDING)])
+    dbC[dname]["question"].create_index([("status", ASCENDING)])
+    dbC[dname]["question"].create_index([("decision", ASCENDING)])
+    dbC[dname]["question"].create_index([("dedupe", ASCENDING)])
+    
     ### Entities from different database
     if devmode:
         populateEntitiesFromJSON(os.path.join('data', 'sample.json'))
+        updateEntitiesFromJSON(os.path.join('data', 'sampleUpdate.json'))
+        updateEntitiesFromJSON(os.path.join('data', 'sample.json'))
     else:
         populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
+    
+    dbC[dname]["artists"].create_index([("@id", ASCENDING)])
+    dbC[dname]["artists"].create_index([("tags", ASCENDING)])
     
 #Artists
     #Schema as per Schema.org (Transformed by Yi Ding from different museum schema)
@@ -87,8 +99,34 @@ def populateEntitiesFromJSON(filename):
     #for i in range(0,3):
         #pprint(data["people"][i])
         dbC[dname]["artists"].insert_one(data["people"][i])
-    #printDatabase("artists")    
+    #printDatabase("artists")
 
+def updateEntitiesFromJSON(filename):
+    json_data=open(filename).read()
+    data = json.loads(json_data)
+    # Change this range on actual server
+    for i in range(0,len(data["people"])):
+    #for i in range(0,3):
+
+        uri = data["people"][i]["@id"]
+        artist = dbC[dname]["artists"].find_one({'@id':uri},projection={'_id': False})
+
+        # If there is no change than continue to next record
+        if artist == data["people"][i]:
+            continue
+        
+        # Update artist document with values from new input data
+        for key in artist.keys():
+            if key in data["people"][i]:
+                artist[key] = data["people"][i][key]
+
+        # Update artists collection 
+        dbC[dname]["artists"].replace_one({'@id':uri}, artist )
+        print "\n Updated entities database with following entity\n"
+        pprint(artist)
+
+    #printDatabase("artists")
+        
 #Tag
     #tagname, string 
 
@@ -138,7 +176,7 @@ def addCurator(ce):
     
 # Question
     #status, integer: 1 - Not Started, 2 - In Progress, 3 - Completed, 4 - Disagreement
-    #uniqueURI, String: alphabatical concatination of two URI to get unique ID
+    #uniqueURI, String: alphabetical concatenation of two URI to get unique ID
     #lastSeen, datetime field to select question based on time it was asked to previous curator
     #tags, list of object IDs from Tags
     #uri1, for now, just a URI related to a specific artist
@@ -193,7 +231,7 @@ def populateQuestionsFromJSON(filename):
         dbC[dname]["question"].insert_one(qe)
     #printDatabase("question")
         
-#Find tag from the URL
+#Find tag from the uri
 def findTag(uri):
     tag = "Default Tag"
     if "/dbpedia.org/" in uri:
@@ -297,18 +335,17 @@ def getQuestionsForUID(uid):
     if userOid == None:
         print "User not found. \n"
         return None
-    #print "Found uid's objectID ",userOid
+    else:
+        #print "Found uid's objectID ",userOid
+        userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
-    #Filter-1: Find tags associated with uid and retrieve set of questions
-    #TODO
-    
-    # Filter-2:  Questions list whose status is NotStarted sorted as per lastSeen 
+    # Filter-1:  Questions list whose status is NotStarted sorted as per lastSeen 
     q1 = dbC[dname]["question"].find({"status":1}).sort([("lastSeen", DESCENDING)])
-    # Filter-3: Questions list whose status is inProgress sorted as per lastSeen
+    # Filter-2: Questions list whose status is inProgress sorted as per lastSeen
     q2 = dbC[dname]["question"].find({"status":2}).sort([("lastSeen", DESCENDING)])
     
     q = []    
-    # Filter-4: Remove questions that are already served to this user based on author (uid) in decision
+    # Filter-3: Remove questions that are already served to this user based on author (uid) in decision
     # Check every question whose status is in progress aka q2
     for question in q2:
         aids = question["decision"]
@@ -321,14 +358,25 @@ def getQuestionsForUID(uid):
                 answered = True
                 break
         
-        # If question is not answered previously add it to set of question to be sent.
-        if answered != True:
+        #Filter-4: Filter set of questions based on user and question tags
+        tagPresent = False
+        for tag in userTags:
+            if tag in question["tags"]:
+                tagPresent = True
+                break
+        
+        # If question is not answered previously and tag is present, add it to set of question to be sent.
+        if answered != True and tagPresent == True:
             q = q + [question]
     
     # Append questions that are in NotStarted state
     for question in q1:
-        q = q + [question]
-        
+        #Filter-4: Filter set of questions based on user and question tags
+        for tag in userTags:
+            if tag in question["tags"]:
+                q = q + [question]
+                break
+
     q_new = []
     # Update lastSeen for all questions that are being returned
     for question in q:

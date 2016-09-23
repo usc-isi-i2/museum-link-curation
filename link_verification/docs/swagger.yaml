@@ -1,11 +1,11 @@
 ##############################################
-# this is an example of the link curation API
+# this is an example of the link Verification API
 # as a demonstration of an API spec in YAML
 ##############################################
 
 swagger: '2.0'
 info:
-  title: Link Curation API
+  title: Link Verification API
   description: We support three basic APIs- Questions, Answers and User Account Services
   version: "1.0.0"
 
@@ -35,7 +35,7 @@ paths:
       description: |
         Update user profile details like name of the user, tags and rating. At least one sub-paraneter is required. User needs to be logged in to access this API
         
-        Exampls:
+        Examples:
         - curl -X PUT http://localhost:5000/v1/user -H "Content-Type: application/json" -d '{"name":"Nilay Chheda","rating":5,"tags":["saam","ulan"]}'
         - curl -X PUT http://localhost:5000/v1/user -H "Content-Type: application/json" -d '{"name":"Karishma Sureka","rating":5,"tags":["dbpedia","npg"]}' 
         
@@ -311,12 +311,12 @@ definitions:
           
   QuestionPostOutputPayload:
     properties:
-      curation:
+      verification:
         type: array
         items:
-          $ref: '#/definitions/curation'
+          $ref: '#/definitions/verification'
         
-  curation:
+  verification:
     properties:
       comment:
         type: string

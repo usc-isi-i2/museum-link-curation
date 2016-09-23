@@ -81,7 +81,6 @@ celerybeat-schedule
 # virtualenv
 venv/
 ENV/
-record_linkage/pyenv2/
 
 # Spyder project settings
 .spyderproject
@@ -90,5 +89,4 @@ record_linkage/pyenv2/
 .ropeproject
 
 # Custom folders
-record_linkage/datasets
-
+server

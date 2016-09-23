@@ -178,9 +178,9 @@ class questMgr(Resource):
             return createQuestionsFromPairs(request.json)
     
     def get(self):
-        print "Input received: {} \n".format(request.get_json())    
-        print "Input received: {} \n".format(request.json)
-        print "Input received: {} \n".format(request.data)
+        #print "Input received: {} \n".format(request.get_json())    
+        #print "Input received: {} \n".format(request.json)
+        #print "Input received: {} \n".format(request.data)
         print "Input received: {} \n".format(request.args)
         
         if not current_user.is_authenticated:
