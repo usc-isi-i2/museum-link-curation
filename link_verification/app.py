@@ -62,6 +62,10 @@ def redirectUser():
 def support():
     return render_template('support.html')
 
+@app.route('/stats')
+def redirectStats():
+    return redirect(url_for("stats"))
+    
 @app.route('/question')
 def redirectQuestion():
     return redirect(url_for("question"))
@@ -165,6 +169,17 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
     
+# Handle RESTful API for getting data about link verifications
+class dataMgr(Resource):
+    
+    def get(self):
+        print "Input received: {} \n".format(request.args)
+        
+        if not current_user.is_authenticated:
+            return {'status':"Couldn't authenticate user."}, 400
+
+        return curationStat
+    
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):
     
@@ -177,6 +192,7 @@ class questMgr(Resource):
         else:
             return createQuestionsFromPairs(request.json)
     
+    # Retrieve set of questions and send it as a response
     def get(self):
         #print "Input received: {} \n".format(request.get_json())    
         #print "Input received: {} \n".format(request.json)
@@ -242,6 +258,7 @@ class ansMgr(Resource):
             return {'message':rsp["message"]}
 
 # Rest API endpoints (V1)
+api.add_resource(dataMgr, '/v1/stats',endpoint='stats')
 api.add_resource(userMgr, '/v1/user',endpoint='user')
 api.add_resource(questMgr, '/v1/question',endpoint='question')
 api.add_resource(ansMgr, '/v1/answer',endpoint='answer')

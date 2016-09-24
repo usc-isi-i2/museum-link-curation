@@ -210,6 +210,36 @@ def populateQuestions():
          }
     dbC[dname]["question"].insert_one(qe)
     #printDatabase("question")
+
+# Populate default set of questions from csv file
+def populateQuestionsFromCSV(csvfname):
+    with open(csvfname, 'rb') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        for row in spamreader:
+            if len(row) == 2:
+                # Find tags
+                tag0 = findTag(row[0])
+                tag1 = findTag(row[1])
+                
+                # Build document
+                qe = {"status":1,
+                      "uniqueURI":generateUniqueURI(row[0],row[1]),
+                      "lastSeen": datetime.datetime.utcnow(),
+                      "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],
+                              dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
+                       "uri1":row[0],
+                       "uri2":row[1],
+                       "decision": [], #Should be updated in submit answer
+                       "dedupe ": {}
+                     }
+                
+                # Add document
+                dbC[dname]["question"].insert_one(qe)
+                
+                # Update statistics
+                curationStat["total"][tag0] += 1
+                curationStat["total"][tag1] += 1
+    #printDatabase("question")
     
 def populateQuestionsFromJSON(filename):
     json_data=open(filename).read()
@@ -218,17 +248,30 @@ def populateQuestionsFromJSON(filename):
     data = data["payload"]
     for i in range(0,count):
         pprint(data[i])
+        
+        # Find tags
+        tag0 = findTag(data[i]["uri1"])
+        tag1 = findTag(data[i]["uri2"])
+        
+        # Build document
         qe = {"status":1,
           "uniqueURI":generateUniqueURI(data[i]["uri1"],data[i]["uri2"]),
           "lastSeen": datetime.datetime.utcnow(),
-          "tags":[dbC[dname]["tag"].find_one({'tagname':findTag(data[i]["uri1"])})['_id'],
-                  dbC[dname]["tag"].find_one({'tagname':findTag(data[i]["uri2"])})['_id'] ],
+          "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],
+                  dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
            "uri1":data[i]["uri1"],
            "uri2":data[i]["uri2"],
            "decision": [], #Should be updated in submit answer
            "dedupe ": data[i]["dedupe"]
-         }
+        }
+         
+        # Add Document
         dbC[dname]["question"].insert_one(qe)
+        
+        # Update Statistics
+        curationStat["total"][tag0] += 1
+        curationStat["total"][tag1] += 1
+         
     #printDatabase("question")
         
 #Find tag from the uri
@@ -277,25 +320,6 @@ def generateUniqueURI(uri1,uri2):
         return uri1+uri2
     else:
         return uri2+uri1
- 
-# Populate default set of questions from csv file
-def populateQuestionsFromCSV(csvfname):
-    with open(csvfname, 'rb') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',')
-        for row in spamreader:
-            if len(row) == 2:
-                qe = {"status":1,
-                      "uniqueURI":generateUniqueURI(row[0],row[1]),
-                      "lastSeen": datetime.datetime.utcnow(),
-                      "tags":[dbC[dname]["tag"].find_one({'tagname':findTag(row[0])})['_id'],
-                              dbC[dname]["tag"].find_one({'tagname':findTag(row[1])})['_id'] ],
-                       "uri1":row[0],
-                       "uri2":row[1],
-                       "decision": [], #Should be updated in submit answer
-                       "dedupe ": {}
-                     }
-                dbC[dname]["question"].insert_one(qe)
-    #printDatabase("question")
         
 def addOrUpdateQuestion(uri1,uri2,dedupe):
     uuri = generateUniqueURI(uri1,uri2)
@@ -500,11 +524,11 @@ def submitAnswer(qid, answer, uid):
         for aid in q['decision']:
             a = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
             if a != None:
-                if a["value"] == "1":
+                if a["value"] == 1:
                     noYes = noYes + 1
-                elif a["value"] == "2":
+                elif a["value"] == 2:
                     noNo = noNo + 1
-                elif a["value"] == "3":
+                elif a["value"] == 3:
                     noNotSure = noNotSure + 1
                  
         #print "current Y/N/NA: ",noYes,noNo,noNotSure
@@ -513,6 +537,12 @@ def submitAnswer(qid, answer, uid):
         if noYes !=0 or noNo != 0:
             if noYes == confidenceLevel:
                 q['status'] = 4 # Update to, Completed 
+                
+                # Update linked statistics for tags of question submitted
+                for tagid in q['tags']:
+                    tagname = dbC[dname]["tag"].find_one({'_id':ObjectId(tagid)})['tagname']
+                    curationStat["linked"][tagname] += 1
+                
             elif noNo == confidenceLevel:
                 q['status'] = 3 # Update to, Disagreement 
             else:
@@ -526,7 +556,6 @@ def submitAnswer(qid, answer, uid):
             {'$set': {'status':q['status'],'decision':q['decision']}},
             #projection={'_id':False,'status':True},
             return_document=ReturnDocument.AFTER)
-        
         
         print "Updated question document {}\n".format(q)
         #printDatabase("answer")

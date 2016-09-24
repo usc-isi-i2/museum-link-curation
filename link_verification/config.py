@@ -31,6 +31,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 confidenceLevel = 2
 dname = "linkVerification"
+curationStat = {"total":{"ulan":0,"saam":0,"dbpedia":0,"npg":0},
+               "linked":{"ulan":0,"saam":0,"dbpedia":0,"npg":0}} 
 
 if devmode:
     app.config['OAUTH_CREDENTIALS'] = {
