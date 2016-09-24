@@ -38,10 +38,7 @@ def header():
 
 @app.route('/spec')
 def show_specs():
-    if devmode:
-        return render_template('spec_testing.html')
-    else:
-        return render_template('spec.html')
+    return render_template('spec.html')
         
 @app.route('/v1/spec')
 def show_specs_v1():
@@ -91,11 +88,11 @@ class userMgr(Resource):
         if 'tags' in request.json:
             #print request.json["tags"], type(request.json["tags"])
             if type(request.json["tags"]) != list:
-                return {'message': 'Tags type should by list of String'}, 400
+                return {'message': 'Tags type should be list of String'}, 400
                 
             tags = []
             for tag in request.json['tags']:
-                t = dbC[dname]["tag"].find_one({'tagname':tag})
+                t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
                 if t == None:
                     message = 'tag with name <{}> does not exist'.format(tag)
                     return {'message': message}, 400
@@ -120,7 +117,15 @@ class userMgr(Resource):
         
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
         return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
+    
+    # Return user profile information
+    def get(self):
+        if not current_user.is_authenticated:
+            return {'status':"Couldn't authenticate user."}, 400
         
+        u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
+    
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
     id = usrdb.Column(usrdb.Integer, primary_key=True)
@@ -177,8 +182,12 @@ class dataMgr(Resource):
         
         if not current_user.is_authenticated:
             return {'status':"Couldn't authenticate user."}, 400
-
-        return curationStat
+            
+        stats = {}
+        for tag in museums.keys():
+            stats[tag] = {"matched":museums[tag][2],"unmatched":museums[tag][3],"Total":museums[tag][4]}
+            
+        return stats
     
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):

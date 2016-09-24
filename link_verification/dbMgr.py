@@ -237,8 +237,9 @@ def populateQuestionsFromCSV(csvfname):
                 dbC[dname]["question"].insert_one(qe)
                 
                 # Update statistics
-                curationStat["total"][tag0] += 1
-                curationStat["total"][tag1] += 1
+                museums[tag0][4] += 1
+                museums[tag1][4] += 1
+                
     #printDatabase("question")
     
 def populateQuestionsFromJSON(filename):
@@ -269,52 +270,40 @@ def populateQuestionsFromJSON(filename):
         dbC[dname]["question"].insert_one(qe)
         
         # Update Statistics
-        curationStat["total"][tag0] += 1
-        curationStat["total"][tag1] += 1
+        museums[tag0][4] += 1
+        museums[tag1][4] += 1
          
     #printDatabase("question")
         
 #Find tag from the uri
 def findTag(uri):
-    tag = "Default Tag"
-    if "/dbpedia.org/" in uri:
-        tag = "dbpedia"
-    elif "/npgConstituents/" in uri:
-        tag = "npg"
-    elif "/saam/" in uri:
-        tag = "saam"
-    elif "/ulan/" in uri:
-        tag = "ulan"
-    return tag
+    for tag in museums.keys():
+        if museums[tag][0] in uri:
+            return tag
     
+    return "NoTag"
+    
+# Extract tag name list from tags object id for an entity
 def getTags(entity):
     tags = []
     for tag in entity["tags"]:
         tags = tags + [dbC[dname]["tag"].find_one({'_id':ObjectId(tag)})["tagname"]]
     return tags
- 
-def checkURIOrdering(uri1,uri2):
-    # Keep adding new database here. 
-    # Internal ordering does not matter as we are just interested in single ordering between any pair of two database
-    ordering = {"/dbpedia.org/":1,"/npgConstituents/":2,"/saam/":3,"/ulan/":4}
-    
-    val1 = 0
-    val2 = 0
-    for key in ordering.keys():
-        if key in uri1:
-            val1 = ordering[key]
-            break;
-    
-    for key in ordering.keys():
-        if key in uri2:
-            val2 = ordering[key]
-            break;
-    
-    if val1 > val2:
-        return False
-    else:
-        return True
 
+# Return true if uri1 ranks hire than uri2
+def checkURIOrdering(uri1,uri2):
+    for tag in museums.keys():
+        if museums[tag][0] in uri1:
+            rank1 = museums[tag][1]
+        if museums[tag][0] in uri2:
+            rank2 = museums[tag][1]
+
+    if rank1 < rank2:
+        return True
+    else:
+        return False
+            
+# Generate unique URI based on alphabetical ordering defined for different museums 
 def generateUniqueURI(uri1,uri2):
     if checkURIOrdering(uri1,uri2):
         return uri1+uri2
@@ -535,16 +524,21 @@ def submitAnswer(qid, answer, uid):
         
         # Update status of the question based on different answers
         if noYes !=0 or noNo != 0:
+            # Find tags associated with question
+            tags = []
+            for tagid in q['tags']:
+                tags.append(dbC[dname]["tag"].find_one({'_id':ObjectId(tagid)})['tagname'])
+        
             if noYes == confidenceLevel:
                 q['status'] = 4 # Update to, Completed 
-                
                 # Update linked statistics for tags of question submitted
-                for tagid in q['tags']:
-                    tagname = dbC[dname]["tag"].find_one({'_id':ObjectId(tagid)})['tagname']
-                    curationStat["linked"][tagname] += 1
-                
+                for tag in tags:
+                    museums[tag][2] += 1
             elif noNo == confidenceLevel:
                 q['status'] = 3 # Update to, Disagreement 
+                # Update linked statistics for tags of question submitted
+                for tag in tags:
+                    museums[tag][3] += 1
             else:
                 q['status'] = 2 # Update to, InProgress
         #else:

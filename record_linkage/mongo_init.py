@@ -15,7 +15,7 @@ class MongoInit:
     # We populate two tables: artists and linkRecords
     #client = pymongo.MongoClient('localhost', 12345)
     client = pymongo.MongoClient('localhost', 27017)
-    db = client.test
+    db = client["recordLinkage"]
     path = 'datasets'
     current_year = datetime.datetime.now().year
 
@@ -27,6 +27,8 @@ class MongoInit:
             print("Reading dataset file "+dname)
             
             people = json.loads(f.read())["people"]
+            print("Total records in dataset : {}".format(len(people)))
+            
             for person in people:
                 if 'schema:name' in person:
                     if 'schema:deathDate' in person:

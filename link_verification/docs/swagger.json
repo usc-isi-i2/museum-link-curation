@@ -1,8 +1,8 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Link Curation API",
-        "description": "We support three basic APIs- Questions, Answers and User Account Services",
+        "title": "Link Verification API",
+        "description": "We support four basic APIs- Questions, Answers, User Account and Statistics Services",
         "version": "1.0.0"
     },
     "host": "localhost:5000",
@@ -17,7 +17,7 @@
         "/user": {
             "put": {
                 "summary": "Update user profile",
-                "description": "Update user profile details like name of the user, tags and rating. At least one sub-paraneter is required. User needs to be logged in to access this API\n\nExampls:\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Nilay Chheda\",\"rating\":5,\"tags\":[\"saam\",\"ulan\"]}'\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Karishma Sureka\",\"rating\":5,\"tags\":[\"dbpedia\",\"npg\"]}' \n",
+                "description": "Update user profile details like name of the user, tags and rating. At least one sub-paraneter is required. User needs to be logged in to access this API\n\nExamples:\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Nilay Chheda\",\"rating\":5,\"tags\":[\"saam\",\"ulan\"]}'\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Karishma Sureka\",\"rating\":5,\"tags\":[\"dbpedia\",\"npg\"]}' \n",
                 "parameters": [
                     {
                         "name": "payload",
@@ -39,6 +39,30 @@
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/UserPutOutputPayload"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Returns user profile information",
+                "description": "This API retrieves and returns user profile information like username, tags, rating and name of the user. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/v1/user\n",
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dictionry of user profile information.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/UserGetOutputPayload"
                             }
                         }
                     },
@@ -162,6 +186,32 @@
                     }
                 }
             }
+        },
+        "/stats": {
+            "get": {
+                "summary": "Returns statistics about linked records",
+                "description": "This API retrieves and returns matched, unmatched and total pairs of question for every tag. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/v1/stats\n",
+                "tags": [
+                    "Stats"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dictionry of statistics information for evert tag.",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/StatsGetOutputPayload"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -211,16 +261,28 @@
                 }
             }
         },
-        "QuestionGetInputPayload": {
+        "UserGetOutputPayload": {
             "properties": {
-                "stats": {
-                    "type": "boolean",
-                    "description": "Flag to request question stastics in the response"
+                "name": {
+                    "type": "string",
+                    "description": "Name of the user"
                 },
-                "bulk": {
+                "rating": {
                     "type": "integer",
                     "format": "int32",
-                    "description": "Limit number of questions returned. Default is 10"
+                    "description": "User rating from 0-5."
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "Array of Tags associated with the user",
+                    "items": {
+                        "type": "string",
+                        "description": "Tag name. Currently supporteda are, \"autry\", \"dbpedia\",\"npg\",\"saam\",\"ulan\",\"viaf\""
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "description": "Username of the user"
                 }
             }
         },
@@ -333,15 +395,15 @@
         },
         "QuestionPostOutputPayload": {
             "properties": {
-                "curation": {
+                "verification": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/curation"
+                        "$ref": "#/definitions/verification"
                     }
                 }
             }
         },
-        "curation": {
+        "verification": {
             "properties": {
                 "comment": {
                     "type": "string",
@@ -376,6 +438,25 @@
                 "message": {
                     "type": "string",
                     "description": "Message indicating that answer was submitted successfully"
+                }
+            }
+        },
+        "StatsGetOutputPayload": {
+            "properties": {
+                "matched": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Count of matched records by curators"
+                },
+                "unmatched": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Count of unmatched records by curators"
+                },
+                "total": {
+                    "type": "integer",
+                    "format": "int32",
+                    "description": "Count of total records of particular type"
                 }
             }
         },

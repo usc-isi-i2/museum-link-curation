@@ -27,11 +27,11 @@ class RecordLink:
     THRESHOLD = 0.5 # dedupe similarity threshold 
     LETTERS = map(chr, range(ord('a'), ord('z')+1)) # Create a list containing characters from a to z
 
-    # Create MongoDb client and database named "test"
+    # Create MongoDb client and database named "recordLinkage"
     # We populate two tables: artists and linkRecords
     #client = pymongo.MongoClient('localhost', 12345)
     client = pymongo.MongoClient('localhost', 27017)
-    db = client.test
+    db = client["recordLinkage"]
 
     # Return list of datasets to be linked with ULAN
     def getDatasets(self) : 
@@ -162,6 +162,9 @@ class RecordLink:
                                'dataset': dataset } }
             
             self.db.linkRecords.insert(link)
+        
+        # Dumping output to file for every iteration - Temporary Fix 
+        self.output_links(linker.OUTPUT_FILE)
             
     # Core function running csv dedupe
     def getLinkedRecords(self, name_prefix, dataset):
@@ -207,27 +210,6 @@ class RecordLink:
             x = json.dumps(output)
             out.writelines(x)
 
-    # Evaluate precision and recall and other useful parameters
-    def evaluatePerformance(self):
-        # Load URI1 and URI2 records from linkRecords table 
-        cursor = self.db.linkRecords.find({'dedupe.dataset':'AutryMakers.json'}, {'uri1': 1, 'uri2':1})
-        links = list(cursor)
-        foundLinks = []
-        for link in links:
-            foundLinks.append((link['uri1'], link['uri2']))
-        
-        # Load URI listed in input data
-        autryUlan = []
-        with open(os.path.join("datasets","AutryMakers.json")) as f:
-            people = json.loads(f.read())["people"]
-            for person in people:
-                autryUlan.append((person["ULAN_ID"], person["@id"]))
-        
-        combined = [id for id in autryUlan if id in foundLinks]
-        precision = float(len(combined)) / len(foundLinks)
-        recall = float(len(foundLinks)) / len(autryUlan)
-        print("AutryMakers: precision: ", precision, ", recall: ", recall)
-            
 if __name__ == "__main__":
 
     optp = optparse.OptionParser()
@@ -261,5 +243,4 @@ if __name__ == "__main__":
         print('Total linked records: ', len(list(cursor)))
 
     # Write linked records (questions) to output file
-    linker.output_links(linker.OUTPUT_FILE)
-    #linker.evaluatePerformance()
+    #linker.output_links(linker.OUTPUT_FILE)

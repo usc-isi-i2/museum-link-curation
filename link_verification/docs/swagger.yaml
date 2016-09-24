@@ -6,7 +6,7 @@
 swagger: '2.0'
 info:
   title: Link Verification API
-  description: We support three basic APIs- Questions, Answers and User Account Services
+  description: We support four basic APIs- Questions, Answers, User Account and Statistics Services
   version: "1.0.0"
 
 # the domain of the service
@@ -59,7 +59,28 @@ paths:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
+      
+    get:
+      summary: Returns user profile information
+      description: |
+        This API retrieves and returns user profile information like username, tags, rating and name of the user. User needs to be logged in to access this API.
         
+        Examples: 
+        - curl -X GET http://localhost:5000/v1/user
+        
+      tags:
+        - User
+      responses:
+        200:
+          description: Dictionry of user profile information.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/UserGetOutputPayload'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'  
   ##############################################
   # Question
   ############################################## 
@@ -173,6 +194,33 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 
+  ##############################################
+  # Stats
+  ##############################################
+  /stats:
+    get:
+      summary: Returns statistics about linked records
+      description: |
+        This API retrieves and returns matched, unmatched and total pairs of question for every tag. User needs to be logged in to access this API.
+        
+        Examples: 
+        - curl -X GET http://localhost:5000/v1/stats
+        
+      tags:
+        - Stats
+      responses:
+        200:
+          description: Dictionry of statistics information for evert tag.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/StatsGetOutputPayload'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'  
+  
+
 ##############################################
 # Definitions
 ##############################################
@@ -215,19 +263,30 @@ definitions:
       username:
         type: string
         description: Username of the user
-
+        
 ##############################################        
-  
-  QuestionGetInputPayload:
+        
+  UserGetOutputPayload:
     properties:
-      stats:
-        type: boolean
-        description: Flag to request question stastics in the response
-      bulk:
+      name:
+        type: string
+        description: Name of the user
+      rating:
         type: integer
         format: int32
-        description: Limit number of questions returned. Default is 10
+        description: User rating from 0-5.
+      tags:
+        type: array
+        description: Array of Tags associated with the user
+        items:
+          type: string
+          description: Tag name. Currently supporteda are, "autry", "dbpedia","npg","saam","ulan","viaf"
+      username:
+        type: string
+        description: Username of the user
         
+##############################################        
+  
   QuestionGetOutputPayload:
     properties:
       Exact_Match:
@@ -346,8 +405,24 @@ definitions:
       message:
         type: string
         description: Message indicating that answer was submitted successfully
-  
-  ##############################################
+
+##############################################
+
+  StatsGetOutputPayload:
+    properties:
+      matched:
+        type: integer
+        format: int32
+        description: Count of matched records by curators
+      unmatched:
+        type: integer
+        format: int32
+        description: Count of unmatched records by curators
+      total:
+        type: integer
+        format: int32
+        description: Count of total records of particular type        
+############################################## 
   
   Error:
     properties:

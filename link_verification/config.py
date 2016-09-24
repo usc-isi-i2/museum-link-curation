@@ -31,9 +31,17 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 confidenceLevel = 2
 dname = "linkVerification"
-curationStat = {"total":{"ulan":0,"saam":0,"dbpedia":0,"npg":0},
-               "linked":{"ulan":0,"saam":0,"dbpedia":0,"npg":0}} 
 
+# Every museum is dictionary is defined by tag name as key and value is array containing:
+# URI identifier, ranking, matched, unmatched, total questions
+museums = {"autry":["theautry.org",1,0,0,0],
+           "dbpedia":["/dbpedia.org/",2,0,0,0],
+           "npg":["/npgConstituents/",3,0,0,0],
+           "saam":["/saam/",4,0,0,0],
+           "ulan":["/ulan/",5,0,0,0],
+           "viaf":["/viaf/",6,0,0,0]
+           }
+           
 if devmode:
     app.config['OAUTH_CREDENTIALS'] = {
         'facebook': {
