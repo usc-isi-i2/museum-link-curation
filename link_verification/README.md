@@ -4,7 +4,7 @@
 
   ```
   pip install virtualenv
-  virtualenv <env name>
+  virtualenv <env name> --no-site-packages
 
   Unix/Mac OS : 
   source <env name>/bin/activate

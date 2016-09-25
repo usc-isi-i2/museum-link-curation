@@ -10,6 +10,7 @@ import pymongo
 import collections
 import logging, optparse
 import numpy, dedupe
+from pprint import pprint
 
 class RecordLink:
 
@@ -204,10 +205,10 @@ class RecordLink:
             
         # Format json with bulk=record count and payload=actual records 
         # This format is consistent with one used with REST API to load records 
-        output = {"bulk": len(records), "payload": records}
+        output = {"count": len(records), "payload": records}
         
-        with open(outputFile, 'w') as out :
-            x = json.dumps(output)
+        with open(outputFile, 'w') as out:
+            x = json.dumps(output,indent=4)
             out.writelines(x)
 
 if __name__ == "__main__":

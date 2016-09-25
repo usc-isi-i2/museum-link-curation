@@ -4,7 +4,7 @@
 
   ```
   pip install virtualenv
-  virtualenv <env name>
+  virtualenv <env name> --no-site-packages
 
   Unix/Linux/Mac OS : 
   source <env name>/bin/activate
@@ -30,7 +30,7 @@
   python mongo_init.py
   ```
   
-6. Run record linkage between any two datasets
+6. Run Record linkage between all datasets in /datasets directory against Primary Dataset (e.g. ULAN)
   ```
   python RecordLink.py
   ```
