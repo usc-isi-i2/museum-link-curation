@@ -22,7 +22,7 @@ class RecordLink:
     SETTINGS_FILE = os.path.join(BASE,'data_matching_learned_settings')
     TRAINING_FILE = os.path.join(BASE,'data_match.json')
     COMPARE_FIELDS = ['schema:name', 'schema:birthDate', 'schema:deathDate'] 
-    MAX_BLOCK_SQUARE = 750000 # size of block1 * block2, determines memory usage
+    MAX_BLOCK_SQUARE = 300000 # size of block1 * block2, determines memory usage
     NUM_CORES = 4 # Used only during manual training 
     SAMPLE_SIZE = 10000 # Sample size for manual training
     THRESHOLD = 0.5 # dedupe similarity threshold 
@@ -163,9 +163,6 @@ class RecordLink:
                                'dataset': dataset } }
             
             self.db.linkRecords.insert(link)
-        
-        # Dumping output to file for every iteration - Temporary Fix 
-        self.output_links(linker.OUTPUT_FILE)
             
     # Core function running csv dedupe
     def getLinkedRecords(self, name_prefix, dataset):
@@ -195,7 +192,7 @@ class RecordLink:
             print('linked {} records from dataset {} on blocking {}'.format(len(linked_records),dataset,name_prefix) )
 
     # Output bulk pair of entities matched by csv dedupe
-    def output_links(self, outputFile):
+    def output_links(self, dataset):
         cursor = self.db.linkRecords.find()
         records = (list(cursor))
         
@@ -207,7 +204,7 @@ class RecordLink:
         # This format is consistent with one used with REST API to load records 
         output = {"count": len(records), "payload": records}
         
-        with open(outputFile, 'w') as out:
+        with open(os.path.join(self.BASE,dataset), 'w') as out:
             x = json.dumps(output,indent=4)
             out.writelines(x)
 
@@ -228,13 +225,15 @@ if __name__ == "__main__":
 
     # Initialize RecordLink Object and drop old linkRecords table 
     linker = RecordLink()
-    linker.db.linkRecords.drop()
 
     # Get list of datasets to be compared with ULAN
     datasets = linker.getDatasets()
     
     # Link records of every dataset with ULAN and populate linkRecords table
     for dataset in datasets: 
+        # Drop previously linked records
+        linker.db.linkRecords.drop()
+        
         for letter1 in linker.LETTERS:
             #initially block by first two letter of each name
             for letter2 in linker.LETTERS:
@@ -243,5 +242,5 @@ if __name__ == "__main__":
         cursor = linker.db.linkRecords.find()
         print('Total linked records: ', len(list(cursor)))
 
-    # Write linked records (questions) to output file
-    #linker.output_links(linker.OUTPUT_FILE)
+        # Write linked records (questions) to output file
+        linker.output_links(dataset)
