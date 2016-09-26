@@ -18,7 +18,6 @@ class RecordLink:
     PRIMARYDATASET = 'ULAN.json' 
     VERSION_NUM = 1.1 # Version
     BASE = "dedupe"
-    OUTPUT_FILE = os.path.join(BASE,'recordlinks.json')
     SETTINGS_FILE = os.path.join(BASE,'data_matching_learned_settings')
     TRAINING_FILE = os.path.join(BASE,'data_match.json')
     COMPARE_FIELDS = ['schema:name', 'schema:birthDate', 'schema:deathDate'] 
