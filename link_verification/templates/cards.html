@@ -34,25 +34,22 @@
             <table class='form_style'>
                 <tr>
                     <td>
-                        <form action='/answer?option=0' method='POST' >
+                        <form onsubmit="submitAnswer('1',''); return false;">
                             <button name='yes'class='cta green-btn'>Yes</button>
                         </form>
                     </td>
                     <td>
-                        <form action='/answer?option=1' method='POST' >
+                        <form onsubmit="submitAnswer('2',''); return false;">
                             <button name='no'class='cta red-btn'>No</button>
                         </form>
                     </td>
                     <td>
-                        <form action='/answer?option=2' method='POST' >
+                        <form onsubmit="submitAnswer('3',''); return false;">
                             <button name='notsure'class='cta yellow-btn'>Notsure</button>
                         </form>
                     </td>
                 </tr>
             </table>
-        </div>
-        <div id = 'footer' style="display:none">
-
         </div>
 </div>
 </div>

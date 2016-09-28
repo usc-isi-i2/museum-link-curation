@@ -50,6 +50,7 @@
                 for(var index in names) {
                     tr += "<tr>"
                     nametrim = names[index].replace("schema:",'');
+                    tr += "<td class='left_align'>" + nametrim + "</td>";
 
                     if(names[index] == "schema:birthPlace") {
                         tr += "<td>Name: " + values[index]['schema:name'] + "</td>";
@@ -122,15 +123,21 @@
                         content = content.slice(0, pos + searchTxt.length) + divid + content.slice(pos + searchTxt.length);
                         searchTxt = "<tbody class = 'exactMatch' id ='";
                         pos = content.search(searchTxt);
-                        console.log(pos)
                         content = content.slice(0, pos + searchTxt.length) + "exactMatch" + divid + content.slice(pos + searchTxt.length);
                         searchTxt = "<tbody class = 'noMatch' id ='";
                         pos = content.search(searchTxt);
-                        console.log(pos)
                         content = content.slice(0, pos + searchTxt.length) + "noMatch" + divid + content.slice(pos + searchTxt.length);
-                        searchTxt = "<div id = 'footer'";
+                        searchTxt = "'1','";
                         pos = content.search(searchTxt);
-                        document.getElementById("cards").innerHTML += content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
+                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
+                        searchTxt = "'2','";
+                        pos = content.search(searchTxt);
+                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
+                        searchTxt = "'3','";
+                        pos = content.search(searchTxt);
+                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
+
+                        document.getElementById("cards").innerHTML += content;
                         console.log(document.getElementById("cards"));
                         console.log("Data parsed:")
                         console.log(data);
@@ -139,6 +146,25 @@
                     complete: function () {
                         populateExactMatch(data.ExactMatch, divid);
                         populateNoMatch(data.Unmatched, divid);
+                    }
+                });
+            }
+            function submitAnswer(value, qid){
+                var sv = '{{server}}'.concat("/v1/answer");
+
+                var answerObj = new Object();
+                answerObj.qid = qid;
+                answerObj.value = parseInt(value);
+                answerObj.comment = "NONE";
+                json_ans = JSON.stringify(answerObj)
+
+                $.ajax({
+                    method: "PUT",
+                    url: sv,
+                    data: '{"qid":"' +  qid + '", "value": 1, "comment":"BLAH"}',
+                    contentType: 'application/json',
+                    success: function(data){
+                        console.log("Answer Successfully submitted");
                     }
                 });
             }
