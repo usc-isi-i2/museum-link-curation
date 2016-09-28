@@ -11,16 +11,17 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     </head>
     <body>
-        <div></div>
+        <div style = "width:100%; height:100vh;">
             {% for message in get_flashed_messages() %}
                 <p><b>Error</b>: {{ message }}</p>
             {% endfor %}
             {% if current_user.is_authenticated %}
-                <div id = "header">{% include 'curation.html' %}</div>
+                <div id = "header">{% include 'profile.html' %}</div>
             {% else %}
                 <div id = "header">{% include 'header_search.html' %}</div>
-                <h1 class="text-center">I don't know you!</h1>
-                <h1 class="text-center"><a href="{{ url_for('oauth_authorize', provider='facebook') }}">Login with Facebook</a></h1>
+                <div background-img=url("static/images/museum_background.jpeg"); style = 'background-size:cover; width:100%; height:100%;'>
+                <a href="{{ url_for('oauth_authorize', provider='facebook') }}" class = "btn btn-primary btn-xlarge" style = "margin-right: 36.5%; float:right; margin-top: 10%">Please Login with Facebook</a>
+                </div>
             {% endif %}
         </div>
     </body>
