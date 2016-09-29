@@ -47,3 +47,7 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
 }
+
+.center-align{
+    padding: 10px;
+}

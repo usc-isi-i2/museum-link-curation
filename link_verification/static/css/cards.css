@@ -20,19 +20,19 @@ body {   font-family: Helvetica, san-serif;
     height: 100px;
     left: 0;
     float:right;
-    margin-right: 15%;
-    margin-left:15%;
+    margin-right: 12.5%;
+    margin-left:12.5%;
     overflow: hidden;
     position: relative;
     right: 0;
     margin-top: 7%;
-    width: 70%;
+    width: 75%;
 }
 .questionarea{
     display: none;
 }
 .card:hover {
-    height: 600px;
+    height: 700px;
     display:table;
 }
 .card:hover .questionarea{
@@ -202,6 +202,6 @@ p {
     float:right;
 }
 
-.leftt_align{
+.left_align{
     float:left;
 }

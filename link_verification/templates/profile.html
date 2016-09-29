@@ -11,21 +11,6 @@
 </head>
 <body>
     <script>
-        /*function selectMuseum(select)
-        {
-          var $ul = $('#selectionlist');
-            console.log($('#museumlist').find('option[selected]').text());
-            console.log($('#museumlist').val());
-          if ($ul.find('input[value=' + $('#museumlist').val() + ']').length == 0)
-             $ul.append('<li onclick="$(this).remove();" class = "close_box">' +
-              '<input type="hidden" name="museums[]" value="' +
-              $('#museumlist').val() + '" /> ' +
-              $('#museumlist option:selected').text() + '</li>');
-
-            $ul.append('<button type="button" class="btn btn-primary btn-lg" onclick="$(this).remove();"><label>'+
-                    '<input type="hidden" name="museums[]" value="' + $('#museumlist').val() + '" /> ' +
-                    $('#museumlist option:selected').text() + '</label><label style = "opacity: 0.5; float:right; white-space: pre;">    X</label></button><br/>');
-        }*/
         function makeSearch(){
 
             tag_list = $("input[name=ingredients]:checked").map(
@@ -45,37 +30,19 @@
                     contentType: 'application/json',
                     success: function(data){
                         console.log("Tag Successfully submitted");
+                        window.location.href = "/curation";
                     }
                 });
+
+
         }
     </script>
     <div style = "width:100%; height:100vh;">
     <div id = "header"> {% include 'header_search.html' %}</div>
 
     <br/>
-    <label style = 'white-space: pre;'>    Please select all the museums that you would like to curate data for - </label><br/>
-    <!-- <select id = "museumlist" onchange="selectMuseum(this);">
-      <option value="Autry">Autry Museum of the American West</option>
-      <option value="NPG">National Portrait Gallery</option>
-      <option value="PUAM">Princeton University Art Museum</option>
-      <option value="WAM">The Walters Art Museum</option>
-      <option value="AAA">Archives of American Art</option>
-      <option value="CBM">Crystal Bridges Museum</option>
-      <option value="AAT">The Getty - Art and Architecture Thesaurus Online</option>
-      <option value="ACM">Amon Carter Museum of American Art</option>
-      <option value="NMWA">National Museum of Wildlife Art</option>
-      <option value="CCMA">Colby College Museum of Art</option>
-      <option value="AAC">Asian Arts Council</option>
-      <option value="GM">Gilcrease Museum</option>
-      <option value="IMA">Indianapolis Museum of Art</option>
-      <option value="SAAM">Smithsonian American Art Museum</option>
-      <option value="YCBA">Yale Center for British Art</option>
-      <option value="DMA">Dallas Museum of Art</option>
-    </select>
-    <ul id = "selectionlist">
-    </ul> -->
-    <br/>
-
+    <label style = 'white-space: pre;'>    Please select all the museums that you would like to curate data for - </label>
+    <br/><br/>
      <div class="container">
         <div style="width: 30em; float: left;">
             <input id="Autry" type="checkbox" name="ingredients" value="Autry" />
