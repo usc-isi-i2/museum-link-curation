@@ -92,11 +92,14 @@ class userMgr(Resource):
                 
             tags = []
             for tag in request.json['tags']:
-                t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
-                if t == None:
-                    message = 'tag with name <{}> does not exist'.format(tag)
-                    return {'message': message}, 400
-                tags = tags + [t["_id"]]
+                # Temporary fix 
+                if tag in museums.keys():
+                    t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
+                    if t == None:
+                        message = 'tag with name <{}> does not exist'.format(tag)
+                        return {'message': message}, 400
+                    tags = tags + [t["_id"]]
+
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'tags':tags}})
         
         # Update name of a user

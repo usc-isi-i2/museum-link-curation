@@ -27,11 +27,9 @@ def printDatabases():
 # Removes all the data from all tables of given database
 def cleanDatabases():
     print "\nDropping database",dname,"if it exists"
+    
     for cname in dbC[dname].collection_names(include_system_collections=False):
         print "\nDropping collection (aka database)",cname
-        for val in dbC[dname][cname].find():
-            print "\nDropping: ",val
-        dbC[dname][cname].delete_many({})
         dbC[dname][cname].drop()
     print "\n"
 
@@ -63,7 +61,10 @@ def createDatabase():
     if devmode:
         populateQuestionsFromCSV(os.path.join('data', 'sample.csv'))
     else:
-        populateQuestionsFromJSON(os.path.join('data','questions_v2.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
     
     dbC[dname]["question"].create_index([("uri1", ASCENDING)])
     dbC[dname]["question"].create_index([("uri2", ASCENDING)])
@@ -132,18 +133,11 @@ def updateEntitiesFromJSON(filename):
 
 # Populate database with default tags
 def populateTags():
-    te = {"tagname":"autry"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"dbpedia"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"npg"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"saam"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"ulan"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"viaf"}
-    dbC[dname]["tag"].insert_one(te)
+    # Add all standard tags
+    for key in museums.keys():
+        te = {"tagname":key}
+        dbC[dname]["tag"].insert_one(te)
+    
     te = {"tagname":"puam"}
     dbC[dname]["tag"].insert_one(te)
     te = {"tagname":"wam"}
@@ -165,8 +159,6 @@ def populateTags():
     te = {"tagname":"gm"}
     dbC[dname]["tag"].insert_one(te)
     te = {"tagname":"ima"}
-    dbC[dname]["tag"].insert_one(te)
-    te = {"tagname":"saam"}
     dbC[dname]["tag"].insert_one(te)
     te = {"tagname":"ycba"}
     dbC[dname]["tag"].insert_one(te)
