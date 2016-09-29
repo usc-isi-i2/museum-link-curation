@@ -15,12 +15,14 @@
     <script>
         function setSelected()
         {
-            var str = document.URL.match(/.*\/(.*?)$/);
-            str = str[1]
-            if(str == ""){
-                str = "logout"
+            var option = document.URL.match(/.*\/(.*?)$/);
+            console.log("Profile view logging")
+            console.log(option);
+            option = option[1];
+            if(option == ""){
+                option = "logout"
         }
-            document.getElementById(str).className += "selected"
+            document.getElementById(option).className += "selected"
         }
     </script>
 

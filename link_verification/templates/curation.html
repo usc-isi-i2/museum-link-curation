@@ -52,7 +52,7 @@
                 for(var index in names) {
                     tr += "<tr>"
                     nametrim = names[index].replace("schema:",'');
-                    tr += "<td class='left_align'>" + nametrim + "</td>";
+                    tr += "<td>" + nametrim + "</td>";
 
                     if(names[index] == "schema:birthPlace") {
                         tr += "<td>Name: " + values[index]['schema:name'] + "</td>";
@@ -63,11 +63,12 @@
                     }
                     else {
                         if(nametrim == "name"){
-                            var name_header = document.getElementById("name_header");
-                            name_header.innerHTML = values[index];
+                            var name_header = document.getElementById("name_header" + divid);
+                            name_header.innerHTML = "<table class = 'center-align'><tr><th>SAAM, ULAN</th></tr><tr><td>" + values[index] + "</td></tr></table>"
                         }
                         tr += "<td>" + values[index] + "</td>";
                     }
+                    tr += "<td></td>";
                     tr += "</tr>";
                 }
                 document.getElementById("exactMatch" + divid).innerHTML = tr;
@@ -78,13 +79,6 @@
                 var names = data.name;
                 var lValues = data.lValue;
                 var rValues = data.rValue;
-
-                console.log("Names:")
-                console.log(names)
-                console.log("LValues:")
-                console.log(lValues)
-                console.log("RValues:")
-                console.log(rValues)
 
                 var tr = "";
                 for(var index in names) {
@@ -103,8 +97,8 @@
                     }
                     else {
                         if(nametrim == "name"){
-                            var name_header = document.getElementById("name_header");
-                            name_header.innerHTML = "<table class = 'center-align'><tr><th align='right'>SAAM</th><th align='right'>ULAN</th></tr><tr><td align='right'>" + lValues[index] + "</td><td align='right'>" + rValues[index] + "</td></tr></table>"
+                            var name_header = document.getElementById("name_header" + divid);
+                            name_header.innerHTML = "<table class = 'center-align'><tr><th style='text-align:center'>SAAM</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
 
                         if(lValues[index] == null)
@@ -128,6 +122,9 @@
                     url: "/cards",
                     success: function (card) {
                         content = card;
+                        searchTxt = "<h2 id='name_header";
+                        pos = content.search(searchTxt);
+                        content = content.slice(0, pos + searchTxt.length) + divid + content.slice(pos + searchTxt.length);
                         searchTxt = "<div id ='";
                         pos = content.search(searchTxt);
                         content = content.slice(0, pos + searchTxt.length) + divid + content.slice(pos + searchTxt.length);

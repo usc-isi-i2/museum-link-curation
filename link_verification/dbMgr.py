@@ -144,6 +144,34 @@ def populateTags():
     dbC[dname]["tag"].insert_one(te)
     te = {"tagname":"viaf"}
     dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"puam"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"wam"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"aaa"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"cbm"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"aat"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"acm"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"nmwa"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"ccma"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"aac"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"gm"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"ima"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"saam"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"ycba"}
+    dbC[dname]["tag"].insert_one(te)
+    te = {"tagname":"dma"}
+    dbC[dname]["tag"].insert_one(te)
     #printDatabase("tag") 
  
 #Curator
