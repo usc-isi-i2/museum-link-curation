@@ -1,0 +1,699 @@
+{
+    "people": [
+        {
+            "schema:deathDate": 1836,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1756,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/51124",
+            "schema:name": "Aaron Burr"
+        },
+        {
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1922,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/77583",
+            "schema:name": "Aaron Shikler"
+        },
+        {
+            "schema:deathDate": 1876,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1794,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/9647",
+            "schema:name": "Aaron Warner"
+        },
+        {
+            "schema:deathDate": 1878,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1796,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/91596",
+            "schema:name": "Aaron Vail"
+        },
+        {
+            "schema:deathDate": 1991,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1903,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63447",
+            "schema:name": "Aaron Siskind"
+        },
+        {
+            "schema:deathDate": 1880,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1780,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/23944",
+            "schema:name": "Aaron Dyer"
+        },
+        {
+            "schema:deathDate": 1992,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1907,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/77451",
+            "schema:name": "Aaron Bohrod"
+        },
+        {
+            "schema:deathDate": 1902,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1817,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/17712",
+            "schema:name": "Aaron Dean Fletcher"
+        },
+        {
+            "schema:deathDate": 1928,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1832,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/64146",
+            "schema:name": "Aaron Draper Shattuck"
+        },
+        {
+            "schema:deathDate": 1942,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1860,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/902",
+            "schema:name": "Wilbur Aaron Reaser"
+        },
+        {
+            "schema:deathDate": 1961,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1877,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/111546",
+            "schema:name": "Alfred Aaron Wolmark"
+        },
+        {
+            "schema:deathDate": 1979,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1899,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/5430",
+            "schema:name": "Aaron Douglas"
+        },
+        {
+            "schema:deathDate": 1972,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1905,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/11072",
+            "schema:name": "Aaron Sopher"
+        },
+        {
+            "schema:deathDate": 1884,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1810,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/89127",
+            "schema:name": "Henry Aaron Burr"
+        },
+        {
+            "schema:deathDate": 1978,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1891,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/91860",
+            "schema:name": "Aaron Goodelman"
+        },
+        {
+            "schema:deathDate": 1961,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1890,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/32237",
+            "schema:name": "Aaron Stanton Merrill"
+        },
+        {
+            "schema:deathDate": 1849,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1800,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63280",
+            "schema:name": "Aaron Kitchell Woolly"
+        },
+        {
+            "schema:deathDate": 1880,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1802,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/13678",
+            "schema:name": "Aaron Beede Hoyt"
+        },
+        {
+            "schema:deathDate": 1910,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1844,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/6936",
+            "schema:name": "Aaron Marshall Elliott"
+        },
+        {
+            "schema:deathDate": 1757,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1715,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/30140",
+            "schema:name": "Aaron Burr"
+        },
+        {
+            "schema:deathDate": 1878,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1826,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/112420",
+            "schema:name": "Aaron C. Eshelman"
+        },
+        {
+            "schema:deathDate": 1879,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1800,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/111210",
+            "schema:name": "Jacob Aaron Westervelt"
+        },
+        {
+            "schema:deathDate": 1835,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1783,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/47515",
+            "schema:name": "Aaron Smock"
+        },
+        {
+            "schema:deathDate": 1890,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1790,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/23937",
+            "schema:name": "Aaron Hawley"
+        },
+        {
+            "schema:deathDate": 1990,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1900,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/56909",
+            "schema:name": "Aaron Copland"
+        },
+        {
+            "schema:deathDate": 1882,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1772,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/29904",
+            "schema:name": "Nathan Aaron Keeler"
+        },
+        {
+            "schema:deathDate": 1843,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1787,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/91602",
+            "schema:name": "Eugene Aaron Vail"
+        },
+        {
+            "schema:deathDate": 1782,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1731,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/18995",
+            "schema:name": "Aaron Lopez"
+        },
+        {
+            "schema:deathDate": 1915,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1847,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/2798",
+            "schema:name": "Aaron Vance McAlvay"
+        },
+        {
+            "schema:deathDate": 1900,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1837,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/76809",
+            "schema:name": "Burke Aaron Hinsdale"
+        },
+        {
+            "schema:deathDate": 1921,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1850,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/34960",
+            "schema:name": "Aaron Augustus Healy"
+        },
+        {
+            "schema:deathDate": 1950,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1850,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/38747",
+            "schema:name": "Aaron E. Darling"
+        },
+        {
+            "schema:deathDate": 1942,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1878,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/28907",
+            "schema:name": "Abastenia St. Leger Eberle"
+        },
+        {
+            "schema:deathDate": 1798,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1718,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/95768",
+            "schema:name": "Pedro Pablo Abarca"
+        },
+        {
+            "schema:deathDate": 1941,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1860,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/81686",
+            "schema:name": "Carlo Abate"
+        },
+        {
+            "schema:deathDate": 2000,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1900,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/98784",
+            "schema:name": "Pepito Abatino"
+        },
+        {
+            "schema:deathDate": 1843,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1759,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/1511",
+            "schema:name": "John Abbott"
+        },
+        {
+            "schema:deathDate": 1803,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1760,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/70934",
+            "schema:name": "Lemuel Francis Abbott"
+        },
+        {
+            "schema:deathDate": 1903,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1834,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/47396",
+            "schema:name": "James Abbott McNeill Whistler"
+        },
+        {
+            "schema:deathDate": 1943,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1856,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/13538",
+            "schema:name": "Abbott Lawrence Lowell"
+        },
+        {
+            "schema:deathDate": 1858,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1776,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/33416",
+            "schema:name": "James Abbott"
+        },
+        {
+            "schema:deathDate": 1848,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1791,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/64055",
+            "schema:name": " Abbot"
+        },
+        {
+            "schema:deathDate": 1911,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1852,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/34258",
+            "schema:name": "Edwin Austin Abbey"
+        },
+        {
+            "schema:deathDate": 1921,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1849,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/10096",
+            "schema:name": "Abbott Handerson Thayer"
+        },
+        {
+            "schema:deathDate": 1991,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1898,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63812",
+            "schema:name": "Berenice Abbott"
+        },
+        {
+            "schema:deathDate": 1936,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1859,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/69111",
+            "schema:name": "Abbott Fuller Graves"
+        },
+        {
+            "schema:deathDate": 1927,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1858,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/72687",
+            "schema:name": "Louise Abbema"
+        },
+        {
+            "schema:deathDate": 1869,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1799,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/11182",
+            "schema:name": "Daniel Abbott"
+        },
+        {
+            "schema:deathDate": 1881,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1807,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63037",
+            "schema:name": "John Stevens Abbott"
+        },
+        {
+            "schema:deathDate": 1822,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1800,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/3042",
+            "schema:name": "Abby Mason Brown"
+        },
+        {
+            "schema:deathDate": 1877,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1805,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/59034",
+            "schema:name": "John Stevens Cabot Abbott"
+        },
+        {
+            "schema:deathDate": 1920,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1820,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/29257",
+            "schema:name": "Abbie Dudley"
+        },
+        {
+            "schema:deathDate": 1900,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1800,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/39098",
+            "schema:name": "Eliza Ann Abbott Goddard"
+        },
+        {
+            "schema:deathDate": 1930,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1839,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/15242",
+            "schema:name": "Julia Holmes Manning Abbot Smith"
+        },
+        {
+            "schema:deathDate": 1935,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1875,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/616",
+            "schema:name": "Eleanor Plaisted Abbott"
+        },
+        {
+            "schema:deathDate": 1964,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1864,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/2478",
+            "schema:name": "Abbey Altson"
+        },
+        {
+            "schema:deathDate": 1941,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1854,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/26135",
+            "schema:name": "Nathan Abbott"
+        },
+        {
+            "schema:deathDate": 1928,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1851,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/69912",
+            "schema:name": "Robert Abbe"
+        },
+        {
+            "schema:deathDate": 1795,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1738,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/95106",
+            "schema:name": "Rachel Abbe"
+        },
+        {
+            "schema:deathDate": 1910,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1810,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/10435",
+            "schema:name": "Abbey Thayer"
+        },
+        {
+            "schema:deathDate": 1904,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1832,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/38834",
+            "schema:name": "Mary Abba Woodworth"
+        },
+        {
+            "schema:deathDate": 1847,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1776,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/22672",
+            "schema:name": "Jacob Abbott"
+        },
+        {
+            "schema:deathDate": 1930,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1858,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/86060",
+            "schema:name": "Holker Welch Abbott"
+        },
+        {
+            "schema:deathDate": 1925,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1825,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/19299",
+            "schema:name": "Abby Cole"
+        },
+        {
+            "schema:deathDate": 1865,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1829,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/79568",
+            "schema:name": "Samuel Abbot Smith"
+        },
+        {
+            "schema:deathDate": 1974,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1895,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/81103",
+            "schema:name": "William A \"Bud\" Abbott"
+        },
+        {
+            "schema:deathDate": 1879,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1779,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/62957",
+            "schema:name": "Caroline Montelius Abbott"
+        },
+        {
+            "schema:deathDate": 1823,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1750,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/10688",
+            "schema:name": "Abbe Correia de Serra, Jose Francisco"
+        },
+        {
+            "schema:deathDate": 1931,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1851,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/34366",
+            "schema:name": "Mary Gertrude Mead Abbey"
+        },
+        {
+            "schema:deathDate": 1854,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1827,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/34295",
+            "schema:name": "Margaret Holyoke Abbott Johnson"
+        },
+        {
+            "schema:deathDate": 1850,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1823,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/16886",
+            "schema:name": "Abbot Augustus Low"
+        },
+        {
+            "schema:deathDate": 1941,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1872,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/19477",
+            "schema:name": "William Martin Abbott"
+        },
+        {
+            "schema:deathDate": 1885,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1793,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/9424",
+            "schema:name": "Joel Abbot"
+        },
+        {
+            "schema:deathDate": 1935,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1835,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/23433",
+            "schema:name": "Charlotte Eunice Hapgood Abbott"
+        },
+        {
+            "schema:deathDate": 1945,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1845,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/14580",
+            "schema:name": "Charles S. Abbe"
+        },
+        {
+            "schema:deathDate": 1973,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1883,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/42448",
+            "schema:name": "James Abbe"
+        },
+        {
+            "schema:deathDate": 1950,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1850,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/20298",
+            "schema:name": "Abbie E. Packer"
+        },
+        {
+            "schema:deathDate": 1879,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1803,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/16027",
+            "schema:name": "Jacob Abbott"
+        },
+        {
+            "schema:deathDate": 1894,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1836,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/28448",
+            "schema:name": "Leon Abbett"
+        },
+        {
+            "schema:deathDate": 1963,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1914,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/22586",
+            "schema:name": "Abdul Karim Kassem"
+        },
+        {
+            "schema:deathDate": 1970,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1918,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/5711",
+            "schema:name": "Gamal  Abdel Nasser"
+        },
+        {
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1929,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/77757",
+            "schema:name": "Raoul Abdul"
+        },
+        {
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1947,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63628",
+            "schema:name": "Kareem Abdul-Jabbar"
+        },
+        {
+            "schema:deathDate": 1975,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1904,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/32618",
+            "schema:name": "ibn Abd al-Aziz Feisal"
+        },
+        {
+            "schema:deathDate": 1822,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1741,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/19423",
+            "schema:name": "Abel Buell"
+        },
+        {
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1934,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/64752",
+            "schema:name": "Sigmund Abeles"
+        },
+        {
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1946,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/62256",
+            "schema:name": "Abe Frajndlich"
+        },
+        {
+            "schema:deathDate": 1850,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1790,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/60763",
+            "schema:name": "Abel Bowen"
+        },
+        {
+            "schema:deathDate": 1860,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1815,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/40817",
+            "schema:name": "Abel Nichols"
+        },
+        {
+            "schema:deathDate": 1962,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1883,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/34824",
+            "schema:name": "Abel George Warshawsky"
+        },
+        {
+            "schema:deathDate": 1977,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1909,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/3527",
+            "schema:name": "Gertrude Abercrombie"
+        },
+        {
+            "schema:deathDate": 1938,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1857,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/31061",
+            "schema:name": "Charles Abel Corwin"
+        },
+        {
+            "schema:deathDate": 1890,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1790,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/77025",
+            "schema:name": "Abel Phelps"
+        },
+        {
+            "schema:deathDate": 1854,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1784,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/39097",
+            "schema:name": "Abel Page"
+        },
+        {
+            "schema:deathDate": 1853,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1794,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/28736",
+            "schema:name": "Abel Lawrence Pierson"
+        },
+        {
+            "schema:deathDate": 1939,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1856,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/91732",
+            "schema:name": "John Abeel Weekes"
+        },
+        {
+            "schema:deathDate": 1844,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1791,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/12901",
+            "schema:name": "Abel Parker Upshur"
+        },
+        {
+            "schema:deathDate": 1856,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1779,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/76801",
+            "schema:name": "Abel Silas Hine"
+        },
+        {
+            "schema:deathDate": 1960,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1874,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/27409",
+            "schema:name": "Dudley Abel Williams"
+        },
+        {
+            "schema:deathDate": 1985,
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1910,
+            "@id": "http://dig.isi.edu/npgConstituents/person-institution/63506",
+            "schema:name": "Abel I. Smith"
+        }
+    ]
+}

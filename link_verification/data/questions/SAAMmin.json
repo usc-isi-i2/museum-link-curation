@@ -1,0 +1,1405 @@
+{
+    "count": 100, 
+    "payload": [
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/485", 
+            "uri1": "http://vocab.getty.edu/ulan/500029376"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1681", 
+            "uri1": "http://vocab.getty.edu/ulan/500028092"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4469", 
+            "uri1": "http://vocab.getty.edu/ulan/500024299"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4556", 
+            "uri1": "http://vocab.getty.edu/ulan/500041087"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1865", 
+            "uri1": "http://vocab.getty.edu/ulan/500129204"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/31050", 
+            "uri1": "http://vocab.getty.edu/ulan/500125743"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999607"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5419", 
+            "uri1": "http://vocab.getty.edu/ulan/500288578"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3628", 
+            "uri1": "http://vocab.getty.edu/ulan/500127457"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4865", 
+            "uri1": "http://vocab.getty.edu/ulan/500006643"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/9", 
+            "uri1": "http://vocab.getty.edu/ulan/500002434"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5", 
+            "uri1": "http://vocab.getty.edu/ulan/500020631"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6379", 
+            "uri1": "http://vocab.getty.edu/ulan/500023150"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3946", 
+            "uri1": "http://vocab.getty.edu/ulan/500015594"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/515", 
+            "uri1": "http://vocab.getty.edu/ulan/500031187"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6662", 
+            "uri1": "http://vocab.getty.edu/ulan/500023889"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/29909", 
+            "uri1": "http://vocab.getty.edu/ulan/500062882"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1724", 
+            "uri1": "http://vocab.getty.edu/ulan/500184250"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5349", 
+            "uri1": "http://vocab.getty.edu/ulan/500026671"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/11", 
+            "uri1": "http://vocab.getty.edu/ulan/500093805"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999997"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4766", 
+            "uri1": "http://vocab.getty.edu/ulan/500016002"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999996"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/332", 
+            "uri1": "http://vocab.getty.edu/ulan/500080236"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999996"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3375", 
+            "uri1": "http://vocab.getty.edu/ulan/500070811"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999995"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4824", 
+            "uri1": "http://vocab.getty.edu/ulan/500199666"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999989"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2724", 
+            "uri1": "http://vocab.getty.edu/ulan/500000072"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999986"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2929", 
+            "uri1": "http://vocab.getty.edu/ulan/500015490"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999981"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3", 
+            "uri1": "http://vocab.getty.edu/ulan/500010457"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999854"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6064", 
+            "uri1": "http://vocab.getty.edu/ulan/500097924"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.9914"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3650", 
+            "uri1": "http://vocab.getty.edu/ulan/500188406"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/15", 
+            "uri1": "http://vocab.getty.edu/ulan/500021026"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999993"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/16", 
+            "uri1": "http://vocab.getty.edu/ulan/500034153"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999972"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/13", 
+            "uri1": "http://vocab.getty.edu/ulan/500092588"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6565", 
+            "uri1": "http://vocab.getty.edu/ulan/500023585"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/32", 
+            "uri1": "http://vocab.getty.edu/ulan/500007226"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/31", 
+            "uri1": "http://vocab.getty.edu/ulan/500018989"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2421", 
+            "uri1": "http://vocab.getty.edu/ulan/500043998"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6480", 
+            "uri1": "http://vocab.getty.edu/ulan/500018924"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/912", 
+            "uri1": "http://vocab.getty.edu/ulan/500336669"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/26567", 
+            "uri1": "http://vocab.getty.edu/ulan/500022873"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5300", 
+            "uri1": "http://vocab.getty.edu/ulan/500090663"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6757", 
+            "uri1": "http://vocab.getty.edu/ulan/500021818"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3439", 
+            "uri1": "http://vocab.getty.edu/ulan/500168056"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/29", 
+            "uri1": "http://vocab.getty.edu/ulan/500082926"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/24", 
+            "uri1": "http://vocab.getty.edu/ulan/500003776"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5531", 
+            "uri1": "http://vocab.getty.edu/ulan/500013967"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/793", 
+            "uri1": "http://vocab.getty.edu/ulan/500001243"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/22", 
+            "uri1": "http://vocab.getty.edu/ulan/500042367"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2769", 
+            "uri1": "http://vocab.getty.edu/ulan/500041600"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/27472", 
+            "uri1": "http://vocab.getty.edu/ulan/500010565"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1887", 
+            "uri1": "http://vocab.getty.edu/ulan/500004904"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3607", 
+            "uri1": "http://vocab.getty.edu/ulan/500032127"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/908", 
+            "uri1": "http://vocab.getty.edu/ulan/500042810"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3316", 
+            "uri1": "http://vocab.getty.edu/ulan/500003411"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/23", 
+            "uri1": "http://vocab.getty.edu/ulan/500027406"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1178", 
+            "uri1": "http://vocab.getty.edu/ulan/500009264"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/20", 
+            "uri1": "http://vocab.getty.edu/ulan/500026108"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3802", 
+            "uri1": "http://vocab.getty.edu/ulan/500133723"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999997"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6363", 
+            "uri1": "http://vocab.getty.edu/ulan/500034445"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999997"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6360", 
+            "uri1": "http://vocab.getty.edu/ulan/500122161"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999996"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3065", 
+            "uri1": "http://vocab.getty.edu/ulan/500048920"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999996"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/768", 
+            "uri1": "http://vocab.getty.edu/ulan/500174506"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999996"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4863", 
+            "uri1": "http://vocab.getty.edu/ulan/500010339"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999995"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3993", 
+            "uri1": "http://vocab.getty.edu/ulan/500259099"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999994"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4325", 
+            "uri1": "http://vocab.getty.edu/ulan/500184023"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999992"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/21", 
+            "uri1": "http://vocab.getty.edu/ulan/500018845"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999992"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3925", 
+            "uri1": "http://vocab.getty.edu/ulan/500115828"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999991"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3006", 
+            "uri1": "http://vocab.getty.edu/ulan/500348032"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999991"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1734", 
+            "uri1": "http://vocab.getty.edu/ulan/500078609"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999988"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/806", 
+            "uri1": "http://vocab.getty.edu/ulan/500299142"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999986"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/27474", 
+            "uri1": "http://vocab.getty.edu/ulan/500009918"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999985"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/455", 
+            "uri1": "http://vocab.getty.edu/ulan/500016407"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999974"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2717", 
+            "uri1": "http://vocab.getty.edu/ulan/500065679"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999971"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1508", 
+            "uri1": "http://vocab.getty.edu/ulan/500114354"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999903"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/606", 
+            "uri1": "http://vocab.getty.edu/ulan/500138406"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999887"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/7367", 
+            "uri1": "http://vocab.getty.edu/ulan/500023862"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999879"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/5112", 
+            "uri1": "http://vocab.getty.edu/ulan/500042333"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999755"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/27508", 
+            "uri1": "http://vocab.getty.edu/ulan/500067145"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4732", 
+            "uri1": "http://vocab.getty.edu/ulan/500030087"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/26576", 
+            "uri1": "http://vocab.getty.edu/ulan/500335635"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/18267", 
+            "uri1": "http://vocab.getty.edu/ulan/500034783"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6826", 
+            "uri1": "http://vocab.getty.edu/ulan/500336657"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/33", 
+            "uri1": "http://vocab.getty.edu/ulan/500053578"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/34", 
+            "uri1": "http://vocab.getty.edu/ulan/500116915"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6143", 
+            "uri1": "http://vocab.getty.edu/ulan/500024489"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999986"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/35", 
+            "uri1": "http://vocab.getty.edu/ulan/500158012"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999694"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/3747", 
+            "uri1": "http://vocab.getty.edu/ulan/500039157"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999335"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/394", 
+            "uri1": "http://vocab.getty.edu/ulan/500128517"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/40", 
+            "uri1": "http://vocab.getty.edu/ulan/500042360"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4055", 
+            "uri1": "http://vocab.getty.edu/ulan/500014242"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/38", 
+            "uri1": "http://vocab.getty.edu/ulan/500110844"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999962"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/6363", 
+            "uri1": "http://vocab.getty.edu/ulan/500051786"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999824"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/18266", 
+            "uri1": "http://vocab.getty.edu/ulan/500110246"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999516"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/7280", 
+            "uri1": "http://vocab.getty.edu/ulan/500023952"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/4426", 
+            "uri1": "http://vocab.getty.edu/ulan/500021038"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1366", 
+            "uri1": "http://vocab.getty.edu/ulan/500067349"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999999"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/1030", 
+            "uri1": "http://vocab.getty.edu/ulan/500048600"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999998"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/2431", 
+            "uri1": "http://vocab.getty.edu/ulan/500012048"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999997"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/633", 
+            "uri1": "http://vocab.getty.edu/ulan/500294316"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "0.999683"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/28958", 
+            "uri1": "http://vocab.getty.edu/ulan/500055703"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/26558", 
+            "uri1": "http://vocab.getty.edu/ulan/500020062"
+        }, 
+        {
+            "dedupe": {
+                "dataset": "SAAM.json", 
+                "fields": [
+                    "schema:name", 
+                    "schema:birthDate", 
+                    "schema:deathDate"
+                ], 
+                "version": "1.1", 
+                "linkscore": "1.0"
+            }, 
+            "uri2": "http://edan.si.edu/saam/id/person-institution/278", 
+            "uri1": "http://vocab.getty.edu/ulan/500070875"
+        }
+    ]
+}

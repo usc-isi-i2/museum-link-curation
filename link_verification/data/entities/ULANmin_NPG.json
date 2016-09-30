@@ -1,0 +1,1793 @@
+{
+    "people": [
+        {
+            "schema:description": "American portraitist, 1802-1830",
+            "schema:additionalName": [
+                "Aaron Houghton Corwine",
+                "Corwine, Aaron H.",
+                "Corwine, Aaron Haughton",
+                "Corwaine, Aaron Houghton"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Kentucky",
+                "schema:geo": {
+                    "schema:longitude": "-85",
+                    "schema:latitude": "37",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500003740",
+            "schema:name": "Aaron Houghton Corwine",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1802,
+            "schema:deathDate": 1830,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1922-2015",
+            "schema:additionalName": [
+                "Aaron Shikler",
+                "Shikler, Aaron Abraham"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Brooklyn",
+                "schema:geo": {
+                    "schema:longitude": "-73.9667",
+                    "schema:latitude": "40.6833",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500006441",
+            "schema:name": "Aaron Shikler",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1922,
+            "schema:deathDate": 2015,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American architect, 1809-1846",
+            "schema:additionalName": "Aaron Morse",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500267271",
+            "schema:name": "Aaron Morse",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1809,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1846
+        },
+        {
+            "schema:description": "British painter 1807-1870",
+            "schema:additionalName": "Aaron Edwin Penley",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500026811",
+            "schema:name": "Aaron Edwin Penley",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1807,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1870
+        },
+        {
+            "schema:description": "British artist, active 1871",
+            "schema:additionalName": "Aaron Green",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500197217",
+            "schema:name": "Aaron Green",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1841,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1991
+        },
+        {
+            "schema:description": "Canadian painter, 1846-1888",
+            "schema:additionalName": [
+                "Edson, Allan",
+                "Aaron Allan Edson"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500023009",
+            "schema:name": "Aaron Allan Edson",
+            "schema:nationality": "Canadian",
+            "schema:birthDate": 1846,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1888
+        },
+        {
+            "schema:description": "American painter and draftsman, 1907-1992",
+            "schema:additionalName": "Aaron Bohrod",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Chicago",
+                "schema:geo": {
+                    "schema:longitude": "-87.65",
+                    "schema:latitude": "41.85",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500029376",
+            "schema:name": "Aaron Bohrod",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1907,
+            "schema:deathDate": 1992,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1817-1902",
+            "schema:additionalName": "Aaron Dean Fletcher",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500019217",
+            "schema:name": "Aaron Dean Fletcher",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1817,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1902
+        },
+        {
+            "schema:description": "American painter, 1832-1928",
+            "schema:additionalName": [
+                "Aaron Draper Shattuck",
+                "Shattuck, Aaron"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Francestown",
+                "schema:geo": {
+                    "schema:longitude": "-71.8",
+                    "schema:latitude": "42.9833",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500030050",
+            "schema:name": "Aaron Draper Shattuck",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1832,
+            "schema:deathDate": 1928,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter 1860-1942",
+            "schema:additionalName": "Wilbur Aaron Reaser",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500054148",
+            "schema:name": "Wilbur Aaron Reaser",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1860,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1942
+        },
+        {
+            "schema:description": "British painter, 1877-1961",
+            "schema:additionalName": "Alfred Aaron Wolmark",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500030801",
+            "schema:name": "Alfred Aaron Wolmark",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1877,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1961
+        },
+        {
+            "schema:description": "American painter and muralist, 1899-1979",
+            "schema:additionalName": "Aaron Douglas",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Topeka",
+                "schema:geo": {
+                    "schema:longitude": "-95.6667",
+                    "schema:latitude": "39.0333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500110570",
+            "schema:name": "Aaron Douglas",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1899,
+            "schema:deathDate": 1979,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, cartoonist, and illustrator, 1905-1972",
+            "schema:additionalName": "Aaron Sopher",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Baltimore",
+                "schema:geo": {
+                    "schema:longitude": "-76.6",
+                    "schema:latitude": "39.2833",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500041087",
+            "schema:name": "Aaron Sopher",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1905,
+            "schema:deathDate": 1972,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "Irish architect, 1753-1836",
+            "schema:additionalName": "Henry Aaron Baker",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500102586",
+            "schema:name": "Henry Aaron Baker",
+            "schema:nationality": "Irish",
+            "schema:birthDate": 1753,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1836
+        },
+        {
+            "schema:description": "American sculptor, illustrator, and etcher, 1890-1978",
+            "schema:additionalName": [
+                "Aaron J. Goodelman",
+                "Goodelman, Aaron"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Ataki",
+                "schema:geo": {
+                    "schema:longitude": "27.8",
+                    "schema:latitude": "48.4167",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500129204",
+            "schema:name": "Aaron J. Goodelman",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1890,
+            "schema:deathDate": 1978,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American photographer and teacher, 1903-1991",
+            "schema:additionalName": "Aaron Siskind",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "New York",
+                "schema:geo": {
+                    "schema:longitude": "-74",
+                    "schema:latitude": "40.7",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500024299",
+            "schema:name": "Aaron Siskind",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1903,
+            "schema:deathDate": 1991,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American clockmaker, 1757-1844",
+            "schema:additionalName": "Aaron Willard",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500076346",
+            "schema:name": "Aaron Willard",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1757,
+            "schema:additionalType": "clockmakers",
+            "schema:deathDate": 1844
+        },
+        {
+            "schema:description": "English potter, 1717-1785",
+            "schema:additionalName": "Aaron Wood",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Burslem",
+                "schema:geo": {
+                    "schema:longitude": "-2.183333",
+                    "schema:latitude": "53.05",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500333683",
+            "schema:name": "Aaron Wood",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1717,
+            "schema:deathDate": 1785,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "Belgian architect, 1858-1940",
+            "schema:additionalName": "Aaron Messiah",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500288578",
+            "schema:name": "Aaron Messiah",
+            "schema:nationality": "Belgian (modern)",
+            "schema:birthDate": 1858,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1940
+        },
+        {
+            "schema:description": "American painter, 1872-1953",
+            "schema:additionalName": [
+                "Aaron Kilpatrick",
+                "Kilpatrick, Aaron",
+                "Aaron Edward Kilpatrick"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500101455",
+            "schema:name": "Aaron Edward Kilpatrick",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1872,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1953
+        },
+        {
+            "schema:description": "American architect, 1789-1881",
+            "schema:additionalName": "Aaron S. Sherman",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500075276",
+            "schema:name": "Aaron S. Sherman",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1789,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1881
+        },
+        {
+            "schema:description": "American sculptor and folk artist, 1887-1979",
+            "schema:additionalName": "Jesse Aaron",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Lake City",
+                "schema:geo": {
+                    "schema:longitude": "-82.6333",
+                    "schema:latitude": "30.1833",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500125743",
+            "schema:name": "Jesse Aaron",
+            "schema:additionalType": "folk artists",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1887,
+            "schema:deathDate": 1979,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1872-1933",
+            "schema:additionalName": [
+                "Aaron Henry Gorson",
+                "Gorson, Aaron",
+                "Gorson, Aaron Henry",
+                "Gorson, A. H.",
+                "Aaron Harry Gorson"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500020333",
+            "schema:name": "Aaron Harry Gorson",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1872,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1933
+        },
+        {
+            "schema:description": "British painter, 1826-1893",
+            "schema:additionalName": [
+                "Penley, Edwin A.",
+                "Edwin Aaron Penley"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500071254",
+            "schema:name": "Edwin Aaron Penley",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1826,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1893
+        },
+        {
+            "schema:description": "American painter and folk artist, 1895-1998",
+            "schema:additionalName": "Aaron Birnbaum",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Skole",
+                "schema:geo": {
+                    "schema:longitude": "23.5",
+                    "schema:latitude": "49",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500034769",
+            "schema:name": "Aaron Birnbaum",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1895,
+            "schema:deathDate": 1998,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "Dutch artist, active 1870",
+            "schema:additionalName": "G. van Aalst",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500161467",
+            "schema:name": "G. van Aalst",
+            "schema:nationality": "Dutch (culture or style)",
+            "schema:birthDate": 1835,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1985
+        },
+        {
+            "schema:description": "American painter and lithographer, 1879-1946",
+            "schema:additionalName": [
+                "Friedman, Arnold Aaron",
+                "Arnold Aaron Friedman"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "New York",
+                "schema:geo": {
+                    "schema:longitude": "-74",
+                    "schema:latitude": "40.7",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500028092",
+            "schema:name": "Arnold Aaron Friedman",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1879,
+            "schema:deathDate": 1946,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "Danish architect, 1852-1922, active in Germany",
+            "schema:additionalName": [
+                "Kauffmann, Aage B. G. von",
+                "Aage B. G. von Kauffmann",
+                "Kauffmann, Aage Basse Gustav von"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Copenhagen",
+                "schema:geo": {
+                    "schema:longitude": "12.5667",
+                    "schema:latitude": "55.7167",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500122144",
+            "schema:name": "Aage B. G. von Kauffmann",
+            "schema:additionalType": "architects",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1852,
+            "schema:deathDate": 1922,
+            "schema:nationality": "Danish (culture or style)"
+        },
+        {
+            "schema:description": "Netherlandish architect, active ca. 1930",
+            "schema:additionalName": "K. J. Aanstoot",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500033602",
+            "schema:name": "K. J. Aanstoot",
+            "schema:nationality": "Netherlandish",
+            "schema:birthDate": 1925,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1935
+        },
+        {
+            "schema:description": "English painter, woodcutter, and lithographer, 1900-1974",
+            "schema:additionalName": [
+                "Kernoff, Harry",
+                "Harry Aaron Kernoff"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "London",
+                "schema:geo": {
+                    "schema:longitude": "-.093145",
+                    "schema:latitude": "51.514248",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500007678",
+            "schema:name": "Harry Aaron Kernoff",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1900,
+            "schema:deathDate": 1974,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "New Zealand artist, contemporary",
+            "schema:additionalName": "Aaron Fry",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500274206",
+            "schema:name": "Aaron Fry",
+            "schema:nationality": "New Zealand",
+            "schema:birthDate": 1850,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 2080
+        },
+        {
+            "schema:description": "Australian architect, contemporary",
+            "schema:additionalName": "Aaron Cook",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500289629",
+            "schema:name": "Aaron Cook",
+            "schema:nationality": "Australian",
+            "schema:birthDate": 1850,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 2080
+        },
+        {
+            "schema:description": "American sculptor, 1878-1942",
+            "schema:additionalName": [
+                "Abastenia Saint Leger Eberle",
+                "Eberle, Abastenia Saint Leger",
+                "Abastenia ST Leger Eberle",
+                "Eberle, Abastenia ST Leger",
+                "Eberle, Ain",
+                "Eberle, Mary Abastenia St. Leger"
+            ],
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500062882",
+            "schema:name": "Abastenia Saint Leger Eberle",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1878,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1942
+        },
+        {
+            "schema:description": "Spanish painter and sculptor, 1875-1958",
+            "schema:additionalName": [
+                "Abarca, Pere Casas",
+                "Pere Casas Abarca",
+                "Casas Abarca, Pedro"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500035608",
+            "schema:name": "Pere Casas Abarca",
+            "schema:nationality": "Spanish (culture or style)",
+            "schema:birthDate": 1875,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1958
+        },
+        {
+            "schema:description": "Italian painter, ca. 1509-1571",
+            "schema:additionalName": [
+                "Abbate, Niccol\u00f2 del",
+                "Niccolino dell'Abate",
+                "Dell'Abate, Nicol\u00f2",
+                "Niccol\u00f2 dell'Abate",
+                "Nicolas de Labaty",
+                "dell'Abate, Nicol\u00f2",
+                "Nicol\u00f2 dell'Abate",
+                "Abbate, Niccolino Dell'",
+                "Abbate, Niccolo dell'",
+                "Abate, Niccolo dell'",
+                "Abate, Nicolo dell'",
+                "Niccolo' dell' Abate",
+                "Abbate, Niccol\u00f2 dell'",
+                "Nicolo Abate",
+                "Niccolo Abbate",
+                "Abate, Niccol\u00f2 dell'",
+                "Nicolo de Labbaty",
+                "Abatti, Niccol\u00f2 dell'",
+                "Nicolas de Batty",
+                "Nicol\u00f2 dell' Abate",
+                "Abbati, Nicol\u00f2",
+                "Dell'Abbate, Niccol\u00f2",
+                "Niccol\u00f2 dell'Abbate",
+                "dell'Abate, Niccol\u00f2",
+                "Messer Niccolino",
+                "Niccolo dell'Abate",
+                "Nicolo dell'Abbate",
+                "Nicolo dell'Abate",
+                "Abbate, Niccolo",
+                "Messer Niccolo"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Modena",
+                "schema:geo": {
+                    "schema:longitude": "10.916667",
+                    "schema:latitude": "44.666667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500011972",
+            "schema:name": "Nicol\u00f2 dell' Abate",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1499,
+            "schema:deathDate": 1571,
+            "schema:nationality": "Italian (culture or style)"
+        },
+        {
+            "schema:description": "Spanish painter, active 20th century",
+            "schema:additionalName": [
+                "Abascal, E. Gaiz",
+                "E. Gaiz Abascal"
+            ],
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500038248",
+            "schema:name": "E. Gaiz Abascal",
+            "schema:nationality": "Spanish (culture or style)",
+            "schema:birthDate": 1900,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 2000
+        },
+        {
+            "schema:description": "British painter, active 18th century",
+            "schema:additionalName": [
+                "John I Abbot",
+                "Abbot, John I",
+                "John Abbot",
+                "Abbot, John, I"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500031468",
+            "schema:name": "John Abbot",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1671,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1830
+        },
+        {
+            "schema:description": "British painter, ca.1760-1803",
+            "schema:additionalName": [
+                "Abbot, Lemuel Francis",
+                "Lemuel Francis Abbott",
+                "Lemuel Francis Abbot"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Leicestershire",
+                "schema:geo": {
+                    "schema:longitude": "-1.1667",
+                    "schema:latitude": "52.6667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500012143",
+            "schema:name": "Lemuel Francis Abbott",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1750,
+            "schema:deathDate": 1803,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "American photographer, 1883-1973",
+            "schema:additionalName": [
+                "Abbe, James Edward",
+                "Abbe",
+                "James Abbe"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500026671",
+            "schema:name": "James Abbe",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1883,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1973
+        },
+        {
+            "schema:description": "American manufacturer, diplomat, and philanthropist, 1792-1855",
+            "schema:additionalName": "Abbott Lawrence",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500070652",
+            "schema:name": "Abbott Lawrence",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1792,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1855
+        },
+        {
+            "schema:description": "English painter, active 1851-1872",
+            "schema:additionalName": [
+                "Pasquier, J. Abbott",
+                "James Abbott Pasquier"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500092208",
+            "schema:name": "James Abbott Pasquier",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1821,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1902
+        },
+        {
+            "schema:description": "Spanish scribe, active 1073",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500059689",
+            "schema:additionalType": "scribes (people)",
+            "schema:nationality": "Spanish (culture or style)",
+            "schema:birthDate": 1033,
+            "schema:deathDate": 1133,
+            "schema:name": " Abbot Peter"
+        },
+        {
+            "schema:description": "American painter and illustrator, 1852-1911",
+            "schema:additionalName": [
+                "Edwin Austin Abbey",
+                "Abbey",
+                "Abbey, E. A."
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Philadelphia",
+                "schema:geo": {
+                    "schema:longitude": "-75.15",
+                    "schema:latitude": "39.95",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500010457",
+            "schema:name": "Edwin Austin Abbey",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1852,
+            "schema:deathDate": 1911,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter and naturalist, 1849-1921",
+            "schema:additionalName": [
+                "Abbott Henderson Thayer",
+                "Thayer, Abbott H.",
+                "Thayer, A. H.",
+                "Abbott Handerson Thayer",
+                "Thayer, Abbott Henderson"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Boston",
+                "schema:geo": {
+                    "schema:longitude": "-71.05",
+                    "schema:latitude": "42.35",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500016002",
+            "schema:name": "Abbott Handerson Thayer",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1849,
+            "schema:deathDate": 1921,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American photographer, 1898-1991",
+            "schema:additionalName": "Berenice Abbott",
+            "schema:gender": "female",
+            "schema:birthPlace": {
+                "schema:name": "Springfield",
+                "schema:geo": {
+                    "schema:longitude": "-83.8",
+                    "schema:latitude": "39.9167",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500020631",
+            "schema:name": "Berenice Abbott",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1898,
+            "schema:deathDate": 1991,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1859-1936",
+            "schema:additionalName": "Abbott Fuller Graves",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500014673",
+            "schema:name": "Abbott Fuller Graves",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1859,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1936
+        },
+        {
+            "schema:description": "French painter, printmaker, and sculptor, 1858-1927",
+            "schema:additionalName": [
+                "Abbema, Louise",
+                "Louise Abb\u00e9ma",
+                "Louise Abbema",
+                "Abbeka, Louise"
+            ],
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500020186",
+            "schema:name": "Louise Abb\u00e9ma",
+            "schema:nationality": "French (culture or style)",
+            "schema:birthDate": 1858,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1927
+        },
+        {
+            "schema:description": "American painter, 1883-1969",
+            "schema:additionalName": [
+                "Green, Harold",
+                "Harold Abbott Green"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500091300",
+            "schema:name": "Harold Abbott Green",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1883,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1969
+        },
+        {
+            "schema:description": "English painter and watercolorist, 1764-1851",
+            "schema:additionalName": "John White Abbott",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Exeter",
+                "schema:geo": {
+                    "schema:longitude": "-3.533333",
+                    "schema:latitude": "50.7",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500013900",
+            "schema:name": "John White Abbott",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1764,
+            "schema:deathDate": 1851,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "American embroiderer, 1783-1812",
+            "schema:additionalName": "Abby Bishop",
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500333712",
+            "schema:name": "Abby Bishop",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1783,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1812
+        },
+        {
+            "schema:description": "British plasterer, Devon, 1639 or 40-1727",
+            "schema:additionalName": "John Abbott",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500023085",
+            "schema:name": "John Abbott",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1639,
+            "schema:additionalType": "plasterers",
+            "schema:deathDate": 1727
+        },
+        {
+            "schema:description": "American painter born in 1856, died in 1921",
+            "schema:additionalName": "Abbie Luella Zuill",
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500034464",
+            "schema:name": "Abbie Luella Zuill",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1856,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1921
+        },
+        {
+            "schema:description": "British painter, active 19th century",
+            "schema:additionalName": "Bradley Abbott",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500001901",
+            "schema:name": "Bradley Abbott",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1771,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1930
+        },
+        {
+            "schema:description": "British artist, active 1800",
+            "schema:additionalName": "C. T. Abbot",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500188409",
+            "schema:name": "C. T. Abbot",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1770,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1920
+        },
+        {
+            "schema:description": "American painter, illustrator, 1875-1935",
+            "schema:additionalName": "Elenore Plaisted Abbott",
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500091114",
+            "schema:name": "Elenore Plaisted Abbott",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1875,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1935
+        },
+        {
+            "schema:description": "British portraitist, 1867-ca. 1949",
+            "schema:additionalName": "Abbey Alston",
+            "schema:gender": "female",
+            "schema:birthPlace": {
+                "schema:name": "Middlesbrough",
+                "schema:geo": {
+                    "schema:longitude": "-1.162778",
+                    "schema:latitude": "54.572778",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500084921",
+            "schema:name": "Abbey Alston",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1867,
+            "schema:deathDate": 1960,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "British designer, 1918-1992",
+            "schema:additionalName": "Anthony Abbott",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500240978",
+            "schema:name": "Anthony Abbott",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1918,
+            "schema:additionalType": "designers",
+            "schema:deathDate": 1992
+        },
+        {
+            "schema:description": "French architect, abbot, died 1720",
+            "schema:additionalName": [
+                "Maillet, Louis, abb\u00e9, chanoine de Troyes",
+                "Maillet, Louis, canon of Saint-Loup",
+                "Abb\u00e9 Louis Maillet"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500241035",
+            "schema:name": "Louis, Abb\u00e9 Maillet",
+            "schema:nationality": "French (culture or style)",
+            "schema:birthDate": 1620,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1720
+        },
+        {
+            "schema:description": "French cleric and collector, ca. 1655-1735",
+            "schema:additionalName": "Abb\u00e9 Pierre-Maurice Haranger",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Paris",
+                "schema:geo": {
+                    "schema:longitude": "2.333333",
+                    "schema:latitude": "48.866667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500319168",
+            "schema:name": "Pierre-Maurice, Abb\u00e9 Haranger",
+            "schema:additionalType": "clergy",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1645,
+            "schema:deathDate": 1735,
+            "schema:nationality": "French (culture or style)"
+        },
+        {
+            "schema:description": "German artist, active 16th century",
+            "schema:additionalName": "Master Of The Madonna Of The Abbot Valentin Pirer",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500113017",
+            "schema:name": " Master of the Madonna of the Abbot Valentin Pirer",
+            "schema:nationality": "German (culture or style)",
+            "schema:birthDate": 1471,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1630
+        },
+        {
+            "schema:description": "German scribe, active 11th century",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500054658",
+            "schema:additionalType": "scribes (people)",
+            "schema:nationality": "German (culture or style)",
+            "schema:birthDate": 971,
+            "schema:deathDate": 1130,
+            "schema:name": " Abba"
+        },
+        {
+            "schema:description": "British artist, 1804-1843",
+            "schema:additionalName": "Arthur Abbott",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500183427",
+            "schema:name": "Arthur Abbott",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1804,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1843
+        },
+        {
+            "schema:description": "British painter, active 16th century",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500016839",
+            "schema:additionalType": "artists (visual artists)",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1500,
+            "schema:deathDate": 1600,
+            "schema:name": " Abbott"
+        },
+        {
+            "schema:description": "American painter, 1861-1943",
+            "schema:additionalName": [
+                "Abby Williams Hill",
+                "Williams, Abby"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Grinnell",
+                "schema:geo": {
+                    "schema:longitude": "-92.7167",
+                    "schema:latitude": "41.7333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500340921",
+            "schema:name": "Abby Williams Hill",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1861,
+            "schema:deathDate": 1943,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American embroiderer, born 1766",
+            "schema:additionalName": "Phebe Abbot",
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500331219",
+            "schema:name": "Phebe Abbot",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1766,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1846
+        },
+        {
+            "schema:description": "American landscape architect, 1908-1975",
+            "schema:additionalName": [
+                "Stanley William Abbott",
+                "Stanley W. Abbott",
+                "Abbott, Stanley W."
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Yonkers",
+                "schema:geo": {
+                    "schema:longitude": "-73.8833",
+                    "schema:latitude": "40.9167",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500272957",
+            "schema:name": "Stanley William Abbott",
+            "schema:additionalType": "landscape architects",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1908,
+            "schema:deathDate": 1975,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "British artist, 19th century",
+            "schema:additionalName": "Ernest E. Abbott",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500193723",
+            "schema:name": "Ernest E. Abbott",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1800,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1899
+        },
+        {
+            "schema:description": "Italian painter, 1573-1613",
+            "schema:additionalName": [
+                "Abbate, Ercole dell'",
+                "Abate, Ercole",
+                "Abate, Ercole dell'",
+                "Abbati, Ercole",
+                "Ercole Abbate"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500088940",
+            "schema:name": "Ercole Abbate",
+            "schema:nationality": "Italian (culture or style)",
+            "schema:birthDate": 1573,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1613
+        },
+        {
+            "schema:description": "American painter and teacher, 1887-1981",
+            "schema:additionalName": [
+                "Mary Beth Abbott",
+                "Abbott, Mary"
+            ],
+            "schema:gender": "female",
+            "schema:birthPlace": {
+                "schema:name": "Nebraska",
+                "schema:geo": {
+                    "schema:longitude": "-100",
+                    "schema:latitude": "41.5",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500105383",
+            "schema:name": "Mary Beth Abbott",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1887,
+            "schema:deathDate": 1981,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "New Zealand architect, 1883-1954",
+            "schema:additionalName": "Richard Atkinson Abbott",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500292692",
+            "schema:name": "Richard Atkinson Abbott",
+            "schema:nationality": "New Zealand",
+            "schema:birthDate": 1883,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1954
+        },
+        {
+            "schema:description": "Flemish sculptor, active ca. 1460-1490",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500054679",
+            "schema:additionalType": "artists (visual artists)",
+            "schema:nationality": "Flemish (culture or style)",
+            "schema:birthDate": 1430,
+            "schema:deathDate": 1520,
+            "schema:name": " Master of the Coudewater Abbey"
+        },
+        {
+            "schema:description": "American artist, 1894-1981",
+            "schema:additionalName": "Mary Ogden Abbott",
+            "schema:gender": "female",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500198115",
+            "schema:name": "Mary Ogden Abbott",
+            "schema:nationality": "American (North American)",
+            "schema:birthDate": 1894,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1981
+        },
+        {
+            "schema:description": "English sculptor, 1885-1953",
+            "schema:additionalName": "Newbury Abbot Trent",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "London",
+                "schema:geo": {
+                    "schema:longitude": "-.093145",
+                    "schema:latitude": "51.514248",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500196221",
+            "schema:name": "Newbury Abbot Trent",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1885,
+            "schema:deathDate": 1953,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "Netherlandish draftsman, active 16th century",
+            "schema:additionalName": "P. J. van Abbeclen",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500062976",
+            "schema:name": "P. J. van Abbeclen",
+            "schema:nationality": "Netherlandish",
+            "schema:birthDate": 1471,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1630
+        },
+        {
+            "schema:description": "British draftsman, 1883-1955",
+            "schema:additionalName": [
+                "Abbe, Salomon van",
+                "Abbe, Salomon Van",
+                "Salomon van Abb\u00e9",
+                "Salomon Van Abbe"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Amsterdam",
+                "schema:geo": {
+                    "schema:longitude": "4.916667",
+                    "schema:latitude": "52.35",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500048354",
+            "schema:name": "Salomon van Abb\u00e9",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1883,
+            "schema:deathDate": 1955,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "Flemish painter, 1639-after 1677",
+            "schema:additionalName": [
+                "Hendrik Abbe",
+                "Abbe, Hendrik",
+                "Hendrik Abb\u00e9"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500050499",
+            "schema:name": "Hendrik Abb\u00e9",
+            "schema:nationality": "Flemish (culture or style)",
+            "schema:birthDate": 1639,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1700
+        },
+        {
+            "schema:description": "Palestinian sculptor and ceramicist, 1888-1953",
+            "schema:additionalName": "Jussuff Abbo",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Safad",
+                "schema:geo": {
+                    "schema:longitude": "35.5",
+                    "schema:latitude": "32.9667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500188406",
+            "schema:name": "Jussuff Abbo",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1888,
+            "schema:deathDate": 1954,
+            "schema:nationality": "Palestinian"
+        },
+        {
+            "schema:description": "Italian painter, 1803-after 1859",
+            "schema:additionalName": "Vincenzo Abbati",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500007632",
+            "schema:name": "Vincenzo Abbati",
+            "schema:nationality": "Italian (culture or style)",
+            "schema:birthDate": 1803,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1879
+        },
+        {
+            "schema:description": "Italian painter and draftsman, 1836-1868",
+            "schema:additionalName": [
+                "Abatti, Giuseppe",
+                "Giuseppe Abbati"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Naples",
+                "schema:geo": {
+                    "schema:longitude": "14.25",
+                    "schema:latitude": "40.833333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500016852",
+            "schema:name": "Giuseppe Abbati",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1836,
+            "schema:deathDate": 1868,
+            "schema:nationality": "Italian (culture or style)"
+        },
+        {
+            "schema:description": "Mughal architect, active 17th century",
+            "schema:additionalName": [
+                "Karim, Abdul",
+                "Ma'mur Khan",
+                "Khan, Ma'mur"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500228010",
+            "schema:name": " Abdul Karim",
+            "schema:nationality": "Mughal",
+            "schema:birthDate": 1571,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 1730
+        },
+        {
+            "schema:description": "Pakistani painter, etcher, and engraver, 1894-1975",
+            "schema:additionalName": [
+                "\u02bbAbdurrahm\u0101n Cug\u1e96t\u0101'\u012b, Muhammad",
+                "Chughtai, A. R.",
+                "Abdur Rahman Chughtai",
+                "Cug\u1e96t\u0101'\u012b, Muhammad \u02bbAbdurrahm\u0101n",
+                "Chughtai, M. A. Rahman",
+                "Rahman Chughtai, Muhammad Abdullah",
+                "Cug\u1e96t\u0101'\u012b, \u02bbAbdurrahm\u0101n",
+                "Chughtai, Muhammad Abdullah Rahman"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Lahore",
+                "schema:geo": {
+                    "schema:longitude": "74.343611",
+                    "schema:latitude": "31.549722",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500123056",
+            "schema:name": "Abdur Rahman Chughtai",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1894,
+            "schema:deathDate": 1975,
+            "schema:nationality": "Pakistani"
+        },
+        {
+            "schema:description": "Turkmen architect, born 1929",
+            "schema:additionalName": [
+                "Ahmedov, A.",
+                "Ahmedov, Abdullah",
+                "A. Ahmedov",
+                "Abdulla Akhmedov",
+                "Akhmedov, Abdulla Ramazanovich",
+                "Ahmedov, Abdullah Ramazanovi\u010d"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500028675",
+            "schema:name": "Abdulla Akhmedov",
+            "schema:nationality": "Turkmen (modern Turkmenistan style)",
+            "schema:birthDate": 1929,
+            "schema:additionalType": "architects",
+            "schema:deathDate": 2029
+        },
+        {
+            "schema:description": "American sculptor, born 1947",
+            "schema:additionalName": "Douglas Abdell",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Boston",
+                "schema:geo": {
+                    "schema:longitude": "-71.05",
+                    "schema:latitude": "42.35",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500101599",
+            "schema:name": "Douglas Abdell",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1947,
+            "schema:deathDate": 2047,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "Spanish sculptor, active 1049-1050",
+            "schema:additionalName": [
+                "Abderrahm\u00e1n ben Zeiy\u00e1n",
+                "Abd al-Rahman ibn Zay\u00e1n",
+                "Abderrahm\u00e1n ben Zeyan"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500036265",
+            "schema:name": "Abd al-Rahman ibn Zay\u00e1n",
+            "schema:nationality": "Spanish (culture or style)",
+            "schema:birthDate": 1029,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1099
+        },
+        {
+            "schema:description": "American painter, 1806-1879",
+            "schema:additionalName": [
+                "Moore, Abel Buel",
+                "Abel Buell Moore",
+                "Abel Buel Moore"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Rupert",
+                "schema:geo": {
+                    "schema:longitude": "-73.2167",
+                    "schema:latitude": "43.25",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500015196",
+            "schema:name": "Abel Buell Moore",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1806,
+            "schema:deathDate": 1879,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American printmaker and sculptor, born 1934",
+            "schema:additionalName": [
+                "Sigmund Abeles",
+                "Abeles, S."
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "New York",
+                "schema:geo": {
+                    "schema:longitude": "-74",
+                    "schema:latitude": "40.7",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500046227",
+            "schema:name": "Sigmund Abeles",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1934,
+            "schema:deathDate": 2034,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "German photographer, born 1946",
+            "schema:additionalName": [
+                "Abe Frajndlich",
+                "Frajndlich, Abraham Samuel"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Frankfurt am Main",
+                "schema:geo": {
+                    "schema:longitude": "8.683333",
+                    "schema:latitude": "50.116667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500057062",
+            "schema:name": "Abe Frajndlich",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1946,
+            "schema:deathDate": 2090,
+            "schema:nationality": "German (culture or style)"
+        },
+        {
+            "schema:description": "American engraver and publisher, 1790-1850",
+            "schema:additionalName": "Abel Bowen",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Greenbush",
+                "schema:geo": {
+                    "schema:longitude": "-74.4333",
+                    "schema:latitude": "42.6333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500043577",
+            "schema:name": "Abel Bowen",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1790,
+            "schema:deathDate": 1850,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1815-1860",
+            "schema:additionalName": "Abel Nichols",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Danvers",
+                "schema:geo": {
+                    "schema:longitude": "-70.9167",
+                    "schema:latitude": "42.5667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500007929",
+            "schema:name": "Abel Nichols",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1815,
+            "schema:deathDate": 1860,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter and illustrator, 1883-1962",
+            "schema:additionalName": [
+                "Warshawsky, Abel Georges",
+                "Abel George Warshawsky",
+                "Warshawsky, Abraham George",
+                "Abel Georges Warshawsky",
+                "Warshawsky, Abel",
+                "Warshawsky, A. G."
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Sharon",
+                "schema:geo": {
+                    "schema:longitude": "-80.4833",
+                    "schema:latitude": "41.2167",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500010643",
+            "schema:name": "Abel George Warshawsky",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1883,
+            "schema:deathDate": 1962,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter, 1909-1977",
+            "schema:additionalName": "Gertrude Abercrombie",
+            "schema:gender": "female",
+            "schema:birthPlace": {
+                "schema:name": "Austin",
+                "schema:geo": {
+                    "schema:longitude": "-97.7333",
+                    "schema:latitude": "30.2667",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500002434",
+            "schema:name": "Gertrude Abercrombie",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1909,
+            "schema:deathDate": 1977,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "American painter and lithographer, 1857-1938",
+            "schema:additionalName": "Charles Abel Corwin",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Newburgh",
+                "schema:geo": {
+                    "schema:longitude": "-74",
+                    "schema:latitude": "41.5",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500099674",
+            "schema:name": "Charles Abel Corwin",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1857,
+            "schema:deathDate": 1938,
+            "schema:nationality": "American (North American)"
+        },
+        {
+            "schema:description": "French engraver and painter, ca. 1829-1890",
+            "schema:additionalName": "Abel Lurat",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Orl\u00e9ans",
+                "schema:geo": {
+                    "schema:longitude": "1.903887",
+                    "schema:latitude": "47.902891",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500050397",
+            "schema:name": "Abel Lurat",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1819,
+            "schema:deathDate": 1890,
+            "schema:nationality": "French (culture or style)"
+        },
+        {
+            "schema:description": "Spanish painter, 1909-1974",
+            "schema:additionalName": [
+                "Vall\u00e9s, Abel Vallmitjana",
+                "Abel Vallmitjana",
+                "Vallmitjana, Abel",
+                "Abel Vallmitjana Vall\u00e9s",
+                "Vallmitjana Valles, Abel",
+                "Valmitjana, Abel",
+                "Abel Vallmitjana Valles"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500124468",
+            "schema:name": "Abel Vallmitjana Vall\u00e9s",
+            "schema:nationality": "Spanish (culture or style)",
+            "schema:birthDate": 1909,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1974
+        },
+        {
+            "schema:description": "Russian painter and lithographer, 1883-1963",
+            "schema:additionalName": [
+                "Abel Pann",
+                "Pfefferman, Abel"
+            ],
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500110310",
+            "schema:name": "Abel Pann",
+            "schema:nationality": "Russian (culture or style)",
+            "schema:birthDate": 1883,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1963
+        },
+        {
+            "schema:description": "British master carpenter, ca.1578-1675",
+            "schema:additionalName": "John Abel",
+            "schema:gender": "male",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500059265",
+            "schema:name": "John Abel",
+            "schema:nationality": "British (modern)",
+            "schema:birthDate": 1568,
+            "schema:additionalType": "carpenters",
+            "schema:deathDate": 1675
+        },
+        {
+            "schema:description": "French artist, 1839-1886",
+            "schema:additionalName": "Abel Orry",
+            "schema:gender": "unavailable (information indicator)",
+            "@type": "http://schema.org/Person",
+            "@id": "http://vocab.getty.edu/ulan/500160539",
+            "schema:name": "Abel Orry",
+            "schema:nationality": "French (culture or style)",
+            "schema:birthDate": 1839,
+            "schema:additionalType": "artists (visual artists)",
+            "schema:deathDate": 1886
+        },
+        {
+            "schema:description": "English painter, 1815-1891",
+            "schema:additionalName": "Abel Hold",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "West Yorkshire",
+                "schema:geo": {
+                    "schema:longitude": "-1.616667",
+                    "schema:latitude": "53.733333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500109878",
+            "schema:name": "Abel Hold",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1815,
+            "schema:deathDate": 1891,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "British painter and illustrator, 1849-1920",
+            "schema:additionalName": [
+                "Armstrong, Francis",
+                "Francis Abel William Taylor Armstrong"
+            ],
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Malmesbury",
+                "schema:geo": {
+                    "schema:longitude": "-2.1",
+                    "schema:latitude": "51.585",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500020796",
+            "schema:name": "Francis Abel William Taylor Armstrong",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1849,
+            "schema:deathDate": 1920,
+            "schema:nationality": "British (modern)"
+        },
+        {
+            "schema:description": "Portuguese painter, sculptor, and designer, 1888-1982",
+            "schema:additionalName": "Abel Manta",
+            "schema:gender": "male",
+            "schema:birthPlace": {
+                "schema:name": "Gouveia",
+                "schema:geo": {
+                    "schema:longitude": "-9.433333",
+                    "schema:latitude": "38.833333",
+                    "@type": "http://schema.org/GeoCoordinates"
+                },
+                "@type": "http://schema.org/Place"
+            },
+            "@id": "http://vocab.getty.edu/ulan/500001837",
+            "schema:name": "Abel Manta",
+            "schema:additionalType": "artists (visual artists)",
+            "@type": "http://schema.org/Person",
+            "schema:birthDate": 1888,
+            "schema:deathDate": 1982,
+            "schema:nationality": "Portuguese (culture or style)"
+        }
+    ]
+}

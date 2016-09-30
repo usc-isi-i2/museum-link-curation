@@ -362,7 +362,7 @@ class questMgr(Resource):
                 stats = False
 
         qs = getQuestionsForUser(count,stats)
-        #print qs
+        pprint(qs)
         return qs
     
 # Handle RESTful API for submitting answer
