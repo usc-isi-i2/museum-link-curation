@@ -60,6 +60,8 @@ def createDatabase():
     ### Question Pairs
     if devmode:
         populateQuestionsFromCSV(os.path.join('data', 'sample.csv'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','NPGmin.json'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','SAAMmin.json'))
     else:
         populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
         populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
@@ -78,6 +80,8 @@ def createDatabase():
         populateEntitiesFromJSON(os.path.join('data', 'sample.json'))
         updateEntitiesFromJSON(os.path.join('data', 'sampleUpdate.json'))
         updateEntitiesFromJSON(os.path.join('data', 'sample.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','NPGmin.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin.json'))
     else:
         populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
@@ -123,8 +127,8 @@ def updateEntitiesFromJSON(filename):
 
         # Update artists collection 
         dbC[dname]["artists"].replace_one({'@id':uri}, artist )
-        print "\n Updated entities database with following entity\n"
-        pprint(artist)
+        #print "\n Updated entities database with following entity\n"
+        #pprint(artist)
 
     #printDatabase("artists")
         
