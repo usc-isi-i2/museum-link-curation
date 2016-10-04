@@ -37,7 +37,7 @@ def verify_password(enc_password, raw_password):
 def isValidAccount(email):
     file = open("emails.txt",'r')
     for line in file.readlines():
-        if line.strip() == email:
+        if line.strip().lower() == email.lower():
             return True
     return False
     
