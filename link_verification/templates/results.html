@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Link Curation Results</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.ico">
+    <style>
+    table,th,tr,td{
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+<div class="filter-section">
+             <div id = "header">{% include 'header_search.html' %}</div>
+</div>
+<div class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+  <div id="login-container"  class="modal-content">
+      <div class="table-responsive">
+            <table class="table table-hover">
+            <tr><th>URI1</th><th>URI2</th><th>Agreed</th><th>Disagreed</th></tr>
+            {% for match in data['matched'] %}
+            <tr>
+              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
+              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
+              <td>{{ match['Yes']}}</td>
+              <td>{{ match['No']}}</td>
+            </tr>
+            {% endfor %}
+            {% for match in data['unmatched'] %}
+            <tr>
+              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
+              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
+              <td>{{ match['Yes']}}</td>
+              <td>{{ match['No']}}</td>
+            </tr>
+            {% endfor %}
+            </table>
+            <table id="inner-table" class="table table-hover">
+            </table>
+      </div>
+      <div class="modal-footer">
+      </div>
+  </div>
+  </div>
+</div>
+</body>
+</html>

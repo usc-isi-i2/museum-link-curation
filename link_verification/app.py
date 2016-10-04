@@ -128,7 +128,7 @@ def register():
         userid = request.form['uname']
         name = request.form['name']
         pw = encrypt_password(request.form['pw'].encode('utf-8'))
-        print userid, name, pw
+        #print userid, name, pw
         
         # Add to user database
         user = User(email=userid, password=pw)
@@ -166,16 +166,12 @@ def cards():
     else:
         return redirect(url_for('index'))
 
-@app.route('/results')        
+@app.route('/results')
 def show_results():
-    '''
     if current_user.is_authenticated:
-        return render_template('results.html')
+        return render_template('results.html',data=dumpCurationResults())
     else:
         return redirect(url_for('index'))
-    '''
-    #return render_template('results.html')()
-    return jsonify(dumpCurationResults())
     
 @app.route('/header')
 def header():
@@ -390,7 +386,7 @@ class questMgr(Resource):
                 stats = False
 
         qs = getQuestionsForUser(count,stats)
-        pprint(qs)
+        #pprint(qs)
         return qs
     
 # Handle RESTful API for submitting answer
