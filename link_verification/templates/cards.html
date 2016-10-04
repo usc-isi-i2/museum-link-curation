@@ -9,29 +9,54 @@
         <div class='questionarea'>
             <div class='modal-body'>
                 <table>
+                    <col width="20%">
+                    <col width="40%">
+                    <col width="40%">
                     <thead>
                         <tr>
-                            <th class = "right_align">Matching Values</th>
-                            <th></th>
-                            <th></th>
+                            <th class = "right_align cell_style">Matching Values</th>
+                            <th class = "cell_style"></th>
+                            <th class = "cell_style"></th>
                         </tr>
                     </thead>
                     <tbody class = 'exactMatch' id =''> </tbody>
                 </table>
                 <table>
+                    <col width="20%">
+                    <col width="40%">
+                    <col width="40%">
                     <thead>
                         <tr>
-                            <th class = "right_align">Different Values</th>
-                            <th></th>
-                            <th></th>
+                            <th class = "right_align cell_style">Different Values</th>
+                            <th class = "cell_style"></th>
+                            <th class = "cell_style"></th>
                         </tr>
                     </thead>
                     <tbody class = 'noMatch' id =''> </tbody>
                 </table>
+                    <col width="20%">
+                    <col width="40%">
+                    <col width="40%">
                 <textarea rows="4" cols="80" name="comment" placeholder="Enter your comments here (optional)"></textarea>
             </div>
         </div>
-        <div style='margin:auto;'>
+        <div class="answerDiv">
+            <div id="yesButton" class="answerButtons">
+                <form onsubmit="submitAnswer('1',''); return false;">
+                    <button name='yes'class='cta_btn green-btn'>Yes</button>
+                </form>
+            </div>
+            <div id="noButton" class="answerButtons">
+                <form onsubmit="submitAnswer('2',''); return false;">
+                    <button name='no'class='cta_btn red-btn'>No</button>
+                </form>
+            </div>
+            <div id="notsureButton" class="answerButtons">
+                <form onsubmit="submitAnswer('3',''); return false;">
+                    <button name='notsure'class='cta_btn yellow-btn'>Not sure</button>
+                </form>
+            </div>
+            <!--
             <table class='form_style'>
                 <tr>
                     <td>
@@ -51,6 +76,7 @@
                     </td>
                 </tr>
             </table>
+            -->
         </div>
 </div>
 </div>
