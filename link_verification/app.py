@@ -1,4 +1,4 @@
-import os, sys
+import os, sys, random, hashlib
 
 sys.dont_write_bytecode = True
 
@@ -11,30 +11,178 @@ from ui import *
 
 @app.route('/')
 def index():
-    return render_template('login_fb.html')
+
+    if current_user.is_authenticated:
+        return redirect('/curation')
+
+    #return render_template('login_fb.html')
+    return render_template('login.html')
+
+def get_hexdigest(alg, salt, raw_password):
+    if alg == 'md5':
+        return hashlib.md5(salt + raw_password).hexdigest()
+    elif alg == 'sha1':
+        return hashlib.sha1(salt + raw_password).hexdigest()
+    raise ValueError("Got unknown password algorithm type in password.")
     
-@app.route('/login')
+def encrypt_password(raw_password):
+    salt = get_hexdigest('sha1', str(random.random()), str(random.random()))[:5]
+    hsh = get_hexdigest('sha1', salt, raw_password)
+    return '%s$%s$%s' % ('sha1', salt, hsh)
+
+def verify_password(enc_password, raw_password):
+    algo, salt, hsh = enc_password.split('$')
+    return hsh == get_hexdigest(algo, salt, raw_password)
+
+def isValidAccount(email):
+    file = open("emails.txt",'r')
+    for line in file.readlines():
+        if line.strip() == email:
+            return True
+    return False
+    
+def isRegistered(email):
+    user = User.query.get(email)
+    if user:
+        return True
+    else:
+        return False
+    
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login_fb.html')
+    #return render_template('login_fb.html')
+    
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
+    # route for handling the login page logic
+    if request.method == 'POST': 
+    
+        print request.form
+        
+        if not request.form['uname']:
+            rsp = "Username can't be blank. Please try again."
+            return render_template('login.html',rsp=rsp)
+        
+        if not request.form['pw']:
+            rsp = "Password can't be blank. Please try again."
+            return render_template('login.html',rsp=rsp)
+        
+        # Decode input params
+        userid = request.form['uname']
+        #pw = bcrypt.hashpw(request.form['pw'].encode('utf-8'), bcrypt.gensalt())
+        pw = encrypt_password(request.form['pw'].encode('utf-8'))
+        
+        # Find user from user database
+        user = User.query.get(userid)
+        
+        # Verify password and log in
+        if user and verify_password(user.password, request.form['pw'].encode('utf-8')):
+            user.authenticated = True
+            usrdb.session.add(user)
+            usrdb.session.commit()
+            login_user(user, remember=True)
+            return redirect(url_for('index'))
+        else:
+            if not user:
+                rsp = "Incorrect user name. Please try again."
+            else:
+                rsp = "Incorrect password. Please try again."
+            return render_template('login.html',rsp=rsp)
+        
+    return render_template('login.html')
+    
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    #return render_template('login_fb.html')
+    
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
+    # route for handling the login page logic
+    if request.method == 'POST': 
+    
+        print request.form
+        
+        if not request.form['uname']:
+            rsp = "User name can't be blank. Please try again."
+            return render_template('register.html',rsp=rsp)
+        
+        if not request.form['pw']:
+            rsp = "Password can't be blank. Please try again."
+            return render_template('register.html',rsp=rsp)
+        
+        if not request.form['name']:
+            rsp = "Name can't be blank. Please try again."
+            return render_template('register.html',rsp=rsp)
+        
+        if not isValidAccount(request.form['uname']):
+            rsp = "Email ID is not authorized, please contact admin."
+            return render_template('register.html',rsp=rsp)
+            
+        if isRegistered(request.form['uname']):
+            rsp = "Email ID is already registered, please login."
+            return render_template('register.html',rsp=rsp)
+        
+        # Decode input params
+        userid = request.form['uname']
+        name = request.form['name']
+        pw = encrypt_password(request.form['pw'].encode('utf-8'))
+        print userid, name, pw
+        
+        # Add to user database
+        user = User(email=userid, password=pw)
+        usrdb.session.add(user)
+        usrdb.session.commit()
+        
+        # Add to curation database
+        addCurator({"uid":userid,"name":name,"tags":[],"rating":5})
+        
+        rsp = "Account successfully registered."
+        return render_template('register.html',rsp=rsp)
+            
+    return render_template('register.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 @app.route('/about')
 def about():
     return render_template('about.html')
 
 @app.route('/curation')
+@app.route('/v1/curation')
 def show_curation():
     if current_user.is_authenticated:
-        return render_template('curation.html')
+        return render_template('curation.html')        
     else:
         return redirect(url_for('index'))
 
 @app.route('/cards')
 def cards():
-    return render_template('cards.html')
+    if current_user.is_authenticated:
+        return render_template('cards.html')
+    else:
+        return redirect(url_for('index'))
 
+@app.route('/results')        
+def show_results():
+    '''
+    if current_user.is_authenticated:
+        return render_template('results.html')
+    else:
+        return redirect(url_for('index'))
+    '''
+    #return render_template('results.html')()
+    return jsonify(dumpCurationResults())
+    
 @app.route('/header')
 def header():
-    return render_template('header_search.html')
+    if current_user.is_authenticated:
+        return render_template('header_search.html')
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/spec')
 def show_specs():
@@ -42,14 +190,13 @@ def show_specs():
         
 @app.route('/v1/spec')
 def show_specs_v1():
-    if devmode:
-        return render_template('spec_testing.html')
-    else:
-        return render_template('spec.html')
+    return render_template('spec.html')
 
 @app.route('/profile')
 def show_user_profile():
-    return render_template('profile.html')
+    if current_user.is_authenticated:
+        return render_template('profile.html')
+    return redirect('/login')
 
 @app.route('/user')
 def redirectUser():
@@ -92,11 +239,14 @@ class userMgr(Resource):
                 
             tags = []
             for tag in request.json['tags']:
-                t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
-                if t == None:
-                    message = 'tag with name <{}> does not exist'.format(tag)
-                    return {'message': message}, 400
-                tags = tags + [t["_id"]]
+                # Temporary fix 
+                if tag in museums.keys():
+                    t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
+                    if t == None:
+                        message = 'tag with name <{}> does not exist'.format(tag)
+                        return {'message': message}, 400
+                    tags = tags + [t["_id"]]
+
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'tags':tags}})
         
         # Update name of a user
@@ -128,21 +278,32 @@ class userMgr(Resource):
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
-    id = usrdb.Column(usrdb.Integer, primary_key=True)
-    social_id = usrdb.Column(usrdb.String(64), nullable=False, unique=True)
-    email = usrdb.Column(usrdb.String(64), nullable=True)
-    name = usrdb.Column(usrdb.String(64), nullable=True)
+    
+    #id = usrdb.Column(usrdb.Integer, primary_key=True)
+    #social_id = usrdb.Column(usrdb.String(64), nullable=False, unique=True)
+    email = usrdb.Column(usrdb.String, primary_key=True)
+    authenticated = usrdb.Column(usrdb.Boolean, default=False)
+    password = usrdb.Column(usrdb.String)
+
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        return self.email
+
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+        
+    def is_anonymous(self):
+        """False, as anonymous users aren't supported."""
+        return False
 
 @lm.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-@app.route('/test')
-def testingFBAuthentication():
-    if current_user.is_authenticated:
-        return jsonify({"params":[current_user.social_id,current_user.email,current_user.name]})
-    else:
-        return redirect(url_for('index'))
+def load_user(userid):
+    return User.query.get(userid)
 
 @app.route('/authorize/<provider>')
 def oauth_authorize(provider):
@@ -160,9 +321,9 @@ def oauth_callback(provider):
     if social_id is None:
         flash('Authentication failed.')
         return redirect(url_for('index'))
-    user = User.query.filter_by(social_id=social_id).first()
+    user = User.query.filter_by(email=email).first()
     if not user:
-        user = User(social_id=social_id,email=email,name=name)
+        user = User(email=email)
         usrdb.session.add(user)
         usrdb.session.commit()
         addCurator({"uid":email,"name":name,"tags":[],"rating":5})
@@ -171,6 +332,10 @@ def oauth_callback(provider):
 
 @app.route('/logout')
 def logout():
+    user = current_user
+    user.authenticated = False
+    usrdb.session.add(user)
+    usrdb.session.commit()
     logout_user()
     return redirect(url_for('index'))
     
@@ -225,7 +390,7 @@ class questMgr(Resource):
                 stats = False
 
         qs = getQuestionsForUser(count,stats)
-        #print qs
+        pprint(qs)
         return qs
     
 # Handle RESTful API for submitting answer
@@ -355,7 +520,7 @@ if __name__ == '__main__':
         usrdb.create_all()
     else:
         usrdb.create_all()
-
+        
     # Initialize mongo db
     mongo_init()
     
