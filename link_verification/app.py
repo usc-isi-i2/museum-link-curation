@@ -82,7 +82,7 @@ def login():
             usrdb.session.add(user)
             usrdb.session.commit()
             login_user(user, remember=True)
-            return redirect(url_for('index'))
+            return render_template('profile.html')
         else:
             if not user:
                 rsp = "Incorrect user name. Please try again."
