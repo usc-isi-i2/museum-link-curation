@@ -11,8 +11,8 @@ if devmode:
     server = "http://localhost:5000/"
     dbC = MongoClient('localhost', 27017)
 else:
-    server = "http://52.37.251.245/"
-    #server = "http://ec2-52-37-251-245.us-west-2.compute.amazonaws.com/"
+    #server = "http://52.37.251.245/"
+    server = "http://ec2-52-37-251-245.us-west-2.compute.amazonaws.com/"
     #server = "http://linkcuration.ddns.net/"
     dbC = MongoClient('localhost', 12345)
 

@@ -395,7 +395,8 @@ def getQuestionsForUID(uid):
         
         # Check authors in all answers if current user has already answered the question
         for aid in aids:
-            if dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})["author"] == ObjectId(userOid):
+            author = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
+            if author and author["author"] == uid:
                 answered = True
                 break
         
@@ -517,7 +518,8 @@ def submitAnswer(qid, answer, uid):
         #Check if user has already answered the question
         # Check authors in all answers if current user has already answered the question
         for aid in q["decision"]:
-            if dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})["author"] == uid:
+            author = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
+            if author and author["author"] == uid:
                 #print "User has already submitted answer to question ", qid
                 message = "User has already submitted answer to question with qid {}".format(qid)
                 return {"status":False,"message":message}
