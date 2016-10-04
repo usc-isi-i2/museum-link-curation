@@ -395,7 +395,7 @@ def getQuestionsForUID(uid):
         
         # Check authors in all answers if current user has already answered the question
         for aid in aids:
-            if dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})["author"] == ObjectId(userOid):
+            if dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})["author"] == userOid:
                 answered = True
                 break
         
