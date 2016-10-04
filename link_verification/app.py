@@ -41,6 +41,13 @@ def isValidAccount(email):
             return True
     return False
     
+def isRegistered(email):
+    user = User.query.get(email)
+    if user:
+        return True
+    else:
+        return False
+    
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     #return render_template('login_fb.html')
@@ -110,7 +117,11 @@ def register():
             return render_template('register.html',rsp=rsp)
         
         if not isValidAccount(request.form['uname']):
-            rsp = "Email ID is not authorized, please contact admin"
+            rsp = "Email ID is not authorized, please contact admin."
+            return render_template('register.html',rsp=rsp)
+            
+        if isRegistered(request.form['uname']):
+            rsp = "Email ID is already registered, please login."
             return render_template('register.html',rsp=rsp)
         
         # Decode input params
@@ -150,11 +161,28 @@ def show_curation():
 
 @app.route('/cards')
 def cards():
-    return render_template('cards.html')
+    if current_user.is_authenticated:
+        return render_template('cards.html')
+    else:
+        return redirect(url_for('index'))
 
+@app.route('/results')        
+def show_results():
+    '''
+    if current_user.is_authenticated:
+        return render_template('results.html')
+    else:
+        return redirect(url_for('index'))
+    '''
+    #return render_template('results.html')()
+    return jsonify(dumpCurationResults())
+    
 @app.route('/header')
 def header():
-    return render_template('header_search.html')
+    if current_user.is_authenticated:
+        return render_template('header_search.html')
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/spec')
 def show_specs():

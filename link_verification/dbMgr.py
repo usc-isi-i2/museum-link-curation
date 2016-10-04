@@ -558,12 +558,12 @@ def submitAnswer(qid, answer, uid):
                 tags.append(dbC[dname]["tag"].find_one({'_id':ObjectId(tagid)})['tagname'])
         
             if noYes == confidenceLevel:
-                q['status'] = 4 # Update to, Completed 
+                q['status'] = 3 # Update to, Completed 
                 # Update linked statistics for tags of question submitted
                 for tag in tags:
                     museums[tag][2] += 1
             elif noNo == confidenceLevel:
-                q['status'] = 3 # Update to, Disagreement 
+                q['status'] = 4 # Update to, Disagreement 
                 # Update linked statistics for tags of question submitted
                 for tag in tags:
                     museums[tag][3] += 1
@@ -582,3 +582,39 @@ def submitAnswer(qid, answer, uid):
         print "Updated question document {}\n".format(q)
         #printDatabase("answer")
         return {"status":True,"message":"Appended answer to question's decision list"}
+
+def dumpCurationResults():
+    
+    results = {"matched":[],"unmatched":[]}
+    
+    # Get all the questions that are concluded successful
+    questions = dbC[dname]["question"].find( {'$or': [{'status':3},{'status':4}]} )
+    
+    # Run loop over questions and populate uri(s) and yes/no votes
+    for q in questions:
+        rs = {"uri1":"","uri2":"","Yes":0,"No":0}
+        rs["uri1"] = q["uri1"]
+        rs["uri2"] = q["uri2"]
+        
+        # Calculate yes/no votes
+        noYes = 0
+        noNo = 0
+        for aid in q['decision']:
+            a = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
+            if a != None:
+                if a["value"] == 1:
+                    noYes = noYes + 1
+                elif a["value"] == 2:
+                    noNo = noNo + 1
+                elif a["value"] == 3:
+                    noNotSure = noNotSure + 1
+    
+        rs["Yes"] = noYes
+        rs["No"] = noNo
+        
+        if rs["Yes"] > rs["No"]:
+            results["matched"].append(rs)
+        else:
+            results["unmatched"].append(rs)
+    
+    return results
