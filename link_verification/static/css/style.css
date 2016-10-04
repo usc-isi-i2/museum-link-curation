@@ -1,8 +1,10 @@
 #loginModal {
-    background : url('static/images/museum_background.jpeg') no-repeat;
     width: 100%;
     max-width: 1920px;
-    background-size: 100%;
+}
+
+.modal{
+    top:15%;
 }
 
 #compareModal {
@@ -14,10 +16,6 @@
 
 #new-user-text{
     color:#737373;
-}
-
-#login-container{
-    margin-top: 18%;
 }
 
 #entity-container{
