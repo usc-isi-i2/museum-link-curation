@@ -26,13 +26,10 @@
         </style>
         <script type="text/javascript">
                function closeCard(toClose){
-                   console.log("Close button clicked");
-                   console.log($(toClose).parent().parent().attr('id'));
                     $(toClose).parent().parent().slideUp(800);
                 };
 
                function closeCardFromAns(toClose){
-                   console.log("Close button clicked on submitting answer");
                     $(toClose).parent().parent().parent().parent().parent().slideUp(800);
                }
                 var sv = '{{server}}'.concat("v1/question?stats=true&count=10")
@@ -40,7 +37,6 @@
                     type: "GET",
                     url: sv,
                     success: function(data){
-                        console.log(data);
                         for(i = 0; i < data.length; i++)
                         {
                             populateCard(data[i],i);
@@ -99,7 +95,6 @@
 
 
                     if (nametrim == "URI") {
-                        console.log("Enters URI code");
                         tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
                         tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
                     }
@@ -169,10 +164,8 @@
                 });
             }
             function submitAnswer(answerButton, value, qid){
-                console.log("Submit answer in progress")
-                console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
+                //console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
                 var sv = '{{server}}'.concat("/v1/answer");
-                console.log(parseInt(value))
                 $.ajax({
                     method: "PUT",
                     url: sv,
