@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Curation Dashboard</title>
+        <title>Link Verification - Dashboard</title>
+        <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon'/>
         <link rel="stylesheet" type="text/css" href="static/css/cards.css">
         <link rel="stylesheet" type="text/css" href="static/css/style.css">
         <link href="static/css/bootstrap.min.css" rel="stylesheet">
@@ -23,20 +24,18 @@
             }
         </style>
         <script type="text/javascript">
-               $(".close").click(function(){
-                   console.log("Close Button")
-                    console.log($( this ).css("display"));
-                });
+               function closeCard(){
+                   console.log("Close button clicked")
+                    $(this).parent().parent().hide();
+                };
 
                 var sv = '{{server}}'.concat("v1/question?stats=true&count=10")
                 $.ajax({
                     type: "GET",
                     url: sv,
                     success: function(data){
-                        console.log(data.length);
                         for(i = 0; i < data.length; i++)
                         {
-                            console.log(data[i]);
                             populateCard(data[i],i);
                         }
                     }
@@ -48,32 +47,32 @@
                 var values = data.value;
 
                 if(names.length == 0){
-                    tr += "<td>None of the records matched</td>";
+                    tr += "<td colspan='3' class = 'center_align'>None of the records matched</td>";
                 }
-                for(var index in names) {
-                    tr += "<tr>"
-                    nametrim = names[index].replace("schema:",'');
-                    tr += "<td>" + nametrim + "</td>";
+                else {
+                    for (var index in names) {
+                        tr += "<tr>"
+                        nametrim = names[index].replace("schema:", '');
+                        tr += "<td class = 'right_align'>" + nametrim + "</td>";
 
-                    if(names[index] == "schema:birthPlace") {
-                        tr += "<td>Name: " + values[index]['schema:name'] + "</td>";
-                    }
-
-                    else if(nametrim == "URI"){
-                        tr += "<td><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
-                    }
-                    else {
-                        if(nametrim == "name"){
-                            var name_header = document.getElementById("name_header" + divid);
-                            name_header.innerHTML = "<table class = 'center-align'><tr><th>SAAM, ULAN</th></tr><tr><td>" + values[index] + "</td></tr></table>"
+                        if (names[index] == "schema:birthPlace") {
+                            tr += "<td colspan='2' class = 'center_align'>Name: " + values[index]['schema:name'] + "</td>";
                         }
-                        tr += "<td>" + values[index] + "</td>";
+
+                        else if (nametrim == "URI") {
+                            tr += "<td colspan='2' class = 'center_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
+                        }
+                        else {
+                            if (nametrim == "name") {
+                                var name_header = document.getElementById("name_header" + divid);
+                                name_header.innerHTML = "<table class = 'center-align'><tr><th>SAAM, ULAN</th></tr><tr><td>" + values[index] + "</td></tr></table>"
+                            }
+                            tr += "<td colspan='2' class = 'center_align'>" + values[index] + "</td>";
+                        }
+                        tr += "</tr>";
                     }
-                    tr += "<td></td>";
-                    tr += "</tr>";
                 }
                 document.getElementById("exactMatch" + divid).innerHTML = tr;
-                console.log(document.getElementById("cards"));
             }
 
             function populateNoMatch(data, divid) {
@@ -84,29 +83,30 @@
                 var tr = "";
                 for(var index in names) {
 
-                    tr += "<tr>"
-                    nametrim = names[index].replace("schema:",'');
-                    tr += "<td class='right_align'>" + nametrim + "</td>";
+                    tr += "<tr>";
 
-                    if(names[index] == "schema:birthPlace") {
+                    nametrim = names[index].replace("schema:", '');
+                    tr += "<td class = 'right_align'>" + nametrim + "</td>";
+
+                    if (names[index] == "schema:birthPlace") {
                         tr += "<td>Name: " + lValues[index]['schema:name'] + "</td>";
-                        tr += "<td>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude']+  "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
+                        tr += "<td>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
                     }
-                     else if(nametrim == "URI"){
+                    else if (nametrim == "URI") {
                         tr += "<td><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
                         tr += "<td><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
                     }
                     else {
-                        if(nametrim == "name"){
+                        if (nametrim == "name") {
                             var name_header = document.getElementById("name_header" + divid);
                             name_header.innerHTML = "<table class = 'center-align'><tr><th style='text-align:center'>SAAM</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
 
-                        if(lValues[index] == null)
+                        if (lValues[index] == null)
                             tr += "<td>" + "-" + "</td>";
                         else
                             tr += "<td>" + lValues[index] + "</td>";
-                        if(rValues[index] == null)
+                        if (rValues[index] == null)
                             tr += "<td>" + "-" + "</td>";
                         else
                             tr += "<td>" + rValues[index] + "</td>";
@@ -114,7 +114,6 @@
                     tr += "</tr>";
                 }
                 document.getElementById("noMatch" + divid).innerHTML = tr;
-                console.log(document.getElementById("cards"));
             }
 
             function populateCard(data,divid) {
@@ -146,9 +145,6 @@
                         content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
 
                         document.getElementById("cards").innerHTML += content;
-                        console.log(document.getElementById("cards"));
-                        console.log("Data parsed:")
-                        console.log(data);
 
                     },
                     complete: function () {
