@@ -29,7 +29,7 @@ body {   font-family: Helvetica, san-serif;
     display: none;
 }
 .card:hover {
-    height: 700px;
+    height: 750px;
     display:table;
 }
 .card:hover .questionarea{

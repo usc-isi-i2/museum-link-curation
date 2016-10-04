@@ -40,6 +40,7 @@
                     type: "GET",
                     url: sv,
                     success: function(data){
+                        console.log(data);
                         for(i = 0; i < data.length; i++)
                         {
                             populateCard(data[i],i);
@@ -87,27 +88,35 @@
                 var rValues = data.rValue;
 
                 var tr = "";
+                if(names.length == 0){
+                    tr += "<td colspan='3' class = 'center_align cell_align'>None of the records matched</td>";
+                }
                 for(var index in names) {
-
                     tr += "<tr>";
-
+                    names[index] = (names[index]).trim();
                     nametrim = names[index].replace("schema:", '');
                     tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
-                    if (names[index] == "schema:birthPlace") {
-                        tr += "<td class='right_align cell_align'>Name: " + lValues[index]['schema:name'] + "</td>";
-                        tr += "<td class='left_align cell_align'>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
-                    }
-                    else if (nametrim == "URI") {
+
+                    if (nametrim == "URI") {
+                        console.log("Enters URI code");
                         tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
                         tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
+                    }
+                    else if (names[index] == "schema:birthPlace") {
+                        if (lValues[index] == null)
+                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                        else
+                            tr += "<td class='right_align cell_align'>Name: " + lValues[index]['schema:name'] + "</td>";
+                        if (rValues[index] == null)
+                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                        else tr += "<td class='left_align cell_align'>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
                     }
                     else {
                         if (nametrim == "name") {
                             var name_header = document.getElementById("name_header" + divid);
                             name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th style='text-align:center'>NPG</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
-
                         if (lValues[index] == null)
                             tr += "<td class='cell_align'>" + "-" + "</td>";
                         else
@@ -159,13 +168,15 @@
                     }
                 });
             }
-            function submitAnswer(value, qid){
+            function submitAnswer(answerButton, value, qid){
+                console.log("Submit answer in progress")
+                console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
                 var sv = '{{server}}'.concat("/v1/answer");
                 console.log(parseInt(value))
                 $.ajax({
                     method: "PUT",
                     url: sv,
-                    data: '{"qid":"' +  qid + '", "value":'+ parseInt(value)+', "comment":"BLAH"}',
+                    data: '{"qid":"' +  qid + '", "value":'+ parseInt(value)+', "comment":"User comments"}',
                     contentType: 'application/json',
                     success: function(data){
                         console.log("Answer Successfully submitted");

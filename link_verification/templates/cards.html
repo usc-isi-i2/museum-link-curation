@@ -38,22 +38,22 @@
                     <col width="20%">
                     <col width="40%">
                     <col width="40%">
-                <textarea rows="4" cols="80" name="comment" placeholder="Enter your comments here (optional)"></textarea>
+                <textarea rows="4" cols="80" name="comment" placeholder="Enter your comments here (optional)" id="comment_box"></textarea>
             </div>
         </div>
         <div class="answerDiv">
             <div id="yesButton" class="answerButtons">
-                <form onsubmit="submitAnswer('1',''); return false;">
+                <form onsubmit="submitAnswer(this, '1',''); return false;">
                     <button name='yes'class='cta_btn green-btn' onclick="closeCardFromAns(this)">Yes</button>
                 </form>
             </div>
             <div id="noButton" class="answerButtons">
-                <form onsubmit="submitAnswer('2',''); return false;">
+                <form onsubmit="submitAnswer(this, '2',''); return false;">
                     <button name='no'class='cta_btn red-btn' onclick="closeCardFromAns(this)">No</button>
                 </form>
             </div>
             <div id="notsureButton" class="answerButtons">
-                <form onsubmit="submitAnswer('3',''); return false;">
+                <form onsubmit="submitAnswer(this, '3',''); return false;">
                     <button name='notsure'class='cta_btn yellow-btn' onclick="closeCardFromAns(this)">Not sure</button>
                 </form>
             </div>
