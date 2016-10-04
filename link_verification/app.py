@@ -58,7 +58,7 @@ def login():
     # route for handling the login page logic
     if request.method == 'POST': 
     
-        print request.form
+        #print request.form
         
         if not request.form['uname']:
             rsp = "Username can't be blank. Please try again."
@@ -102,7 +102,7 @@ def register():
     # route for handling the login page logic
     if request.method == 'POST': 
     
-        print request.form
+        #print request.form
         
         if not request.form['uname']:
             rsp = "User name can't be blank. Please try again."
@@ -510,15 +510,8 @@ def getQuestionsForUser(count,stats):
         
 if __name__ == '__main__':
     
-    # usrdb is SQLite database for registered user and session management
-    if devmode:
-        usrdb.drop_all()
-        usrdb.create_all()
-    else:
-        usrdb.create_all()
-        
     # Initialize mongo db
-    mongo_init()
+    db_init()
     
     # Start the app
     if devmode: 

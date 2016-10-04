@@ -5,14 +5,24 @@ from bson.objectid import ObjectId
 from config import *
 
 # dbC and dname are mongoDb based database for entities and their curation data
-def mongo_init():
+def db_init():
+
     if devmode:
+        usrdb.drop_all()
+        usrdb.create_all()
+
         cleanDatabases()
         createDatabase()
         cleanDatabase("answer")
     else:
-        if len(list(dbC[dname]["tag"].find())) == 0:
+        if dbC[dname]["tag"].find_one() == None:
+            usrdb.drop_all()
+            usrdb.create_all()
+
+            cleanDatabases()
             createDatabase()
+            cleanDatabase("answer")
+            print "Initialized databases\n"
     #printDatabases()
     
 # Print the database just to check current data
@@ -166,10 +176,10 @@ def populateQuestions(sample):
             populateQuestionsFromJSON(os.path.join('data', 'questions','NPGmin.json'))
             populateQuestionsFromJSON(os.path.join('data', 'questions','SAAMmin.json'))
         else:
-            populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
+            #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
+            #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
             populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
+            #populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
         
         dbC[dname]["question"].create_index([("uri1", ASCENDING)])
         dbC[dname]["question"].create_index([("uri2", ASCENDING)])
@@ -177,6 +187,7 @@ def populateQuestions(sample):
         dbC[dname]["question"].create_index([("status", ASCENDING)])
         dbC[dname]["question"].create_index([("decision", ASCENDING)])
         dbC[dname]["question"].create_index([("dedupe", ASCENDING)])
+        dbC[dname]["question"].create_index([("lastSeen",DESCENDING)])
     #printDatabase("question")
 
 # Populate default set of questions from csv file
@@ -255,10 +266,10 @@ def populateEntities():
         populateEntitiesFromJSON(os.path.join('data', 'entities','SAAMmin.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_SAAM.json'))
     else:
-        populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
     
     dbC[dname]["artists"].create_index([("@id", ASCENDING)])
@@ -372,8 +383,8 @@ def addOrUpdateQuestion(uri1,uri2,dedupe):
 def getQuestionsForUID(uid):
     
     # If User with uid not present return error
-    userOid = dbC[dname]["curator"].find_one({'uid':uid})['_id']
-    if userOid == None:
+    userOid = dbC[dname]["curator"].find_one({'uid':uid})
+    if userOid == None or userOid['_id'] == None:
         print "User not found. \n"
         return None
     else:
