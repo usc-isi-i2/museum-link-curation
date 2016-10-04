@@ -28,12 +28,12 @@
                function closeCard(toClose){
                    console.log("Close button clicked");
                    console.log($(toClose).parent().parent().attr('id'));
-                    $(toClose).parent().parent().fadeOut("slow");
+                    $(toClose).parent().parent().slideUp(1000);
                 };
 
                function closeCardFromAns(toClose){
                    console.log("Close button clicked on submitting answer");
-                    $(toClose).parent().parent().parent().parent().parent().fadeOut("slow");
+                    $(toClose).parent().parent().parent().parent().parent().slideUp(1000);
                }
                 var sv = '{{server}}'.concat("v1/question?stats=true&count=10")
                 $.ajax({
