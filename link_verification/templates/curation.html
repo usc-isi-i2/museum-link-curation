@@ -155,17 +155,11 @@
             }
             function submitAnswer(value, qid){
                 var sv = '{{server}}'.concat("/v1/answer");
-
-                var answerObj = new Object();
-                answerObj.qid = qid;
-                answerObj.value = parseInt(value);
-                answerObj.comment = "NONE";
-                json_ans = JSON.stringify(answerObj)
-
+                console.log(parseInt(value))
                 $.ajax({
                     method: "PUT",
                     url: sv,
-                    data: '{"qid":"' +  qid + '", "value": 1, "comment":"BLAH"}',
+                    data: '{"qid":"' +  qid + '", "value":'+ parseInt(value)+', "comment":"BLAH"}',
                     contentType: 'application/json',
                     success: function(data){
                         console.log("Answer Successfully submitted");
