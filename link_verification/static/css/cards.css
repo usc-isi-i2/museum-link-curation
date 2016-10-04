@@ -42,7 +42,7 @@ body {   font-family: Helvetica, san-serif;
 .card:hover h2 {
     background: #3487f7;
     color: #fff;
-    margin-top: 1%;
+    margin-top: 1.5%;
 }
 .card:hover h2 small { color: #fff }
 .card:hover p { margin-top: 0% }
@@ -219,6 +219,12 @@ p {
 
 .close{
     margin-right: 1%;
+    margin-top:0;
+}
+
+#close_span, #close_button{
+    opacity:1;
+    z-index:2;
 }
 
 .form_style{

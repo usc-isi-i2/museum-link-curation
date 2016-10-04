@@ -1,11 +1,12 @@
 <div id ='' class='card transition block'>
     <div>
-        <button type='button' class='close' data-dismiss='modal' aria-label='Close' onclick="closeCard();">
-            <span aria-hidden='true' onclick="closeCard();">&times;
+        <button type='button' class='close' data-dismiss='modal' aria-label='Close' id="close_button" onclick="closeCard(this)">
+            <span aria-hidden='true' class="close" id = "close_span">&times;
             </span>
         </button>
         <h2 id='name_header' class='transition'/>
-        </div> <div class='cta-container transition'>
+    </div>
+    <div class='cta-container transition'>
         <div class='questionarea'>
             <div class='modal-body'>
                 <table>
@@ -43,17 +44,17 @@
         <div class="answerDiv">
             <div id="yesButton" class="answerButtons">
                 <form onsubmit="submitAnswer('1',''); return false;">
-                    <button name='yes'class='cta_btn green-btn'>Yes</button>
+                    <button name='yes'class='cta_btn green-btn' onclick="closeCardFromAns(this)">Yes</button>
                 </form>
             </div>
             <div id="noButton" class="answerButtons">
                 <form onsubmit="submitAnswer('2',''); return false;">
-                    <button name='no'class='cta_btn red-btn'>No</button>
+                    <button name='no'class='cta_btn red-btn' onclick="closeCardFromAns(this)">No</button>
                 </form>
             </div>
             <div id="notsureButton" class="answerButtons">
                 <form onsubmit="submitAnswer('3',''); return false;">
-                    <button name='notsure'class='cta_btn yellow-btn'>Not sure</button>
+                    <button name='notsure'class='cta_btn yellow-btn' onclick="closeCardFromAns(this)">Not sure</button>
                 </form>
             </div>
             <!--
