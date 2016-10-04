@@ -3,7 +3,8 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Profile</title>
+    <title>Link Verification - Profile</title>
+    <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon'/>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
@@ -29,14 +30,13 @@
         }
 
         function makeSearch(){
-
-            tag_list = $("input[name=ingredients]:checked").map(
-                function () {return this.value;}).get().join(",");
-
+            var tag_list = [];
+            tag_list.push($('input[name="ingredients"]:checked').map(
+                function () {return this.value;}).get());
             var userObj = new Object();
             userObj.name = "Karishma";
             userObj.rating = 0;
-            userObj.tags = ["dbpedia", "ulan"];
+            userObj.tags = tag_list[0];
             json_data = JSON.stringify(userObj);
 
             var sv = '{{server}}'.concat("/v1/user");
