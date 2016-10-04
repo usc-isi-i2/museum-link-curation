@@ -47,27 +47,27 @@
                 var values = data.value;
 
                 if(names.length == 0){
-                    tr += "<td colspan='3' class = 'center_align'>None of the records matched</td>";
+                    tr += "<td colspan='3' class = 'center_align cell_align'>None of the records matched</td>";
                 }
                 else {
                     for (var index in names) {
                         tr += "<tr>"
                         nametrim = names[index].replace("schema:", '');
-                        tr += "<td class = 'right_align'>" + nametrim + "</td>";
+                        tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
                         if (names[index] == "schema:birthPlace") {
-                            tr += "<td colspan='2' class = 'center_align'>Name: " + values[index]['schema:name'] + "</td>";
+                            tr += "<td colspan='2' class = 'center_align cell_align'>Name: " + values[index]['schema:name'] + "</td>";
                         }
 
                         else if (nametrim == "URI") {
-                            tr += "<td colspan='2' class = 'center_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
+                            tr += "<td colspan='2' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
                         }
                         else {
                             if (nametrim == "name") {
                                 var name_header = document.getElementById("name_header" + divid);
-                                name_header.innerHTML = "<table class = 'center-align'><tr><th>SAAM, ULAN</th></tr><tr><td>" + values[index] + "</td></tr></table>"
+                                name_header.innerHTML = "<table><tr><th class = 'center-align cell_align'>SAAM, ULAN</th></tr><tr><td  class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
                             }
-                            tr += "<td colspan='2' class = 'center_align'>" + values[index] + "</td>";
+                            tr += "<td colspan='2' class = 'center_align cell_align'>" + values[index] + "</td>";
                         }
                         tr += "</tr>";
                     }
@@ -86,30 +86,30 @@
                     tr += "<tr>";
 
                     nametrim = names[index].replace("schema:", '');
-                    tr += "<td class = 'right_align'>" + nametrim + "</td>";
+                    tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
                     if (names[index] == "schema:birthPlace") {
-                        tr += "<td>Name: " + lValues[index]['schema:name'] + "</td>";
-                        tr += "<td>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
+                        tr += "<td class='right_align cell_align'>Name: " + lValues[index]['schema:name'] + "</td>";
+                        tr += "<td class='left_align cell_align'>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
                     }
                     else if (nametrim == "URI") {
-                        tr += "<td><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
-                        tr += "<td><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
+                        tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
+                        tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
                     }
                     else {
                         if (nametrim == "name") {
                             var name_header = document.getElementById("name_header" + divid);
-                            name_header.innerHTML = "<table class = 'center-align'><tr><th style='text-align:center'>SAAM</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
+                            name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th style='text-align:center'>SAAM</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
 
                         if (lValues[index] == null)
-                            tr += "<td>" + "-" + "</td>";
+                            tr += "<td class='cell_align'>" + "-" + "</td>";
                         else
-                            tr += "<td>" + lValues[index] + "</td>";
+                            tr += "<td class='right_align cell_align'>" + lValues[index] + "</td>";
                         if (rValues[index] == null)
-                            tr += "<td>" + "-" + "</td>";
+                            tr += "<td class='cell_align>" + "-" + "</td>";
                         else
-                            tr += "<td>" + rValues[index] + "</td>";
+                            tr += "<td class='left_align cell_align'>" + rValues[index] + "</td>";
                     }
                     tr += "</tr>";
                 }
@@ -155,17 +155,11 @@
             }
             function submitAnswer(value, qid){
                 var sv = '{{server}}'.concat("/v1/answer");
-
-                var answerObj = new Object();
-                answerObj.qid = qid;
-                answerObj.value = parseInt(value);
-                answerObj.comment = "NONE";
-                json_ans = JSON.stringify(answerObj)
-
+                console.log(parseInt(value))
                 $.ajax({
                     method: "PUT",
                     url: sv,
-                    data: '{"qid":"' +  qid + '", "value": 1, "comment":"BLAH"}',
+                    data: '{"qid":"' +  qid + '", "value":'+ parseInt(value)+', "comment":"BLAH"}',
                     contentType: 'application/json',
                     success: function(data){
                         console.log("Answer Successfully submitted");

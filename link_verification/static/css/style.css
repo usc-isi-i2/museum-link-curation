@@ -56,12 +56,11 @@ table {
 
 td, th {
     border-bottom: 1px solid #dddddd;
-    padding: 18px;
+    padding: 10px;
     word-break:break-all;
     height:38px;
     vertical-align:center;
 }
-
 
 .right_align{
   text-align: right;
@@ -71,6 +70,10 @@ td, th {
   text-align: left;
 }
 
-.center_align{
-  text-align: center;
+.center-align{
+      text-align: -webkit-center;
+}
+
+.cell_align{
+    padding:10px;
 }
