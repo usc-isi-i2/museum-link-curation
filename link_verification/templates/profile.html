@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
     <script>
@@ -18,24 +19,29 @@
         });
 
         function loadProfile(){
-            var sv = '{{server}}'.concat("/v1/user");
+
+            var sv_profile = '{{server}}'.concat("/v1/user");
 
             $.ajax({
                     method: 'GET',
-                    url: sv,
+                    url: sv_profile,
                     contentType: 'application/json',
                     success: function(data){
-                        console.log(data);
+                        console.log(data.tags)
+                        for(i = 0; i < data.tags.length; i++) {
+                            console.log(data.tags[i])
+                            $('#'+data.tags[i]).prop('checked', true);
+                        }
                     }
                 });
         }
 
         function makeSearch(){
             var tag_list = [];
-            tag_list.push($('input[name="ingredients"]:checked').map(
+            tag_list.push($('input[name="museums"]:checked').map(
                 function () {return this.value;}).get());
             var userObj = new Object();
-            userObj.name = "Karishma";
+            userObj.name = "Default";
             userObj.rating = 0;
             userObj.tags = tag_list[0];
             json_data = JSON.stringify(userObj);
@@ -63,40 +69,40 @@
     <br/><br/>
      <div class="container">
         <div style="width: 30em; float: left;">
-            <input id="Autry" type="checkbox" name="ingredients" value="autry" />
+            <input id="autry" type="checkbox" name="museums" value="autry" />
                 <label for="Autry">Autry Museum of the American West</label><br/>
-            <input id="NPG" type="checkbox" name="ingredients" value="npg" />
+            <input id="npg" type="checkbox" name="museums" value="npg" />
                 <label for="NPG">National Portrait Gallery</label><br/>
-            <input id="PUAM" type="checkbox" name="ingredients" value="puam" />
+            <input id="puam" type="checkbox" name="museums" value="puam" />
                 <label for="PUAM">Princeton University Art Museum</label><br/>
-            <input id="WAM" type="checkbox" name="ingredients" value="wam" />
+            <input id="wam" type="checkbox" name="museums" value="wam" />
                 <label for="WAM">The Walters Art Museum</label><br/>
-            <input id="AAA" type="checkbox" name="ingredients" value="aaa" />
+            <input id="aaa" type="checkbox" name="museums" value="aaa" />
                 <label for="AAA">Archives of American Art</label><br/>
-            <input id="CBM" type="checkbox" name="ingredients" value="cbm" />
+            <input id="cbm" type="checkbox" name="museums" value="cbm" />
                 <label for="CBM">Crystal Bridges Museum</label><br/>
-            <input id="AAT" type="checkbox" name="ingredients" value="aat" />
+            <input id="aat" type="checkbox" name="museums" value="aat" />
                 <label for="AAT">The Getty - Art and Architecture Thesaurus Online</label><br/>
-            <input id="ACM" type="checkbox" name="ingredients" value="acm" />
+            <input id="acm" type="checkbox" name="museums" value="acm" />
                 <label for="ACM">Amon Carter Museum of American Art</label><br/>
         </div>
 
         <div style="width: 30em; float: left;">
-            <input id="NMWA" type="checkbox" name="ingredients" value="nmwa" />
+            <input id="nmwa" type="checkbox" name="museums" value="nmwa" />
                 <label for="NMWA">National Museum of Wildlife Art</label><br/>
-            <input id="CCMA" type="checkbox" name="ingredients" value="CCMA" />
+            <input id="CCMA" type="checkbox" name="museums" value="CCMA" />
                 <label for="CCMA">Colby College Museum of Art</label><br/>
-            <input id="AAC" type="checkbox" name="ingredients" value="aac" />
+            <input id="aac" type="checkbox" name="museums" value="aac" />
                 <label for="AAC">Asian Arts Council</label><br/>
-            <input id="GM" type="checkbox" name="ingredients" value="gm" />
+            <input id="gm" type="checkbox" name="museums" value="gm" />
                 <label for="GM">Gilcrease Museum</label><br/>
-            <input id="IMA" type="checkbox" name="ingredients" value="ima" />
+            <input id="ima" type="checkbox" name="museums" value="ima" />
                 <label for="IMA">Indianapolis Museum of Art</label><br/>
-            <input id="SAAM" type="checkbox" name="ingredients" value="saam" />
+            <input id="saam" type="checkbox" name="museums" value="saam" />
                 <label for="SAAM">Smithsonian American Art Museum</label><br/>
-            <input id="YCBA" type="checkbox" name="ingredients" value="ycba" />
+            <input id="ycba" type="checkbox" name="museums" value="ycba" />
                 <label for="YCBA">Yale Center for British Art</label><br/>
-            <input id="DMA" type="checkbox" name="ingredients" value="dma" />
+            <input id="dma" type="checkbox" name="museums" value="dma" />
                 <label for="DMA">Dallas Museum of Art</label>
         </div>
     </div>

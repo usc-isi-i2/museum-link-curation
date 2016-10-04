@@ -46,6 +46,12 @@ body {   font-family: Helvetica, san-serif;
 }
 .card:hover h2 small { color: #fff }
 .card:hover p { margin-top: 0% }
+
+.cards {
+    top: 12%;
+    position: absolute;
+}
+
 h2 {
     color: #3487f7;
     font-family: 'Raleway', sans-serif;
@@ -174,7 +180,7 @@ p {
 
 .filter-section{
     float:left;
-    position:absolute;
+    #position:absolute;
 }
 
 .search-bar{
