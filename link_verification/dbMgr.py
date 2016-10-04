@@ -380,7 +380,7 @@ def addOrUpdateQuestion(uri1,uri2,dedupe):
         return None
         
 # Retrieve set of questions from database based on tags, lastseen, unanswered vs in progress
-def getQuestionsForUID(uid):
+def getQuestionsForUID(uid,count):
     
     # If User with uid not present return error
     userOid = dbC[dname]["curator"].find_one({'uid':uid})
@@ -391,10 +391,8 @@ def getQuestionsForUID(uid):
         #print "Found uid's objectID ",userOid
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
-    # Filter-1:  Questions list whose status is NotStarted sorted as per lastSeen 
-    q1 = dbC[dname]["question"].find({"status":1}).sort([("lastSeen", DESCENDING)])
     # Filter-2: Questions list whose status is inProgress sorted as per lastSeen
-    q2 = dbC[dname]["question"].find({"status":2}).sort([("lastSeen", DESCENDING)])
+    q2 = dbC[dname]["question"].find({"status":2}).sort([("lastSeen", DESCENDING)]).limit(5*count)
     
     q = []    
     # Filter-3: Remove questions that are already served to this user based on author (uid) in decision
@@ -422,13 +420,18 @@ def getQuestionsForUID(uid):
         if answered != True and tagPresent == True:
             q = q + [question]
     
-    # Append questions that are in NotStarted state
-    for question in q1:
-        #Filter-4: Filter set of questions based on user and question tags
-        for tag in userTags:
-            if tag in question["tags"]:
-                q = q + [question]
-                break
+    # Get not started questions only if started questions are not enough
+    if len(q) < count:
+        # Filter-1:  Questions list whose status is NotStarted sorted as per lastSeen 
+        q1 = dbC[dname]["question"].find({"status":1}).sort([("lastSeen", DESCENDING)]).limit(5*count)
+
+        # Append questions that are in NotStarted state
+        for question in q1:
+            #Filter-4: Filter set of questions based on user and question tags
+            for tag in userTags:
+                if tag in question["tags"]:
+                    q = q + [question]
+                    break
 
     q_new = []
     # Update lastSeen for all questions that are being returned

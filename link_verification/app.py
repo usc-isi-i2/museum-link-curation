@@ -466,7 +466,7 @@ def createQuestionsFromPairs(jsonData):
 
 def getQuestionsForUser(count,stats):
     uid = current_user.email
-    questions = getQuestionsForUID(uid)
+    questions = getQuestionsForUID(uid,count)
     if questions != None:
         output = []
         for question in questions:
@@ -515,6 +515,6 @@ if __name__ == '__main__':
     
     # Start the app
     if devmode: 
-        app.run(debug=True)
+        app.run(threaded=True,debug=True)
     else:
-        app.run(debug=False)
+        app.run(threaded=True,debug=False)
