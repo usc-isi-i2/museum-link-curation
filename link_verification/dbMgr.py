@@ -178,8 +178,8 @@ def populateQuestions(sample):
         else:
             #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
             #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
-            #populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
+            #populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
+            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
         
         dbC[dname]["question"].create_index([("uri1", ASCENDING)])
         dbC[dname]["question"].create_index([("uri2", ASCENDING)])
@@ -268,8 +268,8 @@ def populateEntities():
     else:
         #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
         #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
+        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
         populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
     
     dbC[dname]["artists"].create_index([("@id", ASCENDING)])
@@ -615,6 +615,7 @@ def dumpCurationResults():
         # Calculate yes/no votes
         noYes = 0
         noNo = 0
+        noNotSure = 0
         for aid in q['decision']:
             a = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
             if a != None:
