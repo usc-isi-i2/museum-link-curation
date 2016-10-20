@@ -179,7 +179,9 @@ def populateQuestions(sample):
             #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
             #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
             #populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
+            #populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
+            populateQuestionsFromJSON(os.path.join('data', 'questions','NPGmin.json'))
+            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAMmin.json'))
         
         dbC[dname]["question"].create_index([("uri1", ASCENDING)])
         dbC[dname]["question"].create_index([("uri2", ASCENDING)])
@@ -269,9 +271,13 @@ def populateEntities():
         #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
         #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
         #populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
-    
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
+        #populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
+        populateEntitiesFromJSON(os.path.join('data', 'entities','NPGmin.json'))
+        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_NPG.json'))
+        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAMmin.json'))
+        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_SAAM.json'))
+
     dbC[dname]["artists"].create_index([("@id", ASCENDING)])
     dbC[dname]["artists"].create_index([("tags", ASCENDING)])
     
