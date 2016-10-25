@@ -15,8 +15,8 @@ def index():
     if current_user.is_authenticated:
         return redirect('/curation')
 
-    #return render_template('login_fb.html')
-    return render_template('login.html')
+    return render_template('login_fb.html')
+    #return render_template('login.html')
 
 def get_hexdigest(alg, salt, raw_password):
     if alg == 'md5':
@@ -50,8 +50,8 @@ def isRegistered(email):
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    #return render_template('login_fb.html')
-    
+    return render_template('login_fb.html')
+    '''
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     
@@ -91,11 +91,11 @@ def login():
             return render_template('login.html',rsp=rsp)
         
     return render_template('login.html')
-    
+    '''
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    #return render_template('login_fb.html')
-    
+    return render_template('login_fb.html')
+    '''
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     
@@ -142,7 +142,7 @@ def register():
         return render_template('register.html',rsp=rsp)
             
     return render_template('register.html')
-
+    '''
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -182,7 +182,7 @@ def header():
 
 @app.route('/spec')
 def show_specs():
-    return render_template('spec.html')
+    return render_template('spec.html',server=server[7:-1])
         
 @app.route('/v1/spec')
 def show_specs_v1():

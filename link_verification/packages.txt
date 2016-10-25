@@ -5,4 +5,6 @@ Flask-SQLalchemy>=2.1
 Flask-Login>=0.3.2
 pymongo>=3.2.1
 rauth>=0.7.2
+cryptography>=1.5.2
+requests[security]
 unidecode>=0.4.19

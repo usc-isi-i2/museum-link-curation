@@ -12,12 +12,16 @@ if devmode:
     dbC = MongoClient('localhost', 27017)
 else:
     #server = "http://52.37.251.245/"
-    server = "http://ec2-52-37-251-245.us-west-2.compute.amazonaws.com/"
-    #server = "http://linkcuration.ddns.net/"
+    #server = "http://ec2-52-37-251-245.us-west-2.compute.amazonaws.com/"
+    server = "http://data.americanartcollaborative.org/"
     dbC = MongoClient('localhost', 12345)
 
 # Flask configuration
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'top secret!'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 # restful, usrdb and login_manager instance
 api = Api(app)
@@ -26,8 +30,6 @@ lm = LoginManager(app)
 
 lm.login_view = 'index'
 lm.session_protection = 'strong'
-app.config['SECRET_KEY'] = 'top secret!'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 
 confidenceLevel = 2
 dname = "linkVerification"

@@ -15,6 +15,7 @@
 2. Install dependent python packages using following command
   ```
   pip install -r packages.txt
+  (Refer to http://stackoverflow.com/questions/22073516/failed-to-install-python-cryptography-package-with-pip-and-setup-py if there are any failures related to cryptography package)
   ```
 
 3. Install MongoDb and run the mongo server. (Ref: https://docs.mongodb.org/manual/installation/)
