@@ -13,7 +13,7 @@ if devmode:
 else:
     #server = "http://52.37.251.245/"
     #server = "http://ec2-52-37-251-245.us-west-2.compute.amazonaws.com/"
-    server = "http://data.americanartcollaborative.org/"
+    server = "http://linking.americanartcollaborative.org/"
     dbC = MongoClient('localhost', 12345)
 
 # Flask configuration
