@@ -86,10 +86,20 @@
                 }
                 for(var index in names) {
                     tr += "<tr>";
+
                     names[index] = (names[index]).trim();
+                    /*lValues[index] = lValues[index].substring(0, 100);
+                    rValues[index] = rValues[index].substring(0, 100);*/
+
                     nametrim = names[index].replace("schema:", '');
                     tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
+                    if(nametrim == "additionalName"){
+                        if(lValues[index] != null){
+                            lValues[index] = lValues[index].substring(0,100);
+                            rValues[index] = rValues[index].substring(0,100)
+                        }
+                    }
 
                     if (nametrim == "URI") {
                         tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
