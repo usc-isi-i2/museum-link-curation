@@ -50,7 +50,8 @@ def isRegistered(email):
     
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login_fb.html')
+    return redirect(url_for('index'))
+    
     '''
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -79,8 +80,6 @@ def login():
         # Verify password and log in
         if user and verify_password(user.password, request.form['pw'].encode('utf-8')):
             user.authenticated = True
-            usrdb.session.add(user)
-            usrdb.session.commit()
             login_user(user, remember=True)
             return render_template('profile.html')
         else:
@@ -169,7 +168,7 @@ def cards():
 @app.route('/results')
 def show_results():
     if current_user.is_authenticated:
-        return render_template('results.html',data=dumpCurationResults())
+        return render_template('results.html',data=dumpCurationResults({"ulan":[3,4,5]}))
     else:
         return redirect(url_for('index'))
     
@@ -303,36 +302,36 @@ def load_user(userid):
 
 @app.route('/authorize/<provider>')
 def oauth_authorize(provider):
-    if not current_user.is_anonymous:
+    if current_user.is_authenticated:
         return redirect(url_for('index'))
     oauth = OAuthSignIn.get_provider(provider)
     return oauth.authorize()
 
 @app.route('/callback/<provider>')
 def oauth_callback(provider):
-    if not current_user.is_anonymous:
+    if current_user.is_authenticated:
         return redirect(url_for('index'))
     oauth = OAuthSignIn.get_provider(provider)
     social_id, email, name = oauth.callback()
     if social_id is None:
         flash('Authentication failed.')
         return redirect(url_for('index'))
+    
     user = User.query.filter_by(email=email).first()
     if not user:
+        print ("Created new user\n")
         user = User(email=email)
         usrdb.session.add(user)
         usrdb.session.commit()
         addCurator({"uid":email,"name":name,"tags":[],"rating":5})
+        
     login_user(user, True)
     return redirect(url_for('index'))
 
 @app.route('/logout')
 def logout():
-    user = current_user
-    user.authenticated = False
-    usrdb.session.add(user)
-    usrdb.session.commit()
-    logout_user()
+    if current_user.is_authenticated:
+        logout_user()
     return redirect(url_for('index'))
     
 # Handle RESTful API for getting data about link verifications
@@ -346,7 +345,7 @@ class dataMgr(Resource):
             
         stats = {}
         for tag in museums.keys():
-            stats[tag] = {"matched":museums[tag][2],"unmatched":museums[tag][3],"Total":museums[tag][4]}
+            stats[tag] = {"matched":museums[tag]['matchedQ'],"unmatched":museums[tag]['unmatchedQ'],"Total":museums[tag]['totalQ']}
             
         return stats
     

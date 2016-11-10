@@ -52,11 +52,16 @@ class FacebookSignIn(OAuthSignIn):
     def callback(self):
         if 'code' not in request.args:
             return None, None, None
-        oauth_session = self.service.get_auth_session(
-            data={'code': request.args['code'],
-                  'grant_type': 'authorization_code',
-                  'redirect_uri': self.get_callback_url()}
-        )
+            
+        try:
+            oauth_session = self.service.get_auth_session(
+                data={'code': request.args['code'],
+                    'grant_type': 'authorization_code',
+                    'redirect_uri': self.get_callback_url()}
+            )   
+        except ConnectionError:
+            return (None,None,None)
+            
         me = oauth_session.get('me?fields=id,email,name').json()
 
         return (me.get('id'), me.get('email'), me.get('name') )

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, url_for, jsonify, redirect, flash, jsonify, Response
-from flask_login import LoginManager, UserMixin, login_user, logout_user,current_user
+from flask_login import LoginManager, UserMixin, login_user, logout_user,current_user, login_required
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
 from pymongo import MongoClient, ReturnDocument, ASCENDING, DESCENDING
@@ -34,16 +34,38 @@ lm.session_protection = 'strong'
 confidenceLevel = 2
 dname = "linkVerification"
 
+def append_default_dict(x):
+    z = x.copy()
+    y = {"confidenceYesNo":2,"confidenceNotSure":2,"matchedQ":0,"unmatchedQ":0,"totalQ":0}
+    z.update(y)
+    return z
+
 # Every museum is dictionary is defined by tag name as key and value is array containing:
-# URI identifier, ranking, matched, unmatched, total questions
-museums = {"autry":["theautry.org",1,0,0,0],
-           "dbpedia":["/dbpedia.org/",2,0,0,0],
-           "npg":["/npgConstituents/",3,0,0,0],
-           "saam":["/saam/",4,0,0,0],
-           "ulan":["/ulan/",5,0,0,0],
-           "viaf":["/viaf/",6,0,0,0]
+# Format: <URI identifier>, <ranking for ordering - alphabetical>, <confedenceLevel yes/no - default 2>, <confedenceLevel not sure default 2>, 
+    #   <matched>, <unmatched>, <total questions>
+museums = {#"aaa":append_default_dict({"uri":"//","ranking":1}),
+           #"aac":append_default_dict({"uri":"//","ranking":2}),
+           #"aat":append_default_dict({"uri":"//","ranking":3}),
+           #"acm":append_default_dict({"uri":"//","ranking":4}),
+           "autry":append_default_dict({"uri":"theautry.org","ranking":5}),
+           #"cbm":append_default_dict({"uri":"//","ranking":6}),
+           #"ccma":append_default_dict({"uri":"//","ranking":7}),
+           "dbpedia":append_default_dict({"uri":"/dbpedia.org/","ranking":8}),
+           #"dma":append_default_dict({"uri":"//","ranking":9}),
+           #"gm":append_default_dict({"uri":"//","ranking":10}),
+           #"ima":append_default_dict({"uri":"//","ranking":11}),
+           "npg":append_default_dict({"uri":"/npgConstituents/","ranking":12}),
+           #"nmwa":append_default_dict({"uri":"//","ranking":13}),
+           #"puam":append_default_dict({"uri":"//","ranking":14}),
+           "saam":append_default_dict({"uri":"/saam/","ranking":15}),
+           "ulan":append_default_dict({"uri":"/ulan/","ranking":16}),
+           "viaf":append_default_dict({"uri":"/viaf/","ranking":17}),
+           #"wam":append_default_dict({"uri":"//","ranking":18}),
+           #"ycba":append_default_dict({"uri":"//","ranking":19}),
            }
-           
+
+statuscodes = {"NotStarted":1,"InProgress":2,"Agreement":3,"Disagreement":4,"Non-conclusive":5}
+
 if devmode:
     app.config['OAUTH_CREDENTIALS'] = {
         'facebook': {
