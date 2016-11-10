@@ -42,7 +42,6 @@ body {   font-family: Helvetica, san-serif;
 .card:hover h2 {
     background: #3487f7;
     color: #fff;
-    margin-top: 1.5%;
 }
 .card:hover h2 small { color: #fff }
 .card:hover p { margin-top: 0% }
@@ -57,11 +56,9 @@ h2 {
     font-family: 'Raleway', sans-serif;
     font-size: 20px;
     font-weight: 200;
-    margin-top: 150px;
     position: absolute;
     text-align: center;
     width: 100%;
-    z-index: 9999;
 }
 p {
     color: rgba(0,0,0,.6);
@@ -114,18 +111,15 @@ p {
     -webkit-border-radius: 2px;
     -webkit-transition: 0.2s ease-out;
     background-clip: padding-box;
-    border-radius: 2px;
     color: #fff;
+    border:0px;
     display: inline-block;
     font-family: 'Raleway', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    height: 35px;
     letter-spacing: 0.5px;
     line-height: 36px;
-    margin-bottom: 15px;
-    margin-right:15px;
-    margin-left:15px;
     padding: 0 2rem ;
     text-decoration: none;
     text-transform: uppercase;
@@ -145,21 +139,18 @@ p {
 }
 
 .green-btn{
-    border: 2px solid #00b300;
     background-color: #00b300;
 }
 .green-btn:hover{
     background-color: #008000;
 }
 .red-btn{
-    border: 2px solid #cc0000;
     background-color: #cc0000;
 }
 .red-btn:hover{
     background-color: #b30000;
 }
 .yellow-btn{
-    border: 2px solid #ffa31a;
     background-color: #ffa31a;
 }
 .yellow-btn:hover{

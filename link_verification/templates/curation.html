@@ -51,7 +51,6 @@
                             var name_header = document.getElementById("name_header" + divid);
                             name_uri1 = findMuseumName(lValues[index])
                             name_uri2 = findMuseumName(rValues[index])
-                            console.log(name_uri1 + " " + name_uri2)
                             name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th></th><th colspan = '2' style='text-align:center'>" + name_uri1 + "</th><th></th><th colspan = '2' style='text-align:center'>" + name_uri2 + "</th></tr></table>"
                         }
                     }
@@ -110,9 +109,12 @@
                     tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
                     if(nametrim == "additionalName"){
-                        if(lValues[index] != null){
-                            lValues[index] = lValues[index].substring(0,100);
-                            rValues[index] = rValues[index].substring(0,100)
+                        if(lValues[index] != null) {
+                            lValues[index] = lValues[index].substring(0, 100);
+                        }
+                        if(rValues[index] != null) {
+                            if(rValues[index].length > 100)
+                                rValues[index] = rValues[index].substring(0, 100);
                         }
                     }
 
@@ -123,14 +125,14 @@
                     }
                     else if (names[index] == "schema:birthPlace") {
                         if (lValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='right_align cell_align'>" + "-" + "</td>";
                         else
                             tr += "<td class='right_align cell_align'>Name: " + lValues[index]['schema:name'] + "</td>";
 
                         tr += "<td></td>"
 
                         if (rValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='left_align cell_align'>" + "-" + "</td>";
                         else tr += "<td class='left_align cell_align'>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
                     }
                     else {
@@ -139,14 +141,14 @@
                             name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td colspan = '2' style='text-align:center'>" + lValues[index] + "</td><td></td><td  colspan = '2' style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
                         if (lValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='right_align cell_align'>" + "-" + "</td>";
                         else
                             tr += "<td class='right_align cell_align'>" + lValues[index] + "</td>";
 
                         tr += "<td></td>"
 
                         if (rValues[index] == null)
-                            tr += "<td class='cell_align>" + "-" + "</td>";
+                            tr += "<td class='left_align cell_align>" + "-" + "</td>";
                         else
                             tr += "<td class='left_align cell_align'>" + rValues[index] + "</td>";
                     }
@@ -164,6 +166,10 @@
                            uri = "Autry"
                    else if (uri.search("npg") != -1)
                            uri = "NPG"
+                   else if (uri.search("dbpedia") != -1)
+                           uri = "DBpedia"
+                   else if (uri.search("viaf") != -1)
+                           uri = "VIAF"
                    return uri
                }
 
@@ -199,7 +205,6 @@
 
                     },
                     complete: function () {
-                        console.log(data)
                         populateHeadings(data.Unmatched, divid);
                         populateExactMatch(data.ExactMatch, divid);
                         populateNoMatch(data.Unmatched, divid);
