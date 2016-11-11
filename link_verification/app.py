@@ -18,6 +18,16 @@ def index():
     return render_template('login_fb.html')
     #return render_template('login.html')
 
+@app.route('/download/<filename>.json', methods=['GET'])
+def download(filename):
+
+    filename = filename.split("_")
+    print filename
+    dumpCurationResults({filename[0]:[int(filename[1])]})
+    
+    root = os.path.dirname(os.path.abspath(__file__))
+    return send_from_directory(directory=os.path.join(root,"exported"), filename=filename[0]+"_"+filename[1]+".json" )
+    
 def get_hexdigest(alg, salt, raw_password):
     if alg == 'md5':
         return hashlib.md5(salt + raw_password).hexdigest()
@@ -261,15 +271,38 @@ class userMgr(Resource):
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'rating':request.json["rating"]}})
         
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
+        
+        return redirect(url_for('index'))
+        #return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
     
     # Return user profile information
     def get(self):
         if not current_user.is_authenticated:
             return {'status':"Couldn't authenticate user."}, 400
         
+        # getStats about all the questions answered by this user
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
+        answers = dbC[dname]["answer"].find({'author':current_user.email})
+        
+        # Initialize per museum stats 
+        stats = {}
+        for tag in museums.keys():
+            stats[tag] = {"matched":0,"unmatched":0,"no-conclusion":0}
+        
+        for a in answers:
+            # find question and check its current status 
+            q = dbC[dname]["question"].find_one({'_id':ObjectId(a['qid'])})
+            
+            for tag in q['tags']:
+                tag = dbC[dname]["tag"].find_one({'_id':ObjectId(tag)})['tagname']
+                if q['status'] == statuscodes["Agreement"]:
+                    stats[tag]["matched"] += 1
+                elif q['status'] == statuscodes["Disagreement"]:
+                    stats[tag]["unmatched"] += 1
+                elif q['status'] == statuscodes["Non-conclusive"]:
+                    stats[tag]["no-conclusion"] += 1
+
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'progress':stats}
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
@@ -345,7 +378,7 @@ class dataMgr(Resource):
             
         stats = {}
         for tag in museums.keys():
-            stats[tag] = {"matched":museums[tag]['matchedQ'],"unmatched":museums[tag]['unmatchedQ'],"Total":museums[tag]['totalQ']}
+            stats[tag] = {"matched":museums[tag]['matchedQ'],"unmatched":museums[tag]['unmatchedQ'],"no-conclusion":museums[tag]['unconcludedQ'],"Total":museums[tag]['totalQ']}
             
         return stats
     
@@ -418,7 +451,7 @@ class ansMgr(Resource):
         
         qid = request.json['qid']
         uid = current_user.email
-        answer = {"value":a_value,"comment":a_comment,"author":uid}
+        answer = {"value":a_value,"comment":a_comment,"author":uid,"qid":qid}
         
         rsp = submitAnswer(qid,answer,uid)
         if rsp["status"] == False:

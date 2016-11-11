@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, jsonify, redirect, flash, jsonify, Response
+from flask import Flask, render_template, request, url_for, jsonify, redirect, flash, jsonify, Response, send_from_directory
 from flask_login import LoginManager, UserMixin, login_user, logout_user,current_user, login_required
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
@@ -36,7 +36,7 @@ dname = "linkVerification"
 
 def append_default_dict(x):
     z = x.copy()
-    y = {"confidenceYesNo":2,"confidenceNotSure":2,"matchedQ":0,"unmatchedQ":0,"totalQ":0}
+    y = {"confidenceYesNo":2,"confidenceNotSure":2,"matchedQ":0,"unmatchedQ":0,"unconcludedQ":0,"totalQ":0}
     z.update(y)
     return z
 
