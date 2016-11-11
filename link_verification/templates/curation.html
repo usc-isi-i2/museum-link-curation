@@ -40,14 +40,28 @@
                         }
                     }
                 });
-
+            function populateHeadings(data, divid){
+                    var names = data.name;
+                    var lValues = data.lValue;
+                    var rValues = data.rValue;
+                    for(var index in names) {
+                        names[index] = (names[index]).trim();
+                        nametrim = names[index].replace("schema:", '');
+                        if (nametrim == "URI") {
+                            var name_header = document.getElementById("name_header" + divid);
+                            name_uri1 = findMuseumName(lValues[index])
+                            name_uri2 = findMuseumName(rValues[index])
+                            name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th></th><th colspan = '2' style='text-align:center'>" + name_uri1 + "</th><th></th><th colspan = '2' style='text-align:center'>" + name_uri2 + "</th></tr></table>"
+                        }
+                    }
+               }
             function populateExactMatch(data, divid) {
                 var tr = "";
                 var names = data.name;
                 var values = data.value;
 
                 if(names.length == 0){
-                    tr += "<td colspan='3' class = 'center_align cell_align'>None of the records matched</td>";
+                    tr += "<td></td><td colspan='5' class = 'center_align cell_align'>None of the records matched</td>";
                 }
                 else {
                     for (var index in names) {
@@ -56,18 +70,18 @@
                         tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
                         if (names[index] == "schema:birthPlace") {
-                            tr += "<td colspan='2' class = 'center_align cell_align'>Name: " + values[index]['schema:name'] + "</td>";
+                            tr += "<td colspan='3' class = 'center_align cell_align'>Name: " + values[index]['schema:name'] + "</td>";
                         }
 
                         else if (nametrim == "URI") {
-                            tr += "<td colspan='2' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
+                             tr += "<td colspan='3' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
                         }
                         else {
                             if (nametrim == "name") {
                                 var name_header = document.getElementById("name_header" + divid);
-                                name_header.innerHTML = "<table><tr><th class = 'center-align cell_align'>NPG</th><th class = 'center-align cell_align'>ULAN</th></tr><tr><td  colspan = '2' class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
+                                name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td  colspan = '5' class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
                             }
-                            tr += "<td colspan='2' class = 'center_align cell_align'>" + values[index] + "</td>";
+                            tr += "<td colspan='3' class = 'center_align cell_align'>" + values[index] + "</td>";
                         }
                         tr += "</tr>";
                     }
@@ -82,7 +96,7 @@
 
                 var tr = "";
                 if(names.length == 0){
-                    tr += "<td colspan='3' class = 'center_align cell_align'>None of the records matched</td>";
+                    tr += "<td colspan='5' class = 'center_align cell_align'>None that do not match</td>";
                 }
                 for(var index in names) {
                     tr += "<tr>";
@@ -95,36 +109,46 @@
                     tr += "<td class = 'right_align cell_align'>" + nametrim + "</td>";
 
                     if(nametrim == "additionalName"){
-                        if(lValues[index] != null){
-                            lValues[index] = lValues[index].substring(0,100);
-                            rValues[index] = rValues[index].substring(0,100)
+                        if(lValues[index] != null) {
+                            lValues[index] = lValues[index].substring(0, 100);
+                        }
+                        if(rValues[index] != null) {
+                            if(rValues[index].length > 100)
+                                rValues[index] = rValues[index].substring(0, 100);
                         }
                     }
 
                     if (nametrim == "URI") {
-                        tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
+                        tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>"; 
+                        tr += "<td></td>"
                         tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
                     }
                     else if (names[index] == "schema:birthPlace") {
                         if (lValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='right_align cell_align'>" + "-" + "</td>";
                         else
                             tr += "<td class='right_align cell_align'>Name: " + lValues[index]['schema:name'] + "</td>";
+
+                        tr += "<td></td>"
+
                         if (rValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='left_align cell_align'>" + "-" + "</td>";
                         else tr += "<td class='left_align cell_align'>Geo: Lat: " + rValues[index]['schema:geo']['schema:latitude'] + " Long: " + rValues[index]['schema:geo']['schema:longitude'] + "<br/>Name: " + rValues[index]['schema:name'] + "</td>";
                     }
                     else {
                         if (nametrim == "name") {
                             var name_header = document.getElementById("name_header" + divid);
-                            name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th style='text-align:center'>NPG</th><th style='text-align:center'>ULAN</th></tr><tr><td style='text-align:center'>" + lValues[index] + "</td><td  style='text-align:center'>" + rValues[index] + "</td></tr></table>"
+                            name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td colspan = '2' style='text-align:center'>" + lValues[index] + "</td><td></td><td  colspan = '2' style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                         }
                         if (lValues[index] == null)
-                            tr += "<td class='cell_align'>" + "-" + "</td>";
+                            tr += "<td class='right_align cell_align'>" + "-" + "</td>";
                         else
                             tr += "<td class='right_align cell_align'>" + lValues[index] + "</td>";
+
+                        tr += "<td></td>"
+
                         if (rValues[index] == null)
-                            tr += "<td class='cell_align>" + "-" + "</td>";
+                            tr += "<td class='left_align cell_align>" + "-" + "</td>";
                         else
                             tr += "<td class='left_align cell_align'>" + rValues[index] + "</td>";
                     }
@@ -132,6 +156,22 @@
                 }
                 document.getElementById("noMatch" + divid).innerHTML = tr;
             }
+
+           function findMuseumName(uri){
+                   if(uri.search("saam") != -1)
+                           uri = "SAAM"
+                   else if (uri.search("ulan") != -1)
+                           uri = "ULAN"
+                   else if (uri.search("autry") != -1)
+                           uri = "Autry"
+                   else if (uri.search("npg") != -1)
+                           uri = "NPG"
+                   else if (uri.search("dbpedia") != -1)
+                           uri = "DBpedia"
+                   else if (uri.search("viaf") != -1)
+                           uri = "VIAF"
+                   return uri
+               }
 
             function populateCard(data,divid) {
                 $.ajax({
@@ -165,6 +205,7 @@
 
                     },
                     complete: function () {
+                        populateHeadings(data.Unmatched, divid);
                         populateExactMatch(data.ExactMatch, divid);
                         populateNoMatch(data.Unmatched, divid);
                     }
