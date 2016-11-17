@@ -23,6 +23,9 @@ def db_init():
             createDatabase()
             cleanDatabase("answer")
             print "Initialized databases\n"
+    
+    updateConfig()
+    pprint(museums)
     #printDatabases()
     
 # Print the database just to check current data
@@ -62,12 +65,10 @@ def cleanDatabase(docname):
 # Create database with default values for curation
 def createDatabase():
     populateTags()
-    updateConfig()
+    
     #populateCurators()
     populateQuestions(False)
     populateEntities()
-    
-    pprint(museums)
     
 #Tag
     #tagname, string 
@@ -507,7 +508,8 @@ def getStats(q):
 #Answer
     #value, Integer value - 1 - Yes, 2 - No, 3 - Not Sure
     #comment, String optional 
-    #author, String - uid of curator 
+    #author, String - uid of curator (email)
+    #qid, question id this answer belong to
 def submitAnswer(qid, answer, uid):
     
     # from qid retrieve question 
@@ -527,8 +529,8 @@ def submitAnswer(qid, answer, uid):
         #Check if user has already answered the question
         # Check authors in all answers if current user has already answered the question
         for aid in q["decision"]:
-            author = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
-            if author and author["author"] == uid:
+            answer = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
+            if answer and answer["author"] == uid:
                 #print "User has already submitted answer to question ", qid
                 message = "User has already submitted answer to question with qid {}".format(qid)
                 return {"status":False,"message":message}
@@ -587,6 +589,8 @@ def submitAnswer(qid, answer, uid):
                 museums[tag]['unmatchedQ'] += 1
         elif noNotSure == confidenceNotSure:
             q['status'] = statuscodes["Non-conclusive"] # Update to, Non conclusive 
+            for tag in tags:
+                museums[tag]['unconcludedQ'] += 1
         else:
             q['status'] = statuscodes["InProgress"] # Update to, InProgress
     
@@ -609,7 +613,11 @@ def dumpCurationResults(args):
     for museum in args.keys():
         for status in args[museum]:
             # Create a file named museum_stauscode.json
-            f = open("exported_"+museum+"_"+str(status)+".json",'w')
+            
+            root = os.path.dirname(os.path.abspath(__file__))
+            name = museum+"_"+str(status)+".json"
+            
+            f = open(os.path.join(root,"exported",name),'w')
             out = {"count":0,"payload":[]}
             
             tid = dbC[dname]["tag"].find_one({'tagname':museum})['_id']
