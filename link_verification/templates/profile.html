@@ -41,8 +41,6 @@
             tag_list.push($('input[name="museums"]:checked').map(
                 function () {return this.value;}).get());
             var userObj = new Object();
-            userObj.name = "Default";
-            userObj.rating = 0;
             userObj.tags = tag_list[0];
             json_data = JSON.stringify(userObj);
 
@@ -73,7 +71,7 @@
                 <label for="Autry">Autry Museum of the American West</label><br/>
             <input id="npg" type="checkbox" name="museums" value="npg" />
                 <label for="NPG">National Portrait Gallery</label><br/>
-            <input id="puam" type="checkbox" name="museums" value="puam" />
+            <!-- <input id="puam" type="checkbox" name="museums" value="puam" />
                 <label for="PUAM">Princeton University Art Museum</label><br/>
             <input id="wam" type="checkbox" name="museums" value="wam" />
                 <label for="WAM">The Walters Art Museum</label><br/>
@@ -84,11 +82,11 @@
             <input id="aat" type="checkbox" name="museums" value="aat" />
                 <label for="AAT">The Getty - Art and Architecture Thesaurus Online</label><br/>
             <input id="acm" type="checkbox" name="museums" value="acm" />
-                <label for="ACM">Amon Carter Museum of American Art</label><br/>
+                <label for="ACM">Amon Carter Museum of American Art</label><br/> -->
         </div>
 
         <div style="width: 30em; float: left;">
-            <input id="nmwa" type="checkbox" name="museums" value="nmwa" />
+            <!-- <input id="nmwa" type="checkbox" name="museums" value="nmwa" />
                 <label for="NMWA">National Museum of Wildlife Art</label><br/>
             <input id="CCMA" type="checkbox" name="museums" value="CCMA" />
                 <label for="CCMA">Colby College Museum of Art</label><br/>
@@ -97,13 +95,15 @@
             <input id="gm" type="checkbox" name="museums" value="gm" />
                 <label for="GM">Gilcrease Museum</label><br/>
             <input id="ima" type="checkbox" name="museums" value="ima" />
-                <label for="IMA">Indianapolis Museum of Art</label><br/>
+                <label for="IMA">Indianapolis Museum of Art</label><br/> -->
+            <input id="ulan" type="checkbox" name="museums" value="ulan" />
+                <label for="ULAN">The Getty Research Institute - Union List of Artist Names</label><br/>
             <input id="saam" type="checkbox" name="museums" value="saam" />
                 <label for="SAAM">Smithsonian American Art Museum</label><br/>
-            <input id="ycba" type="checkbox" name="museums" value="ycba" />
+            <!-- <input id="ycba" type="checkbox" name="museums" value="ycba" />
                 <label for="YCBA">Yale Center for British Art</label><br/>
             <input id="dma" type="checkbox" name="museums" value="dma" />
-                <label for="DMA">Dallas Museum of Art</label>
+                <label for="DMA">Dallas Museum of Art</label> -->
         </div>
     </div>
     <form name ="profile_tag_select" onsubmit="return makeSearch()">

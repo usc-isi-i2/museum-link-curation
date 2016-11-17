@@ -212,7 +212,7 @@
                 });
             }
             function submitAnswer(answerButton, value, qid){
-                //console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
+                console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
                 var sv = '{{server}}'.concat("/v1/answer");
                 $.ajax({
                     method: "PUT",
