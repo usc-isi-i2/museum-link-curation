@@ -1,0 +1,154 @@
+#  -- FORMAT -- (NOTE: Use same output column names for similar properties)
+# tag::<tagname> <sparql endpoint>
+# SPARQL query
+# ...
+# -- FORMAT END --
+tag::autry http://data.americanartcollaborative.org/sparql
+tag::dbpedia http://data.americanartcollaborative.org/sparql
+tag::npg http://data.americanartcollaborative.org/sparql
+property::uri
+SELECT ?uri
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+    }
+property::name
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+SELECT ?name
+    WHERE 
+    { 
+        GRAPH <http://data.americanartcollaborative.org/npg>
+        {
+            BIND(<???> AS ?uri)
+            ?uri crm:P131_is_identified_by ?o1.
+            ?o1 rdfs:label ?name.
+        }
+    }
+property::byear
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+SELECT ?byear
+    WHERE 
+    { 
+        GRAPH <http://data.americanartcollaborative.org/npg>
+        {
+            BIND(<???> AS ?uri)
+            ?uri crm:P98i_was_born ?o1.
+            ?o1 crm:P4_has_time-span ?o2.
+            ?o2 crm:P82_at_some_time_within ?byear.
+        }
+    }
+property::dyear
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+SELECT ?dyear
+    WHERE 
+    { 
+        GRAPH <http://data.americanartcollaborative.org/npg>
+        {
+            BIND(<???> AS ?uri)
+            OPTIONAL{
+                ?uri crm:P100i_died_in ?o1.
+                ?o1 crm:P4_has_time-span ?o2.
+                ?o2 crm:P82_at_some_time_within ?dyear.
+            }
+        }
+    }
+tag::saam http://data.americanartcollaborative.org/sparql
+tag::ulan http://vocab.getty.edu/sparql
+property::uri
+SELECT ?uri
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+    }
+property::name
+SELECT ?name
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        ?uri gvp:broaderPreferred ulan:500000002;
+            xl:prefLabel ?o1.
+        ?o1 gvp:term ?name.
+    }
+property::byear
+SELECT ?byear
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        ?uri gvp:broaderPreferred ulan:500000002;
+            foaf:focus ?o1.
+        ?o1 gvp:biographyPreferred ?o2.
+        ?o2 gvp:estStart ?byear.
+    }
+property::dyear
+SELECT ?dyear
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        OPTIONAL {
+            ?uri gvp:broaderPreferred ulan:500000002;
+                foaf:focus ?o1.
+            ?o1 gvp:biographyPreferred ?o2.
+            ?o2 gvp:estEnd ?dyear.
+        }
+    }
+property::gender
+SELECT ?gender
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        OPTIONAL {
+            ?uri gvp:broaderPreferred ulan:500000002;
+                foaf:focus ?o1.
+            ?o1 gvp:biographyPreferred ?o2.
+            ?o2 schema:gender ?o3.
+            ?o3 gvp:prefLabelGVP ?o4.
+            ?o4 xl:literalForm ?gender.
+        }
+    }
+property::bplace
+SELECT ?bplace
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        OPTIONAL {
+            ?uri gvp:broaderPreferred ulan:500000002;
+                foaf:focus ?o1.
+            ?o1 gvp:biographyPreferred ?o2.
+            ?o2 schema:birthPlace ?o3.
+            ?o4 foaf:focus ?o3;
+                gvp:prefLabelGVP ?o5.
+            ?o5 xl:literalForm ?bplace.
+        }
+    }
+property::dplace
+SELECT ?dplace
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        OPTIONAL {
+            ?uri gvp:broaderPreferred ulan:500000002;
+                foaf:focus ?o1.
+            ?o1 gvp:biographyPreferred ?o2.
+            ?o2 schema:deathPlace ?o3.
+            ?o4 foaf:focus ?o3;
+                gvp:prefLabelGVP ?o5.
+            ?o5 xl:literalForm ?dplace.
+        }
+    }
+property::nationality
+SELECT ?nationality
+    WHERE 
+    { 
+        BIND(<???> AS ?uri)
+        OPTIONAL {
+            ?uri gvp:broaderPreferred ulan:500000002;
+                foaf:focus ?o1.
+            ?o1 gvp:nationalityPreferred ?o2.
+            ?o2 gvp:prefLabelGVP ?o3.
+            ?o3 xl:literalForm ?nationality.
+        }
+    }
+tag::viaf http://data.americanartcollaborative.org/sparql

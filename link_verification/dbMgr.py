@@ -2,6 +2,7 @@ import csv, datetime, json, os
 from random import randint
 from pprint import pprint
 from bson.objectid import ObjectId
+from SPARQLWrapper import SPARQLWrapper, JSON
 from config import *
 
 # dbC and dname are mongoDb based database for entities and their curation data
@@ -67,8 +68,8 @@ def createDatabase():
     populateTags()
     
     #populateCurators()
-    populateQuestions(False)
-    populateEntities()
+    populateQuestions()
+    #populateEntities()
     
 #Tag
     #tagname, string 
@@ -129,89 +130,29 @@ def addCurator(ce):
     #uri1, for now, just a URI related to a specific artist
     #uri2, for now, just another URI related to same specific artist
     #decision, list of object IDs from Answer
-    #dedupe , dict, data coming from dedupe 
+    #linkage , dict, data coming from linkage tool 
     
 # Populate default set of questions
-def populateQuestions(sample):
-    
-    # Add sample data
-    if sample:
-        qe = {"status":statuscodes["NotStarted"],
-              "uniqueURI":generateUniqueURI("http://vocab.getty.edu/ulan/500028092","http://edan.si.edu/saam/id/person-institution/1681"),
-              "lastSeen": datetime.datetime.utcnow(),
-              "tags":[dbC[dname]["tag"].find_one({'tagname':"ulan"})['_id'],
-                      dbC[dname]["tag"].find_one({'tagname':"saam"})['_id'] ],
-               "uri1":"http://vocab.getty.edu/ulan/500028092",
-               "uri2":"http://edan.si.edu/saam/id/person-institution/1681",
-               "decision": [], #Should be updated in submit answer
-               "dedupe": {}
-             }
-        dbC[dname]["question"].insert_one(qe)
-        
-        qe = {"status":statuscodes["NotStarted"],
-              "uniqueURI":generateUniqueURI("http://vocab.getty.edu/ulan/500020062","http://edan.si.edu/saam/id/person-institution/26558"),
-              "lastSeen": datetime.datetime.utcnow(),
-              "tags":[dbC[dname]["tag"].find_one({'tagname':"ulan"})['_id'],
-                      dbC[dname]["tag"].find_one({'tagname':"saam"})['_id'] ],
-               "uri1":"http://vocab.getty.edu/ulan/500020062",
-               "uri2":"http://edan.si.edu/saam/id/person-institution/26558",
-               "decision": [], #Should be updated in submit answer
-               "dedupe": {}
-             }
-        dbC[dname]["question"].insert_one(qe)
+def populateQuestions():
+    if devmode:
+        populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
     else:
-        if devmode:
-            #populateQuestionsFromCSV(os.path.join('data', 'sample.csv'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','NPGmin.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAMmin.json'))
-        else:
-            #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_architect.json'))
-            #populateQuestionsFromJSON(os.path.join('data', 'questions','DBPedia_artist.json'))
-            #populateQuestionsFromJSON(os.path.join('data', 'questions','NPG.json'))
-            #populateQuestionsFromJSON(os.path.join('data', 'questions','SAAM.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','NPGmin.json'))
-            populateQuestionsFromJSON(os.path.join('data', 'questions','SAAMmin.json'))
-        
-        dbC[dname]["question"].create_index([("uri1", ASCENDING)])
-        dbC[dname]["question"].create_index([("uri2", ASCENDING)])
-        dbC[dname]["question"].create_index([("tags", ASCENDING)])
-        dbC[dname]["question"].create_index([("status", ASCENDING)])
-        dbC[dname]["question"].create_index([("decision", ASCENDING)])
-        dbC[dname]["question"].create_index([("dedupe", ASCENDING)])
-        dbC[dname]["question"].create_index([("lastSeen",DESCENDING)])
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','dbpedia.json'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','npg.json'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','saam.json'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','autry.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
+    
+    dbC[dname]["question"].create_index([("uri1", ASCENDING)])
+    dbC[dname]["question"].create_index([("uri2", ASCENDING)])
+    dbC[dname]["question"].create_index([("tags", ASCENDING)])
+    dbC[dname]["question"].create_index([("status", ASCENDING)])
+    dbC[dname]["question"].create_index([("decision", ASCENDING)])
+    dbC[dname]["question"].create_index([("linkage", ASCENDING)])
+    dbC[dname]["question"].create_index([("lastSeen",DESCENDING)])
     #printDatabase("question")
 
-# Populate default set of questions from csv file
-def populateQuestionsFromCSV(csvfname):
-    with open(csvfname, 'rb') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=',')
-        for row in spamreader:
-            if len(row) == 2:
-                # Find tags
-                tag0 = findTag(row[0])
-                tag1 = findTag(row[1])
-                
-                # Build document
-                qe = {"status":statuscodes["NotStarted"],
-                      "uniqueURI":generateUniqueURI(row[0],row[1]),
-                      "lastSeen": datetime.datetime.utcnow(),
-                      "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],
-                              dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
-                       "uri1":row[0],
-                       "uri2":row[1],
-                       "decision": [], #Should be updated in submit answer
-                       "dedupe": {}
-                     }
-                
-                # Add document
-                dbC[dname]["question"].insert_one(qe)
-                
-                # Update statistics
-                museums[tag0]['totalQ'] += 1
-                museums[tag1]['totalQ'] += 1
-                
-    #printDatabase("question")
-    
+# Populate default set of questions from json file
 def populateQuestionsFromJSON(filename):
     json_data=open(filename).read()
     data = json.loads(json_data)
@@ -219,7 +160,6 @@ def populateQuestionsFromJSON(filename):
     data = data["payload"]
     
     for i in range(0,count):
-        #pprint(data[i])
         
         # Find tags
         tag0 = findTag(data[i]["uri1"])
@@ -234,7 +174,7 @@ def populateQuestionsFromJSON(filename):
            "uri1":data[i]["uri1"],
            "uri2":data[i]["uri2"],
            "decision": [], #Should be updated in submit answer
-           "dedupe": data[i]["dedupe"]
+           "linkage": data[i]["linkage"]
         }
          
         # Add Document
@@ -246,68 +186,6 @@ def populateQuestionsFromJSON(filename):
      
     print ("Populated {} questions from {}.".format(count,filename))
     #printDatabase("question")
-
-def populateEntities():
-    if devmode:
-        #populateEntitiesFromJSON(os.path.join('data', 'sample.json'))
-        #updateEntitiesFromJSON(os.path.join('data', 'sampleUpdate.json'))
-        #updateEntitiesFromJSON(os.path.join('data', 'sample.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','NPGmin.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_NPG.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAMmin.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_SAAM.json'))
-    else:
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_architect.json'))
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','DBPedia_artist.json'))
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','NPG.json'))
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','SAAM.json'))
-        #populateEntitiesFromJSON(os.path.join('data', 'entities','ULAN.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','NPGmin.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_NPG.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','SAAMmin.json'))
-        populateEntitiesFromJSON(os.path.join('data', 'entities','ULANmin_SAAM.json'))
-
-    dbC[dname]["artists"].create_index([("@id", ASCENDING)])
-    dbC[dname]["artists"].create_index([("tags", ASCENDING)])
-    
-#Entities
-    #Schema as per Schema.org (Transformed by Yi Ding from different museum schema)
-    
-# Load artist entities fron json generated by dedupe input
-def populateEntitiesFromJSON(filename):
-    json_data=open(filename).read()
-    data = json.loads(json_data)
-    # Change this range on actual server
-    for i in range(0,len(data["people"])):
-        #pprint(data["people"][i])
-        dbC[dname]["artists"].insert_one(data["people"][i])
-    print ("Populated {} entities from {}".format(len(data["people"]),filename))
-    #printDatabase("artists")
-
-def updateEntitiesFromJSON(filename):
-    json_data=open(filename).read()
-    data = json.loads(json_data)
-    # Change this range on actual server
-    for i in range(0,len(data["people"])):
-
-        uri = data["people"][i]["@id"]
-        artist = dbC[dname]["artists"].find_one({'@id':uri},projection={'_id': False})
-
-        # If there is no change than continue to next record
-        if artist == data["people"][i]:
-            continue
-        
-        # Update artist document with values from new input data
-        for key in artist.keys():
-            if key in data["people"][i]:
-                artist[key] = data["people"][i][key]
-
-        # Update artists collection 
-        dbC[dname]["artists"].replace_one({'@id':uri}, artist )
-        #print "\n Updated entities database with following entity\n"
-        #pprint(artist)
-    
-    #printDatabase("artists")
     
 #Find tag from the uri
 def findTag(uri):
@@ -344,18 +222,18 @@ def generateUniqueURI(uri1,uri2):
     else:
         return uri2+uri1
         
-def addOrUpdateQuestion(uri1,uri2,dedupe):
+def addOrUpdateQuestion(uri1,uri2,linkage):
     uuri = generateUniqueURI(uri1,uri2)
     q = dbC[dname]["question"].find_one({'uniqueURI':uuri})
     
-    # If uuri exists, ignore dedupe as this request is coming second time, just return decision
+    # If uuri exists, ignore linkage as this request is coming second time, just return decision
     if q != None:
         print "Question instance already exists\n"
         if q["decision"] == []:
             return None
         else:
             return q["decision"]
-    # Create new question and add dedupe information as well
+    # Create new question and add linkage information as well
     else:
         qe = {"status":1,
               "uniqueURI":uuri,
@@ -365,7 +243,7 @@ def addOrUpdateQuestion(uri1,uri2,dedupe):
                "uri1":uri1,
                "uri2":uri2,
                "decision": [], #Should be updated in submit answer
-               "dedupe ": dedupe 
+               "linkage ": linkage 
              }
         status = dbC[dname]["question"].insert_one(qe).acknowledged
         
@@ -377,7 +255,7 @@ def addOrUpdateQuestion(uri1,uri2,dedupe):
 # Retrieve set of questions from database based on tags, lastseen, unanswered vs in progress
 def getQuestionsForUID(uid,count):
     
-    # If User with uid not present return error
+    # If User with uid not present return error, otherwise get tags for user
     userOid = dbC[dname]["curator"].find_one({'uid':uid})
     if userOid == None or userOid['_id'] == None:
         print "User not found. \n"
@@ -386,13 +264,15 @@ def getQuestionsForUID(uid,count):
         #print "Found uid's objectID ",userOid
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
-    # Filter-2: Questions list whose status is inProgress sorted as per lastSeen
-    q2 = dbC[dname]["question"].find({"status":2}).sort([("lastSeen", DESCENDING)]).limit(5*count)
+    # Questions to be served...
+    q = []
     
-    q = []    
-    # Filter-3: Remove questions that are already served to this user based on author (uid) in decision
-    # Check every question whose status is in progress aka q2
-    for question in q2:
+    # Filter-1: Get questions whose status is inProgress sorted as per lastSeen
+    #q2 = dbC[dname]["question"].find({"status":statuscodes['InProgress']}).sort([("lastSeen", DESCENDING)]).limit(5*count)
+    q1 = dbC[dname]["question"].find({"status":statuscodes['InProgress']}).sort([("lastSeen", DESCENDING)])
+    
+    # Filter-2: Remove questions that are already served to this user
+    for question in q1:
         aids = question["decision"]
         
         answered = False
@@ -404,28 +284,42 @@ def getQuestionsForUID(uid,count):
                 answered = True
                 break
         
-        #Filter-4: Filter set of questions based on user and question tags
+        #Filter-3: Filter set of questions based on matching tags
         tagPresent = False
         for tag in userTags:
             if tag in question["tags"]:
                 tagPresent = True
                 break
         
-        # If question is not answered previously and tag is present, add it to set of question to be sent.
+        # Question is inProgress, not answered by this user and matches the tag -> save it.
         if answered != True and tagPresent == True:
             q = q + [question]
+            
+            # Break out if number of questions match the requested count
+            if len(q) == count:
+                break
     
     # Get not started questions only if started questions are not enough
     if len(q) < count:
-        # Filter-1:  Questions list whose status is NotStarted sorted as per lastSeen 
-        q1 = dbC[dname]["question"].find({"status":1}).sort([("lastSeen", DESCENDING)]).limit(5*count)
+        # Filter-1: Get questions whose status is NotStarted sorted as per lastSeen
+        #q1 = dbC[dname]["question"].find({"status":statuscodes['NotStarted']}).sort([("lastSeen", DESCENDING)]).limit(5*count)
+        q2 = dbC[dname]["question"].find({"status":statuscodes['NotStarted']}).sort([("lastSeen", DESCENDING)])
 
-        # Append questions that are in NotStarted state
-        for question in q1:
-            #Filter-4: Filter set of questions based on user and question tags
+        #Filter-2: Filter set of questions based on matching tags
+        for question in q2:
+        
+            tagPresent = False
             for tag in userTags:
                 if tag in question["tags"]:
-                    q = q + [question]
+                    tagPresent = True
+                    break
+            
+            # Question is inProgress, not answered by this user and matches the tag -> save it.
+            if tagPresent:
+                q = q + [question]
+            
+                # Break out if number of questions match the requested count
+                if len(q) == count:
                     break
 
     q_new = []
@@ -459,14 +353,96 @@ def preProcess(value):
 
     return value
 
+def retrieveProperties(uri):
+    tag = findTag(uri)
+    props = open('properties.txt','r')
+    sparql = False
+    subsparql = False
+    query = ""
+    endpoint = ""
+    results = {}
+    for line in props:
+        # ignore comments
+        if line.startswith('#') or line == "\n":
+            continue
+        
+        elif line.startswith('tag::'):
+        
+            # check if sparql query was already parsed
+            if sparql:
+                
+                # Send last sub query
+                query = query.replace('???',uri)
+                query = query[:-1]
+
+                sparql = SPARQLWrapper(endpoint)
+                sparql.setQuery(query)
+                sparql.setReturnFormat(JSON)
+                #print endpoint
+                #print query
+                
+                rs = sparql.query().convert()
+                #pprint(rs)
+                
+                # if property found,
+                #if rs['results']['bindings'] != [] and rs['results']['bindings'][0] != {}:
+                if rs['results']['bindings'][0] != {}:
+                    d = rs['results']['bindings'][0]
+                    results[d.keys()[0]] = d[d.keys()[0]]['value']
+                
+                # Break now as particular database has been read
+                break
+        
+            # If tag matches, enable sparql query parsing flag
+            proptag = line[5:line.index(' ')]
+            if proptag == tag:
+                sparql = True
+                endpoint = line[line.index(' ')+1:-1]
+        
+        elif line.startswith('property::'):
+            if sparql:
+                if subsparql:
+                    # send sub query
+                    query = query.replace('???',uri)
+                    query = query[:-1]
+
+                    sparql = SPARQLWrapper(endpoint)
+                    sparql.setQuery(query)
+                    sparql.setReturnFormat(JSON)
+                    #print endpoint
+                    #print query
+                    
+                    rs = sparql.query().convert()
+                    #pprint (rs)
+                    
+                    # if property found,
+                    #if rs['results']['bindings'] != [] and rs['results']['bindings'][0] != {}:
+                    if rs['results']['bindings'][0] != {}:
+                        d = rs['results']['bindings'][0]
+                        results[d.keys()[0]] = d[d.keys()[0]]['value']
+                    
+                    # Reset the query string
+                    query = ""
+                else:
+                    subsparql = True
+        else:
+            if subsparql:
+                query = query+line
+
+    #pprint(results)
+
+    return results
+    
 def getMatches(left,right):
+    # output format
     exactMatch = {"name":[],"value":[]}
-    unmatched = {"name":["URI"],"lValue":[left["@id"]],"rValue":[right["@id"]]}
     
-    fields = ["schema:name","schema:additionalName","schema:nationality","schema:birthDate","schema:deathDate","schema:birthPlace"]
+    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]]}
     
-    for field in fields:
-        if field in left and field in right:
+    for field in right.keys():
+        if field == 'uri':
+            continue
+        if field in left.keys() and field in right.keys():
             # Basic Pre processing to help matching obvious values
             lVal = preProcess(left[field])
             rVal = preProcess(right[field])
@@ -626,7 +602,7 @@ def dumpCurationResults(args):
             for q in questions:
                 a = {}
                 if tid in q['tags']:
-                    a["dedupe"] = q["dedupe"]
+                    a["linkage"] = q["linkage"]
                     a["uri1"] = q["uri1"]
                     a["uri2"] = q["uri2"]
                     temp = out["payload"]
@@ -645,7 +621,7 @@ def dumpCurationResults(args):
     
     # Run loop over questions and populate uri(s) and yes/no votes
     for q in questions:
-        rs = {"uri1":"","uri2":"","Yes":0,"No":0}
+        rs = {"uri1":"","uri2":"","Yes":0,"No":0,"notSure":0}
         rs["uri1"] = q["uri1"]
         rs["uri2"] = q["uri2"]
         
@@ -665,6 +641,7 @@ def dumpCurationResults(args):
     
         rs["Yes"] = noYes
         rs["No"] = noNo
+        rs["notSure"] = noNotSure
         
         if rs["Yes"] > rs["No"]:
             results["matched"].append(rs)

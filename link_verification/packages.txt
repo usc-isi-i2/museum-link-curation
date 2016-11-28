@@ -8,3 +8,5 @@ rauth>=0.7.2
 cryptography>=1.5.2
 requests[security]
 unidecode>=0.4.19
+swalign>=0.3.3
+Flask-Cors>=3.0.2

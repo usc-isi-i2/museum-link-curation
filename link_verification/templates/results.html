@@ -1,64 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Link Curation Results</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+
+    <script>
+    $(document).ready(function(){ 
+        $('#rstable').DataTable();
+    });
+    </script>
     <style>
-        table{
-            width:100%;
-        }
-        table,th,tr,td{
-            text-align: center;
-        }
+    .fill { 
+        min-height: 100%;
+        height: 100%;
+    }
     </style>
 </head>
 
 <body>
-<div class="page" id="page">
 <div class="filter-section">
     <div id = "header">{% include 'header_search.html' %}</div>
 </div>
-
-<div class="container">
-      <div class="table table-responsive">
-            <table class="table table-hover">
+    <br><br><br>
+  <div class="container">
+    <div class="table table-responsive">
+            <table id="rstable" class="table table-hover">
+            <col width="270">
+            <col width="270">
+            <col width="80">
+            <col width="80">
+            <col width="80">
             <thead>
                 <tr>
                     <th>URI1</th>
                     <th>URI2</th>
                     <th>Agreed</th>
                     <th>Disagreed</th>
+                    <th>Not sure</th>
                </tr>
             </thead>
             <tbody>
             {% for match in data['matched'] %}
             <tr>
-              <td width="100%"><a href={{match['uri1']}}> {{match['uri1']}} </td>
-              <td width="100%"><a href={{match['uri2']}}> {{match['uri2']}} </td>
-              <td>{{ match['Yes']}}</td>
-              <td>{{ match['No']}}</td>
+              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
+              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
+              <td style="text-align: center;">{{ match['Yes']}}</td>
+              <td style="text-align: center;">{{ match['No']}}</td>
+              <td style="text-align: center;">{{ match['notSure']}}</td>
             </tr>
             {% endfor %}
             {% for match in data['unmatched'] %}
             <tr>
-              <td width="100%"><a href={{match['uri1']}}> {{match['uri1']}} </td>
-              <td width="100%"><a href={{match['uri2']}}> {{match['uri2']}} </td>
-              <td>{{ match['Yes']}}</td>
-              <td>{{ match['No']}}</td>
+              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
+              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
+              <td style="text-align: center;">{{ match['Yes']}}</td>
+              <td style="text-align: center;">{{ match['No']}}</td>
+              <td style="text-align: center;">{{ match['notSure']}}</td>
             </tr>
             {% endfor %}
             </tbody>
             </table>
       </div>
-      <div class="modal-footer">
-      </div>
   </div>
-  </div>
-</div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

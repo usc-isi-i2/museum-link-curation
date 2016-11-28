@@ -177,11 +177,12 @@ def cards():
 
 @app.route('/results')
 def show_results():
+    
     if current_user.is_authenticated:
         return render_template('results.html',data=dumpCurationResults({"ulan":[3,4,5]}))
     else:
         return redirect(url_for('index'))
-    
+
 @app.route('/header')
 def header():
     if current_user.is_authenticated:
@@ -385,7 +386,8 @@ class dataMgr(Resource):
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):
     
-    # Create questions from dedupe provided pairs
+    # Create questions from dedupe provided pairs, 
+    # deprecated as questions are loaded from matched data dumped in json from record linkage program like dedupe or silk.
     def post(self):
         print "Input received: {} \n".format(request.json)
         
@@ -496,49 +498,53 @@ def createQuestionsFromPairs(jsonData):
             bulkOutput = bulkOutput+[output]
     return bulkOutput
 
+# Get question and related fields in nicer format for current user
 def getQuestionsForUser(count,stats):
+    # current user
     uid = current_user.email
-    questions = getQuestionsForUID(uid,count)
+    
+    # Get questions
+    questions = getQuestionsForUID(uid, count)
+    
+    # Get matching and non matching fields based on config file and sparql queries
     if questions != None:
-        output = []
-        for question in questions:
-            if checkURIOrdering(question['uri1'],question['uri2']):
-                left = dbC[dname]["artists"].find_one({'@id':question['uri1']},projection={'_id':False})
-                right = dbC[dname]["artists"].find_one({'@id':question['uri2']},projection={'_id':False})
-                if left == None:
-                    print "Couldn't retrieve entity with URI {} \n".format(question['uri1'])
-                    continue
-                if right == None:
-                    print "Couldn't retrieve entity with URI {} \n".format(question['uri2'])
-                    continue
-            else:
-                left = dbC[dname]["artists"].find_one({'@id':question['uri2']},projection={'_id':False})
-                right = dbC[dname]["artists"].find_one({'@id':question['uri1']},projection={'_id':False})
-                if left == None:
-                    print "Couldn't retrieve entity with URI {} \n".format(question['uri2'])
-                    continue
-                if right == None:
-                    print "Couldn't retrieve entity with URI {} \n".format(question['uri1'])
-                    continue
-                    
-            #print "\nLeft\n  ",left 
-            #print "\nRight\n ",right
-            
-            matches = getMatches(left, right)
-            #print "\nmatches :\n"
-            #pprint(matches)
-            
-            t = getTags(question)
-            if stats == True:
-                s = getStats(question)
-                output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t,"stats":s}]
-            else:
-                output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t}]
-            #print output
-            #print count
-        return output[:count]
+        return populateQuestionsWithFields(questions, stats)
     else:
         return {'status':"Couldn't retrieve questions mostly because user not found."}, 400
+
+# For every question, query sparql endpoint based on queries defined in config file
+def populateQuestionsWithFields(questions, stats):
+    
+    output = []
+    for question in questions:
+    
+        # Based on uri ordering, get properties 
+        if checkURIOrdering(question['uri1'],question['uri2']):
+            left = retrieveProperties(question['uri1'])
+            right = retrieveProperties(question['uri2'])
+        else:
+            left = retrieveProperties(question['uri2'])
+            right = retrieveProperties(question['uri1'])
+        
+        #print "\nLeft\n  "
+        #pprint(left)
+        #print "\nRight\n "
+        #pprint(right)
+        
+        matches = getMatches(left, right)
+        #print "\nmatches :\n"
+        #pprint(matches)
+        
+        t = getTags(question)
+        if stats == True:
+            s = getStats(question)
+            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t,"stats":s}]
+        else:
+            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t}]
+        
+        #print output
+    return output
+
         
 if __name__ == '__main__':
     
@@ -547,6 +553,8 @@ if __name__ == '__main__':
     
     # Start the app
     if devmode: 
-        app.run(threaded=True,debug=True)
+        #app.run(threaded=True,debug=True)
+        app.run(debug=True)
     else:
-        app.run(threaded=True,debug=False)
+        #app.run(threaded=True,debug=False)
+        app.run(debug=False)
