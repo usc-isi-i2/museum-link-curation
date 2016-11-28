@@ -138,10 +138,10 @@ def populateQuestions():
         populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
     else:
         #populateQuestionsFromJSON(os.path.join('data', 'questions','dbpedia.json'))
-        #populateQuestionsFromJSON(os.path.join('data', 'questions','npg.json'))
+        populateQuestionsFromJSON(os.path.join('data', 'questions','npg.json'))
         #populateQuestionsFromJSON(os.path.join('data', 'questions','saam.json'))
         #populateQuestionsFromJSON(os.path.join('data', 'questions','autry.json'))
-        populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
+        #populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
     
     dbC[dname]["question"].create_index([("uri1", ASCENDING)])
     dbC[dname]["question"].create_index([("uri2", ASCENDING)])

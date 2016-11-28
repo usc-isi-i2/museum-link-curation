@@ -80,7 +80,7 @@ class recordLinkage:
 
             out.write('    ],\n')
             out.write('    "count": {}\n'.format(count))
-            out.write('    },\n')
+            out.write('    }')
             out.close()
 
     def matchNames(self,name1,name2):

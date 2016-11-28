@@ -556,5 +556,4 @@ if __name__ == '__main__':
         #app.run(threaded=True,debug=True)
         app.run(debug=True)
     else:
-        #app.run(threaded=True,debug=False)
-        app.run(debug=False)
+        app.run(threaded=True,debug=False)
