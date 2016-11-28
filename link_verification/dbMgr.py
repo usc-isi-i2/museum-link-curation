@@ -585,12 +585,15 @@ def submitAnswer(qid, answer, uid):
 # Parameter format: {"museum tag":[status codes...],...}
 def dumpCurationResults(args):
     
+    root = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.exists(os.path.join(root,"exported"):
+        os.makedirs(os.path.join(root,"exported")
+    
     # Create 
     for museum in args.keys():
         for status in args[museum]:
+        
             # Create a file named museum_stauscode.json
-            
-            root = os.path.dirname(os.path.abspath(__file__))
             name = museum+"_"+str(status)+".json"
             
             f = open(os.path.join(root,"exported",name),'w')
