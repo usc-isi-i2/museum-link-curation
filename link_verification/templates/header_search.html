@@ -20,7 +20,9 @@
                 if(option == ""){
                     option = "logout";
                 }
-                document.getElementById(option).className += "selected";
+                if(document.getElementById(option) != null){
+                    document.getElementById(option).className += "selected";
+                }
         }
     </script>
 

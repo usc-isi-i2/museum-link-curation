@@ -264,6 +264,10 @@ def getQuestionsForUID(uid,count):
         #print "Found uid's objectID ",userOid
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
+    if userTags == []:
+        print "User does not have any tags associated with their profile. \n"
+        return []
+    
     # Questions to be served...
     q = []
     
@@ -584,21 +588,24 @@ def submitAnswer(qid, answer, uid):
 # museum - array of museum tags to retrieve , # status - array of different status codes to be retrieved
 # Parameter format: {"museum tag":[status codes...],...}
 def dumpCurationResults(args):
+    # Create file handle
+    f = open(os.path.join(rootdir,"results.json"),'w')
+    out = {"count":0,"payload":[]}
     
-    root = os.path.dirname(os.path.abspath(__file__))
-    if not os.path.exists(os.path.join(root,"exported"):
-        os.makedirs(os.path.join(root,"exported")
-    
-    # Create 
-    for museum in args.keys():
-        for status in args[museum]:
+    for museum in args['data']['tags']:
+        statuses = []
         
-            # Create a file named museum_stauscode.json
-            name = museum+"_"+str(status)+".json"
-            
-            f = open(os.path.join(root,"exported",name),'w')
-            out = {"count":0,"payload":[]}
-            
+        if museum in args['data']['s3']:
+            statuses.append(statuscodes['Agreement'])
+        if museum in args['data']['s4']:
+            statuses.append(statuscodes['Disagreement'])
+        if museum in args['data']['s5']:
+            statuses.append(statuscodes['Non-conclusive'])
+        
+        # Find questions with museum as a tag and a particular status
+        print museum, statuses
+        for status in statuses:
+        
             tid = dbC[dname]["tag"].find_one({'tagname':museum})['_id']
             questions = dbC[dname]["question"].find({'status':status})
             
@@ -613,14 +620,14 @@ def dumpCurationResults(args):
                     out["payload"] = temp
                     out["count"] += 1
             
-            # Dump the output in json file
-            f.writelines(json.dumps(out,indent=4))
-            
-        
+    # Dump the output in json file
+    f.writelines(json.dumps(out,indent=4))
+
+def returnCurationResults():
     results = {"matched":[],"unmatched":[]}
     
     # Get all the questions that are concluded successful
-    questions = dbC[dname]["question"].find( {'$or': [{'status':3},{'status':4}]} )
+    questions = dbC[dname]["question"].find( {'$or': [{'status':statuscodes['Agreement']},{'status':statuscodes['Disagreement']},{'status':statuscodes['Non-conclusive']}] } )
     
     # Run loop over questions and populate uri(s) and yes/no votes
     for q in questions:
@@ -650,5 +657,5 @@ def dumpCurationResults(args):
             results["matched"].append(rs)
         else:
             results["unmatched"].append(rs)
-    
+            
     return results

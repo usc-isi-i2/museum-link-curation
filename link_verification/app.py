@@ -17,16 +17,6 @@ def index():
 
     return render_template('login_fb.html')
     #return render_template('login.html')
-
-@app.route('/download/<filename>.json', methods=['GET'])
-def download(filename):
-
-    filename = filename.split("_")
-    print filename
-    dumpCurationResults({filename[0]:[int(filename[1])]})
-    
-    root = os.path.dirname(os.path.abspath(__file__))
-    return send_from_directory(directory=os.path.join(root,"exported"), filename=filename[0]+"_"+filename[1]+".json" )
     
 def get_hexdigest(alg, salt, raw_password):
     if alg == 'md5':
@@ -91,7 +81,7 @@ def login():
         if user and verify_password(user.password, request.form['pw'].encode('utf-8')):
             user.authenticated = True
             login_user(user, remember=True)
-            return render_template('profile.html')
+            return render_template('profile.html',museums=museums,server=server[:-1])
         else:
             if not user:
                 rsp = "Incorrect user name. Please try again."
@@ -175,14 +165,6 @@ def cards():
     else:
         return redirect(url_for('index'))
 
-@app.route('/results')
-def show_results():
-    
-    if current_user.is_authenticated:
-        return render_template('results.html',data=dumpCurationResults({"ulan":[3,4,5]}))
-    else:
-        return redirect(url_for('index'))
-
 @app.route('/header')
 def header():
     if current_user.is_authenticated:
@@ -191,22 +173,22 @@ def header():
         return redirect(url_for('index'))
 
 @app.route('/spec')
+@app.route('/v1/spec')
 def show_specs():
     return render_template('spec.html',server=server[7:-1])
-        
-@app.route('/v1/spec')
-def show_specs_v1():
-    return render_template('spec.html')
 
 @app.route('/profile')
 def show_user_profile():
     if current_user.is_authenticated:
-        return render_template('profile.html')
+        return render_template('profile.html',museums=museums,server=server[:-1])
     return redirect('/login')
 
 @app.route('/user')
 def redirectUser():
-    return redirect(url_for("user"))
+    if current_user.is_authenticated:
+        return redirect(url_for("user"))
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/support')
 def support():
@@ -214,7 +196,10 @@ def support():
 
 @app.route('/stats')
 def redirectStats():
-    return redirect(url_for("stats"))
+    if current_user.is_authenticated:
+        return redirect(url_for("stats"))
+    else:
+        return redirect(url_for('index'))
     
 @app.route('/question')
 def redirectQuestion():
@@ -367,7 +352,40 @@ def logout():
     if current_user.is_authenticated:
         logout_user()
     return redirect(url_for('index'))
+
+# Handle RESTful API for getting data about results
+@app.route('/results', methods=['GET'])
+@app.route('/v1/results', methods=['GET'])
+def results():
+
+    if request.method == 'GET':
+        print "Input received: {} \n".format(request.args)
+        
+        if not current_user.is_authenticated:
+            #return {'status':"Couldn't authenticate user."}, 400
+            return redirect(url_for('index'))
+        
+        return render_template('results.html',server=server[:-1],museums=museums.keys(),data=returnCurationResults())
+
+@app.route('/download', methods=['GET','PUT'])
+@app.route('/v1/download', methods=['GET','PUT'])
+def downloadFile():
+
+    if request.method == 'PUT':
+        print "PUT Input received: {} \n".format(request.json)
+        
+        if not current_user.is_authenticated:
+            #return {'status':"Couldn't authenticate user."}, 400
+            return redirect(url_for('index'))
+        
+        # call dump results which should create dump results into json file and save as results.json
+        dumpCurationResults(request.json)
+        
+        return jsonify({})
     
+    elif request.method == 'GET':
+        return send_from_directory(directory=rootdir, filename="results.json")
+
 # Handle RESTful API for getting data about link verifications
 class dataMgr(Resource):
     
@@ -466,7 +484,7 @@ api.add_resource(dataMgr, '/v1/stats',endpoint='stats')
 api.add_resource(userMgr, '/v1/user',endpoint='user')
 api.add_resource(questMgr, '/v1/question',endpoint='question')
 api.add_resource(ansMgr, '/v1/answer',endpoint='answer')
-    
+
 def createQuestionsFromPairs(jsonData):
     bulkOutput = []
     for i in range(0,jsonData['count']):
@@ -553,7 +571,6 @@ if __name__ == '__main__':
     
     # Start the app
     if devmode: 
-        #app.run(threaded=True,debug=True)
-        app.run(debug=True)
+        app.run(threaded=True,debug=True)
     else:
         app.run(threaded=True,debug=False)

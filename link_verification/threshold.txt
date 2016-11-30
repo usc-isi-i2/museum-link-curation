@@ -1,6 +1,6 @@
 autry 2 3
 dbpedia 2 3
-npg 2 3
-saam 1 1
+npg 1 1
+saam 2 3
 ulan 2 3
 viaf 2 3

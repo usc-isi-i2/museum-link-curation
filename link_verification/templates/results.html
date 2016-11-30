@@ -18,21 +18,111 @@
     <script>
     $(document).ready(function(){ 
         $('#rstable').DataTable();
+        /*
+        $('#download').click(function(){
+            var sv = '{{server}}'.concat("/v1/download")
+                    $.ajax({
+                        type: "GET",
+                        url: sv,
+                        success: function(data){
+                            console.log("Download complete!");
+                        }
+                    });
+        });*/
+        
+        
+        $("#download").click(function(){
+            var tag_list = [];
+            tag_list.push($('input[name="museums"]:checked').map(
+                function () {return this.value;}).get());
+            var status3 = [];
+            status3.push($('input[name="status3"]:checked').map(
+                function () {return this.value;}).get());
+            var status4 = [];
+            status4.push($('input[name="status4"]:checked').map(
+                function () {return this.value;}).get());
+            var status5 = [];
+            status5.push($('input[name="status5"]:checked').map(
+                function () {return this.value;}).get());
+            
+            var userObj = new Object();
+            userObj.data = {"tags":tag_list[0],"s3":status3[0],"s4":status4[0],"s5":status5[0]};
+            json_data = JSON.stringify(userObj);
+            console.log(json_data);
+
+            var sv = '{{server}}'.concat("/v1/download");
+                $.ajax({
+                    method: 'PUT',
+                    url: sv,
+                    data: json_data,
+                    contentType: 'application/json',
+                    success: function(data){
+                        console.log("File Created!");
+                    }
+                })
+                .done( function( data ) {
+                    var sv = '{{server}}'.concat("/v1/download")
+                    $.ajax({
+                        type: "GET",
+                        url: sv,
+                        success: function(data){
+                            console.log("Download complete!");
+                        }
+                    });
+                });
+                
+        });
     });
     </script>
-    <style>
-    .fill { 
-        min-height: 100%;
-        height: 100%;
-    }
-    </style>
 </head>
-
 <body>
-<div class="filter-section">
-    <div id = "header">{% include 'header_search.html' %}</div>
-</div>
-    <br><br><br>
+  <div id = "header">{% include 'header_search.html' %}</div>
+  
+  <div class="container" style="margin-top:10px;>
+    <div class="table table-responsive">
+        <table class="table table-hover">
+        <col width="10">
+        <col width="100">
+        <col width="20">
+        <col width="20">
+        <col width="20">
+        <tr>
+            <th> </td> 
+            <th> Museum </th>
+            <th> Agreement </th>
+            <th> Disagreement </th>
+            <th> Non conclusive </th>
+        </tr>
+        {% for tag in museums %}
+        <tr>
+            <td></td>
+            <td>
+                <input id={{tag}} type="checkbox" name="museums" value={{tag}} />
+                <label for={{tag}}>{{tag}}</label>
+            </td>
+            <td>
+                <input id=status3 type="checkbox" name="status3" value={{tag}} />
+                <label for=status3></label>
+            </td>
+            <td>
+                <input id=status4 type="checkbox" name="status4" value={{tag}} />
+                <label for=status4></label>
+            </td>
+            <td>
+                <input id=status5 type="checkbox" name="status5" value={{tag}} />
+                <label for=status5></label>
+            </td>
+        </tr>
+        {% endfor %}
+        </table>
+        <form name ="download_data">
+            <button id = "download" type="submit" class="btn btn-primary btn-lg" style = "float: right; margin-right: 50%; margin-top: 1%; margin-bottom: 2%">download</button>
+        </form>
+    </div>
+  </div>
+   
+    <div style = "width:100%; height:100vh;">
+    
   <div class="container">
     <div class="table table-responsive">
             <table id="rstable" class="table table-hover">
@@ -73,6 +163,7 @@
             </table>
       </div>
   </div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+
 </body>
 </html>
