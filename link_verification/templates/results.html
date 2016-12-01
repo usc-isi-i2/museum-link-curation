@@ -51,7 +51,7 @@
             json_data = JSON.stringify(userObj);
             console.log(json_data);
 
-            var sv = '{{server}}'.concat("/v1/download");
+            var sv = '{{server}}'.concat("/v1/results");
                 $.ajax({
                     method: 'PUT',
                     url: sv,
@@ -59,19 +59,9 @@
                     contentType: 'application/json',
                     success: function(data){
                         console.log("File Created!");
+                        window.location.href = "/download";
                     }
-                })
-                .done( function( data ) {
-                    var sv = '{{server}}'.concat("/v1/download")
-                    $.ajax({
-                        type: "GET",
-                        url: sv,
-                        success: function(data){
-                            console.log("Download complete!");
-                        }
-                    });
                 });
-                
         });
     });
     </script>

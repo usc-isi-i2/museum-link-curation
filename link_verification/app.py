@@ -353,8 +353,8 @@ def logout():
     return redirect(url_for('index'))
 
 # Handle RESTful API for getting data about results
-@app.route('/results', methods=['GET'])
-@app.route('/v1/results', methods=['GET'])
+@app.route('/results', methods=['GET','PUT'])
+@app.route('/v1/results', methods=['GET','PUT'])
 def results():
 
     if request.method == 'GET':
@@ -365,12 +365,8 @@ def results():
             return redirect(url_for('index'))
         
         return render_template('results.html',server=server[:-1],museums=museums.keys(),data=returnCurationResults())
-
-@app.route('/download', methods=['GET','PUT'])
-@app.route('/v1/download', methods=['GET','PUT'])
-def downloadFile():
-
-    if request.method == 'PUT':
+        
+    elif request.method == 'PUT':
         print "PUT Input received: {} \n".format(request.json)
         
         if not current_user.is_authenticated:
@@ -381,9 +377,17 @@ def downloadFile():
         dumpCurationResults(request.json)
         
         return jsonify({})
+
+@app.route('/download', methods=['GET'])
+@app.route('/v1/download', methods=['GET'])
+def downloadFile():
+
+    if not current_user.is_authenticated:
+        #return {'status':"Couldn't authenticate user."}, 400
+        return redirect(url_for('index'))
     
-    elif request.method == 'GET':
-        return send_from_directory(directory=rootdir, filename="results.json")
+    if request.method == 'GET':
+        return send_from_directory(directory=rootdir, filename="results.json",as_attachment=True)
 
 # Handle RESTful API for getting data about link verifications
 class dataMgr(Resource):
