@@ -1,0 +1,14 @@
+{
+    "production": {
+        "facebook": {
+            "secret": "0afb04701e956a3cf74ac876560e7041", 
+            "id": "621200901380211"
+        }
+    }, 
+    "dev": {
+        "facebook": {
+            "secret": "56bba85a0bef4cae8d07537701bbfe1f", 
+            "id": "622058264638304"
+        }
+    }
+}

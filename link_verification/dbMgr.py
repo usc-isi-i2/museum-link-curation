@@ -358,6 +358,7 @@ def preProcess(value):
     return value
 
 def retrieveProperties(uri):
+
     tag = findTag(uri)
     props = open('properties.txt','r')
     sparql = False
@@ -379,20 +380,22 @@ def retrieveProperties(uri):
                 query = query.replace('???',uri)
                 query = query[:-1]
 
-                sparql = SPARQLWrapper(endpoint)
-                sparql.setQuery(query)
-                sparql.setReturnFormat(JSON)
-                #print endpoint
-                #print query
-                
-                rs = sparql.query().convert()
-                #pprint(rs)
-                
+                rs = None
+                try:
+                    sparql = SPARQLWrapper(endpoint)
+                    sparql.setQuery(query)
+                    sparql.setReturnFormat(JSON)
+                    rs = sparql.query()
+                    rs = rs.convert()
+                except:
+                    print "Error getting data from sparql endpoint ", endpoint
+                    
                 # if property found,
-                #if rs['results']['bindings'] != [] and rs['results']['bindings'][0] != {}:
-                if rs['results']['bindings'][0] != {}:
+                if rs and rs['results']['bindings'][0] != {}:
                     d = rs['results']['bindings'][0]
                     results[d.keys()[0]] = d[d.keys()[0]]['value']
+                    #print "Getting %s value " % d.keys()[0]
+                    #pprint (results[d.keys()[0]])
                 
                 # Break now as particular database has been read
                 break
@@ -409,21 +412,23 @@ def retrieveProperties(uri):
                     # send sub query
                     query = query.replace('???',uri)
                     query = query[:-1]
-
-                    sparql = SPARQLWrapper(endpoint)
-                    sparql.setQuery(query)
-                    sparql.setReturnFormat(JSON)
-                    #print endpoint
-                    #print query
                     
-                    rs = sparql.query().convert()
-                    #pprint (rs)
+                    rs = None
+                    try:
+                        sparql = SPARQLWrapper(endpoint)
+                        sparql.setQuery(query)
+                        sparql.setReturnFormat(JSON)
+                        rs = sparql.query()
+                        rs = rs.convert()
+                    except:
+                        print "Error getting data from sparql endpoint ", endpoint
                     
                     # if property found,
-                    #if rs['results']['bindings'] != [] and rs['results']['bindings'][0] != {}:
-                    if rs['results']['bindings'][0] != {}:
+                    if rs and rs['results']['bindings'][0] != {}:
                         d = rs['results']['bindings'][0]
                         results[d.keys()[0]] = d[d.keys()[0]]['value']
+                        #print "Getting %s value " % d.keys()[0]
+                        #pprint (results[d.keys()[0]])
                     
                     # Reset the query string
                     query = ""

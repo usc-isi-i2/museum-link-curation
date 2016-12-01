@@ -258,8 +258,7 @@ class userMgr(Resource):
         
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
         
-        return redirect(url_for('index'))
-        #return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"]}
     
     # Return user profile information
     def get(self):

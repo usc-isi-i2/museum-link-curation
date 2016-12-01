@@ -2,6 +2,7 @@ from rauth import OAuth1Service, OAuth2Service
 from flask import current_app, url_for, request, redirect, session
 from pprint import pprint
 from config import *
+from requests import ConnectionError
 
 class OAuthSignIn(object):
     providers = None
