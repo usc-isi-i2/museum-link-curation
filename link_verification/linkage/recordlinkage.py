@@ -117,8 +117,14 @@ class recordLinkage:
 
 def main():
     # Create record linkage instance with base database as ulan.json
+    
+    import time
+    start_time = time.time()
+
     rl = recordLinkage('ulan')
     rl.findPotentialMatches()
+    
+    print("--- %s seconds ---" % (time.time() - start_time))
         
 if __name__ == "__main__":
     main()

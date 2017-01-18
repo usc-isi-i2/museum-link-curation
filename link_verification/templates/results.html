@@ -18,18 +18,6 @@
     <script>
     $(document).ready(function(){ 
         $('#rstable').DataTable();
-        /*
-        $('#download').click(function(){
-            var sv = '{{server}}'.concat("/v1/download")
-                    $.ajax({
-                        type: "GET",
-                        url: sv,
-                        success: function(data){
-                            console.log("Download complete!");
-                        }
-                    });
-        });*/
-        
         
         $("#download").click(function(e){
             e.preventDefault()
@@ -80,9 +68,9 @@
         <tr>
             <th> </td> 
             <th> Museum </th>
-            <th> Agreement </th>
-            <th> Disagreement </th>
-            <th> Non conclusive </th>
+            <th> Match </th>
+            <th> Unmatch </th>
+            <th> Not sure </th>
         </tr>
         {% for tag in museums %}
         <tr>
@@ -126,8 +114,8 @@
                 <tr>
                     <th>URI1</th>
                     <th>URI2</th>
-                    <th>Agreed</th>
-                    <th>Disagreed</th>
+                    <th>Match</th>
+                    <th>Unmatch</th>
                     <th>Not sure</th>
                </tr>
             </thead>

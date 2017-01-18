@@ -6,11 +6,11 @@
 tag::autry http://data.americanartcollaborative.org/sparql
 tag::dbpedia http://data.americanartcollaborative.org/sparql
 tag::npg http://data.americanartcollaborative.org/sparql
-property::uri
-SELECT ?uri
+property::URI
+SELECT ?URI
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
     }
 property::name
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
@@ -20,8 +20,8 @@ SELECT ?name
     { 
         GRAPH <http://data.americanartcollaborative.org/npg>
         {
-            BIND(<???> AS ?uri)
-            ?uri crm:P131_is_identified_by ?o1.
+            BIND(<???> AS ?URI)
+            ?URI crm:P131_is_identified_by ?o1.
             ?o1 rdfs:label ?name.
         }
     }
@@ -33,8 +33,8 @@ SELECT ?byear
     { 
         GRAPH <http://data.americanartcollaborative.org/npg>
         {
-            BIND(<???> AS ?uri)
-            ?uri crm:P98i_was_born ?o1.
+            BIND(<???> AS ?URI)
+            ?URI crm:P98i_was_born ?o1.
             ?o1 crm:P4_has_time-span ?o2.
             ?o2 crm:P82_at_some_time_within ?byear.
         }
@@ -47,9 +47,9 @@ SELECT ?dyear
     { 
         GRAPH <http://data.americanartcollaborative.org/npg>
         {
-            BIND(<???> AS ?uri)
+            BIND(<???> AS ?URI)
             OPTIONAL{
-                ?uri crm:P100i_died_in ?o1.
+                ?URI crm:P100i_died_in ?o1.
                 ?o1 crm:P4_has_time-span ?o2.
                 ?o2 crm:P82_at_some_time_within ?dyear.
             }
@@ -57,18 +57,18 @@ SELECT ?dyear
     }
 tag::saam http://data.americanartcollaborative.org/sparql
 tag::ulan http://vocab.getty.edu/sparql
-property::uri
-SELECT ?uri
+property::URI
+SELECT ?URI
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
     }
 property::name
 SELECT ?name
     WHERE 
     { 
-        BIND(<???> AS ?uri)
-        ?uri gvp:broaderPreferred ulan:500000002;
+        BIND(<???> AS ?URI)
+        ?URI gvp:broaderPreferred ulan:500000002;
             xl:prefLabel ?o1.
         ?o1 gvp:term ?name.
     }
@@ -76,8 +76,8 @@ property::byear
 SELECT ?byear
     WHERE 
     { 
-        BIND(<???> AS ?uri)
-        ?uri gvp:broaderPreferred ulan:500000002;
+        BIND(<???> AS ?URI)
+        ?URI gvp:broaderPreferred ulan:500000002;
             foaf:focus ?o1.
         ?o1 gvp:biographyPreferred ?o2.
         ?o2 gvp:estStart ?byear.
@@ -86,9 +86,9 @@ property::dyear
 SELECT ?dyear
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
         OPTIONAL {
-            ?uri gvp:broaderPreferred ulan:500000002;
+            ?URI gvp:broaderPreferred ulan:500000002;
                 foaf:focus ?o1.
             ?o1 gvp:biographyPreferred ?o2.
             ?o2 gvp:estEnd ?dyear.
@@ -98,9 +98,9 @@ property::gender
 SELECT ?gender
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
         OPTIONAL {
-            ?uri gvp:broaderPreferred ulan:500000002;
+            ?URI gvp:broaderPreferred ulan:500000002;
                 foaf:focus ?o1.
             ?o1 gvp:biographyPreferred ?o2.
             ?o2 schema:gender ?o3.
@@ -112,9 +112,9 @@ property::bplace
 SELECT ?bplace
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
         OPTIONAL {
-            ?uri gvp:broaderPreferred ulan:500000002;
+            ?URI gvp:broaderPreferred ulan:500000002;
                 foaf:focus ?o1.
             ?o1 gvp:biographyPreferred ?o2.
             ?o2 schema:birthPlace ?o3.
@@ -127,9 +127,9 @@ property::dplace
 SELECT ?dplace
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
         OPTIONAL {
-            ?uri gvp:broaderPreferred ulan:500000002;
+            ?URI gvp:broaderPreferred ulan:500000002;
                 foaf:focus ?o1.
             ?o1 gvp:biographyPreferred ?o2.
             ?o2 schema:deathPlace ?o3.
@@ -142,9 +142,9 @@ property::nationality
 SELECT ?nationality
     WHERE 
     { 
-        BIND(<???> AS ?uri)
+        BIND(<???> AS ?URI)
         OPTIONAL {
-            ?uri gvp:broaderPreferred ulan:500000002;
+            ?URI gvp:broaderPreferred ulan:500000002;
                 foaf:focus ?o1.
             ?o1 gvp:nationalityPreferred ?o2.
             ?o2 gvp:prefLabelGVP ?o3.
