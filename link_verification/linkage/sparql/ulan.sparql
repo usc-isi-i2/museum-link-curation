@@ -2,7 +2,7 @@ select ?uri ?name ?byear
     WHERE
     {
          ?uri gvp:broaderPreferred ulan:500000002;
-              xl:prefLabel ?o1;
+              gvp:prefLabelGVP ?o1;
               foaf:focus ?o2.
          ?o1 gvp:term ?name.
          ?o2 gvp:biographyPreferred ?o3.

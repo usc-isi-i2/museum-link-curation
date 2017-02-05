@@ -57,16 +57,17 @@
                 else {
                     for (var index in names) {
                         tr += "<tr>"
-                        tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
                         
                         if (names[index] == "URI") {
-                             tr += "<td colspan='3' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
+                            tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
+                            tr += "<td colspan='3' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
                         }
                         else if (names[index] == "Name") {
-                                var name_header = document.getElementById("name_header" + divid);
-                                name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td  colspan = '5' class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
+                            var name_header = document.getElementById("name_header" + divid);
+                            name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td  colspan = '5' class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
                         }
                         else {
+                            tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
                             tr += "<td colspan='3' class = 'center_align cell_align'>" + values[index] + "</td>";
                         }
                         tr += "</tr>";
@@ -86,9 +87,8 @@
                 }
                 for(var index in names) {
                     tr += "<tr>";
-                    tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
-
                     if (names[index] == "URI") {
+                        tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
                         tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
                         tr += "<td></td>"
                         tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
@@ -98,6 +98,7 @@
                         name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td colspan = '2' style='text-align:center'>" + lValues[index] + "</td><td></td><td  colspan = '2' style='text-align:center'>" + rValues[index] + "</td></tr></table>"
                     }
                     else {
+                        tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
                         if (lValues[index] == null)
                             tr += "<td class='right_align cell_align'>" + "-" + "</td>";
                         else
