@@ -7,7 +7,7 @@ from pymongo import MongoClient, ReturnDocument, ASCENDING, DESCENDING
 from unidecode import unidecode
 import os, json
 
-devmode = True
+devmode = False
 
 if devmode:
     server = "http://localhost:5000/"

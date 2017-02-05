@@ -133,8 +133,6 @@ def populateQuestions():
     datasets = [d[:d.index('.')] for d in os.listdir(basedir)]
     
     for dataset in datasets:
-        if dataset != "acm":
-            continue
             
         f = dataset+'.json'
         f = os.path.join(rootdir,'linkage','questions',f)
