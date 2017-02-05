@@ -1,0 +1,10 @@
+select ?uri ?name ?byear 
+    WHERE
+    {
+         ?uri gvp:broaderPreferred ulan:500000002;
+              xl:prefLabel ?o1;
+              foaf:focus ?o2.
+         ?o1 gvp:term ?name.
+         ?o2 gvp:biographyPreferred ?o3.
+         ?o3 gvp:estStart ?byear.
+    }

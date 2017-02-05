@@ -44,28 +44,31 @@ def append_default_dict(x):
 # Every museum is dictionary is defined by tag name as key and value is array containing:
 # Format: <URI identifier>, <ranking for ordering - alphabetical>, <confedenceLevel yes/no - default 2>, <confedenceLevel not sure default 2>, 
     #   <matched>, <unmatched>, <total questions>
-museums = {#"aaa":append_default_dict({"uri":"//","ranking":1,"name":"Archives of American Art"}),
-           #"aac":append_default_dict({"uri":"//","ranking":2,"name","Asian Arts Council"}),
-           #"aat":append_default_dict({"uri":"//","ranking":3,"name":"The Getty - Art and Architecture Thesaurus Online"}),
-           #"acm":append_default_dict({"uri":"//","ranking":4,"name":"Amon Carter Museum of American Art"}),
-           "autry":append_default_dict({"uri":"theautry.org","ranking":5,"name":"Autry Museum of the American West"}),
-           #"cbm":append_default_dict({"uri":"//","ranking":6,"name":"Crystal Bridges Museum"}),
-           #"ccma":append_default_dict({"uri":"//","ranking":7,"name":"Colby College Museum of Art"}),
-           "dbpedia":append_default_dict({"uri":"/dbpedia.org/","ranking":8,"name":"Structured information from Wikipedia"}),
-           #"dma":append_default_dict({"uri":"//","ranking":9,"name":"Dallas Museum of Art"}),
-           #"gm":append_default_dict({"uri":"//","ranking":10,"name":"Gilcrease Museum"}),
-           #"ima":append_default_dict({"uri":"//","ranking":11,"name":"Indianapolis Museum of Art"}),
+museums = {#"aaa":append_default_dict({"uri":"/aaa/","ranking":1,"name":"Archives of American Art"}),
+           #"aac":append_default_dict({"uri":"/aac/","ranking":2,"name","Asian Arts Council"}),
+           #"aat":append_default_dict({"uri":"/aat/","ranking":3,"name":"The Getty - Art and Architecture Thesaurus Online"}),
+           "acm":append_default_dict({"uri":"/acm/","ranking":4,"name":"Amon Carter Museum of American Art"}),
+           "autry":append_default_dict({"uri":"/autry/","ranking":5,"name":"Autry Museum of the American West"}),
+           "cbm":append_default_dict({"uri":"data.crystalbridges.org/","ranking":6,"name":"Crystal Bridges Museum"}),
+           "ccma":append_default_dict({"uri":"/ccma/","ranking":7,"name":"Colby College Museum of Art"}),
+           #"dbpedia":append_default_dict({"uri":"/dbpedia.org/","ranking":8,"name":"Structured information from Wikipedia"}),
+           "dma":append_default_dict({"uri":"/dma/","ranking":9,"name":"Dallas Museum of Art"}),
+           "gm":append_default_dict({"uri":"/GM/","ranking":10,"name":"Gilcrease Museum"}),
+           "ima":append_default_dict({"uri":"/ima/","ranking":11,"name":"Indianapolis Museum of Art"}),
            "npg":append_default_dict({"uri":"/npg/","ranking":12,"name":"National Portrait Gallery"}),
-           #"nmwa":append_default_dict({"uri":"//","ranking":13,"name":"National Museum of Wildlife Art"}),
-           #"puam":append_default_dict({"uri":"//","ranking":14,"name":"Princeton University Art Museum"}),
+           "nmwa":append_default_dict({"uri":"/nmwa/","ranking":13,"name":"National Museum of Wildlife Art"}),
+           "puam":append_default_dict({"uri":"/puam/","ranking":14,"name":"Princeton University Art Museum"}),
            "saam":append_default_dict({"uri":"/saam/","ranking":15,"name":"Smithsonian American Art Museum"}),
            "ulan":append_default_dict({"uri":"/ulan/","ranking":16,"name":"The Getty Research Institute - Union List of Artist Names"}),
-           "viaf":append_default_dict({"uri":"/viaf/","ranking":17,"name":"The Virtual International Authority File"}),
-           #"wam":append_default_dict({"uri":"//","ranking":18,"name":"The Walters Art Museum"}),
-           #"ycba":append_default_dict({"uri":"//","ranking":19,"name":"Yale Center for British Art"}),
+           #"viaf":append_default_dict({"uri":"/viaf/","ranking":17,"name":"The Virtual International Authority File"}),
+           "wam":append_default_dict({"uri":"data.thewalters.org/","ranking":18,"name":"The Walters Art Museum"}),
+           #"ycba":append_default_dict({"uri":"/ycba/","ranking":19,"name":"Yale Center for British Art"}),
            }
 
 statuscodes = {"NotStarted":1,"InProgress":2,"Agreement":3,"Disagreement":4,"Non-conclusive":5}
+
+field_desc = {'uri':"URI", 'name': 'Name', 'byear': 'Birth Date', 'bplace': 'Birth Place', 
+    'dyear':'Death Date', 'dplace': 'Death Place', 'gender': 'Gender', 'nationality': 'Nationality'}
 
 rootdir = os.path.dirname(os.path.abspath(__file__))
 

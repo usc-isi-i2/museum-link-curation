@@ -106,13 +106,7 @@ def populateCurators():
     ce = {"uid":"nilayvac@usc.edu",
           "name":"Nilay Chheda",
           "tags":[dbC[dname]["tag"].find_one({'tagname':"ulan"})['_id'],
-                  dbC[dname]["tag"].find_one({'tagname':"saam"})['_id'] ],
-          "rating":5}
-    dbC[dname]["curator"].insert_one(ce)
-    ce = {"uid":"ksureka@usc.edu",
-          "name":"Karishma Sureka",
-          "tags":[dbC[dname]["tag"].find_one({'tagname':"ulan"})['_id'],
-                  dbC[dname]["tag"].find_one({'tagname':"saam"})['_id'] ],
+                  dbC[dname]["tag"].find_one({'tagname':"acm"})['_id'] ],
           "rating":5}
     dbC[dname]["curator"].insert_one(ce)
 
@@ -130,61 +124,68 @@ def addCurator(ce):
     #uri1, for now, just a URI related to a specific artist
     #uri2, for now, just another URI related to same specific artist
     #decision, list of object IDs from Answer
-    #linkage , dict, data coming from linkage tool 
+    #similarity , dict, meta data about similarity algorithm and its output from record linkage
     
 # Populate default set of questions
 def populateQuestions():
-    if devmode:
-        populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
-    else:
-        #populateQuestionsFromJSON(os.path.join('data', 'questions','dbpedia.json'))
-        populateQuestionsFromJSON(os.path.join('data', 'questions','npg.json'))
-        #populateQuestionsFromJSON(os.path.join('data', 'questions','saam.json'))
-        #populateQuestionsFromJSON(os.path.join('data', 'questions','autry.json'))
-        #populateQuestionsFromJSON(os.path.join('data', 'questions','npgmin.json'))
+
+    basedir = os.path.join("linkage", "questions")
+    datasets = [d[:d.index('.')] for d in os.listdir(basedir)]
+    
+    for dataset in datasets:
+        if dataset != "acm":
+            continue
+            
+        f = dataset+'.json'
+        f = os.path.join(rootdir,'linkage','questions',f)
+        populateQuestionsFromJSON(f)
     
     dbC[dname]["question"].create_index([("uri1", ASCENDING)])
     dbC[dname]["question"].create_index([("uri2", ASCENDING)])
     dbC[dname]["question"].create_index([("tags", ASCENDING)])
     dbC[dname]["question"].create_index([("status", ASCENDING)])
     dbC[dname]["question"].create_index([("decision", ASCENDING)])
-    dbC[dname]["question"].create_index([("linkage", ASCENDING)])
+    dbC[dname]["question"].create_index([("similarity", ASCENDING)])
     dbC[dname]["question"].create_index([("lastSeen",DESCENDING)])
     #printDatabase("question")
 
 # Populate default set of questions from json file
-def populateQuestionsFromJSON(filename):
-    json_data=open(filename).read()
-    data = json.loads(json_data)
-    count = data["count"]
-    data = data["payload"]
+def populateQuestionsFromJSON(f):
     
-    for i in range(0,count):
+    # Load questions
+    questions = open(f)
+    
+    # Load all the questions into MongoDb
+    count = 0
+    for q in questions:
+        
+        # Convert string into json object
+        q = json.loads(q)
         
         # Find tags
-        tag0 = findTag(data[i]["uri1"])
-        tag1 = findTag(data[i]["uri2"])
+        tag0 = findTag(q["uri1"])
+        tag1 = findTag(q["uri2"])
         
         # Build document
         qe = {"status":statuscodes["NotStarted"],
-          "uniqueURI":generateUniqueURI(data[i]["uri1"],data[i]["uri2"]),
-          "lastSeen": datetime.datetime.utcnow(),
-          "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],
-                  dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
-           "uri1":data[i]["uri1"],
-           "uri2":data[i]["uri2"],
-           "decision": [], #Should be updated in submit answer
-           "linkage": data[i]["linkage"]
+              "uniqueURI":generateUniqueURI(q["uri1"],q["uri2"]),
+              "lastSeen": datetime.datetime.utcnow(),
+              "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
+              "uri1":q["uri1"],
+              "uri2":q["uri2"],
+              "decision": [], # Should be updated in submit answer
+              "similarity": q["similarity"]
         }
          
         # Add Document
         dbC[dname]["question"].insert_one(qe)
+        count += 1
         
         # Update Statistics
         museums[tag0]['totalQ'] += 1
         museums[tag1]['totalQ'] += 1
      
-    print ("Populated {} questions from {}.".format(count,filename))
+    print ("Populated {} questions from {}.".format(count,f))
     #printDatabase("question")
     
 #Find tag from the uri
@@ -222,7 +223,7 @@ def generateUniqueURI(uri1,uri2):
     else:
         return uri2+uri1
         
-def addOrUpdateQuestion(uri1,uri2,linkage):
+def addOrUpdateQuestion(uri1,uri2,similarity):
     uuri = generateUniqueURI(uri1,uri2)
     q = dbC[dname]["question"].find_one({'uniqueURI':uuri})
     
@@ -233,7 +234,7 @@ def addOrUpdateQuestion(uri1,uri2,linkage):
             return None
         else:
             return q["decision"]
-    # Create new question and add linkage information as well
+    # Create new question
     else:
         qe = {"status":1,
               "uniqueURI":uuri,
@@ -243,7 +244,7 @@ def addOrUpdateQuestion(uri1,uri2,linkage):
                "uri1":uri1,
                "uri2":uri2,
                "decision": [], #Should be updated in submit answer
-               "linkage ": linkage 
+               "similarity ": similarity 
              }
         status = dbC[dname]["question"].insert_one(qe).acknowledged
         
@@ -359,117 +360,57 @@ def preProcess(value):
 
 def retrieveProperties(uri):
 
-    tag = findTag(uri)
-    props = open('properties.txt','r')
-    sparql = False
-    subsparql = False
-    query = ""
-    endpoint = ""
-    results = {}
-    for line in props:
-        # ignore comments
-        if line.startswith('#') or line == "\n":
-            continue
-        
-        elif line.startswith('tag::'):
-        
-            # check if sparql query was already parsed
-            if sparql:
-                
-                # Send last sub query
-                query = query.replace('???',uri)
-                query = query[:-1]
+    if '/ulan/' in uri: 
+        f = open('ulan.sparql','r')
+        sparql = SPARQLWrapper('http://vocab.getty.edu/sparql')
+    else:
+        f = open('aac.sparql','r')
+        sparql = SPARQLWrapper('http://data.americanartcollaborative.org/sparql')
+    
+    sparql.setQuery(f.read().replace('???',uri))
+    sparql.setReturnFormat(JSON)
+    
+    rs = sparql.query().convert()
+    rs = rs['results']['bindings'][0]
+    
+    data = {}
+    for key in rs.keys():
+        data[key] = rs[key]['value']
 
-                rs = None
-                try:
-                    sparql = SPARQLWrapper(endpoint)
-                    sparql.setQuery(query)
-                    sparql.setReturnFormat(JSON)
-                    rs = sparql.query()
-                    rs = rs.convert()
-                except:
-                    print "Error getting data from sparql endpoint ", endpoint
-                    
-                # if property found,
-                if rs and rs['results']['bindings'][0] != {}:
-                    d = rs['results']['bindings'][0]
-                    results[d.keys()[0]] = d[d.keys()[0]]['value']
-                    #print "Getting %s value " % d.keys()[0]
-                    #pprint (results[d.keys()[0]])
-                
-                # Break now as particular database has been read
-                break
-        
-            # If tag matches, enable sparql query parsing flag
-            proptag = line[5:line.index(' ')]
-            if proptag == tag:
-                sparql = True
-                endpoint = line[line.index(' ')+1:-1]
-        
-        elif line.startswith('property::'):
-            if sparql:
-                if subsparql:
-                    # send sub query
-                    query = query.replace('???',uri)
-                    query = query[:-1]
-                    
-                    rs = None
-                    try:
-                        sparql = SPARQLWrapper(endpoint)
-                        sparql.setQuery(query)
-                        sparql.setReturnFormat(JSON)
-                        rs = sparql.query()
-                        rs = rs.convert()
-                    except:
-                        print "Error getting data from sparql endpoint ", endpoint
-                    
-                    # if property found,
-                    if rs and rs['results']['bindings'][0] != {}:
-                        d = rs['results']['bindings'][0]
-                        results[d.keys()[0]] = d[d.keys()[0]]['value']
-                        #print "Getting %s value " % d.keys()[0]
-                        #pprint (results[d.keys()[0]])
-                    
-                    # Reset the query string
-                    query = ""
-                else:
-                    subsparql = True
-        else:
-            if subsparql:
-                query = query+line
-
-    #pprint(results)
-
-    return results
+    f.close()
+    return data
     
 def getMatches(left,right):
     # output format
     exactMatch = {"name":[],"value":[]}
     
-    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]]}
+    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]], "leftT":findTag(left["uri"]), "rightT":findTag(right["uri"])}
     
     for field in right.keys():
+        # URI are not going to match 
         if field == 'uri':
             continue
         if field in left.keys() and field in right.keys():
+            
             # Basic Pre processing to help matching obvious values
             lVal = preProcess(left[field])
             rVal = preProcess(right[field])
+            
             if lVal == rVal:
-                exactMatch["name"] = exactMatch["name"]+[field]
-                exactMatch["value"] = exactMatch["value"]+[lVal]
+                exactMatch["name"].append(field_desc[field])
+                exactMatch["value"].append(lVal)
             else:
-                unmatched["name"] = unmatched["name"]+[field]
-                unmatched["lValue"] = unmatched["lValue"]+[left[field]]
-                unmatched["rValue"] = unmatched["rValue"]+[right[field]]
+                unmatched["name"].append(field_desc[field])
+                unmatched["lValue"].append(left[field])
+                unmatched["rValue"].append(right[field])
         elif field in left:
-            unmatched["name"] = unmatched["name"]+[field]
-            unmatched["lValue"] = unmatched["lValue"]+[left[field]]
-            unmatched["rValue"] = unmatched["rValue"]+[None]
+            unmatched["name"].append(field_desc[field])
+            unmatched["lValue"].append(left[field])
+            unmatched["rValue"].append(None)
         elif field in right:
-            unmatched["name"] = unmatched["name"]+[field]
-            unmatched["lValue"] = unmatched["lValue"]+[None]
-            unmatched["rValue"] = unmatched["rValue"]+[right[field]]
+            unmatched["name"].append(field_desc[field])
+            unmatched["lValue"].append(None)
+            unmatched["rValue"].append(right[field])
     
     return {"ExactMatch":exactMatch,"Unmatched":unmatched}
 
@@ -617,7 +558,7 @@ def dumpCurationResults(args):
             for q in questions:
                 a = {}
                 if tid in q['tags']:
-                    a["linkage"] = q["linkage"]
+                    a["similarity"] = q["similarity"]
                     a["uri1"] = q["uri1"]
                     a["uri2"] = q["uri2"]
                     temp = out["payload"]

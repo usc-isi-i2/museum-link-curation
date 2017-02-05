@@ -537,16 +537,10 @@ def getQuestionsForUser(count,stats):
 def populateQuestionsWithFields(questions, stats):
     
     output = []
-    for question in questions:
-    
-        # Based on uri ordering, get properties 
-        if checkURIOrdering(question['uri1'],question['uri2']):
-            left = retrieveProperties(question['uri1'])
-            right = retrieveProperties(question['uri2'])
-        else:
-            left = retrieveProperties(question['uri2'])
-            right = retrieveProperties(question['uri1'])
-        
+    for question in questions:       
+        left = retrieveProperties(question['uri1'])
+        right = retrieveProperties(question['uri2'])
+
         #print "\nLeft\n  "
         #pprint(left)
         #print "\nRight\n "
