@@ -1,8 +1,0 @@
-flask-backend/
-__pycache__/
-server/
-data/viaf.zip
-db.sqlite
-pyenv2
-exported
-key.json
