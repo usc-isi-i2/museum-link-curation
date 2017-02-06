@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Link Verification</title>
+
+	<link rel="stylesheet" type='text/css' href="../static/css/assets/demo.css">
+	<link rel="stylesheet" type='text/css' href="../static/css/assets/header-search.css">
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Cookie' >
+    
+</head>
+
+<body>
+
+<header class="header-search">
+
+	<div class="header-limiter" >
+
+		<h1><a class="header-font" href="#">Link Verification<span>      Information Integration Group        </span></a></h1>
+		<nav style="float:right; ">
+            <a href="/about" title="What is this tool about" id = "about">About</span></a>
+            {% if current_user.is_authenticated %}
+                <a href="/curation" title="Curate the data" id = "curation">Curate</a>
+            {% else %}
+                <a href="/curation" title="Log in the system" id = "curation">Login</a>
+            {% endif %}
+			<a href="/profile" title="Update and view your profile" id = "profile">Profile</a>
+            <a href="/results" title="Find already curated results" id = "results">Curated</a>
+            <a href="/export" title="Export already curated results" id = "export">Export</a>
+            {% if current_user.is_authenticated %}
+                <a href="{{ url_for('logout') }}" title="Log out of the system" id = "logout">Logout</a>
+            {% endif %}
+		</nav>
+	</div>
+
+</header>
+</body>
+</html>

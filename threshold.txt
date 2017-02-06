@@ -1,6 +1,20 @@
-autry 2 3
-dbpedia 2 3
-npg 1 1
+# Format: <museumm tag> <Confidence Value for Yes and No> <Confidence value for Not Sure>
+#aaa 2 3
+aac 2 3
+#aat 2 3
+acm 2 3
+autry 1 1
+cbm 2 3
+ccma 2 3
+#dbpedia 2 3
+dma 2 3
+gm 2 3
+ima 2 3
+npg 2 3
+nmwa 2 3
+puam 2 3
 saam 2 3
 ulan 2 3
-viaf 2 3
+#viaf 2 3
+wam 2 3
+#ycba 2 3

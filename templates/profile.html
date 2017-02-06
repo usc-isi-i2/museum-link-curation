@@ -55,25 +55,23 @@
         });
 
     </script>
-    <div style = "width:100%; height:100vh;">
-    <div id = "header"> {% include 'header_search.html' %}</div>
+    <div id = "header"> {% include 'header.html' %}</div>
 
     <br/>
     <center>
     <label style = 'white-space: pre;'>Please select all the museums that you would like to curate data for - </label>
     </center> 
-    <br/><br/>
-    <div class="container">
-        <div style="width: 100em; float: left;">
-            {% for tag in museums.keys() %}
-            <input id={{tag}} type="checkbox" name="museums" value={{tag}} />
-                <label for={{tag}}> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
-            {% endfor %}
-            <form name ="profile_tag_select">
-                <button id = "save" type="submit" class="btn btn-primary btn-lg" style = "float: right; margin-right: 50%; margin-top: 10%">Save Changes</button>
-            </form>
-        </div>
+    <br/><br/><br/>
+    <div class="container" style="margin-left:70vh;margin-bottom:25vh">
+        {% for tag in museums.keys() %}
+        <input id={{tag}} type="checkbox" name="museums" value={{tag}} />
+            <label for={{tag}}> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
+        {% endfor %}
+        <br/>
+        <form name ="profile_tag_select">
+            <button id = "save" type="submit" class="btn btn-primary btn-lg" style="margin-left:10vh">Save Changes</button>
+        </form>
     </div>
-    </div>
+    <div id = "footer">{% include 'footer.html' %}</div>
 </body>
 </html>

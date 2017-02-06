@@ -87,6 +87,8 @@ def populateTags():
 def updateConfig():
     file = open("threshold.txt",'r')
     for line in file.readlines():
+        if '#' in line:
+            continue
         inp = line.strip().lower().split(" ")
         if inp[0] in museums:
             museums[inp[0]]['confidenceYesNo'] = int(inp[1])
@@ -182,6 +184,9 @@ def populateQuestionsFromJSON(f):
         # Update Statistics
         museums[tag0]['totalQ'] += 1
         museums[tag1]['totalQ'] += 1
+        
+        if devmode and count == 100:
+            break
      
     print ("Populated {} questions from {}.".format(count,f))
     #printDatabase("question")

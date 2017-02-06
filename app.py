@@ -146,58 +146,10 @@ def register():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-@app.route('/curation')
-@app.route('/v1/curation')
-def show_curation():
-    if current_user.is_authenticated:
-        return render_template('curation.html')        
-    else:
-        return redirect(url_for('index'))
-
-@app.route('/cards')
-def cards():
-    if current_user.is_authenticated:
-        return render_template('cards.html')
-    else:
-        return redirect(url_for('index'))
-
-@app.route('/header')
-def header():
-    if current_user.is_authenticated:
-        return render_template('header_search.html')
-    else:
-        return redirect(url_for('index'))
-
-@app.route('/spec')
-@app.route('/v1/spec')
-def show_specs():
-    return render_template('spec.html',server=server[7:-1])
-
-@app.route('/profile')
-def show_user_profile():
-    if current_user.is_authenticated:
-        return render_template('profile.html',museums=museums,server=server[:-1])
-    return redirect('/login')
-
 @app.route('/user')
 def redirectUser():
     if current_user.is_authenticated:
         return redirect(url_for("user"))
-    else:
-        return redirect(url_for('index'))
-
-@app.route('/support')
-def support():
-    return render_template('support.html')
-
-@app.route('/stats')
-def redirectStats():
-    if current_user.is_authenticated:
-        return redirect(url_for("stats"))
     else:
         return redirect(url_for('index'))
     
@@ -351,26 +303,21 @@ def logout():
     if current_user.is_authenticated:
         logout_user()
     return redirect(url_for('index'))
-
-# Handle RESTful API for getting data about results
-@app.route('/results', methods=['GET','PUT'])
-@app.route('/v1/results', methods=['GET','PUT'])
-def results():
+    
+# Handle RESTful API for exporting curation results
+@app.route('/export', methods=['GET','PUT'])
+def export():
 
     if request.method == 'GET':
-        print "Input received: {} \n".format(request.args)
-        
         if not current_user.is_authenticated:
-            #return {'status':"Couldn't authenticate user."}, 400
             return redirect(url_for('index'))
         
-        return render_template('results.html',server=server[:-1],museums=museums.keys(),data=returnCurationResults())
+        return render_template('export.html',museums=museums.keys())
         
     elif request.method == 'PUT':
         print "PUT Input received: {} \n".format(request.json)
         
         if not current_user.is_authenticated:
-            #return {'status':"Couldn't authenticate user."}, 400
             return redirect(url_for('index'))
         
         # call dump results which should create dump results into json file and save as results.json
@@ -383,7 +330,6 @@ def results():
 def downloadFile():
 
     if not current_user.is_authenticated:
-        #return {'status':"Couldn't authenticate user."}, 400
         return redirect(url_for('index'))
     
     if request.method == 'GET':

@@ -3,7 +3,7 @@ __pycache__/
 server/
 data/viaf.zip
 db.sqlite
-pyenv2
+pyenv
 exported
 key.json
 emails.txt
