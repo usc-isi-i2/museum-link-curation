@@ -6,27 +6,26 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from config import *
 
 # dbC and dname are mongoDb based database for entities and their curation data
-def db_init():
+def db_init(resetU, resetD):
 
-    if devmode:
-        usrdb.drop_all()
-        usrdb.create_all()
-
-        cleanDatabases()
-        createDatabase()
-        cleanDatabase("answer")
-    else:
-        if dbC[dname]["tag"].find_one() == None:
-            usrdb.drop_all()
-            usrdb.create_all()
-
+    if resetD:
+    
+        # Backup
+        export = {"data":{"s3":museums.keys(), "s4":museums.keys(), "s5":museums.keys(), "tags":museums.keys() }}
+        dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
+    
+        if resetU:
             cleanDatabases()
             createDatabase()
-            cleanDatabase("answer")
-            print "Initialized databases\n"
-    
+            usrdb.drop_all()
+            usrdb.create_all()
+        else:
+            cleanDatabase('question')
+            cleanDatabase('answer')
+            createDatabase()
+
     updateConfig()
-    pprint(museums)
+    #pprint(museums)
     #printDatabases()
     
 # Print the database just to check current data
@@ -57,8 +56,8 @@ def printDatabase(docname):
 # Clean particular Document from a Collection
 def cleanDatabase(docname):
     print "\nDropping collection (aka database)",docname
-    for val in dbC[dname][docname].find():
-        print "\nDropping: ",val
+    #for val in dbC[dname][docname].find():
+        #print "\nDropping: ",val
     dbC[dname][docname].delete_many({})
     dbC[dname][docname].drop()            
     print "\n"
@@ -536,9 +535,13 @@ def submitAnswer(qid, answer, uid):
 
 # museum - array of museum tags to retrieve , # status - array of different status codes to be retrieved
 # Parameter format: {"museum tag":[status codes...],...}
-def dumpCurationResults(args):
-    # Create file handle
-    f = open(os.path.join(rootdir,"results.json"),'w')
+def dumpCurationResults(args,filepath):
+
+    if filepath:
+        f = open(filepath,'w')
+    else:
+        f = open(os.path.join(rootdir,"results.json"),'w')
+    
     out = {"count":0,"payload":[]}
     
     for museum in args['data']['tags']:
@@ -571,6 +574,8 @@ def dumpCurationResults(args):
             
     # Dump the output in json file
     f.writelines(json.dumps(out,indent=4))
+    
+    print "Data dumped in file ", f.name
 
 def returnCurationResults():
     results = {"matched":[],"unmatched":[]}
