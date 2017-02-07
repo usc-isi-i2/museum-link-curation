@@ -25,17 +25,32 @@ Recall = TP / (TP + FN)
 
 from SPARQLWrapper import SPARQLWrapper, JSON
 import json, sys
+import museum_graph_api_config as config
 SPARQL_ENDPOINT = "http://data.americanartcollaborative.org/sparql"
 
-def calculate_relevance(ipfile):
+def calculate_relevance(ipfile, museum):
 	parent_uri_set = set()
 	success_uri = set()
 	ignored_uri = set()
-	failure_uri = set()
+	failure_uri = {}
 	total_uri_set = set()
 	sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 	sparql.setReturnFormat(JSON)
+	museum_dict = {'GM': config.GM, 'IMA': config.IMA}
 	query = ''
+
+	#Cacluate total URI matches for the MUSUEM
+	count_query = ''
+	with open('count_uri_matches.sparql', 'r') as query_file:
+		# get_ulan_uri.sparql has sparql query , need to replace PARENT_URI with actual URI
+		count_query = query_file.read()
+	museum_uri = museum_dict[museum]
+	count_query = count_query.replace('MUSUEM_URI', museum_uri)
+	sparql.setQuery(count_query)
+	output = sparql.query().convert()
+	total_match_count = float(output['results']['bindings'][0]['.1']['value'])
+
+
 	with open('get_ulan_uri.sparql', 'r') as query_file:
 		# get_ulan_uri.sparql has sparql query , need to replace PARENT_URI with actual URI
 		query = query_file.read()
@@ -53,7 +68,7 @@ def calculate_relevance(ipfile):
 			squery = query.replace('PARENT_URI', parent_uri)
 			sparql.setQuery(squery)
 			output = sparql.query().convert()
-			print(parent_uri, output)
+			#print(parent_uri, output)
 			if len(output['results']['bindings']) > 0:
 				total_uri_set.add(parent_uri)
 				bindings = set()
@@ -62,18 +77,22 @@ def calculate_relevance(ipfile):
 
 				if ulan_uri in bindings:
 					success_uri.add(parent_uri)
-				else:
-					failure_uri.add(parent_uri)
 			else:
 				ignored_uri.add(parent_uri)
 	precision = 0
+	recall = 0
 	if len(total_uri_set) > 0:
 		precision = float(len(success_uri)) / (len(total_uri_set))
+		recall = float(len(success_uri)) / total_match_count
 	#print(len(success_uri), len(failure_uri), len(total_uri_set))
-	result = {'precision': precision}
+	#failure_uri = total_uri_set - success_uri
+	failures = list(total_uri_set - success_uri)
+
+
+	result = {'precision': precision, 'recall': recall,'false_positive_results': failures}
 	print(json.dumps(result))
 
 if __name__ == '__main__':
 	#print(len(sys.argv))
 	#assert(len(sys.argv) != 3), "Expects a json file as argument"
-	calculate_relevance(sys.argv[1])
+	calculate_relevance(sys.argv[1], sys.argv[2])
