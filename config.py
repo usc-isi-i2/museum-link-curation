@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient, ReturnDocument, ASCENDING, DESCENDING
 from unidecode import unidecode
-import os, json
+import os, json, sys, getopt
 
 devmode = False
 

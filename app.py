@@ -321,7 +321,7 @@ def export():
             return redirect(url_for('index'))
         
         # call dump results which should create dump results into json file and save as results.json
-        dumpCurationResults(request.json)
+        dumpCurationResults(request.json,None)
         
         return jsonify({})
 
@@ -474,7 +474,7 @@ def getQuestionsForUser(count,stats):
     questions = getQuestionsForUID(uid, count)
     
     # Get matching and non matching fields based on config file and sparql queries
-    if questions != None:
+    if questions != None and questions != []:
         return populateQuestionsWithFields(questions, stats)
     else:
         return {'status':"Couldn't retrieve questions mostly because user not found."}, 400
@@ -509,11 +509,38 @@ def populateQuestionsWithFields(questions, stats):
         
 if __name__ == '__main__':
     
+    # Read command line options
+    try:
+        opts, args = getopt.getopt(sys.argv[1:],"r:u:",["resetDataset=","resetUsers="])
+    except getopt.GetoptError:
+        print 'Invalid options/arguments supplied'
+        print '  Usage: python app.py -r <True/False> -u <True/False>'
+        sys.exit(2)
+    
+    if (len(opts) == 0 and len(sys.argv) > 1) or len(args) > 0:
+        print 'Invalid options/arguments supplied'
+        print '  Usage: python app.py -r <True/False> -u <True/False>'
+        sys.exit(2)
+        
+    # Process command line options
+    resetD = False
+    resetU = False
+    for opt, arg in opts:
+        print opt, arg
+        if opt in ("-r", "--resetDataset"):
+            if arg.lower() == 'true':
+                resetD = True
+        elif opt in ("-u", "--resetUsers"):
+            if arg.lower() == 'true':
+                resetU = True
+        else:
+            print 'Invalid options/arguments supplied'
+            print '  Usage: python app.py -r <True/False> -u <True/False>'
+            sys.exit(2)
+    
+    
     # Initialize mongo db
-    db_init()
+    db_init(resetU, resetD)
     
     # Start the app
-    if devmode: 
-        app.run(threaded=True,debug=True)
-    else:
-        app.run(threaded=True,debug=False)
+    app.run()
