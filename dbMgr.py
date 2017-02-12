@@ -314,14 +314,14 @@ def getQuestionsForUID(uid,count):
 
         #Filter-2: Filter set of questions based on matching tags
         for question in q2:
-        
+            
             tagPresent = False
             for tag in userTags:
                 if tag in question["tags"]:
                     tagPresent = True
                     break
             
-            # Question is inProgress, not answered by this user and matches the tag -> save it.
+            # Question is NotStarted, not answered by this user and matches the tag -> save it.
             if tagPresent:
                 q = q + [question]
             
