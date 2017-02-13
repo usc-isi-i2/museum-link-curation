@@ -146,17 +146,6 @@ def register():
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/user')
-def redirectUser():
-    if current_user.is_authenticated:
-        return redirect(url_for("user"))
-    else:
-        return redirect(url_for('index'))
-    
-@app.route('/question')
-def redirectQuestion():
-    return redirect(url_for("question"))
-
 @app.route('/answer/<option>')
 def redirectAnswer(option):
     return redirect(url_for("answer")) + option
@@ -305,16 +294,9 @@ def logout():
     return redirect(url_for('index'))
     
 # Handle RESTful API for exporting curation results
-@app.route('/export', methods=['GET','PUT'])
+@app.route('/export', methods=['PUT'])
 def export():
-
-    if request.method == 'GET':
-        if not current_user.is_authenticated:
-            return redirect(url_for('index'))
-        
-        return render_template('export.html',museums=museums.keys())
-        
-    elif request.method == 'PUT':
+    if request.method == 'PUT':
         print "PUT Input received: {} \n".format(request.json)
         
         if not current_user.is_authenticated:
@@ -326,7 +308,6 @@ def export():
         return jsonify({})
 
 @app.route('/download', methods=['GET'])
-@app.route('/v1/download', methods=['GET'])
 def downloadFile():
 
     if not current_user.is_authenticated:
@@ -365,16 +346,13 @@ class questMgr(Resource):
     
     # Retrieve set of questions and send it as a response
     def get(self):
-        #print "Input received: {} \n".format(request.get_json())    
-        #print "Input received: {} \n".format(request.json)
-        #print "Input received: {} \n".format(request.data)
         print "Input received: {} \n".format(request.args)
         
         if not current_user.is_authenticated:
             return {'status':"Couldn't authenticate user."}, 400
 
         if request.args.get('count') == None:
-            count = 10
+            count = 1
         else:
             count = int(request.args.get('count'))
         
@@ -394,7 +372,10 @@ class questMgr(Resource):
 class ansMgr(Resource):
     
     def put(self):
+        print "Input received: {} \n".format(request.get_json())    
         print "Input received: {} \n".format(request.json)
+        print "Input received: {} \n".format(request.data)
+        print "Input received: {} \n".format(request.args)
         
         if not current_user.is_authenticated:
             return {'status':"Couldn't authenticate user."}, 400
@@ -427,12 +408,6 @@ class ansMgr(Resource):
             return {'message':rsp["message"]},400
         else:
             return {'message':rsp["message"]}
-
-# Rest API endpoints (V1)
-api.add_resource(dataMgr, '/v1/stats',endpoint='stats')
-api.add_resource(userMgr, '/v1/user',endpoint='user')
-api.add_resource(questMgr, '/v1/question',endpoint='question')
-api.add_resource(ansMgr, '/v1/answer',endpoint='answer')
 
 def createQuestionsFromPairs(jsonData):
     bulkOutput = []
@@ -496,12 +471,11 @@ def populateQuestionsWithFields(questions, stats):
         #print "\nmatches :\n"
         #pprint(matches)
         
-        t = getTags(question)
         if stats == True:
             s = getStats(question)
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t,"stats":s}]
+            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
         else:
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"tags":t}]
+            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
         
         #print output
     return output
@@ -526,7 +500,7 @@ if __name__ == '__main__':
     resetD = False
     resetU = False
     for opt, arg in opts:
-        print opt, arg
+        #print opt, arg
         if opt in ("-r", "--resetDataset"):
             if arg.lower() == 'true':
                 resetD = True
@@ -542,5 +516,10 @@ if __name__ == '__main__':
     # Initialize mongo db
     db_init(resetU, resetD)
     
+    api.add_resource(dataMgr, '/stats',endpoint='stats')
+    api.add_resource(userMgr, '/user',endpoint='user')
+    api.add_resource(questMgr, '/question',endpoint='question')
+    api.add_resource(ansMgr, '/answer',endpoint='answer')
+    
     # Start the app
-    app.run()
+    app.run(threaded=True,debug=False) 

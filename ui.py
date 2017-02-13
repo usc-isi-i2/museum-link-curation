@@ -6,20 +6,19 @@ def default():
     return render_template('login.html')
     
 @app.route('/curation')
-@app.route('/v1/curation')
 def show_curation():
     if current_user.is_authenticated:
-        return render_template('curation.html')        
+        return render_template('curation.html')
     else:
         return redirect(url_for('index'))
 
-@app.route('/header')
-def header():
+@app.route('/datatable')
+def datatable():
     if current_user.is_authenticated:
-        return render_template('header_search.html')
+        return render_template('datatable.html',server=server[:-1],keys=sorted(museums.keys()),data=returnCurationResults())
     else:
         return redirect(url_for('index'))
-    
+        
 @app.route('/cards')
 def cards():
     if current_user.is_authenticated:
@@ -28,27 +27,21 @@ def cards():
         return redirect(url_for('index'))
         
 @app.route('/spec')
-@app.route('/v1/spec')
 def show_specs():
     return render_template('spec.html',server=server[7:-1])
 
 @app.route('/profile')
 def show_user_profile():
     if current_user.is_authenticated:
-        return render_template('profile.html',museums=museums,server=server[:-1])
+        keys = [t for t in sorted(museums.keys()) if t != "ulan" ]
+        return render_template('profile.html',keys=keys,museums=museums,server=server[:-1])
     return redirect('/login')
-        
-@app.route('/stats')
-def redirectStats():
-    if current_user.is_authenticated:
-        return redirect(url_for("stats"))
-    else:
-        return redirect(url_for('index'))
-        
+                
 @app.route('/results')
 def show_results_page():
     if current_user.is_authenticated:
-        return render_template('results.html',server=server[:-1],museums=museums.keys(),data=returnCurationResults())
+        keys = [t.upper() for t in sorted(museums.keys())]
+        return render_template('results.html',keys=keys,server=server[:-1])
     return redirect('/login')
         
 @app.route('/about')

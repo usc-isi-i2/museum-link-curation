@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js "></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/dataTables.material.min.js"></script>
+  
+        <!-- CSS  -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="https://cdn.datatables.net/1.10.13/css/dataTables.material.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   
+        <script>
+        $(document).ready(function() {
+            $('#rstable').DataTable({
+                "lengthMenu": [[10, 25, 50], [10, 25, 50]]
+        });
+        });
+        </script>
+        <style>
+            th {
+                text-align:center !important;
+            }
+            th, td{
+                font-size: 110%;
+            }
+        </style>
+    </head>
+    <body>
+        <table width="100%" class="mdl-data-table" id="rstable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>URI1</th>
+                    <th>URI2</th>
+                    <th>Match</th>
+                    <th>Unmatch</th>
+                    <th>Not sure</th>
+               </tr>
+            </thead>
+            <tbody>
+            {% for match in data['matched'] %}
+            <tr>
+                <td style="text-align:left;"><a href={{match['uri1']}}> {{match['uri1']}} </td>
+                <td style="text-align:center;"><a href={{match['uri2']}}> {{match['uri2']}} </td>
+                <td style="text-align:center;">{{ match['Yes']}}</td>
+                <td style="text-align:center;">{{ match['No']}}</td>
+                <td style="text-align:center;">{{ match['notSure']}}</td>
+            </tr>
+            {% endfor %}
+            {% for match in data['unmatched'] %}
+            <tr>
+                <td style="text-align:left;"><a href={{match['uri1']}}> {{match['uri1']}} </td>
+                <td style="text-align:center;"><a href={{match['uri2']}}> {{match['uri2']}} </td>
+                <td style="text-align:center;">{{ match['Yes']}}</td>
+                <td style="text-align:center;">{{ match['No']}}</td>
+                <td style="text-align:center;">{{ match['notSure']}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

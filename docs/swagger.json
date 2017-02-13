@@ -9,7 +9,7 @@
     "schemes": [
         "http"
     ],
-    "basePath": "/v1",
+    "basePath": "/",
     "produces": [
         "application/json"
     ],
@@ -17,7 +17,7 @@
         "/user": {
             "put": {
                 "summary": "Update user profile",
-                "description": "Update user profile details like name of the user, tags and rating. At least one sub-paraneter is required. User needs to be logged in to access this API\n\nExamples:\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Nilay Chheda\",\"rating\":5,\"tags\":[\"saam\",\"ulan\"]}'\n- curl -X PUT http://localhost:5000/v1/user -H \"Content-Type: application/json\" -d '{\"name\":\"Karishma Sureka\",\"rating\":5,\"tags\":[\"dbpedia\",\"npg\"]}' \n",
+                "description": "Update user profile details like name of the user, tags and rating. At least one sub-paraneter is required. User needs to be logged in to access this API\n\nExamples:\n- curl -X PUT http://localhost:5000/user -H \"Content-Type: application/json\" -d '{\"name\":\"Nilay Chheda\",\"rating\":5,\"tags\":[\"saam\",\"ulan\"]}'\n- curl -X PUT http://localhost:5000/user -H \"Content-Type: application/json\" -d '{\"name\":\"Karishma Sureka\",\"rating\":5,\"tags\":[\"dbpedia\",\"npg\"]}' \n",
                 "parameters": [
                     {
                         "name": "payload",
@@ -52,7 +52,7 @@
             },
             "get": {
                 "summary": "Returns user profile information",
-                "description": "This API retrieves and returns user profile information like username, tags, rating and name of the user. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/v1/user\n",
+                "description": "This API retrieves and returns user profile information like username, tags, rating and name of the user. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/user\n",
                 "tags": [
                     "User"
                 ],
@@ -78,7 +78,7 @@
         "/question": {
             "get": {
                 "summary": "Retrieve relevant questions from database",
-                "description": "This API retrieves and returns question(s) relevant to user based on user history and parameters. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/v1/question?stats=True&count=20\n- curl -X GET http://localhost:5000/v1/question?stats=True\n- curl -X GET http://localhost:5000/v1/question?stats=count=20\n",
+                "description": "This API retrieves and returns question(s) relevant to user based on user history and parameters. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/question?stats=True&count=20\n- curl -X GET http://localhost:5000/question?stats=True\n- curl -X GET http://localhost:5000/question?stats=count=20\n",
                 "parameters": [
                     {
                         "name": "stats",
@@ -119,7 +119,7 @@
             },
             "post": {
                 "summary": "Create new question(s) in the database",
-                "description": "This API is used by external software entity like dedupe to create new questions and post it to the database.\n\nExamples:\n- curl -X POST http://localhost:5000/v1/question -H \"Content-Type: application/json\" -d '{\"count\":1,\"payload\": [{\"uri1\":\"http://vocab.getty.edu/ulan/50001234\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/1234\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.45\"}}] }'\n- curl -X POST http://localhost:5000/v1/question -H \"Content-Type: application/json\" -d '{\"count\":2,\"payload\":[{\"uri1\":\"http://vocab.getty.edu/ulan/50002345\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/2345\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.45\"}},{\"uri1\":\"http://vocab.getty.edu/ulan/50003456\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/3456\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.85\"}}]}'\n",
+                "description": "This API is used by external software entity like dedupe to create new questions and post it to the database.\n\nExamples:\n- curl -X POST http://localhost:5000/question -H \"Content-Type: application/json\" -d '{\"count\":1,\"payload\": [{\"uri1\":\"http://vocab.getty.edu/ulan/50001234\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/1234\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.45\"}}] }'\n- curl -X POST http://localhost:5000/question -H \"Content-Type: application/json\" -d '{\"count\":2,\"payload\":[{\"uri1\":\"http://vocab.getty.edu/ulan/50002345\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/2345\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.45\"}},{\"uri1\":\"http://vocab.getty.edu/ulan/50003456\",\"uri2\":\"http://edan.si.edu/saam/id/person-institution/3456\",\"dedupe\":{\"ver\":\"1.0\",\"revision\":\"4\",\"score\":\"0.85\"}}]}'\n",
                 "parameters": [
                     {
                         "name": "payload",
@@ -156,7 +156,7 @@
         "/answer": {
             "put": {
                 "summary": "Submit an answer",
-                "description": "Submit human curated answer for a question. Only comment field is optional. User needs to be logged in to access this API.\n\nExamples:\n- curl -X PUT http://localhost:5000/v1/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88477\",\"value\":\"1\",\"comment\":\"Yes left and right entities match.\"}'\n- curl -X PUT http://localhost:5000/v1/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88476\",value\":\"2\",\"comment\":\"No left and right entities do not match\"}' \n- curl -X PUT http://localhost:5000/v1/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88475\",\"value\":\"3\",\"comment\":\"I am not sure if left and right entities match\"}'\n",
+                "description": "Submit human curated answer for a question. Only comment field is optional. User needs to be logged in to access this API.\n\nExamples:\n- curl -X PUT http://localhost:5000/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88477\",\"value\":\"1\",\"comment\":\"Yes left and right entities match.\"}'\n- curl -X PUT http://localhost:5000/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88476\",value\":\"2\",\"comment\":\"No left and right entities do not match\"}' \n- curl -X PUT http://localhost:5000/answer -H \"Content-Type: application/json\" -d '{\"qid\":\"570eec1df6bf2d1e58a88475\",\"value\":\"3\",\"comment\":\"I am not sure if left and right entities match\"}'\n",
                 "parameters": [
                     {
                         "name": "payload",
@@ -190,7 +190,7 @@
         "/stats": {
             "get": {
                 "summary": "Returns statistics about linked records",
-                "description": "This API retrieves and returns matched, unmatched and total pairs of question for every tag. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/v1/stats\n",
+                "description": "This API retrieves and returns matched, unmatched and total pairs of question for every tag. User needs to be logged in to access this API.\n\nExamples: \n- curl -X GET http://localhost:5000/stats\n",
                 "tags": [
                     "Stats"
                 ],

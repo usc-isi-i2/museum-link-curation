@@ -1,181 +1,243 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Link Verification - Dashboard</title>
-        <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon'/>
-        <link rel="stylesheet" type="text/css" href="static/css/cards.css">
-        <link rel="stylesheet" type="text/css" href="static/css/style.css">
-        <link href="static/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <link rel="shortcut icon" type="image/x-icon" href="static/images/main.ico">
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
-        <style>
-            html, body, .filter-section, .cards{
-                margin: 0;
-
-                padding: 0;
-
-                min-width: 100%;
-                width: 100%;
-                max-width: 100%;
-
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
+    <title>Link Curation</title>
+    
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/init.js"></script>
+  
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
+    <style>
+        body{
+            background:url('static/images/background.jpg') center center no-repeat fixed;
+            background-size:cover; 
+            width:100%; 
+            height:100%;
+        }
+        td{
+            word-wrap: break-word;
+        }
+        #cardHeading th{
+            font-size: 14pt !important;
+        }
+        #cardHeading td{
+            font-size: 24pt !important;
+        }
+    </style>
+    
+    <script>
+        var qid = ''
+        
+        $(document).ready(function(){ 
+        
+            populateCards();
+        
+            $("#aY").click(function(e){
+                e.preventDefault(e);
+                console.log("Yes: Comment is "+document.getElementById("usercomment").value);
+                console.log("Question id - "+qid);
+                submitAnswer(1,qid,document.getElementById("usercomment").value);
+                
+                $('#usercomment').val('');
+                $('#usercomment').trigger('autoresize');
+                
+            });
+            $("#aN").on("click",function(){
+                console.log("No: Comment is "+document.getElementById("usercomment").value);
+                console.log("Question id - "+qid);
+                submitAnswer(2,qid,document.getElementById("usercomment").value);
+                
+                $('#usercomment').val('');
+                $('#usercomment').trigger('autoresize');
+            });
+            $("#aNS").on("click",function(){
+                console.log("NotSure: Comment is "+document.getElementById("usercomment").value);
+                console.log("Question id - "+qid);
+                submitAnswer(3,qid,document.getElementById("usercomment").value);
+                
+                $('#usercomment').val('');
+                $('#usercomment').trigger('autoresize');
+            });
+        });
+        
+        function populateCards(){
+           var sv = '{{server}}'.concat("/question?stats=true&count=1");
+            $.ajax({
+                type: "GET",
+                url: sv,
+                success: function(data){
+                    if (data.length > 0)
+                    {
+                        populateCard(data[0],0);
+                    }
+                    else
+                    {
+                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                        window.setTimeout(function() {
+                            window.location.href = '/profile';
+                        }, 2500);
+                    }
+                    /*
+                    for(i = 0; i < data.length; i++)
+                    {
+                        populateCard(data[i],i);
+                    }*/
+                },
+                error: function(xhr, status, error){
+                    //Materialize.toast(xhr["responseText"], 2000);
+                    Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                    window.setTimeout(function() {
+                        window.location.href = '/profile';
+                    }, 2500);
+                }
+            });
+        };
+        
+        function populateCard(data,divid) {
+            $.ajax({
+                method: "GET",
+                url: "/cards",
+                beforeSend: function(){
+                    $('.progress').show();
+                    console.log("loading...")
+                    populateHeadings(data.Unmatched);
+                    populateExactMatch(data.ExactMatch);
+                    populateNoMatch(data.Unmatched);
+                },  
+                success: function (card) {
+                    $('.progress').hide();
+                    console.log("loading...done")                    
+                    qid = data['qid']
+                },
+                complete: function () {
+                    //populateHeadings(data.Unmatched, divid);
+                    //populateExactMatch(data.ExactMatch, divid);
+                    //populateNoMatch(data.Unmatched, divid);
+                }
+            });
+        };
+        
+        function populateHeadings(data){
+            console.log(data)
+            var h = "";
+            h += "<tr class='deep-purple darken-2 white-text thin'><th style='text-align:center'>"+data.leftT+"</th><th style='text-align:center'>"+data.rightT+"</th></tr>";
+            $('#cardHeading').append(h);
+        };
+        
+        function populateExactMatch(data) {
+            console.log(data)
+            var tr = "";
+            var names = data.name;
+            var values = data.value;
+            
+            if(names.length == 0){
+                tr += "<tr><td colspan='3' style='text-align:center'>None of the records matched</td></tr>";
             }
-        </style>
-        <script type="text/javascript">
-               function closeCard(toClose){
-                    $(toClose).parent().parent().slideUp(800);
-                };
-
-               function closeCardFromAns(toClose){
-                    $(toClose).parent().parent().parent().parent().parent().slideUp(800);
-               }
-                var sv = '{{server}}'.concat("/v1/question?stats=true&count=10")
-                $.ajax({
-                    type: "GET",
-                    url: sv,
-                    success: function(data){
-                        for(i = 0; i < data.length; i++)
-                        {
-                            populateCard(data[i],i);
-                        }
-                    }
-                });
-            function populateHeadings(data, divid){
-                    var name_uri1 = data.leftT;
-                    var name_uri2 = data.rightT;
-                    var name_header = document.getElementById("name_header" + divid);
-                    name_header.innerHTML = "<table class = 'center-align cell_align'><tr><th></th><th colspan = '2' style='text-align:center'>" + name_uri1 + "</th><th></th><th colspan = '2' style='text-align:center'>" + name_uri2 + "</th></tr></table>"
-               }
-            function populateExactMatch(data, divid) {
-                var tr = "";
-                var names = data.name;
-                var values = data.value;
-
-                if(names.length == 0){
-                    tr += "<td></td><td colspan='5' class = 'center_align cell_align'>None of the records matched</td>";
-                }
-                else {
-                    for (var index in names) {
-                        tr += "<tr>"
-                        
-                        if (names[index] == "URI") {
-                            tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
-                            tr += "<td colspan='3' class = 'center_align cell_align'><a target='_blank' href='" + values[index] + "'>" + lValues[index] + "</a></td>";
-                        }
-                        else if (names[index] == "Name") {
-                            var name_header = document.getElementById("name_header" + divid);
-                            name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td  colspan = '5' class = 'center-align cell_align'>" + values[index] + "</td></tr></table>"
-                        }
-                        else {
-                            tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
-                            tr += "<td colspan='3' class = 'center_align cell_align'>" + values[index] + "</td>";
-                        }
-                        tr += "</tr>";
-                    }
-                }
-                document.getElementById("exactMatch" + divid).innerHTML = tr;
-            }
-
-            function populateNoMatch(data, divid) {
-                var names = data.name;
-                var lValues = data.lValue;
-                var rValues = data.rValue;
-
-                var tr = "";
-                if(names.length == 0){
-                    tr += "<td colspan='5' class = 'center_align cell_align'>None that do not match</td>";
-                }
-                for(var index in names) {
-                    tr += "<tr>";
-                    if (names[index] == "URI") {
-                        tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
-                        tr += "<td class='right_align cell_align'><a target='_blank' href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
-                        tr += "<td></td>"
-                        tr += "<td class='left_align cell_align'><a target='_blank' href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
-                    }
-                    else if (names[index] == "Name") {
-                        var name_header = document.getElementById("name_header" + divid);
-                        name_header.innerHTML += "<table class = 'center-align cell_align'><tr><td></td><td colspan = '2' style='text-align:center'>" + lValues[index] + "</td><td></td><td  colspan = '2' style='text-align:center'>" + rValues[index] + "</td></tr></table>"
+            else {
+                for (var index in names) {
+                    tr += "<tr>"
+                    
+                    // Special handling of Name
+                    if (names[index] == "Name") {
+                        var heading = document.getElementById("cardHeading");
+                        heading.innerHTML += "<tr class='deep-purple darken-4 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
                     }
                     else {
-                        tr += "<td class = 'right_align cell_align'>" + names[index] + "</td>";
-                        if (lValues[index] == null)
-                            tr += "<td class='right_align cell_align'>" + "-" + "</td>";
-                        else
-                            tr += "<td class='right_align cell_align'>" + lValues[index] + "</td>";
-
-                        tr += "<td></td>"
-
-                        if (rValues[index] == null)
-                            tr += "<td class='left_align cell_align>" + "-" + "</td>";
-                        else
-                            tr += "<td class='left_align cell_align'>" + rValues[index] + "</td>";
+                        tr += "<td style='text-align:right'>" + names[index] + "</td>";
+                        tr += "<td style='text-align:center' colspan='2'>" + values[index] + "</td>";
                     }
                     tr += "</tr>";
                 }
-                document.getElementById("noMatch" + divid).innerHTML = tr;
             }
-
-            function populateCard(data,divid) {
-                $.ajax({
-                    method: "GET",
-                    url: "/cards",
-                    success: function (card) {
-                        content = card;
-                        searchTxt = "<h2 id='name_header";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + divid + content.slice(pos + searchTxt.length);
-                        searchTxt = "<div id ='";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + divid + content.slice(pos + searchTxt.length);
-                        searchTxt = "<tbody class = 'exactMatch' id ='";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + "exactMatch" + divid + content.slice(pos + searchTxt.length);
-                        searchTxt = "<tbody class = 'noMatch' id ='";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + "noMatch" + divid + content.slice(pos + searchTxt.length);
-                        searchTxt = "'1','";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
-                        searchTxt = "'2','";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
-                        searchTxt = "'3','";
-                        pos = content.search(searchTxt);
-                        content = content.slice(0, pos + searchTxt.length) + data['qid'] + content.slice(pos + searchTxt.length);
-
-                        document.getElementById("cards").innerHTML += content;
-
-                    },
-                    complete: function () {
-                        populateHeadings(data.Unmatched, divid);
-                        populateExactMatch(data.ExactMatch, divid);
-                        populateNoMatch(data.Unmatched, divid);
+            $('#exactMatch').append(tr);
+        };
+        
+        function populateNoMatch(data) {
+            console.log(data)
+            var names = data.name;
+            var lValues = data.lValue;
+            var rValues = data.rValue;
+            
+            var tr = "";
+            if(names.length == 0){
+                tr += "<tr><td colspan='3' style='text-align:center'>None that do not match</td></tr>";
+            }
+            else
+            {            
+                for(var index in names) {
+                    tr += "<tr>";
+                    
+                    if (names[index] == "URI") {
+                        tr += "<td style='text-align:right;'>" + names[index] + "</td>";
+                        tr += "<td style='text-align:right;padding-right:15px;'><a href='" + lValues[index] + "'>" + lValues[index] + "</a></td>";
+                        tr += "<td style='text-align:left;padding-left:15px;'><a href='" + rValues[index] + "'>" + rValues[index] + "</a></td>";
+                    }                    
+                    else if (names[index] == "Name") {
+                        var heading = document.getElementById("cardHeading");
+                        heading.innerHTML += "<tr class='deep-purple darken-4 white-text'><td style='text-align:center'>"+lValues[index]+"</td><td style='text-align:center'>"+rValues[index]+"</td></tr>";
                     }
-                });
-            }
-            function submitAnswer(answerButton, value, qid){
-                console.log($(answerButton).parent().parent().parent().parent().parent().find('#comment_box').val())
-                var sv = '{{server}}'.concat("/v1/answer");
-                $.ajax({
-                    method: "PUT",
-                    url: sv,
-                    data: '{"qid":"' +  qid + '", "value":'+ parseInt(value)+', "comment":"User comments"}',
-                    contentType: 'application/json',
-                    success: function(data){
-                        console.log("Answer Successfully submitted");
+                    else {
+                        
+                        tr += "<td style='text-align:right'>" + names[index] + "</td>";
+                        
+                        if (lValues[index] == null)
+                            tr += "<td style='text-align:right;padding-right:15px;'>" + "-" + "</td>";
+                        else
+                            tr += "<td style='text-align:right;padding-right:15px;'>" + lValues[index] + "</td>";
+                        
+                        if (rValues[index] == null)
+                            tr += "<td style='text-align:left;padding-left:15px;;'>" + "-" + "</td>";
+                        else
+                            tr += "<td style='text-align:left;padding-left:15px;'>" + rValues[index] + "</td>";
                     }
-                });
+                    tr += "</tr>";
+                }
             }
+            $('#noMatch').append(tr);
+        };
+        
+        function submitAnswer(answer, qid, comment){
+            var sv = '{{server}}'.concat("/answer");
+            var payload = new Object();
+            payload.value = answer;
+            payload.qid = qid;
+            payload.comment = comment;
+            console.log("submitting "+JSON.stringify(payload))
+            
+            $.ajax({
+                method: "PUT",
+                url: sv,
+                data: JSON.stringify(payload),
+                contentType: 'application/json',
+                success: function(data){
+                    console.log("Answer Successfully submitted");
+                    window.location.href = "/curation";
+                }
+            });
+        };
        </script>
-
+    </script>
+    
 </head>
-    <body>
-        <div class="page" id="page">
-        <div class="filter-section">
-             <div id = "header">{% include 'header.html' %}</div>
-        </div>
-        <div class="cards" id = "cards"></div>
-        </div>
-    </body>
+
+<body>
+    <div>{% include 'header.html' %}</div>
+        
+    <br><br><br>    
+    <div class="container" style="height:100%">
+        <div>{% include 'cards.html' %}</div>
+    </div>
+    <br><br>
+    <div class="container" style="height:30vh"></div>
+    <div>{% include 'footer.html' %}</div>
+</body>
 </html>

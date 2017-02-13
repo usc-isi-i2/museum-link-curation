@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Link Verification - About</title>
-    <link rel='icon' href='/static/images/favicon.ico' type='image/x-icon'/>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
+    <title>Link Curation - About</title>
+    
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/init.js"></script>
+  
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
-<style>
-label{
-    display: block; 
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    font-size: 15px ;
-    text-align: left;
-}
-</style>
+
 <body>
-    <div id = "header">{% include 'header.html' %}</div>
-    
-    <div class="container" style="margin-top:4vh;margin-bottom:4.2vh">
-    <center>
-    <div class="modal-content" style="width:65%">
-    <h1 class="text-center">About</h1>
-        <label>
-            This is a web app developed to help curate linked data of different museums that are part of <a href=http://americanartcollaborative.org>"American Arts Collaborative"</a>. Following is a brief description:<br>
-            <h4><u>Curate</u></h4> Curate pairs of data from two different sources by selecting "YES", "NO" or "NOT SURE" along with writing optional comment about your response.
-            <h4><u>Profile</u></h4>Update your preferred museums and other supported options.
-            <h4><u>Curated</u></h4>Browse the already curated pairs of data.
-            <h4><u>Export</u></h4>Export the already curated pairs of data.
-            <h4><u>Logout</u></h4>Logout of this app. <br><br>
-            All the museum data has been sourced from <a href=https://github.com/american-art>American Art Github</a>, cleaned and converted to RDF with the help of <a href=http://usc-isi-i2.github.io/karma/>Karma</a> using cidoc-crm based reference data models at <a href=http://review.americanartcollaborative.org/>AAC Review</a>. RDF data is also available at Sparql endpoint <a href=http://data.americanartcollaborative.org/sparql>here</a>. Curation interface is populated with pairs of data which is generated using suitable record blocking and linking techniques. Code for this webapp is available on <a href=https://github.com/usc-isi-i2/museum-link-curation>Github</a>. You can contact us at <a href="mailto:nilayvac@usc.edu">nilayvac@usc.edu</a> for any issues, bugs, feedback or feature requests. 
-        </label>
-      </div>
-    
+
+    <div>{% include 'header.html' %}</div>
+  
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h1 class="header center black-text">About</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">This web app was developed to curate linked data of <a href=http://americanartcollaborative.org>"American Arts Collaborative"</a>.</h5>
+            </div>
+        </div>
     </div>
 
-    <div id = "footer">{% include 'footer.html' %}</div>
+    <div class="container">
+        <div class="section">
 
-    </body>
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center "><i class="material-icons">info_outline</i></h2>
+                        <h5 class="center">Curate</h5>
+                        <p class="light">Curate pairs of data from two different sources by selecting "YES", "NO" or "NOT SURE" button along with writing optional comment about your response. Pair will have matched and unmatched attributes put side by side for easier comparison.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center"><i class="material-icons">info_outline</i></h2>
+                        <h5 class="center">Profile</h5>
+                        <p class="light">Update your preferred museums, track your progress and configure other profile information. You can also see your curation statistics with respect to different museums and also compare it with total curation statistics. </p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center"><i class="material-icons">info_outline</i></h2>
+                        <h5 class="center">Results</h5>
+                        <p class="light">Browse, search and filter already curated data. You can also export already curated pairs of data in json format. You can select one or more museums and flags (Matched, Unmatched, Not Sure) and click export to download the json file. This is helpful to do further analysis on top of curated data.</p>
+                    </div>
+                </div>
+            </div>
+      
+            <br><br><br><br>
+      
+            <div class="row bold" > All of museum data has been sourced from <a href=https://github.com/american-art>American Art Github</a>, cleaned and converted to RDF with the help of <a href=http://usc-isi-i2.github.io/karma/>Karma</a> using <a href="http://www.cidoc-crm.org/">cidoc-crm</a> based reference data models at <a href=http://review.americanartcollaborative.org/>AAC Review</a>. RDF data is also available to be queried at Sparql endpoint <a href=http://data.americanartcollaborative.org/sparql>here</a>. Curation interface is populated with pairs of data which is generated using suitable record blocking and linking techniques. Code for this web app is available at <a href=https://github.com/usc-isi-i2/museum-link-curation>Github</a>. You can contact us at <a href="mailto:nilayvac@usc.edu">nilayvac@usc.edu</a> for any issues, bugs, feedback or feature requests.</div>
+
+        </div>  
+        <br><br>
+        <div class="container" style="height:30vh"></div>
+    </div>
+    <div>{% include 'footer.html' %}</div>
+</body>
 </html>
