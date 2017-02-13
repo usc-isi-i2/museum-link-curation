@@ -47,9 +47,16 @@
     });
     </script>
     
+    <style>
+        #body {
+            min-height: calc(100vh - 10px);
+        }
+    </style>
+    
 </head>
 <body>
     <div>{% include 'header.html' %}</div>
+    <div id="body">
     
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
@@ -87,6 +94,7 @@
                 <iframe class="header col s12 light" src="datatable" frameborder="0" height="1000px" ></iframe>
             </div>
         </div>
+    </div>
     </div>
     <div>{% include 'footer.html' %}</div>
 </body>

@@ -16,13 +16,18 @@
     <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    <link rel="stylesheet" type="text/css" href="static/css/cards.css">
+    <style>
+        #body{
+            min-height: calc(100vh - 10px);
+        }
+    </style>
 
 </head>
 
 <body>
     <div>{% include 'header.html' %}</div>
-    <center>
+    
+    <div id="body"><center>
     <br><br><br>
     <div class="container" style="width:20%"> 
         <div class="modal-header">
@@ -56,7 +61,7 @@
         </div>
     </div>
     </center>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
     <div>{% include 'footer.html' %}</div>
 </body>
 </html>

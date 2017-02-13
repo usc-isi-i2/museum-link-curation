@@ -16,11 +16,15 @@
     <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
+    <style>
+        #body{
+            min-height: calc(100vh - 10px);
+        }
+    </style>
 </head>
 <body>
     <div id="header">{% include 'header.html' %}</div>
-    <center>
-    <br><br><br>
+    <div id="body"><center>
     <div class="container" style="width:20%">
         
         <div class="modal-header">
@@ -43,7 +47,7 @@
             </form>
         </div>
         
-        <br><br><br><br><br><br>
+        <br><br><br>
         
         <div class="modal-body">
             <form class="form col-md-12 center-block" action="register" method="GET" >
@@ -53,10 +57,8 @@
         </div>
     
     </div>
-        
-</center>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<div id = "header">{% include 'footer.html' %}</div>
-    
+    </center>
+    </div>
+    <div id = "header">{% include 'footer.html' %}</div>
 </body>
 </html>

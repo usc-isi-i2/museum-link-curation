@@ -60,10 +60,17 @@
             
         });
     </script>
-
+    
+    <style>
+        #body {
+            min-height: calc(100vh - 10px);
+        }
+    </style>
+    
 </head>
 <body>
     <div> {% include 'header.html' %}
+    <div id="body">
     
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
@@ -75,39 +82,36 @@
     </div>
     
     <div class="container">
-      <div class="section">
+        <div class="section">
 
         <div class="row">
-          <div class="col s12 m2">
-            <div style="height:10%;width:10%">{% include 'charts.html' %}</div>
-          </div>
-
-          <div class="col s12 m8">
-            <div class="icon-block">
-                {% for tag in keys %}
-                    <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
-                    <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
-                {% endfor %}
-                
-                <br/><br/><br/>
-                
-                <form name ="profile_tag_select">
-                    <center><button id = "save" type="submit" class="waves-effect waves-light btn-large">Save Changes</button></center>
-                </form>
+            <div class="col s11 m3">
+                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
             </div>
-          </div>
 
-          <div class="col s12 m2">
-            <div style="height:10%;width:10%">{% include 'charts.html' %}</div>
-          </div>
+            <div class="col s11 m5">
+                <div class="icon-block">
+                    {% for tag in keys %}
+                        <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
+                        <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
+                    {% endfor %}
+                
+                    <br/><br/><br/>
+                
+                    <form name ="profile_tag_select">
+                        <center><button id = "save" type="submit" class="waves-effect waves-light btn-large">Save Changes</button></center>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col s11 m3">
+                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
+            </div>
         
         </div>
       </div>
-      <br><br>
-
-      <div class="container" style="height:30vh"></div>
     </div>
-    
+    </div>
     <div>{% include 'footer.html' %}</div>
 </body>
 </html>
