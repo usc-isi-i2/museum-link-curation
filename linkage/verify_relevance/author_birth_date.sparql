@@ -1,0 +1,13 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+SELECT ?byear
+    WHERE 
+    { 
+        {
+            <AUTHOR_URI> a crm:E39_Actor ;
+                crm:P92i_was_brought_into_existence_by ?o1.    
+                ?o1 crm:P4_has_time-span ?o2.
+                ?o2 crm:P82a_begin_of_the_begin ?byear.
+        }
+    }

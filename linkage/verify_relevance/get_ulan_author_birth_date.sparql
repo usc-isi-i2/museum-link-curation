@@ -1,0 +1,10 @@
+select ?name ?byear 
+    WHERE
+    {
+         <ULAN_URI> a gvp:PersonConcept;
+              gvp:prefLabelGVP ?o1;
+              foaf:focus ?o2.
+         ?o1 gvp:term ?name.
+         ?o2 gvp:biographyPreferred ?o3.
+         ?o3 gvp:estStart ?byear.
+    }
