@@ -24,12 +24,13 @@ Recall = TP / (TP + FN)
 '''
 
 from SPARQLWrapper import SPARQLWrapper, JSON
-import json, sys
+import json, sys,os
 import museum_graph_api_config as config
 SPARQL_ENDPOINT = "http://data.americanartcollaborative.org/sparql"
 from collections import defaultdict
 
 def calculate_relevance(ipfile, museum):
+
 	parent_uri_set = set()
 	success_uri = set()
 	tn = set()
@@ -45,7 +46,8 @@ def calculate_relevance(ipfile, museum):
 	#Calculate the ground truth
 	#Cacluate total URI matches for the MUSUEM
 	count_query = ''
-	with open('get_uri_matches.sparql', 'r') as query_file:
+	fp = os.path.join(os.path.dirname(os.path.realpath(__file__)),'get_uri_matches.sparql')
+	with open(fp, 'r') as query_file:
 		# get_ulan_uri.sparql has sparql query , need to replace PARENT_URI with actual URI
 		get_query = query_file.read()
 	museum_uri = museum_dict[museum]
@@ -61,9 +63,9 @@ def calculate_relevance(ipfile, museum):
 	#there are some duplicates so consider as a set
 	total_match_count = float(len(set(ground_truth.keys())))
 
-	# get_ulan_uri.sparql has sparql query to fetch ULAN ID for Actor URI,
-	with open('get_ulan_uri.sparql', 'r') as query_file:
-		#  need to replace PARENT_URI with actual URI
+	# get_ulan_uri.sparql has sparql query to fetch ULAN ID for Actor URI
+	fp = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'get_ulan_uri.sparql')
+	with open(fp, 'r') as query_file:
 		query = query_file.read()
 
 	with open(ipfile, 'r') as ip:
@@ -118,8 +120,12 @@ def calculate_relevance(ipfile, museum):
 		true_negatives[f] = data_dict[f]
 
 	false_negatives = list(set(ground_truth.keys()) - set(data_dict.keys()))
+	f_score = 0
+	if (precision + recall) > 0:
+		f_score = (2 * precision * recall) / (precision + recall)
 	result = {'false_positives': false_positives , 'false_negatives': false_negatives, 'true_negatives': true_negatives,
-				'total': [len(total_uri_set),len(data_dict.keys()), total_match_count], 'success': len(success_uri), 'precision': precision, 'recall': recall}
+				'total': [len(total_uri_set),len(data_dict.keys()), total_match_count], 'success': len(success_uri), 'precision': precision, 'recall': recall,
+				'f_score': f_score}
 	print(json.dumps(result))
 
 
