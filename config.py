@@ -26,8 +26,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # restful, usrdb and login_manager instance
 api = Api(app)
+
 usrdb = SQLAlchemy(app)
 lm = LoginManager(app)
+
 
 lm.login_view = 'index'
 lm.session_protection = 'strong'
@@ -37,6 +39,7 @@ dname = "linkVerification"
 
 def append_default_dict(x):
     z = x.copy()
+    # Default values, these are updated after importing config and questions
     y = {"confidenceYesNo":2,"confidenceNotSure":2,"matchedQ":0,"unmatchedQ":0,"unconcludedQ":0,"totalQ":0}
     z.update(y)
     return z

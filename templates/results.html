@@ -1,71 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Link Curation Results</title>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     
-    <link rel="stylesheet" type="text/css" href="static/css/style.css"/>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
+    <title>Link Curation - Curated Results</title>
     
-    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.ico"/>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css"/>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/init.js"></script>
+  
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     
     <script>
     $(document).ready(function(){ 
-        $('#rstable').DataTable();
+        $('select').material_select();
+        
+        $("#download").click(function(e){
+            e.preventDefault()
+            
+            var tags = $('#museums').val();
+            var codes = $('#codes').val();
+            
+            var userObj = new Object();
+            userObj.data = {"tags":tags,"codes":codes};
+            json_data = JSON.stringify(userObj);
+            console.log(json_data);
+            var sv = '{{server}}'.concat("/export");
+            
+            $.ajax({
+                method: 'PUT',
+                url: sv,
+                data: json_data,
+                contentType: 'application/json',
+                success: function(data){
+                    console.log("File Created!");
+                    window.location.href = "/download";
+                }
+            });
         });
+    });
     </script>
-
+    
+    <style>
+        #body {
+            min-height: calc(100vh - 10px);
+        }
+    </style>
+    
 </head>
 <body>
-  <div id = "header">{% include 'header.html' %}</div>
-  
-  <div class="container" style="margin-top:5vh;height:100%;min-height:77vh;">
-    <div class="table table-responsive">
-            <table id="rstable" class="table table-hover">
-            <col width="270">
-            <col width="270">
-            <col width="80">
-            <col width="80">
-            <col width="80">
-            <thead>
-                <tr>
-                    <th>URI1</th>
-                    <th>URI2</th>
-                    <th>Match</th>
-                    <th>Unmatch</th>
-                    <th>Not sure</th>
-               </tr>
-            </thead>
-            <tbody>
-            {% for match in data['matched'] %}
-            <tr>
-              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
-              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
-              <td style="text-align: center;">{{ match['Yes']}}</td>
-              <td style="text-align: center;">{{ match['No']}}</td>
-              <td style="text-align: center;">{{ match['notSure']}}</td>
-            </tr>
-            {% endfor %}
-            {% for match in data['unmatched'] %}
-            <tr>
-              <td><a href={{match['uri1']}}> {{match['uri1']}} </td>
-              <td><a href={{match['uri2']}}> {{match['uri2']}} </td>
-              <td style="text-align: center;">{{ match['Yes']}}</td>
-              <td style="text-align: center;">{{ match['No']}}</td>
-              <td style="text-align: center;">{{ match['notSure']}}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            </table>
-      </div>
-  </div>
-  <div id = "footer">{% include 'footer.html' %}</div>
+    <div>{% include 'header.html' %}</div>
+    <div id="body">
+    
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="row center">
+                <br><br>
+                <div class="header col s12 m6">
+                    <select multiple id="museums" >
+                        <option value="" disabled selected>Choose museum(s)</option>
+                        {% for tag in keys %}
+                            <option value={{tag}}>{{tag}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="header col s12 m4">
+                    <select multiple id="codes">
+                        <option value="" disabled selected>Choose pair status(s)</option>
+                        <option value="3">Match</option>
+                        <option value="4">Unmatch</option>
+                        <option value="5">Not Sure</option>
+                    </select>
+                </div>
+                
+                <div class="header col s12 m2">
+                <form name ="download_data">
+                    <button id = "download" type="submit" class="btn-large" >Export</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="row center">
+                <iframe class="header col s12 light" src="datatable" frameborder="0" height="1000px" ></iframe>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div>{% include 'footer.html' %}</div>
 </body>
 </html>

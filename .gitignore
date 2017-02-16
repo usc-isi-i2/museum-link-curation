@@ -8,3 +8,5 @@ exported
 key.json
 emails.txt
 *.pyc
+results.json
+backup.json

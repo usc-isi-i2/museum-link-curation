@@ -11,7 +11,7 @@ def db_init(resetU, resetD):
     if resetD:
     
         # Backup
-        export = {"data":{"s3":museums.keys(), "s4":museums.keys(), "s5":museums.keys(), "tags":museums.keys() }}
+        export = {"data":{"codes":[3,4,5], "tags":museums.keys() }}
         dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
     
         if resetU:
@@ -84,6 +84,8 @@ def populateTags():
  
 # Read config file and update various dynamic properties
 def updateConfig():
+    
+    # Update threshold values from file
     file = open("threshold.txt",'r')
     for line in file.readlines():
         if '#' in line:
@@ -93,6 +95,27 @@ def updateConfig():
             museums[inp[0]]['confidenceYesNo'] = int(inp[1])
             museums[inp[0]]['confidenceNotSure'] = int(inp[2])
     
+    # Update statistics of total questions from mongoDb
+    for tag in museums.keys():
+        cY = 0
+        cN = 0
+        cNS = 0
+        cT = 0
+        tid = dbC[dname]["tag"].find_one({'tagname':tag})["_id"]
+        questions = dbC[dname]["question"].find({'tags': { "$in": [tid] } } )
+        for q in questions:
+            cT += 1
+            if q["status"] == statuscodes["Agreement"]:
+                cY += 1
+            elif q["status"] == statuscodes["Disagreement"]:
+                cN += 1
+            elif q["status"] == statuscodes["Non-conclusive"]:
+                cNS += 1
+
+        museums[tag]["matchedQ"] = cY
+        museums[tag]["unmatchedQ"] = cN
+        museums[tag]["unconcludedQ"] = cNS
+        museums[tag]["totalQ"] = cT
     #pprint(museums)
  
 #Curator
@@ -118,7 +141,7 @@ def addCurator(ce):
         print 'Added curator {}\n'.format(ce)
     
 # Question
-    #status, integer: 1 - Not Started, 2 - In Progress, 3 - Completed, 4 - Disagreement
+    #status, integer: {"NotStarted":1,"InProgress":2,"Agreement":3,"Disagreement":4,"Non-conclusive":5}
     #uniqueURI, String: alphabetical concatenation of two URI to get unique ID
     #lastSeen, datetime field to select question based on time it was asked to previous curator
     #tags, list of object IDs from Tags
@@ -386,7 +409,7 @@ def getMatches(left,right):
     # output format
     exactMatch = {"name":[],"value":[]}
     
-    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]], "leftT":findTag(left["uri"]), "rightT":findTag(right["uri"])}
+    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]], "leftT":findTag(left["uri"]).upper(), "rightT":findTag(right["uri"]).upper()}
     
     for field in right.keys():
         # URI are not going to match 
@@ -544,21 +567,11 @@ def dumpCurationResults(args,filepath):
     
     out = {"count":0,"payload":[]}
     
+    statuses = [int(s) for s in args['data']['codes']]
     for museum in args['data']['tags']:
-        statuses = []
-        
-        if museum in args['data']['s3']:
-            statuses.append(statuscodes['Agreement'])
-        if museum in args['data']['s4']:
-            statuses.append(statuscodes['Disagreement'])
-        if museum in args['data']['s5']:
-            statuses.append(statuscodes['Non-conclusive'])
-        
-        # Find questions with museum as a tag and a particular status
-        print museum, statuses
         for status in statuses:
         
-            tid = dbC[dname]["tag"].find_one({'tagname':museum})['_id']
+            tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})['_id']
             questions = dbC[dname]["question"].find({'status':status})
             
             for q in questions:

@@ -1,77 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <title>Link Verification - Profile</title>
-    <link rel='icon' href='../static/images/favicon.ico' type='image/x-icon'/>
-    <meta name="generator" content="Bootply" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../static/images/main.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-</head>
-<body>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
+    <title>Link Curation - Profile</title>
+    
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="static/js/materialize.js"></script>
+    <script src="static/js/init.js"></script>
+  
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    
     <script>
         $(document).ready(function () {
-           var sv_profile = '{{server}}'.concat("/v1/user");
+            var p = '{{server}}'.concat("/user");
 
             $.ajax({
-                    method: 'GET',
-                    url: sv_profile,
-                    contentType: 'application/json',
-                    success: function(data){
-                        console.log(data.tags)
-                        for(i = 0; i < data.tags.length; i++) {
-                            console.log(data.tags[i])
-                            $('#'+data.tags[i]).prop('checked', true);
-                        }
+                method: 'GET',
+                url: p,
+                contentType: 'application/json',
+                success: function(data){
+                    $('#nameHeading').append("Welcome, "+data.name)
+                    for(i = 0; i < data.tags.length; i++) {
+                        $('#'+data.tags[i]).prop('checked', true);
                     }
+                }
             });
             
             $("#save").click(function(e){
                 e.preventDefault()
+                
                 var tag_list = [];
+                
                 tag_list.push($('input[name="museums"]:checked').map(
                     function () {return this.value;}).get());
                 var userObj = new Object();
                 userObj.tags = tag_list[0];
                 json_data = JSON.stringify(userObj);
 
-                var sv = '{{server}}'.concat("/v1/user");
-                    $.ajax({
-                        method: 'PUT',
-                        url: sv,
-                        data: json_data,
-                        contentType: 'application/json',
-                        success: function(data){
-                            console.log("Tag Successfully submitted");
-                            window.location.href = "/curation";
-                        }
-                    });
+                var sv = '{{server}}'.concat("/user");
+                
+                $.ajax({
+                    method: 'PUT',
+                    url: sv,
+                    data: json_data,
+                    contentType: 'application/json',
+                    success: function(data){
+                        console.log("Tag Successfully submitted");
+                        window.location.href = "/curation";
+                    }
+                });
             });
             
         });
-
     </script>
-    <div id = "header"> {% include 'header.html' %}</div>
-
-    <br/>
-    <center>
-    <label style = 'white-space: pre;'>Please select all the museums that you would like to curate data for - </label>
-    </center> 
-    <br/><br/><br/>
-    <div class="container" style="margin-left:70vh;margin-bottom:25vh">
-        {% for tag in museums.keys() %}
-        <input id={{tag}} type="checkbox" name="museums" value={{tag}} />
-            <label for={{tag}}> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
-        {% endfor %}
-        <br/>
-        <form name ="profile_tag_select">
-            <button id = "save" type="submit" class="btn btn-primary btn-lg" style="margin-left:10vh">Save Changes</button>
-        </form>
+    
+    <style>
+        #body {
+            min-height: calc(100vh - 10px);
+        }
+    </style>
+    
+</head>
+<body>
+    <div> {% include 'header.html' %}
+    <div id="body">
+    
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <h1 id="nameHeading" class="header center black-text"></h1>
+            <div class="row center">
+                <h5 class="header col s12 light">You can update your preferred museums below. You can also see your (left) and overall system (right) statistics below.</h5>
+            </div>
+        </div>
     </div>
-    <div id = "footer">{% include 'footer.html' %}</div>
+    
+    <div class="container">
+        <div class="section">
+
+        <div class="row">
+            <div class="col s11 m3">
+                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
+            </div>
+
+            <div class="col s11 m5">
+                <div class="icon-block">
+                    {% for tag in keys %}
+                        <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
+                        <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
+                    {% endfor %}
+                
+                    <br/><br/><br/>
+                
+                    <form name ="profile_tag_select">
+                        <center><button id = "save" type="submit" class="waves-effect waves-light btn-large">Save Changes</button></center>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col s11 m3">
+                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
+            </div>
+        
+        </div>
+      </div>
+    </div>
+    </div>
+    <div>{% include 'footer.html' %}</div>
 </body>
 </html>
