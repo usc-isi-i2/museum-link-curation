@@ -7,6 +7,7 @@ import sys, os, re, json, time
 from unidecode import unidecode
 from pprint import pprint
 import pkg_resources
+from optparse import OptionParser
 
 class recordLinkage:
 
@@ -17,30 +18,74 @@ class recordLinkage:
     
     def __init__(self,base):
         self.basedatabase = base
+
+    def v1Matching(self, ulanentity, entity):
+        # Check if ulan entity birth year belong to any of the block keys.
+        if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
+            # do string similarity
+            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.4)
+            if match['match']:
+                return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
+            else:
+                return None
+        else:
+            return None
+
+    #default check first 2 characters of the last name before matching Names
+    def v2Matching(self, ulanentity, entity, k=2):
+        #Format -  LastName, FirstName
+        ulan_author_name = ulanentity['name']['value']
+        #Format -  FirstName LastName
+        museum_author_name = entity['name']['value']
+
+        m = unidecode(unicode(ulan_author_name.encode('utf-8'),'utf-8')).strip().lower()
+        n = unidecode(unicode(museum_author_name.encode('utf-8'),'utf-8')).strip().lower()
+
+        #extract last name and get matching if first k=2 characters match
+        ulan_last_name = m.split(',')[0]
+        museum_last_name = n.split(' ')[-1]
+
+
+        #print(ulan_last_name, ulanentity['name']['value'], museum_last_name, entity['name']['value'])
+        if ulan_last_name[:k] == museum_last_name[:k]:
+            # do string similarity
+            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.9)
+            #print(match)
+            if match['match']:
+                return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
+            else:
+                return None
+
+
     
     # Run record linkage against base database with blocking on birth year
-    def findPotentialMatches(self, d):
-        
+    def findPotentialMatches(self, d, version, output_folder):
         if d:
             datasets = [d]
         else:
             # Create list of all datasets available
             datasets = [dname[:dname.index('.')] for dname in os.listdir(self.basedir)]
         
-        if not os.path.exists('questions'):
-            os.makedirs('questions')
+        output_dir = os.path.join(self.absdir, output_folder)
+
+        if not os.path.exists(output_dir):
+            try:
+                os.makedirs(output_dir)
+            except OSError as exc: # Guard against race condition
+                raise
+
+
         
         # Iterate over all datasets
         for dname in datasets:
-            
             # Skip ulan 
             if dname == self.basedatabase:
                 continue
 
             start_time = time.time()
-                
+
             # Open output file
-            out = open(os.path.join(self.absdir,"questions",dname+".json"),'w')
+            out = open(os.path.join(self.absdir, output_folder, dname+".json"),'w')
                 
             # Open dataset file and ulan file 
             entities = open(os.path.join(self.absdir,self.basedir,dname+".json"))
@@ -56,16 +101,15 @@ class recordLinkage:
                     # convert line read into json
                     ulanentity = json.loads(ulanentity)
                     
-                    # Check if ulan entity birth year belong to any of the block keys.
-                    if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
-                        
-                        # do string similarity
-                        match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj')
-                        
-                        if match['match']:
-                            potential_matches.append({"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match})
-                    else:
-                        continue # no match
+                    if version == 'v1':
+                        match = self.v1Matching(ulanentity, entity)
+                    elif version == 'v2':
+                        match = self.v2Matching(ulanentity, entity)
+
+                    if match:
+                        match['ulan_name'] = ulanentity['name']['value']
+                        match['museum_name']  = entity['name']['value']
+                        potential_matches.append(match)
                  
                 # Close ULAN entities file handle
                 ulanentities.close()
@@ -84,7 +128,7 @@ class recordLinkage:
                     elif len(potential_matches)-1 < i:
                         print "Enough matches were not found for entity", entity
                         break
-                        
+
                     out.write(json.dumps(potential_matches[i]))
                     out.write('\n')
                     
@@ -109,24 +153,21 @@ class recordLinkage:
         else:
             return 0
         
-    # Match names using specified technique
-    def matchNames(self, s1, s2, technique):
+    # Match names using specified technique,, default threshold = 0.4
+    def matchNames(self, s1, s2, technique, threshold):
         if technique == "hj": # Hybrid Jaccard
-            return self.matchNames_hj(s1, s2)
+            return self.matchNames_hj(s1, s2, threshold)
         elif technique == "sw": # Smith Waterman
-            return self.matchNames_sw(s1, s2)
+            return self.matchNames_sw(s1, s2, threshold)
         else:
             return {"match":False}
 
-    # Match names using hybrid jaccard
-    def matchNames_hj(self,s1,s2):
+    # Match names using hybrid jaccard, default threshold = 0.4
+    def matchNames_hj(self,s1,s2, threshold=0.4):
 
         sys.path.append(os.path.join(self.absdir,'..','HybridJaccard'))
         from hybridJaccard import HybridJaccard
-        
-        threshold = 0.4
         match = {'match':False}
-        
         sm = HybridJaccard(config_path=os.path.join('..',"hj_config.txt"))
 
         # Pre process strings
@@ -146,12 +187,11 @@ class recordLinkage:
         
         return match
           
-    # Match names using hybrid jaccard
-    def matchNames_sw(self,s1,s2):
+    # Match names using hybrid jaccard, default threshold = 66 # 2*match >= mismatch
+    def matchNames_sw(self,s1,s2, threshold=66):
    
         import swalign # Smith Waterman
-   
-        threshold = 66 # 2*match >= mismatch 
+
         sw_match = 2
         sw_mismatch = -1
         match = {'match':False}
@@ -191,13 +231,29 @@ class recordLinkage:
 
 def main():
     # Create record linkage instance with base database as ulan.json
+    parser = OptionParser()
+    parser.add_option("-d", "--data_set", dest="data_set", type="string",
+                      help="Data sets")
+    parser.add_option("-v", "--version", dest="version", type="string",
+                      help="version of matching [v2 or v1]")
+    parser.add_option("-o", "--output_folder", dest="output_folder", type="string",
+                      help="Output folder containing result")
+
+    (options, args) = parser.parse_args()
+    version = options.version
+    data_set = options.data_set
+    output_folder = options.output_folder
+
+    if version is None:
+        raise StandardError('Version needed: Please check python recordLinkage -h')
+
+    if output_folder is None:
+        output_folder = 'questions'
+
     start_time = time.time()
     
     rl = recordLinkage('ulan')
-    if len(sys.argv) >= 2:
-        rl.findPotentialMatches(sys.argv[1])
-    else:
-        rl.findPotentialMatches(None)
+    rl.findPotentialMatches(data_set, version, output_folder)
     
     print("--- %s seconds ---" % (time.time() - start_time))
         
