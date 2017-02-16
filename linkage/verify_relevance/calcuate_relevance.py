@@ -74,7 +74,15 @@ def calculate_relevance(ipfile, museum):
 			parent_uri = data["uri1"]
 			ulan_uri = data["uri2"]
 			similarity_score = float(data["similarity"]["score"])
-			data_dict[parent_uri].append({'ulan_uri': ulan_uri, 'similarity': similarity_score})
+
+			k = {'ulan_uri': ulan_uri, 'similarity': similarity_score}
+			if 'ulan_name' in data:
+				k['ulan_name'] = data['ulan_name']
+			if 'museum_name' in data:
+				k['museum_name'] = data['museum_name']
+
+			data_dict[parent_uri].append(k)
+
 
 			if parent_uri in ground_truth:
 				for v in data_dict[parent_uri]:
