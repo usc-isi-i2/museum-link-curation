@@ -134,7 +134,7 @@ def calculate_relevance(ipfile, museum):
 	result = {'false_positives': false_positives , 'false_negatives': false_negatives, 'true_negatives': true_negatives,
 				'total': [len(total_uri_set),len(data_dict.keys()), total_match_count], 'success': len(success_uri), 'precision': precision, 'recall': recall,
 				'f_score': f_score}
-	print(json.dumps(result))
+	print(json.dumps(result,indent=4,sort_keys=True))
 
 
 if __name__ == '__main__':

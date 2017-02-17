@@ -1,1 +1,252 @@
-{"success": 245, "true_negatives": {"http://data.americanartcollaborative.org/GM/constituent/schouler_willard": [{"ulan_uri": "http://vocab.getty.edu/ulan/500080190", "similarity": 0.8125}, {"ulan_uri": "http://vocab.getty.edu/ulan/500016983", "similarity": 0.5313492063492063}], "http://data.americanartcollaborative.org/GM/constituent/ace_powell": [{"ulan_uri": "http://vocab.getty.edu/ulan/500192665", "similarity": 0.7103174603174603}], "http://data.americanartcollaborative.org/GM/constituent/annie_healing_nampeyo": [{"ulan_uri": "http://vocab.getty.edu/ulan/500348832", "similarity": 0.4834920634920635}], "http://data.americanartcollaborative.org/GM/constituent/edmonds_francis_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500026117", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/emil_lenders_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500120882", "similarity": 0.611441798941799}, {"ulan_uri": "http://vocab.getty.edu/ulan/500282433", "similarity": 0.582010582010582}], "http://data.americanartcollaborative.org/GM/constituent/edward_george_perine": [{"ulan_uri": "http://vocab.getty.edu/ulan/500061426", "similarity": 0.5486111111111112}, {"ulan_uri": "http://vocab.getty.edu/ulan/500075479", "similarity": 0.5370370370370371}], "http://data.americanartcollaborative.org/GM/constituent/chapin_john_reuben": [{"ulan_uri": "http://vocab.getty.edu/ulan/500000164", "similarity": 0.9166666666666666}, {"ulan_uri": "http://vocab.getty.edu/ulan/500060500", "similarity": 0.4388888888888889}], "http://data.americanartcollaborative.org/GM/constituent/alexander_stuart": [{"ulan_uri": "http://vocab.getty.edu/ulan/500000662", "similarity": 0.6804232804232804}], "http://data.americanartcollaborative.org/GM/constituent/austin_charles_percy": [{"ulan_uri": "http://vocab.getty.edu/ulan/500173810", "similarity": 0.581954365079365}, {"ulan_uri": "http://vocab.getty.edu/ulan/500174040", "similarity": 0.581954365079365}], "http://data.americanartcollaborative.org/GM/constituent/mount_sidney_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500017404", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/frederick_john_kensett": [{"ulan_uri": "http://vocab.getty.edu/ulan/500030726", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/company_graves_henry": [{"ulan_uri": "http://vocab.getty.edu/ulan/500018510", "similarity": 0.4305555555555556}, {"ulan_uri": "http://vocab.getty.edu/ulan/500246003", "similarity": 0.4918518518518518}, {"ulan_uri": "http://vocab.getty.edu/ulan/500090149", "similarity": 0.472663139329806}, {"ulan_uri": "http://vocab.getty.edu/ulan/500018510", "similarity": 0.4305555555555556}], "http://data.americanartcollaborative.org/GM/constituent/h_kamps_norman": [{"ulan_uri": "http://vocab.getty.edu/ulan/500331485", "similarity": 0.4611111111111111}], "http://data.americanartcollaborative.org/GM/constituent/bebb_maurice_r": [{"ulan_uri": "http://vocab.getty.edu/ulan/500053474", "similarity": 0.523941798941799}, {"ulan_uri": "http://vocab.getty.edu/ulan/500001352", "similarity": 0.5182010582010582}], "http://data.americanartcollaborative.org/GM/constituent/boyiddle_jr_parker": [{"ulan_uri": "http://vocab.getty.edu/ulan/500249859", "similarity": 0.5050925925925925}], "http://data.americanartcollaborative.org/GM/constituent/browne_john_ross": [{"ulan_uri": "http://vocab.getty.edu/ulan/500085824", "similarity": 0.44999999999999996}, {"ulan_uri": "http://vocab.getty.edu/ulan/500073774", "similarity": 0.4375}], "http://data.americanartcollaborative.org/GM/constituent/louis_nagel": [{"ulan_uri": "http://vocab.getty.edu/ulan/500016744", "similarity": 0.7361111111111112}], "http://data.americanartcollaborative.org/GM/constituent/howard_norma": [{"ulan_uri": "http://vocab.getty.edu/ulan/500332569", "similarity": 0.6992063492063492}], "http://data.americanartcollaborative.org/GM/constituent/connie_ragan_seabourn": [{"ulan_uri": "http://vocab.getty.edu/ulan/500064618", "similarity": 0.4861111111111111}, {"ulan_uri": "http://vocab.getty.edu/ulan/500242527", "similarity": 0.4555555555555555}], "http://data.americanartcollaborative.org/GM/constituent/borglum_gutzon": [{"ulan_uri": "http://vocab.getty.edu/ulan/500019058", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/asher_james": [{"ulan_uri": "http://vocab.getty.edu/ulan/500123089", "similarity": 0.7166666666666668}, {"ulan_uri": "http://vocab.getty.edu/ulan/500091178", "similarity": 0.7047619047619047}], "http://data.americanartcollaborative.org/GM/constituent/robert_smirke": [{"ulan_uri": "http://vocab.getty.edu/ulan/500009443", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/d_fr_lehnert_pierre_ric": [{"ulan_uri": "http://vocab.getty.edu/ulan/500095288", "similarity": 0.4365079365079365}], "http://data.americanartcollaborative.org/GM/constituent/ila_mae_mcafee": [{"ulan_uri": "http://vocab.getty.edu/ulan/500057681", "similarity": 0.5396825396825397}, {"ulan_uri": "http://vocab.getty.edu/ulan/500124588", "similarity": 0.4796296296296296}], "http://data.americanartcollaborative.org/GM/constituent/a_anderson_john": [{"ulan_uri": "http://vocab.getty.edu/ulan/500029281", "similarity": 0.8388047138047138}, {"ulan_uri": "http://vocab.getty.edu/ulan/500008990", "similarity": 0.7212962962962964}], "http://data.americanartcollaborative.org/GM/constituent/burton_chitwood_jimalee": [{"ulan_uri": "http://vocab.getty.edu/ulan/500093248", "similarity": 0.5328042328042327}, {"ulan_uri": "http://vocab.getty.edu/ulan/500075290", "similarity": 0.5311904761904763}], "http://data.americanartcollaborative.org/GM/constituent/bill_owen": [{"ulan_uri": "http://vocab.getty.edu/ulan/500127332", "similarity": 0.7458333333333333}], "http://data.americanartcollaborative.org/GM/constituent/de_franklin_joseph_yong": [{"ulan_uri": "http://vocab.getty.edu/ulan/500099016", "similarity": 0.7166666666666667}, {"ulan_uri": "http://vocab.getty.edu/ulan/500001078", "similarity": 0.4125}], "http://data.americanartcollaborative.org/GM/constituent/gary_montgomery": [{"ulan_uri": "http://vocab.getty.edu/ulan/500125646", "similarity": 0.8444444444444443}, {"ulan_uri": "http://vocab.getty.edu/ulan/500066955", "similarity": 0.514814814814815}], "http://data.americanartcollaborative.org/GM/constituent/crumbo_minisa": [{"ulan_uri": "http://vocab.getty.edu/ulan/500055161", "similarity": 0.5481481481481482}], "http://data.americanartcollaborative.org/GM/constituent/alfred_sully": [{"ulan_uri": "http://vocab.getty.edu/ulan/500027506", "similarity": 0.4940740740740741}, {"ulan_uri": "http://vocab.getty.edu/ulan/500103264", "similarity": 0.4848148148148148}], "http://data.americanartcollaborative.org/GM/constituent/de_hoyos_mart_nez_ricardo": [{"ulan_uri": "http://vocab.getty.edu/ulan/500017842", "similarity": 0.99375}], "http://data.americanartcollaborative.org/GM/constituent/auchiah_james": [{"ulan_uri": "http://vocab.getty.edu/ulan/500126366", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/benjamin_harjo_jr": [{"ulan_uri": "http://vocab.getty.edu/ulan/500071148", "similarity": 0.4216666666666667}, {"ulan_uri": "http://vocab.getty.edu/ulan/500089964", "similarity": 0.40722222222222226}], "http://data.americanartcollaborative.org/GM/constituent/conrad_schwiering": [{"ulan_uri": "http://vocab.getty.edu/ulan/500122151", "similarity": 0.47407407407407415}, {"ulan_uri": "http://vocab.getty.edu/ulan/500077058", "similarity": 0.4592592592592592}], "http://data.americanartcollaborative.org/GM/constituent/allyn_christie_mae": [{"ulan_uri": "http://vocab.getty.edu/ulan/500156601", "similarity": 0.4953703703703704}, {"ulan_uri": "http://vocab.getty.edu/ulan/500192789", "similarity": 0.4116666666666666}], "http://data.americanartcollaborative.org/GM/constituent/duran_galarza_pedro": [{"ulan_uri": "http://vocab.getty.edu/ulan/500103389", "similarity": 0.4825396825396826}, {"ulan_uri": "http://vocab.getty.edu/ulan/500121491", "similarity": 0.45079365079365075}], "http://data.americanartcollaborative.org/GM/constituent/e_james_reynolds": [{"ulan_uri": "http://vocab.getty.edu/ulan/500043211", "similarity": 0.7301851851851854}, {"ulan_uri": "http://vocab.getty.edu/ulan/500023979", "similarity": 0.5166666666666666}], "http://data.americanartcollaborative.org/GM/constituent/sonya_terpening": [{"ulan_uri": "http://vocab.getty.edu/ulan/500232408", "similarity": 0.4679012345679013}], "http://data.americanartcollaborative.org/GM/constituent/charles_christian_nahl": [{"ulan_uri": "http://vocab.getty.edu/ulan/500000374", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/gonske_walt": [{"ulan_uri": "http://vocab.getty.edu/ulan/500024385", "similarity": 0.5083333333333334}, {"ulan_uri": "http://vocab.getty.edu/ulan/500090145", "similarity": 0.5}], "http://data.americanartcollaborative.org/GM/constituent/cornelius_johnson": [{"ulan_uri": "http://vocab.getty.edu/ulan/500013588", "similarity": 0.4357142857142857}], "http://data.americanartcollaborative.org/GM/constituent/cooper_wayne": [{"ulan_uri": "http://vocab.getty.edu/ulan/500057658", "similarity": 0.73}, {"ulan_uri": "http://vocab.getty.edu/ulan/500032593", "similarity": 0.5111111111111111}], "http://data.americanartcollaborative.org/GM/constituent/colin_derriksan_noll": [{"ulan_uri": "http://vocab.getty.edu/ulan/500107536", "similarity": 0.6960758377425044}, {"ulan_uri": "http://vocab.getty.edu/ulan/500103419", "similarity": 0.5295061728395062}], "http://data.americanartcollaborative.org/GM/constituent/ives_joseph_pease": [{"ulan_uri": "http://vocab.getty.edu/ulan/500081097", "similarity": 0.5866666666666667}, {"ulan_uri": "http://vocab.getty.edu/ulan/500025536", "similarity": 0.46613756613756613}], "http://data.americanartcollaborative.org/GM/constituent/kay_walkingstick": [{"ulan_uri": "http://vocab.getty.edu/ulan/500127714", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/brown_bush_henry_kirke": [{"ulan_uri": "http://vocab.getty.edu/ulan/500054771", "similarity": 0.4684303350970018}], "http://data.americanartcollaborative.org/GM/constituent/russell_wagoshe_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500034620", "similarity": 0.419047619047619}], "http://data.americanartcollaborative.org/GM/constituent/asher_brown_durand": [{"ulan_uri": "http://vocab.getty.edu/ulan/500026080", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/chief_john_ross": [{"ulan_uri": "http://vocab.getty.edu/ulan/500109346", "similarity": 0.4108333333333334}], "http://data.americanartcollaborative.org/GM/constituent/allison_and_kurz": [{"ulan_uri": "http://vocab.getty.edu/ulan/500195116", "similarity": 0.557936507936508}, {"ulan_uri": "http://vocab.getty.edu/ulan/500079153", "similarity": 0.49065255731922397}, {"ulan_uri": "http://vocab.getty.edu/ulan/500195116", "similarity": 0.557936507936508}, {"ulan_uri": "http://vocab.getty.edu/ulan/500079153", "similarity": 0.49065255731922397}], "http://data.americanartcollaborative.org/GM/constituent/ball_thomas": [{"ulan_uri": "http://vocab.getty.edu/ulan/500225571", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/constance_warren_whitney": [{"ulan_uri": "http://vocab.getty.edu/ulan/500020292", "similarity": 0.5262962962962963}, {"ulan_uri": "http://vocab.getty.edu/ulan/500060047", "similarity": 0.4648148148148148}], "http://data.americanartcollaborative.org/GM/constituent/charles_gilbert_stuart": [{"ulan_uri": "http://vocab.getty.edu/ulan/500010392", "similarity": 0.6666666666666666}, {"ulan_uri": "http://vocab.getty.edu/ulan/500054349", "similarity": 0.4375}], "http://data.americanartcollaborative.org/GM/constituent/brian_marion_pashigeesic": [{"ulan_uri": "http://vocab.getty.edu/ulan/500202521", "similarity": 0.5081481481481481}, {"ulan_uri": "http://vocab.getty.edu/ulan/500332566", "similarity": 0.5074074074074074}], "http://data.americanartcollaborative.org/GM/constituent/augusta_brownscombe_jennie": [{"ulan_uri": "http://vocab.getty.edu/ulan/500024093", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/bartas_newman_p": [{"ulan_uri": "http://vocab.getty.edu/ulan/500333067", "similarity": 0.5050925925925925}], "http://data.americanartcollaborative.org/GM/constituent/ethel_traphagen": [{"ulan_uri": "http://vocab.getty.edu/ulan/500059120", "similarity": 0.4679012345679013}], "http://data.americanartcollaborative.org/GM/constituent/caton_richard_sr_woodville": [{"ulan_uri": "http://vocab.getty.edu/ulan/500001002", "similarity": 0.75}, {"ulan_uri": "http://vocab.getty.edu/ulan/500015213", "similarity": 0.5380952380952381}], "http://data.americanartcollaborative.org/GM/constituent/appel_charles_peter": [{"ulan_uri": "http://vocab.getty.edu/ulan/500357624", "similarity": 0.9199999999999999}, {"ulan_uri": "http://vocab.getty.edu/ulan/500106136", "similarity": 0.47777777777777786}], "http://data.americanartcollaborative.org/GM/constituent/ridgway_w": [{"ulan_uri": "http://vocab.getty.edu/ulan/500299388", "similarity": 0.5587301587301586}, {"ulan_uri": "http://vocab.getty.edu/ulan/500080978", "similarity": 0.4883597883597884}], "http://data.americanartcollaborative.org/GM/constituent/matt_smith": [{"ulan_uri": "http://vocab.getty.edu/ulan/500356385", "similarity": 0.49547619047619046}], "http://data.americanartcollaborative.org/GM/constituent/jessie_wilber": [{"ulan_uri": "http://vocab.getty.edu/ulan/500159193", "similarity": 0.8246031746031746}, {"ulan_uri": "http://vocab.getty.edu/ulan/500001240", "similarity": 0.5153439153439153}], "http://data.americanartcollaborative.org/GM/constituent/mariano_paredes": [{"ulan_uri": "http://vocab.getty.edu/ulan/500343691", "similarity": 0.8523809523809525}, {"ulan_uri": "http://vocab.getty.edu/ulan/500024489", "similarity": 0.7853174603174603}], "http://data.americanartcollaborative.org/GM/constituent/albert_herman_schmidt": [{"ulan_uri": "http://vocab.getty.edu/ulan/500116748", "similarity": 0.5660714285714286}, {"ulan_uri": "http://vocab.getty.edu/ulan/500170182", "similarity": 0.46349206349206346}], "http://data.americanartcollaborative.org/GM/constituent/hunter_john_young": [{"ulan_uri": "http://vocab.getty.edu/ulan/500011796", "similarity": 0.6303030303030304}], "http://data.americanartcollaborative.org/GM/constituent/dana_tiger": [{"ulan_uri": "http://vocab.getty.edu/ulan/500355654", "similarity": 0.8208333333333333}, {"ulan_uri": "http://vocab.getty.edu/ulan/500333353", "similarity": 0.7250000000000001}], "http://data.americanartcollaborative.org/GM/constituent/brousse_jacobson_oscar": [{"ulan_uri": "http://vocab.getty.edu/ulan/500127628", "similarity": 0.4853174603174603}, {"ulan_uri": "http://vocab.getty.edu/ulan/500117532", "similarity": 0.4694444444444445}], "http://data.americanartcollaborative.org/GM/constituent/brothers_illman": [{"ulan_uri": "http://vocab.getty.edu/ulan/500090146", "similarity": 0.4953703703703704}, {"ulan_uri": "http://vocab.getty.edu/ulan/500063078", "similarity": 0.7745370370370371}, {"ulan_uri": "http://vocab.getty.edu/ulan/500174423", "similarity": 0.7708333333333333}, {"ulan_uri": "http://vocab.getty.edu/ulan/500090146", "similarity": 0.4953703703703704}], "http://data.americanartcollaborative.org/GM/constituent/elie_hazak": [{"ulan_uri": "http://vocab.getty.edu/ulan/500117719", "similarity": 0.4125}], "http://data.americanartcollaborative.org/GM/constituent/antowine_warrior": [{"ulan_uri": "http://vocab.getty.edu/ulan/500060434", "similarity": 0.5019179894179895}], "http://data.americanartcollaborative.org/GM/constituent/bassett_reveau": [{"ulan_uri": "http://vocab.getty.edu/ulan/500082221", "similarity": 0.6880952380952381}], "http://data.americanartcollaborative.org/GM/constituent/hollyer_samuel": [{"ulan_uri": "http://vocab.getty.edu/ulan/500142299", "similarity": 0.7054232804232805}, {"ulan_uri": "http://vocab.getty.edu/ulan/500054003", "similarity": 0.5015873015873016}], "http://data.americanartcollaborative.org/GM/constituent/jackson_lee_nesbitt": [{"ulan_uri": "http://vocab.getty.edu/ulan/500059803", "similarity": 0.47830687830687824}, {"ulan_uri": "http://vocab.getty.edu/ulan/500156612", "similarity": 0.4539682539682539}], "http://data.americanartcollaborative.org/GM/constituent/forbis_steve": [{"ulan_uri": "http://vocab.getty.edu/ulan/500330533", "similarity": 0.7361111111111112}, {"ulan_uri": "http://vocab.getty.edu/ulan/500249461", "similarity": 0.4940740740740741}], "http://data.americanartcollaborative.org/GM/constituent/charles_henry_reynolds": [{"ulan_uri": "http://vocab.getty.edu/ulan/500091561", "similarity": 0.5127886002886003}, {"ulan_uri": "http://vocab.getty.edu/ulan/500055063", "similarity": 0.434375}], "http://data.americanartcollaborative.org/GM/constituent/anna_arnett_joe": [{"ulan_uri": "http://vocab.getty.edu/ulan/500100672", "similarity": 0.5556878306878307}, {"ulan_uri": "http://vocab.getty.edu/ulan/500177773", "similarity": 0.5092592592592592}], "http://data.americanartcollaborative.org/GM/constituent/pocahontas_press": [{"ulan_uri": "http://vocab.getty.edu/ulan/500051863", "similarity": 0.4690476190476191}, {"ulan_uri": "http://vocab.getty.edu/ulan/500051863", "similarity": 0.4690476190476191}], "http://data.americanartcollaborative.org/GM/constituent/archie_blackowl": [{"ulan_uri": "http://vocab.getty.edu/ulan/500126463", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/ella_fillimore_lillie": [{"ulan_uri": "http://vocab.getty.edu/ulan/500108995", "similarity": 0.4833333333333334}, {"ulan_uri": "http://vocab.getty.edu/ulan/500117339", "similarity": 0.46234567901234563}], "http://data.americanartcollaborative.org/GM/constituent/l_turgis": [{"ulan_uri": "http://vocab.getty.edu/ulan/500109661", "similarity": 0.7111111111111112}, {"ulan_uri": "http://vocab.getty.edu/ulan/500135456", "similarity": 0.4916666666666667}], "http://data.americanartcollaborative.org/GM/constituent/august_becker_h": [{"ulan_uri": "http://vocab.getty.edu/ulan/500018576", "similarity": 0.5740740740740741}, {"ulan_uri": "http://vocab.getty.edu/ulan/500026650", "similarity": 0.49074074074074076}], "http://data.americanartcollaborative.org/GM/constituent/andoe_joe": [{"ulan_uri": "http://vocab.getty.edu/ulan/500188582", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/wellstood_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500105455", "similarity": 0.835978835978836}, {"ulan_uri": "http://vocab.getty.edu/ulan/500022140", "similarity": 0.835016835016835}], "http://data.americanartcollaborative.org/GM/constituent/anton_bill": [{"ulan_uri": "http://vocab.getty.edu/ulan/500192177", "similarity": 0.7267857142857144}, {"ulan_uri": "http://vocab.getty.edu/ulan/500333323", "similarity": 0.4694444444444445}], "http://data.americanartcollaborative.org/GM/constituent/prettyman_s_william": [{"ulan_uri": "http://vocab.getty.edu/ulan/500030369", "similarity": 0.4753968253968255}, {"ulan_uri": "http://vocab.getty.edu/ulan/500159196", "similarity": 0.4707231040564374}], "http://data.americanartcollaborative.org/GM/constituent/brummett_echohawk": [{"ulan_uri": "http://vocab.getty.edu/ulan/500098023", "similarity": 0.47222222222222227}], "http://data.americanartcollaborative.org/GM/constituent/jacques_reich": [{"ulan_uri": "http://vocab.getty.edu/ulan/500006903", "similarity": 0.5052380952380952}, {"ulan_uri": "http://vocab.getty.edu/ulan/500086910", "similarity": 0.4825396825396826}], "http://data.americanartcollaborative.org/GM/constituent/castileden_f_george": [{"ulan_uri": "http://vocab.getty.edu/ulan/500000103", "similarity": 0.7466666666666667}, {"ulan_uri": "http://vocab.getty.edu/ulan/500097497", "similarity": 0.5766865079365079}], "http://data.americanartcollaborative.org/GM/constituent/caesar_julius": [{"ulan_uri": "http://vocab.getty.edu/ulan/500126510", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/lackey_vinson": [{"ulan_uri": "http://vocab.getty.edu/ulan/500032829", "similarity": 0.7361111111111112}]}, "recall": 0.9423076923076923, "false_positives": {"http://data.americanartcollaborative.org/GM/constituent/phillibrown_thomas": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500062582", "ulan_uri": "http://vocab.getty.edu/ulan/500077360", "similarity": 0.4232954545454546}], "http://data.americanartcollaborative.org/GM/constituent/correa_juan": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500117093", "ulan_uri": "http://vocab.getty.edu/ulan/500340768", "similarity": 0.5766666666666667}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500117093", "ulan_uri": "http://vocab.getty.edu/ulan/500072392", "similarity": 0.5092592592592592}], "http://data.americanartcollaborative.org/GM/constituent/knight_t_w": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500046404", "ulan_uri": "http://vocab.getty.edu/ulan/500012799", "similarity": 0.4958333333333334}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500046404", "ulan_uri": "http://vocab.getty.edu/ulan/500012407", "similarity": 0.4940740740740741}], "http://data.americanartcollaborative.org/GM/constituent/dawson_watson": [{"correct_ulan_uri": "https://vocab.getty.edu/ulan/500075830", "ulan_uri": "http://vocab.getty.edu/ulan/500075830", "similarity": 1.0}, {"correct_ulan_uri": "https://vocab.getty.edu/ulan/500075830", "ulan_uri": "http://vocab.getty.edu/ulan/500075830", "similarity": 1.0}], "http://data.americanartcollaborative.org/GM/constituent/alfred_hoffy_m": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500002463", "ulan_uri": "http://vocab.getty.edu/ulan/500003249", "similarity": 0.4977777777777778}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500002463", "ulan_uri": "http://vocab.getty.edu/ulan/500067857", "similarity": 0.4883597883597884}], "http://data.americanartcollaborative.org/GM/constituent/aiken_walker_william": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500020050", "ulan_uri": "http://vocab.getty.edu/ulan/500134013", "similarity": 0.45996472663139326}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500020050", "ulan_uri": "http://vocab.getty.edu/ulan/500013275", "similarity": 0.42250000000000004}], "http://data.americanartcollaborative.org/GM/constituent/begay_harrison": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500126416", "ulan_uri": "http://vocab.getty.edu/ulan/500146370", "similarity": 0.4805555555555556}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500126416", "ulan_uri": "http://vocab.getty.edu/ulan/500088458", "similarity": 0.47349206349206346}], "http://data.americanartcollaborative.org/GM/constituent/arnold_edward_everard": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500028185", "ulan_uri": "http://vocab.getty.edu/ulan/500034011", "similarity": 0.5573192239858907}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500028185", "ulan_uri": "http://vocab.getty.edu/ulan/500017757", "similarity": 0.5330687830687831}], "http://data.americanartcollaborative.org/GM/constituent/julian_martinez": [{"correct_ulan_uri": "http://vocab.getty.edu/ulan/500127100", "ulan_uri": "http://vocab.getty.edu/ulan/500177933", "similarity": 0.5425925925925926}, {"correct_ulan_uri": "http://vocab.getty.edu/ulan/500127100", "ulan_uri": "http://vocab.getty.edu/ulan/500117224", "similarity": 0.5398148148148149}]}, "precision": 0.9645669291338582, "false_negatives": ["http://data.americanartcollaborative.org/GM/constituent/jefferson_thomas", "http://data.americanartcollaborative.org/GM/constituent/currier_ives", "http://data.americanartcollaborative.org/GM/constituent/paul_rogers_william", "http://data.americanartcollaborative.org/GM/constituent/francisco_guti_rrez", "http://data.americanartcollaborative.org/GM/constituent/acee_blue_eagle", "http://data.americanartcollaborative.org/GM/constituent/feke_robert"], "total": [254, 345, 260.0]}
+{
+    "f_score": 0.9539078156312626, 
+    "false_negatives": [
+        "http://data.americanartcollaborative.org/GM/constituent/mauzey_merritt_thomas", 
+        "http://data.americanartcollaborative.org/GM/constituent/phillibrown_thomas", 
+        "http://data.americanartcollaborative.org/GM/constituent/alfred_hoffy_m", 
+        "http://data.americanartcollaborative.org/GM/constituent/begay_harrison", 
+        "http://data.americanartcollaborative.org/GM/constituent/jefferson_thomas", 
+        "http://data.americanartcollaborative.org/GM/constituent/abbott_james_mcneill_whistler", 
+        "http://data.americanartcollaborative.org/GM/constituent/arnold_edward_everard", 
+        "http://data.americanartcollaborative.org/GM/constituent/correa_juan", 
+        "http://data.americanartcollaborative.org/GM/constituent/feke_robert", 
+        "http://data.americanartcollaborative.org/GM/constituent/currier_ives", 
+        "http://data.americanartcollaborative.org/GM/constituent/hays_jacob_william", 
+        "http://data.americanartcollaborative.org/GM/constituent/paul_rogers_william", 
+        "http://data.americanartcollaborative.org/GM/constituent/julian_martinez", 
+        "http://data.americanartcollaborative.org/GM/constituent/borein_edward_john", 
+        "http://data.americanartcollaborative.org/GM/constituent/antoine_houdon_jean", 
+        "http://data.americanartcollaborative.org/GM/constituent/acee_blue_eagle", 
+        "http://data.americanartcollaborative.org/GM/constituent/bobby_c_martin", 
+        "http://data.americanartcollaborative.org/GM/constituent/aiken_walker_william", 
+        "http://data.americanartcollaborative.org/GM/constituent/knight_t_w", 
+        "http://data.americanartcollaborative.org/GM/constituent/biss_earl_jr", 
+        "http://data.americanartcollaborative.org/GM/constituent/francisco_guti_rrez"
+    ], 
+    "false_positives": {
+        "http://data.americanartcollaborative.org/GM/constituent/dawson_watson": [
+            {
+                "correct_ulan_uri": "https://vocab.getty.edu/ulan/500075830", 
+                "museum_name": "Dawson-Watson", 
+                "similarity": 1.0, 
+                "ulan_name": "Dawson-Watson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500075830"
+            }, 
+            {
+                "correct_ulan_uri": "https://vocab.getty.edu/ulan/500075830", 
+                "museum_name": "Dawson-Watson", 
+                "similarity": 1.0, 
+                "ulan_name": "Dawson-Watson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500075830"
+            }
+        ]
+    }, 
+    "precision": 0.99581589958159, 
+    "recall": 0.9153846153846154, 
+    "success": 238, 
+    "total": [
+        239, 
+        263, 
+        260.0
+    ], 
+    "true_negatives": {
+        "http://data.americanartcollaborative.org/GM/constituent/a_anderson_john": [
+            {
+                "museum_name": "John A. Anderson", 
+                "similarity": 0.8388047138047138, 
+                "ulan_name": "Lander, John Saint-H\u00e9lier", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029281"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/andoe_joe": [
+            {
+                "museum_name": "Joe Andoe", 
+                "similarity": 1.0, 
+                "ulan_name": "Andoe, Joe", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500188582"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/appel_charles_peter": [
+            {
+                "museum_name": "Charles Peter Appel", 
+                "similarity": 0.9199999999999999, 
+                "ulan_name": "Appel, Charles P.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500357624"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/archie_blackowl": [
+            {
+                "museum_name": "Archie Blackowl", 
+                "similarity": 1.0, 
+                "ulan_name": "Blackowl, Archie", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500126463"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/asher_brown_durand": [
+            {
+                "museum_name": "Asher Brown Durand", 
+                "similarity": 1.0, 
+                "ulan_name": "Durand, Asher Brown", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026080"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/auchiah_james": [
+            {
+                "museum_name": "James Auchiah", 
+                "similarity": 1.0, 
+                "ulan_name": "Auchiah, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500126366"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/augusta_brownscombe_jennie": [
+            {
+                "museum_name": "Jennie Augusta Brownscombe", 
+                "similarity": 1.0, 
+                "ulan_name": "Brownscombe, Jennie Augusta", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500024093"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/ball_thomas": [
+            {
+                "museum_name": "Thomas Ball", 
+                "similarity": 1.0, 
+                "ulan_name": "Ball, Thomas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500225571"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/borglum_gutzon": [
+            {
+                "museum_name": "Gutzon Borglum", 
+                "similarity": 1.0, 
+                "ulan_name": "Borglum, Gutzon", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019058"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/caesar_julius": [
+            {
+                "museum_name": "Julius Caesar", 
+                "similarity": 1.0, 
+                "ulan_name": "Caesar, Julius", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500126510"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/chapin_john_reuben": [
+            {
+                "museum_name": "Chapin, John Reuben", 
+                "similarity": 0.9166666666666666, 
+                "ulan_name": "Chapin, John R.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000164"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/charles_christian_nahl": [
+            {
+                "museum_name": "Charles Christian Nahl", 
+                "similarity": 1.0, 
+                "ulan_name": "Nahl, Charles Christian", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000374"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/dana_tiger": [
+            {
+                "museum_name": "Dana Tiger", 
+                "similarity": 0.8208333333333333, 
+                "ulan_name": "Miller, Dan", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500355654"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/de_hoyos_mart_nez_ricardo": [
+            {
+                "museum_name": "Ricardo Mart\ufffdnez de Hoyos", 
+                "similarity": 0.99375, 
+                "ulan_name": "Mart\u00ednez de Hoyos, Ricardo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017842"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/edmonds_francis_william": [
+            {
+                "museum_name": "Francis William Edmonds", 
+                "similarity": 1.0, 
+                "ulan_name": "Edmonds, Francis William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026117"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/frederick_john_kensett": [
+            {
+                "museum_name": "John Frederick Kensett", 
+                "similarity": 1.0, 
+                "ulan_name": "Kensett, John Frederick", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500030726"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/gary_montgomery": [
+            {
+                "museum_name": "Gary Montgomery", 
+                "similarity": 0.8444444444444443, 
+                "ulan_name": "Panter, Gary", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500125646"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/jessie_wilber": [
+            {
+                "museum_name": "Jessie Wilber", 
+                "similarity": 0.8246031746031746, 
+                "ulan_name": "Nessier, Walter", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500159193"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/kay_walkingstick": [
+            {
+                "museum_name": "Kay WalkingStick", 
+                "similarity": 1.0, 
+                "ulan_name": "Walkingstick, Kay", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500127714"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/mariano_paredes": [
+            {
+                "museum_name": "Mariano Paredes", 
+                "similarity": 0.8523809523809525, 
+                "ulan_name": "Parisot, Adriano", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500343691"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/mount_sidney_william": [
+            {
+                "museum_name": "Mount, William Sidney", 
+                "similarity": 1.0, 
+                "ulan_name": "Mount, William Sidney", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017404"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/robert_smirke": [
+            {
+                "museum_name": "Robert Smirke", 
+                "similarity": 1.0, 
+                "ulan_name": "Smirke, Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500009443"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/schouler_willard": [
+            {
+                "museum_name": "Willard Schouler", 
+                "similarity": 0.8125, 
+                "ulan_name": "Scheiner, Wilhelm", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500080190"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/wellstood_william": [
+            {
+                "museum_name": "William Wellstood", 
+                "similarity": 0.835978835978836, 
+                "ulan_name": "Willard, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500105455"
+            }, 
+            {
+                "museum_name": "William Wellstood", 
+                "similarity": 0.835016835016835, 
+                "ulan_name": "Collingwood, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500022140"
+            }
+        ]
+    }
+}

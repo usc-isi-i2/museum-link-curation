@@ -23,7 +23,7 @@ class recordLinkage:
         # Check if ulan entity birth year belong to any of the block keys.
         if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
             # do string similarity
-            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.4)
+            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
             if match['match']:
                 return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
@@ -55,9 +55,7 @@ class recordLinkage:
                 return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
                 return None
-
-
-    
+                
     # Run record linkage against base database with blocking on birth year
     def findPotentialMatches(self, d, version, output_folder):
         if d:
@@ -73,8 +71,6 @@ class recordLinkage:
                 os.makedirs(output_dir)
             except OSError as exc: # Guard against race condition
                 raise
-
-
         
         # Iterate over all datasets
         for dname in datasets:
@@ -82,6 +78,8 @@ class recordLinkage:
             if dname == self.basedatabase:
                 continue
 
+            print "Analyzing ",dname
+                
             start_time = time.time()
 
             # Open output file
@@ -162,8 +160,8 @@ class recordLinkage:
         else:
             return {"match":False}
 
-    # Match names using hybrid jaccard, default threshold = 0.4
-    def matchNames_hj(self,s1,s2, threshold=0.4):
+    # Match names using hybrid jaccard, default threshold = 0.8
+    def matchNames_hj(self,s1,s2, threshold=0.8):
 
         sys.path.append(os.path.join(self.absdir,'..','HybridJaccard'))
         from hybridJaccard import HybridJaccard
@@ -171,8 +169,6 @@ class recordLinkage:
         sm = HybridJaccard(config_path=os.path.join('..',"hj_config.txt"))
 
         # Pre process strings
-        #s1 = unidecode(unicode(s1.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
-        #s2 = unidecode(unicode(s2.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
         s1 = unidecode(unicode(s1.encode('utf-8'),'utf-8')).strip().lower()
         s2 = unidecode(unicode(s2.encode('utf-8'),'utf-8')).strip().lower()
 
