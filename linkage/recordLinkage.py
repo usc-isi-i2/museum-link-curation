@@ -62,7 +62,7 @@ class recordLinkage:
     # Run record linkage against base database with blocking on birth year
     def findPotentialMatches(self, d, version, output_folder):
         if d:
-            datasets = [d]
+            datasets = d.split()
         else:
             # Create list of all datasets available
             datasets = [dname[:dname.index('.')] for dname in os.listdir(self.basedir)]
