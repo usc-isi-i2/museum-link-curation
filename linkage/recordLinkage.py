@@ -21,6 +21,9 @@ class recordLinkage:
 
     def v1Matching(self, ulanentity, entity):
         # Check if ulan entity birth year belong to any of the block keys.
+        if 'byear' not in entity:
+            return None
+            
         if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
             # do string similarity
             match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
