@@ -42,6 +42,10 @@
         
         $(document).ready(function(){ 
         
+            document.getElementById("aY").disabled = true;
+            document.getElementById("aN").disabled = true;
+            document.getElementById("aNS").disabled = true;
+        
             populateCards();
         
             $("#aY").click(function(e){
@@ -95,12 +99,17 @@
                         populateCard(data[i],i);
                     }*/
                 },
-                error: function(xhr, status, error){
-                    //Materialize.toast(xhr["responseText"], 2000);
-                    Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
-                    window.setTimeout(function() {
-                        window.location.href = '/profile';
-                    }, 2500);
+                error: function(xhr){
+                    console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
+                    if (xhr.status == "INTERNAL SERVER ERROR"){
+                        Materialize.toast("Something went wrong. Please try again!", 2000);
+                    }
+                    else{
+                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                        window.setTimeout(function() {
+                            window.location.href = '/profile';
+                        }, 2500);
+                    }
                 }
             });
         };
@@ -118,6 +127,9 @@
                 },  
                 success: function (card) {
                     $('.progress').hide();
+                    document.getElementById("aY").disabled = false;
+                    document.getElementById("aN").disabled = false;
+                    document.getElementById("aNS").disabled = false;
                     console.log("loading...done")                    
                     qid = data['qid']
                 },
@@ -143,7 +155,7 @@
             var values = data.value;
             
             if(names.length == 0){
-                tr += "<tr><td colspan='3' style='text-align:center'>None of the records matched</td></tr>";
+                tr += "<tr><td colspan='3' style='text-align:center'>None of the fields match</td></tr>";
             }
             else {
                 for (var index in names) {
@@ -172,7 +184,7 @@
             
             var tr = "";
             if(names.length == 0){
-                tr += "<tr><td colspan='3' style='text-align:center'>None that do not match</td></tr>";
+                //tr += "<tr><td colspan='3' style='text-align:center'>None that do not match</td></tr>";
             }
             else
             {            

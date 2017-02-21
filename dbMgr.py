@@ -577,11 +577,34 @@ def dumpCurationResults(args,filepath):
             for q in questions:
                 a = {}
                 if tid in q['tags']:
+                    
+                    # Get similarity meta data and URIs
                     a["similarity"] = q["similarity"]
-                    a["uri1"] = q["uri1"]
-                    a["uri2"] = q["uri2"]
+                    
+                    # Get properties from left and right side.
+                    left = retrieveProperties(q["uri1"])
+                    right = retrieveProperties(q["uri2"])
+                    matches = getMatches(left, right)
+                    
+                    a["attributes"] = {"matched":{},"unmatched":{}}
+                    
+                    # Unmatched
+                    for i in range(0, len(matches["Unmatched"]["name"])):
+                        if matches["Unmatched"]["name"][i] == "URI":
+                            a["uri1"] = matches["Unmatched"]["lValue"][i]
+                            a["uri2"] = matches["Unmatched"]["rValue"][i]
+                        else:
+                            a["attributes"]["unmatched"][matches["Unmatched"]["name"][i]] = [matches["Unmatched"]["lValue"][i], matches["Unmatched"]["rValue"][i] ]
+                    
+                    # matched
+                    for i in range(0, len(matches["ExactMatch"]["name"])):
+                        a["attributes"]["matched"][matches["ExactMatch"]["name"][i]] = matches["ExactMatch"]["value"][i]
+                    
+                    # Get current json dump and append this pair
                     temp = out["payload"]
                     temp.append(a)
+                    
+                    # Write it back
                     out["payload"] = temp
                     out["count"] += 1
             

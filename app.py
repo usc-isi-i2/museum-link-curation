@@ -228,7 +228,39 @@ class userMgr(Resource):
                 elif q['status'] == statuscodes["Non-conclusive"]:
                     stats[tag]["no-conclusion"] += 1
 
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'progress':stats}
+        # Prepare payload for visualization
+        payload = {"name":"Curation","children":[]}
+        for tag in museums.keys():
+            temp = {"name":tag,"children":[]}
+            
+            # Initialize and append children
+            c1 = {"name":"Concluded as matched","children": []}
+            n = stats[tag]["matched"]
+            c1_children = [{"name": "Marked matched by you", "size": n},
+                            {"name": "Marked matched by others", "size": museums[tag]['matchedQ'] - n}]
+            c1["children"] = c1_children
+            temp["children"].append(c1)
+            
+            # Initialize and append children
+            c2 = {"name":"Concluded as unmatched","children": []}
+            n = stats[tag]["unmatched"]
+            c2_children = [{"name": "Marked unmatched by you", "size": n},
+                            {"name": "Marked unmatched by others", "size": museums[tag]['unmatchedQ'] - n}]
+            c2["children"] = c2_children
+            temp["children"].append(c2)
+            
+            # Initialize and append children
+            c3 = {"name":"Concluded as inconclusive","children": []}
+            n = stats[tag]["no-conclusion"]
+            c3_children = [{"name": "Marked not sure by you", "size": n},
+                            {"name": "Marked not sure by others", "size": museums[tag]['unconcludedQ'] - n}]
+            c3["children"] = c3_children
+            temp["children"].append(c3)
+            
+            # Append museum data children
+            payload["children"].append(temp)
+                    
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':payload}
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
@@ -315,21 +347,6 @@ def downloadFile():
     
     if request.method == 'GET':
         return send_from_directory(directory=rootdir, filename="results.json",as_attachment=True)
-
-# Handle RESTful API for getting data about link verifications
-class dataMgr(Resource):
-    
-    def get(self):
-        print "Input received: {} \n".format(request.args)
-        
-        if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
-            
-        stats = {}
-        for tag in museums.keys():
-            stats[tag] = {"matched":museums[tag]['matchedQ'],"unmatched":museums[tag]['unmatchedQ'],"no-conclusion":museums[tag]['unconcludedQ'],"Total":museums[tag]['totalQ']}
-            
-        return stats
     
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):
@@ -516,7 +533,6 @@ if __name__ == '__main__':
     # Initialize mongo db
     db_init(resetU, resetD)
     
-    api.add_resource(dataMgr, '/stats',endpoint='stats')
     api.add_resource(userMgr, '/user',endpoint='user')
     api.add_resource(questMgr, '/question',endpoint='question')
     api.add_resource(ansMgr, '/answer',endpoint='answer')
