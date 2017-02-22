@@ -176,8 +176,8 @@ class recordLinkage:
         s2 = unidecode(unicode(s2.encode('utf-8'),'utf-8')).strip().lower()
 
         # Keep only alpha numerics
-        s1 = re.sub('[^A-Za-z0-9 ]+', '', s1)
-        s2 = re.sub('[^A-Za-z0-9 ]+', '', s2)
+        s1 = re.sub('[^A-Za-z0-9 ]+', ' ', s1)
+        s2 = re.sub('[^A-Za-z0-9 ]+', ' ', s2)
 
         match['score'] = sm.sim_measure(s1.split(), s2.split())
         
@@ -198,8 +198,8 @@ class recordLinkage:
         # do some pre processing to do fair comparison
         s1 = unidecode(unicode(s1.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
         s2 = unidecode(unicode(s2.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
-        s1 = re.sub('[^A-Za-z0-9 ]+', '', s1)
-        s2 = re.sub('[^A-Za-z0-9 ]+', '', s2)
+        s1 = re.sub('[^A-Za-z0-9 ]+', ' ', s1)
+        s2 = re.sub('[^A-Za-z0-9 ]+', ' ', s2)
         
         scoring = swalign.NucleotideScoringMatrix(sw_match, sw_mismatch)
         sw = swalign.LocalAlignment(scoring,gap_penalty=-0.5) 

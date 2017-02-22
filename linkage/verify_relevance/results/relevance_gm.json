@@ -1,5 +1,5 @@
 {
-    "f_score": 0.9663366336633663, 
+    "f_score": 0.9683794466403163, 
     "false_negatives": [
         "http://data.americanartcollaborative.org/GM/constituent/phillibrown_thomas", 
         "http://data.americanartcollaborative.org/GM/constituent/jefferson_thomas", 
@@ -11,7 +11,6 @@
         "http://data.americanartcollaborative.org/GM/constituent/alfred_hoffy_m", 
         "http://data.americanartcollaborative.org/GM/constituent/begay_harrison", 
         "http://data.americanartcollaborative.org/GM/constituent/acee_blue_eagle", 
-        "http://data.americanartcollaborative.org/GM/constituent/antoine_houdon_jean", 
         "http://data.americanartcollaborative.org/GM/constituent/aiken_walker_william", 
         "http://data.americanartcollaborative.org/GM/constituent/knight_t_w", 
         "http://data.americanartcollaborative.org/GM/constituent/arnold_edward_everard", 
@@ -35,22 +34,16 @@
             }
         ]
     }, 
-    "precision": 0.9959183673469387, 
-    "recall": 0.9384615384615385, 
-    "success": 244, 
+    "precision": 0.9959349593495935, 
+    "recall": 0.9423076923076923, 
+    "success": 245, 
     "total": [
-        245, 
-        289, 
+        246, 
+        291, 
         260.0
     ], 
     "true_negatives": {
         "http://data.americanartcollaborative.org/GM/constituent/a_anderson_john": [
-            {
-                "museum_name": "John A. Anderson", 
-                "similarity": 0.8388047138047138, 
-                "ulan_name": "Lander, John Saint-H\u00e9lier", 
-                "ulan_uri": "http://vocab.getty.edu/ulan/500029281"
-            }, 
             {
                 "museum_name": "John A. Anderson", 
                 "similarity": 0.7212962962962964, 
@@ -338,6 +331,14 @@
                 "similarity": 0.6992063492063492, 
                 "ulan_name": "Boardman, Deborah", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500332569"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/GM/constituent/hunter_john_young": [
+            {
+                "museum_name": "John Young-Hunter", 
+                "similarity": 1.0, 
+                "ulan_name": "Hunter, John Young", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500011796"
             }
         ], 
         "http://data.americanartcollaborative.org/GM/constituent/jessie_wilber": [
