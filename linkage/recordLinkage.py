@@ -26,7 +26,7 @@ class recordLinkage:
             
         if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
             # do string similarity
-            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
+            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.66)
             if match['match']:
                 return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
@@ -164,7 +164,7 @@ class recordLinkage:
             return {"match":False}
 
     # Match names using hybrid jaccard, default threshold = 0.8
-    def matchNames_hj(self,s1,s2, threshold=0.8):
+    def matchNames_hj(self,s1,s2, threshold=0.67):
 
         sys.path.append(os.path.join(self.absdir,'..','HybridJaccard'))
         from hybridJaccard import HybridJaccard

@@ -53,7 +53,7 @@
                 },
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
-                    Materialize.toast("Something went wrong. Please try again!",2000);
+                    Materialize.toast("Something went wrong. Please try again!",5000);
                     $('#progress').hide();
                     document.getElementById("download").disabled = false;
                 }

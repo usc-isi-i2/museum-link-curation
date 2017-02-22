@@ -490,9 +490,11 @@ def populateQuestionsWithFields(questions, stats):
         
         if stats == True:
             s = getStats(question)
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
+            output += [{'qid': str(question['_id']), "score":question["similarity"]["score"],
+                "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
         else:
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
+            output += [{'qid': str(question['_id']), "score":question["similarity"]["score"],
+                "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
         
         #print output
     return output
