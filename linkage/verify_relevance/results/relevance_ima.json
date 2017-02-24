@@ -1,69 +1,39 @@
 {
-    "f_score": 0.9204097714736013, 
+    "f_score": 0.9268668206312547, 
     "false_negatives": [
         "http://data.americanartcollaborative.org/ima/actor/id/651328", 
         "http://data.americanartcollaborative.org/ima/actor/id/616043", 
         "http://data.americanartcollaborative.org/ima/actor/id/630387", 
-        "http://data.americanartcollaborative.org/ima/actor/id/613067", 
-        "http://data.americanartcollaborative.org/ima/actor/id/655979", 
-        "http://data.americanartcollaborative.org/ima/actor/id/609038", 
+        "http://data.americanartcollaborative.org/ima/actor/id/630240", 
         "http://data.americanartcollaborative.org/ima/actor/id/696018", 
         "http://data.americanartcollaborative.org/ima/actor/id/673454", 
-        "http://data.americanartcollaborative.org/ima/actor/id/657119", 
-        "http://data.americanartcollaborative.org/ima/actor/id/668727", 
-        "http://data.americanartcollaborative.org/ima/actor/id/621670", 
-        "http://data.americanartcollaborative.org/ima/actor/id/618026", 
         "http://data.americanartcollaborative.org/ima/actor/id/658777", 
-        "http://data.americanartcollaborative.org/ima/actor/id/712691", 
         "http://data.americanartcollaborative.org/ima/actor/id/627647", 
-        "http://data.americanartcollaborative.org/ima/actor/id/620655", 
         "http://data.americanartcollaborative.org/ima/actor/id/647665", 
-        "http://data.americanartcollaborative.org/ima/actor/id/609809", 
-        "http://data.americanartcollaborative.org/ima/actor/id/666478", 
-        "http://data.americanartcollaborative.org/ima/actor/id/610941", 
+        "http://data.americanartcollaborative.org/ima/actor/id/700809", 
+        "http://data.americanartcollaborative.org/ima/actor/id/623943", 
         "http://data.americanartcollaborative.org/ima/actor/id/626739", 
-        "http://data.americanartcollaborative.org/ima/actor/id/610704", 
-        "http://data.americanartcollaborative.org/ima/actor/id/710278", 
         "http://data.americanartcollaborative.org/ima/actor/id/651442", 
-        "http://data.americanartcollaborative.org/ima/actor/id/620319", 
         "http://data.americanartcollaborative.org/ima/actor/id/603920", 
         "http://data.americanartcollaborative.org/ima/actor/id/626462", 
-        "http://data.americanartcollaborative.org/ima/actor/id/301", 
-        "http://data.americanartcollaborative.org/ima/actor/id/625883", 
-        "http://data.americanartcollaborative.org/ima/actor/id/617909", 
-        "http://data.americanartcollaborative.org/ima/actor/id/606621", 
-        "http://data.americanartcollaborative.org/ima/actor/id/604412", 
-        "http://data.americanartcollaborative.org/ima/actor/id/616235", 
+        "http://data.americanartcollaborative.org/ima/actor/id/666478", 
         "http://data.americanartcollaborative.org/ima/actor/id/630178", 
-        "http://data.americanartcollaborative.org/ima/actor/id/696539", 
-        "http://data.americanartcollaborative.org/ima/actor/id/613329", 
-        "http://data.americanartcollaborative.org/ima/actor/id/606827", 
         "http://data.americanartcollaborative.org/ima/actor/id/607678", 
-        "http://data.americanartcollaborative.org/ima/actor/id/628698", 
-        "http://data.americanartcollaborative.org/ima/actor/id/690977", 
         "http://data.americanartcollaborative.org/ima/actor/id/648319", 
-        "http://data.americanartcollaborative.org/ima/actor/id/623943", 
+        "http://data.americanartcollaborative.org/ima/actor/id/610690", 
         "http://data.americanartcollaborative.org/ima/actor/id/618423", 
-        "http://data.americanartcollaborative.org/ima/actor/id/603293", 
         "http://data.americanartcollaborative.org/ima/actor/id/651692", 
-        "http://data.americanartcollaborative.org/ima/actor/id/611991", 
         "http://data.americanartcollaborative.org/ima/actor/id/709974", 
+        "http://data.americanartcollaborative.org/ima/actor/id/653313", 
         "http://data.americanartcollaborative.org/ima/actor/id/607025", 
         "http://data.americanartcollaborative.org/ima/actor/id/612140", 
-        "http://data.americanartcollaborative.org/ima/actor/id/709833", 
-        "http://data.americanartcollaborative.org/ima/actor/id/613421", 
         "http://data.americanartcollaborative.org/ima/actor/id/620255", 
-        "http://data.americanartcollaborative.org/ima/actor/id/623713", 
-        "http://data.americanartcollaborative.org/ima/actor/id/600912", 
-        "http://data.americanartcollaborative.org/ima/actor/id/630240", 
-        "http://data.americanartcollaborative.org/ima/actor/id/700809", 
+        "http://data.americanartcollaborative.org/ima/actor/id/620655", 
         "http://data.americanartcollaborative.org/ima/actor/id/604162", 
-        "http://data.americanartcollaborative.org/ima/actor/id/610690", 
-        "http://data.americanartcollaborative.org/ima/actor/id/601271", 
-        "http://data.americanartcollaborative.org/ima/actor/id/662255", 
+        "http://data.americanartcollaborative.org/ima/actor/id/623713", 
+        "http://data.americanartcollaborative.org/ima/actor/id/604412", 
         "http://data.americanartcollaborative.org/ima/actor/id/626217", 
-        "http://data.americanartcollaborative.org/ima/actor/id/603349", 
-        "http://data.americanartcollaborative.org/ima/actor/id/600878"
+        "http://data.americanartcollaborative.org/ima/actor/id/603349"
     ], 
     "false_positives": {
         "http://data.americanartcollaborative.org/ima/actor/id/600255": [
@@ -75,6 +45,31 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124131"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/600878": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500000901", 
+                "museum_name": "Joan Mitchell", 
+                "similarity": 0.7875000000000001, 
+                "ulan_name": "Ihle, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500047792"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500000901", 
+                "museum_name": "Joan Mitchell", 
+                "similarity": 0.7785714285714285, 
+                "ulan_name": "Gecelli, Johannes", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001741"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/610941": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500011205", 
+                "museum_name": "Elizabeth J. Bouguereau", 
+                "similarity": 0.69375, 
+                "ulan_name": "Bouguereau, Elizabeth Jane Gardner", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017372"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/612882": [
             {
                 "correct_ulan_uri": "http://vocab.getty.edu/ulan/500013191", 
@@ -82,6 +77,22 @@
                 "similarity": 1.0, 
                 "ulan_name": "Dreier, Katherine Sophie", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500018324"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/613329": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500013647", 
+                "museum_name": "James Cameron", 
+                "similarity": 0.7504761904761905, 
+                "ulan_name": "Jager, A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500036558"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500013647", 
+                "museum_name": "James Cameron", 
+                "similarity": 0.7202380952380952, 
+                "ulan_name": "Cumberland, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500133264"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/615745": [
@@ -93,6 +104,22 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500028547"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/617909": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500018316", 
+                "museum_name": "Betty Gold", 
+                "similarity": 0.763095238095238, 
+                "ulan_name": "Grimoldi, Alberto", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500058691"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500018316", 
+                "museum_name": "Betty Gold", 
+                "similarity": 0.7148809523809524, 
+                "ulan_name": "Galardi, Alberto", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500105516"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/618108": [
             {
                 "correct_ulan_uri": "http://vocab.getty.edu/ulan/500018520", 
@@ -100,6 +127,13 @@
                 "similarity": 0.8184126984126985, 
                 "ulan_name": "Parker, Edwin", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500058731"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500018520", 
+                "museum_name": "Ed Paschke", 
+                "similarity": 0.7771428571428571, 
+                "ulan_name": "Fischer, Edgar", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500138777"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/619925": [
@@ -109,6 +143,22 @@
                 "similarity": 0.9111111111111111, 
                 "ulan_name": "Kensett, John Frederick", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500030726"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/620319": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500020772", 
+                "museum_name": "Joe Colombo", 
+                "similarity": 0.7444444444444445, 
+                "ulan_name": "Coleman, Roger", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026385"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500020772", 
+                "museum_name": "Joe Colombo", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Colombo, Joe Cesare", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500109860"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/624825": [
@@ -127,6 +177,22 @@
                 "similarity": 1.0, 
                 "ulan_name": "Brady, Mathew B.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500126201"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/628698": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500029327", 
+                "museum_name": "Richard Serra", 
+                "similarity": 0.7164021164021164, 
+                "ulan_name": "EsRichter, Hermann", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500238629"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500029327", 
+                "museum_name": "Richard Serra", 
+                "similarity": 0.6833333333333332, 
+                "ulan_name": "Burchman, Jerrold", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500078287"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/628702": [
@@ -174,6 +240,38 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124333"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/655979": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500059149", 
+                "museum_name": "Andres Serrano", 
+                "similarity": 0.7103174603174602, 
+                "ulan_name": "Snyder, Dean", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500034257"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500059149", 
+                "museum_name": "Andres Serrano", 
+                "similarity": 0.7071428571428572, 
+                "ulan_name": "Carrino, Karen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500344029"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/657119": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500060307", 
+                "museum_name": "Robert Nelson", 
+                "similarity": 0.79, 
+                "ulan_name": "Roper, E.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500058766"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500060307", 
+                "museum_name": "Robert Nelson", 
+                "similarity": 0.7619047619047619, 
+                "ulan_name": "Rochfort, Desmond", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500105463"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/659283": [
             {
                 "correct_ulan_uri": "http://vocab.getty.edu/ulan/500062500", 
@@ -181,6 +279,29 @@
                 "similarity": 0.8013888888888889, 
                 "ulan_name": "Wallner, Hans", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500105674"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500062500", 
+                "museum_name": "Walter Channing", 
+                "similarity": 0.7472222222222222, 
+                "ulan_name": "Huntington, Wallace", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500111532"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/662255": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500065503", 
+                "museum_name": "Marina Cappelletto", 
+                "similarity": 0.7121212121212122, 
+                "ulan_name": "Lana, Carl", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500250392"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500065503", 
+                "museum_name": "Marina Cappelletto", 
+                "similarity": 0.7095959595959596, 
+                "ulan_name": "Scassellati, Fabrizia", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500226275"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/668234": [
@@ -210,6 +331,22 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124253"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/696539": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500100133", 
+                "museum_name": "Renate Ponsold", 
+                "similarity": 0.7214285714285715, 
+                "ulan_name": "Petzold, Peter", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500080973"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500100133", 
+                "museum_name": "Renate Ponsold", 
+                "similarity": 0.6880952380952381, 
+                "ulan_name": "Kraft, Polly", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500076970"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/699248": [
             {
                 "correct_ulan_uri": "http://vocab.getty.edu/ulan/500102867", 
@@ -236,14 +373,39 @@
                 "ulan_name": "Rosen, Kay", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124218"
             }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/709833": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500114752", 
+                "museum_name": "Kara Walker", 
+                "similarity": 0.7416666666666667, 
+                "ulan_name": "Allen, Laura", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500268966"
+            }, 
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500114752", 
+                "museum_name": "Kara Walker", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Walker, Kara Elizabeth", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500123343"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/710278": [
+            {
+                "correct_ulan_uri": "http://vocab.getty.edu/ulan/500115368", 
+                "museum_name": "John Marin", 
+                "similarity": 0.7424603174603175, 
+                "ulan_name": "Rainbow, Joe", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500127394"
+            }
         ]
     }, 
-    "precision": 0.9684908789386402, 
-    "recall": 0.8768768768768769, 
-    "success": 584, 
+    "precision": 0.9510268562401264, 
+    "recall": 0.9039039039039038, 
+    "success": 602, 
     "total": [
-        603, 
-        1036, 
+        633, 
+        1202, 
         666.0
     ], 
     "true_negatives": {
@@ -293,6 +455,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500196168"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10223": [
+            {
+                "museum_name": "Charles Conner", 
+                "similarity": 0.7071428571428572, 
+                "ulan_name": "McLeish, Annie", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500093184"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1027": [
             {
                 "museum_name": "Fuller, Sue", 
@@ -309,12 +479,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500020985"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10322": [
+            {
+                "museum_name": "Margaret A. Rudisill", 
+                "similarity": 0.7319444444444446, 
+                "ulan_name": "Ashton, G. R.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500074955"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1034": [
+            {
+                "museum_name": "Eby, Kerr", 
+                "similarity": 0.7075396825396825, 
+                "ulan_name": "Keyes, Bertram", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500043447"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/10353": [
             {
                 "museum_name": "William Lewis", 
                 "similarity": 0.838095238095238, 
                 "ulan_name": "Collins, William", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500115372"
+            }, 
+            {
+                "museum_name": "William Lewis", 
+                "similarity": 0.7230158730158731, 
+                "ulan_name": "Valeri, Clelia", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500091920"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/10357": [
@@ -355,6 +547,34 @@
                 "similarity": 0.98, 
                 "ulan_name": "Jacques, Emile", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500147948"
+            }, 
+            {
+                "museum_name": "Emil Jacques", 
+                "similarity": 0.7011904761904761, 
+                "ulan_name": "Faur\u00e9, Camille", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500138126"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10418": [
+            {
+                "museum_name": "Joan Caldwell", 
+                "similarity": 0.7785714285714285, 
+                "ulan_name": "Copnall, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500032866"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10419": [
+            {
+                "museum_name": "Susan Crowder", 
+                "similarity": 0.738015873015873, 
+                "ulan_name": "Stuart, Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500055631"
+            }, 
+            {
+                "museum_name": "Susan Crowder", 
+                "similarity": 0.711111111111111, 
+                "ulan_name": "Rogers, Juanita", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500125785"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/10425": [
@@ -387,6 +607,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Israel, Robert", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500086704"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10496": [
+            {
+                "museum_name": "Mel Rosas", 
+                "similarity": 0.7682539682539682, 
+                "ulan_name": "Mehlman, Ron", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500330037"
+            }, 
+            {
+                "museum_name": "Mel Rosas", 
+                "similarity": 0.7244444444444444, 
+                "ulan_name": "Meier, Roland", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500109599"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/10500": [
@@ -427,6 +661,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Luce, Percival de", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500103270"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/10757": [
+            {
+                "museum_name": "Wilbur W. Woodward", 
+                "similarity": 0.7365740740740742, 
+                "ulan_name": "Wyllie, W. L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500007278"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/10797": [
@@ -483,6 +725,12 @@
                 "similarity": 0.8012345679012346, 
                 "ulan_name": "Finley, E. J.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500048695"
+            }, 
+            {
+                "museum_name": "Emily J. Ledbetter", 
+                "similarity": 0.7333156966490298, 
+                "ulan_name": "Bennett, Jeanne E.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500035054"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1100": [
@@ -499,6 +747,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Nakashima, Tom", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500337785"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11027": [
+            {
+                "museum_name": "Robert Weaver", 
+                "similarity": 0.78015873015873, 
+                "ulan_name": "Corber\u00f3, Xavier", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500037766"
+            }, 
+            {
+                "museum_name": "Robert Weaver", 
+                "similarity": 0.707936507936508, 
+                "ulan_name": "Barrett, Peter", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500199289"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1106": [
@@ -525,6 +787,58 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500127466"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11103": [
+            {
+                "museum_name": "Hans Frank", 
+                "similarity": 0.7422222222222221, 
+                "ulan_name": "Fabi\u00e1nek, Franti\u0161ek", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500129576"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11106": [
+            {
+                "museum_name": "Rodger Kingston", 
+                "similarity": 0.7041666666666667, 
+                "ulan_name": "H\u00f6her, Inge", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500071050"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11118": [
+            {
+                "museum_name": "Ceil Chapman", 
+                "similarity": 0.6922619047619047, 
+                "ulan_name": "Archilta, Clara", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500126345"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11139": [
+            {
+                "museum_name": "William A. Ireland", 
+                "similarity": 0.7607142857142858, 
+                "ulan_name": "Hill, Ira Lawrence", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500109009"
+            }, 
+            {
+                "museum_name": "William A. Ireland", 
+                "similarity": 0.6981922398589065, 
+                "ulan_name": "Branstead, Patricia L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500089565"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11143": [
+            {
+                "museum_name": "E. R. Frey", 
+                "similarity": 0.7464285714285714, 
+                "ulan_name": "Bernard, Jean Fleury", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500098447"
+            }, 
+            {
+                "museum_name": "E. R. Frey", 
+                "similarity": 0.7314814814814815, 
+                "ulan_name": "Wright, Steven R.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500044769"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11147": [
             {
                 "museum_name": "Albert Morlan", 
@@ -547,6 +861,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500337195"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1116": [
+            {
+                "museum_name": "William Majors", 
+                "similarity": 0.7547619047619049, 
+                "ulan_name": "Ayres, Gillian", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023212"
+            }, 
+            {
+                "museum_name": "William Majors", 
+                "similarity": 0.6853174603174602, 
+                "ulan_name": "Silva, Carlos", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500117936"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11179": [
+            {
+                "museum_name": "Taber Sears", 
+                "similarity": 0.73, 
+                "ulan_name": "Slader, S.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500172448"
+            }, 
+            {
+                "museum_name": "Taber Sears", 
+                "similarity": 0.7089285714285714, 
+                "ulan_name": "Parsons, Beatrice", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500004606"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11184": [
             {
                 "museum_name": "R. M. Ballinger", 
@@ -561,6 +903,50 @@
                 "similarity": 0.8449735449735449, 
                 "ulan_name": "Henderson, William", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500122133"
+            }, 
+            {
+                "museum_name": "William Behnken", 
+                "similarity": 0.8, 
+                "ulan_name": "Willats, Stephen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002298"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11187": [
+            {
+                "museum_name": "Harvey Breverman", 
+                "similarity": 0.7270833333333333, 
+                "ulan_name": "Barelier, Andr\u00e9", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065609"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11204": [
+            {
+                "museum_name": "Charles Klabunde", 
+                "similarity": 0.7401785714285715, 
+                "ulan_name": "Kane, Michael", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500184586"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11206": [
+            {
+                "museum_name": "Brian Halsey", 
+                "similarity": 0.7416666666666667, 
+                "ulan_name": "Poley, Orin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500127355"
+            }, 
+            {
+                "museum_name": "Brian Halsey", 
+                "similarity": 0.7277777777777779, 
+                "ulan_name": "Zarin, L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500052230"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11211": [
+            {
+                "museum_name": "Edward Landon", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Landon, Edward August", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500331743"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11217": [
@@ -569,6 +955,12 @@
                 "similarity": 0.9416666666666667, 
                 "ulan_name": "Nice, Don", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500011009"
+            }, 
+            {
+                "museum_name": "Donald Nice", 
+                "similarity": 0.7515873015873016, 
+                "ulan_name": "Nierman, Leonardo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500129349"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11218": [
@@ -577,6 +969,22 @@
                 "similarity": 1.0, 
                 "ulan_name": "Pytlak, Leonard", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500330265"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11221": [
+            {
+                "museum_name": "Endi Poskovic", 
+                "similarity": 0.6944444444444444, 
+                "ulan_name": "Koo, SeungMin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500282706"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11231": [
+            {
+                "museum_name": "G R. Kerciu", 
+                "similarity": 0.7520105820105819, 
+                "ulan_name": "Galdos, Enrique Rivas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500330832"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11244": [
@@ -611,6 +1019,50 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500128986"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11273": [
+            {
+                "museum_name": "Frances Foy", 
+                "similarity": 0.7015873015873015, 
+                "ulan_name": "Noyer, A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500111328"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11274": [
+            {
+                "museum_name": "Helen Forman", 
+                "similarity": 0.7430555555555556, 
+                "ulan_name": "Hoffmann, Eugen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026581"
+            }, 
+            {
+                "museum_name": "Helen Forman", 
+                "similarity": 0.713095238095238, 
+                "ulan_name": "Hartley, Joan", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500071156"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11275": [
+            {
+                "museum_name": "Ned Griner", 
+                "similarity": 0.6944444444444444, 
+                "ulan_name": "Rudin, Nelly", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500086767"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1128": [
+            {
+                "museum_name": "Jones, Allen", 
+                "similarity": 0.7719444444444444, 
+                "ulan_name": "Lausen, Jens", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006849"
+            }, 
+            {
+                "museum_name": "Jones, Allen", 
+                "similarity": 0.7244444444444444, 
+                "ulan_name": "Aue, Jochen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500140201"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11283": [
             {
                 "museum_name": "Bertha E. Jaques", 
@@ -625,6 +1077,52 @@
                 "similarity": 1.0, 
                 "ulan_name": "Murata, Hiroshi", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500109023"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11304": [
+            {
+                "museum_name": "J.J. Lankes", 
+                "similarity": 0.7421296296296296, 
+                "ulan_name": "Brandes, Jacobus Johannes", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500094055"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11311": [
+            {
+                "museum_name": "Jane Messick", 
+                "similarity": 0.7505952380952381, 
+                "ulan_name": "Miles, Jeanne", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500044488"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11315": [
+            {
+                "museum_name": "Arthur G. Learned", 
+                "similarity": 0.7222663139329807, 
+                "ulan_name": "Engelbach, Florence A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500137323"
+            }, 
+            {
+                "museum_name": "Arthur G. Learned", 
+                "similarity": 0.7087301587301588, 
+                "ulan_name": "Gorson, Aaron Harry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500020333"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11344": [
+            {
+                "museum_name": "Alfred R. Burrell", 
+                "similarity": 0.714021164021164, 
+                "ulan_name": "Walker, Frank R.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500265432"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11350": [
+            {
+                "museum_name": "John A. Coughlin", 
+                "similarity": 0.7449074074074075, 
+                "ulan_name": "Blaauw, C. J.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500314478"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1139": [
@@ -671,6 +1169,20 @@
                 "similarity": 0.8267857142857142, 
                 "ulan_name": "Steele, Theodore Clement", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500032522"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/11594": [
+            {
+                "museum_name": "Frans R. Wildenhain", 
+                "similarity": 0.6932980599647266, 
+                "ulan_name": "Creekmore, Raymond L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500373165"
+            }, 
+            {
+                "museum_name": "Frans R. Wildenhain", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Wildenhain, Frans", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500059428"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/11595": [
@@ -769,6 +1281,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500019913"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1212": [
+            {
+                "museum_name": "Freeman, William R.", 
+                "similarity": 0.7075396825396826, 
+                "ulan_name": "Cumberland, Frederic W.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500028291"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1217": [
             {
                 "museum_name": "Brewster, Anna Richards", 
@@ -801,6 +1321,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500010350"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1245": [
+            {
+                "museum_name": "Glancy, Michael", 
+                "similarity": 0.7492063492063492, 
+                "ulan_name": "Smith, Lance", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500348689"
+            }, 
+            {
+                "museum_name": "Glancy, Michael", 
+                "similarity": 0.7208928571428572, 
+                "ulan_name": "Landi, Marcello", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500079674"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1250": [
             {
                 "museum_name": "Evans, De Scott", 
@@ -815,6 +1349,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Fiene, Ernest", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500000832"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1260": [
+            {
+                "museum_name": "Maude Eggemeyer", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Eggemeyer, Maude Kaufman", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500335649"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1261": [
@@ -849,12 +1391,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500008750"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1272": [
+            {
+                "museum_name": "Linda A. Goodine", 
+                "similarity": 0.7390476190476191, 
+                "ulan_name": "Gabriel, G. L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500025405"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1273": [
             {
                 "museum_name": "Hart, George Overbury", 
                 "similarity": 1.0, 
                 "ulan_name": "Hart, George Overbury", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500027420"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1276": [
+            {
+                "museum_name": "Vian, Orfeo", 
+                "similarity": 0.758095238095238, 
+                "ulan_name": "Villase\u00f1or, Renaldo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500118024"
+            }, 
+            {
+                "museum_name": "Vian, Orfeo", 
+                "similarity": 0.6853174603174602, 
+                "ulan_name": "Ortelli, Giancarlo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500098744"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1284": [
@@ -913,6 +1477,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500046227"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1307": [
+            {
+                "museum_name": "Kowalke, Ron", 
+                "similarity": 0.7857142857142857, 
+                "ulan_name": "Walker, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500185589"
+            }, 
+            {
+                "museum_name": "Kowalke, Ron", 
+                "similarity": 0.7841269841269841, 
+                "ulan_name": "Noakes, Roy", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500195052"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1311": [
+            {
+                "museum_name": "Ryerson, Margery Austen", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Ryerson, Margery", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500055567"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1314": [
             {
                 "museum_name": "Shatter, Susan", 
@@ -943,6 +1529,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Bell, Edward August", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500199418"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1349": [
+            {
+                "museum_name": "Marquis, Richard", 
+                "similarity": 0.74, 
+                "ulan_name": "Gilardi, Mauro", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500106933"
+            }, 
+            {
+                "museum_name": "Marquis, Richard", 
+                "similarity": 0.6833333333333332, 
+                "ulan_name": "Fritschi, Klaus", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500234046"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1356": [
@@ -993,6 +1593,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500334411"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1399": [
+            {
+                "museum_name": "Ball, L. Clarence", 
+                "similarity": 0.7194841269841271, 
+                "ulan_name": "Coolidge, Charles Allerton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018321"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1402": [
             {
                 "museum_name": "Pfeiffer, Fritz", 
@@ -1023,6 +1631,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Hunt, Richard Howard", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124131"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1426": [
+            {
+                "museum_name": "Marie Goth", 
+                "similarity": 0.7111111111111111, 
+                "ulan_name": "Tarchi, Ugo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500047890"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1429": [
@@ -1209,6 +1825,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500050104"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1570": [
+            {
+                "museum_name": "Ruth Cyril", 
+                "similarity": 0.717121212121212, 
+                "ulan_name": "Birtwhistle, Cecil", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500174185"
+            }, 
+            {
+                "museum_name": "Ruth Cyril", 
+                "similarity": 0.6972222222222222, 
+                "ulan_name": "Eustachio, Maril\u00f9", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500344482"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1573": [
             {
                 "museum_name": "Saul, Peter", 
@@ -1223,6 +1853,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Levi, Josef", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500071683"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1575": [
+            {
+                "museum_name": "Hadley, Paul", 
+                "similarity": 0.7793518518518519, 
+                "ulan_name": "Hasledine, P.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500100790"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1593": [
@@ -1297,6 +1935,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500049795"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1642": [
+            {
+                "museum_name": "DeWolf, Wallace L.", 
+                "similarity": 0.7222222222222222, 
+                "ulan_name": "De Wolf, Wallace L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500091426"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1644": [
             {
                 "museum_name": "Stavitsky, Ellen", 
@@ -1319,6 +1965,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Blanch, Arnold", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500087778"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1659": [
+            {
+                "museum_name": "Lever, Hayley", 
+                "similarity": 0.711111111111111, 
+                "ulan_name": "Trevena, Shirley", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500175378"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1663": [
@@ -1377,6 +2031,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500076409"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1693": [
+            {
+                "museum_name": "Crane, Alan", 
+                "similarity": 0.7297619047619048, 
+                "ulan_name": "Calsina, Ram\u00f3n", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500035465"
+            }, 
+            {
+                "museum_name": "Crane, Alan", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Crane, Alan Horton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500048600"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1708": [
             {
                 "museum_name": "Virginia Keep Clark", 
@@ -1417,12 +2085,26 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500008199"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1722": [
+            {
+                "museum_name": "Castaigne, J. Andr\u00e9", 
+                "similarity": 0.7485008818342153, 
+                "ulan_name": "Gardet, Antoine Joseph", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500198899"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1730": [
             {
                 "museum_name": "George C. Lambdin", 
                 "similarity": 0.9142857142857143, 
                 "ulan_name": "Lambdin, George Cochran", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500026958"
+            }, 
+            {
+                "museum_name": "George C. Lambdin", 
+                "similarity": 0.7261904761904763, 
+                "ulan_name": "Schunte, G. A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500170793"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1738": [
@@ -1449,12 +2131,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500034287"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1752": [
+            {
+                "museum_name": "Peter Max", 
+                "similarity": 0.6944444444444444, 
+                "ulan_name": "Halter, Marek", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500042762"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/181": [
             {
                 "museum_name": "Knight, Ridgway", 
                 "similarity": 1.0, 
                 "ulan_name": "Knight, Ridgway", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500031994"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1848": [
+            {
+                "museum_name": "Plamondon, Peter", 
+                "similarity": 0.7029100529100529, 
+                "ulan_name": "Flexner, Roland", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500087983"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1896": [
@@ -1495,6 +2193,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "High, Timothy Griffin", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500059133"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/1974": [
+            {
+                "museum_name": "Sawyer, Philip Ayer", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Sawyer, Philip", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500054117"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/1982": [
@@ -1577,6 +2283,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500027508"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2004": [
+            {
+                "museum_name": "Wendel, Theodore M.", 
+                "similarity": 0.7458333333333335, 
+                "ulan_name": "Morley, T. W.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500062329"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2005": [
             {
                 "museum_name": "Smillie, James David", 
@@ -1591,6 +2305,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Aid, George Charles", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500110844"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2007": [
+            {
+                "museum_name": "Albee, Grace Thurston Arnold", 
+                "similarity": 0.75, 
+                "ulan_name": "Albee, Grace Arnold", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015907"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2008": [
@@ -1705,6 +2427,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500005654"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2179": [
+            {
+                "museum_name": "Sartain, William", 
+                "similarity": 0.7448412698412699, 
+                "ulan_name": "Krastins, Milda", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500049179"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2181": [
             {
                 "museum_name": "Birmelin, August Robert", 
@@ -1767,6 +2497,12 @@
                 "similarity": 0.9111111111111111, 
                 "ulan_name": "Ruscha, Ed", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500024159"
+            }, 
+            {
+                "museum_name": "Ruscha, Edward", 
+                "similarity": 0.7468253968253968, 
+                "ulan_name": "Ward, Richard", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500191299"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2225": [
@@ -1777,12 +2513,36 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500110985"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2226": [
+            {
+                "museum_name": "Trova, Ernest Tino", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Trova, Ernest", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000734"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2228": [
             {
                 "museum_name": "Florsheim, Richard Aberle", 
                 "similarity": 1.0, 
                 "ulan_name": "Florsheim, Richard Aberle", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500056003"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2230": [
+            {
+                "museum_name": "Martin, Fred Thomas", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Martin, Fred", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065996"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2233": [
+            {
+                "museum_name": "Goings, Ralph Ladell", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Goings, Ralph", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019481"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2236": [
@@ -1801,12 +2561,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500028910"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2238": [
+            {
+                "museum_name": "Wygonik, Melanie", 
+                "similarity": 0.7166666666666668, 
+                "ulan_name": "Young, Erla", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500086122"
+            }, 
+            {
+                "museum_name": "Wygonik, Melanie", 
+                "similarity": 0.6895502645502646, 
+                "ulan_name": "Young, Henrietta", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500185664"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2239": [
             {
                 "museum_name": "Wesselmann, Tom", 
                 "similarity": 1.0, 
                 "ulan_name": "Wesselmann, Tom", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500025122"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2240": [
+            {
+                "museum_name": "Welliver, Neil", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Welliver, Neil G.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015713"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2244": [
@@ -1857,6 +2639,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500088210"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2312": [
+            {
+                "museum_name": "Johnson, Frank Tenney", 
+                "similarity": 0.7084656084656085, 
+                "ulan_name": "Han, H. N.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500012787"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2323": [
             {
                 "museum_name": "Glankoff, Sam", 
@@ -1897,6 +2687,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500078568"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2378": [
+            {
+                "museum_name": "Nadelman, Elie", 
+                "similarity": 0.75, 
+                "ulan_name": "Sonneman, Eve", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500090651"
+            }, 
+            {
+                "museum_name": "Nadelman, Elie", 
+                "similarity": 0.7176587301587302, 
+                "ulan_name": "Erdmann, Ole", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500222949"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2392": [
             {
                 "museum_name": "Goode, Joe", 
@@ -1927,6 +2731,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Archipenko, Alexander", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500022523"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2450": [
+            {
+                "museum_name": "Edward F. Fisk", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Fisk, Edward", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500343284"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2469": [
@@ -2041,6 +2853,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500085600"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2622": [
+            {
+                "museum_name": "Lockhart, Robert", 
+                "similarity": 0.7388888888888889, 
+                "ulan_name": "Hofer, Volkhard", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500344351"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2629": [
             {
                 "museum_name": "James Turrell", 
@@ -2105,6 +2925,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500053935"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2707": [
+            {
+                "museum_name": "Roderick F. Mead", 
+                "similarity": 0.7319444444444444, 
+                "ulan_name": "Ferguson, O. E.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500138357"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2718": [
             {
                 "museum_name": "Sandoval, Arturo", 
@@ -2135,6 +2963,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Hofmann, Hans", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500024228"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2775": [
+            {
+                "museum_name": "Jacques Fath", 
+                "similarity": 0.775, 
+                "ulan_name": "Jackson, Arthur", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002499"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2801": [
@@ -2185,12 +3021,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500030927"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2878": [
+            {
+                "museum_name": "Kreg Kallenberger", 
+                "similarity": 0.711111111111111, 
+                "ulan_name": "Ballen, Roger", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500125133"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2882": [
             {
                 "museum_name": "Gene Davis", 
                 "similarity": 1.0, 
                 "ulan_name": "Davis, Gene", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500012653"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2884": [
+            {
+                "museum_name": "Norman Seaton Ives", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Ives, Norman", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500034477"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2887": [
@@ -2217,6 +3069,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500032084"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/2933": [
+            {
+                "museum_name": "Harry Gordon", 
+                "similarity": 0.7566666666666667, 
+                "ulan_name": "Green, Mary", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500126753"
+            }, 
+            {
+                "museum_name": "Harry Gordon", 
+                "similarity": 0.7269841269841268, 
+                "ulan_name": "Redmon, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500030807"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/2946": [
             {
                 "museum_name": "Marvin Lowe", 
@@ -2239,6 +3105,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Redfield, Robert S.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500108200"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/306": [
+            {
+                "museum_name": "Hasselman, Anna", 
+                "similarity": 0.7605555555555554, 
+                "ulan_name": "Samelson, Andra", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500008499"
+            }, 
+            {
+                "museum_name": "Hasselman, Anna", 
+                "similarity": 0.7060185185185186, 
+                "ulan_name": "Lansiaux, A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500042881"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/308": [
@@ -2281,6 +3161,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500016982"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3106": [
+            {
+                "museum_name": "Edmund D. Lewandowski", 
+                "similarity": 0.7631818181818181, 
+                "ulan_name": "La Dell, Edwin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016729"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3107": [
             {
                 "museum_name": "Jake Berthot", 
@@ -2289,12 +3177,26 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500014747"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3108": [
+            {
+                "museum_name": "Jennifer Losch Bartlett", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Bartlett, Jennifer", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021315"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3126": [
             {
                 "museum_name": "Oliver W. Holmes", 
                 "similarity": 0.9142857142857143, 
                 "ulan_name": "Holmes, Oliver Wendell", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500030942"
+            }, 
+            {
+                "museum_name": "Oliver W. Holmes", 
+                "similarity": 0.730952380952381, 
+                "ulan_name": "Cole, James William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500083334"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3174": [
@@ -2319,6 +3221,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Rosenberg, Louis Conrad", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500070031"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/325": [
+            {
+                "museum_name": "Arthur Deshaies", 
+                "similarity": 0.7425925925925926, 
+                "ulan_name": "Armstrong, Leslie", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500041901"
+            }, 
+            {
+                "museum_name": "Arthur Deshaies", 
+                "similarity": 0.6935185185185184, 
+                "ulan_name": "Stephens, Katherine", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500072848"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3255": [
@@ -2361,6 +3277,22 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500018316"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3339": [
+            {
+                "museum_name": "Peale, James", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Peale, James, Sr.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029852"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3360": [
+            {
+                "museum_name": "Riess, Wilhelm J.", 
+                "similarity": 0.7329365079365079, 
+                "ulan_name": "Mitchell, John I", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500164274"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3366": [
             {
                 "museum_name": "Faurer, Louis", 
@@ -2383,6 +3315,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Ponce de Leon, Michael", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500037865"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3380": [
+            {
+                "museum_name": "Murphy, Catherine E.", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Murphy, Catherine", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500040908"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3393": [
@@ -2409,6 +3349,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500012644"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/340": [
+            {
+                "museum_name": "John W. Vawter", 
+                "similarity": 0.7793209876543211, 
+                "ulan_name": "Johnston, Lawrence Waterbury", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000245"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3404": [
             {
                 "museum_name": "Acconci, Vito", 
@@ -2417,12 +3365,48 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500014538"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3420": [
+            {
+                "museum_name": "Love, John Washington", 
+                "similarity": 0.7337301587301588, 
+                "ulan_name": "Ploeger, J. H.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500205749"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3432": [
             {
                 "museum_name": "Richard C. Woodville", 
                 "similarity": 0.9199999999999999, 
                 "ulan_name": "Woodville, Richard Caton", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500001002"
+            }, 
+            {
+                "museum_name": "Richard C. Woodville", 
+                "similarity": 0.7396825396825397, 
+                "ulan_name": "Chapman, R. W.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015213"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3444": [
+            {
+                "museum_name": "Morlan, Dorothy", 
+                "similarity": 0.6853174603174602, 
+                "ulan_name": "Ulmann, Doris", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500027093"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3447": [
+            {
+                "museum_name": "Itter, Diane", 
+                "similarity": 0.7833333333333334, 
+                "ulan_name": "Miller, Ian", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500135828"
+            }, 
+            {
+                "museum_name": "Itter, Diane", 
+                "similarity": 0.7833333333333334, 
+                "ulan_name": "Tucker, Ian", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500242155"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/345": [
@@ -2457,6 +3441,30 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500011505"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3527": [
+            {
+                "museum_name": "Ascher, Lily", 
+                "similarity": 0.7996031746031746, 
+                "ulan_name": "Sch\u00e9ner, Mih\u00e1ly", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500008134"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3528": [
+            {
+                "museum_name": "Friedel, Friedrich", 
+                "similarity": 0.748015873015873, 
+                "ulan_name": "Wendel, Heinrich", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500077458"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3529": [
+            {
+                "museum_name": "Kilstrom, Kenneth", 
+                "similarity": 0.7023809523809523, 
+                "ulan_name": "Nilsson, Lennart", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500342855"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/3530": [
             {
                 "museum_name": "Gelb, Jan", 
@@ -2489,6 +3497,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500048823"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/372": [
+            {
+                "museum_name": "Hitchcock, George Hitchcock", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Hitchcock, George", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002541"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/391": [
             {
                 "museum_name": "Troth, Henry", 
@@ -2517,6 +3533,14 @@
                 "similarity": 0.8459259259259259, 
                 "ulan_name": "Walton, William McKee", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500275947"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/3980": [
+            {
+                "museum_name": "Alba Corrado", 
+                "similarity": 0.713095238095238, 
+                "ulan_name": "Mabasa, Noria", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500124001"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/403": [
@@ -2559,6 +3583,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500011988"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/4273": [
+            {
+                "museum_name": "Dorothy Heller", 
+                "similarity": 0.7037698412698412, 
+                "ulan_name": "Fotherby, Lesley", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500139442"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/4312": [
+            {
+                "museum_name": "Michael James", 
+                "similarity": 0.7071428571428572, 
+                "ulan_name": "Davies, Richard", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500198688"
+            }, 
+            {
+                "museum_name": "Michael James", 
+                "similarity": 0.6880952380952381, 
+                "ulan_name": "Coates, Nigel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006822"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/442": [
             {
                 "museum_name": "Schreiber, Georges", 
@@ -2586,7 +3632,7 @@
         "http://data.americanartcollaborative.org/ima/actor/id/4773": [
             {
                 "museum_name": "Maria M. Campos-Pons", 
-                "similarity": 0.9111111111111111, 
+                "similarity": 0.9333333333333333, 
                 "ulan_name": "Campos-Pons, Mar\u00eda Magdalena", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500125073"
             }
@@ -2597,6 +3643,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Johnson, Douglas Walter", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500100562"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/483": [
+            {
+                "museum_name": "Shechter, Laura", 
+                "similarity": 0.686111111111111, 
+                "ulan_name": "Schuiten, Luc", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500089676"
+            }, 
+            {
+                "museum_name": "Shechter, Laura", 
+                "similarity": 0.6742063492063491, 
+                "ulan_name": "Hebestreit, Andreas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500144715"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5041": [
@@ -2687,6 +3747,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500000647"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5119": [
+            {
+                "museum_name": "Arthur Siegel", 
+                "similarity": 0.7527777777777778, 
+                "ulan_name": "Taru, Eugen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500177857"
+            }, 
+            {
+                "museum_name": "Arthur Siegel", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Siegel, Arthur S.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500037103"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/514": [
             {
                 "museum_name": "Churchill, William W.", 
@@ -2719,6 +3793,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500037070"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5188": [
+            {
+                "museum_name": "Rachel M. Henderson", 
+                "similarity": 0.7771869488536156, 
+                "ulan_name": "Rheam, Henry Meynell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029736"
+            }, 
+            {
+                "museum_name": "Rachel M. Henderson", 
+                "similarity": 0.7289021164021164, 
+                "ulan_name": "Marshall, Charles H.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500157306"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5197": [
             {
                 "museum_name": "Krishna Reddy", 
@@ -2743,6 +3831,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500003752"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5295": [
+            {
+                "museum_name": "Susan Jamison", 
+                "similarity": 0.7230158730158731, 
+                "ulan_name": "Casson, Simon", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500332864"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5306": [
             {
                 "museum_name": "Lewis H. Meakin", 
@@ -2755,6 +3851,20 @@
                 "similarity": 0.8214285714285715, 
                 "ulan_name": "Lewis, Charles M.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500275973"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5309": [
+            {
+                "museum_name": "Gilbert Adrian", 
+                "similarity": 0.7860750360750361, 
+                "ulan_name": "Mastroianni, Alberto", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500199653"
+            }, 
+            {
+                "museum_name": "Gilbert Adrian", 
+                "similarity": 0.692953342953343, 
+                "ulan_name": "Friedlander, Elizabeth", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500121351"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/534": [
@@ -2787,6 +3897,20 @@
                 "similarity": 0.9634343434343434, 
                 "ulan_name": "Derujinskij, Gljeb W.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500048043"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5401": [
+            {
+                "museum_name": "Elmer H. Daniels", 
+                "similarity": 0.7300264550264549, 
+                "ulan_name": "Hill, James Jerome", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500092442"
+            }, 
+            {
+                "museum_name": "Elmer H. Daniels", 
+                "similarity": 0.7215873015873014, 
+                "ulan_name": "Chambon, Emile-Fran\u00e7ois", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018231"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5402": [
@@ -2843,12 +3967,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500125318"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5514": [
+            {
+                "museum_name": "Gilbert Hsaio", 
+                "similarity": 0.6761904761904761, 
+                "ulan_name": "Golba, Hossein", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500261550"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/552": [
             {
                 "museum_name": "Lee Krasner", 
                 "similarity": 1.0, 
                 "ulan_name": "Krasner, Lee", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500010144"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5576": [
+            {
+                "museum_name": "Jerome Goodman", 
+                "similarity": 0.7202380952380951, 
+                "ulan_name": "Ortman, George", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000936"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5589": [
@@ -2899,6 +4039,20 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500036671"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5752": [
+            {
+                "museum_name": "Charlene Marsh", 
+                "similarity": 0.798888888888889, 
+                "ulan_name": "Oehlen, Markus", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500112227"
+            }, 
+            {
+                "museum_name": "Charlene Marsh", 
+                "similarity": 0.7929166666666667, 
+                "ulan_name": "Caro, Marc", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500250869"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5767": [
             {
                 "museum_name": "Julianne Swartz", 
@@ -2923,6 +4077,28 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500025727"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5812": [
+            {
+                "museum_name": "Paul A. Randall", 
+                "similarity": 0.7182539682539683, 
+                "ulan_name": "Sandblom, Charles A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500241022"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5879": [
+            {
+                "museum_name": "Darlene Delbecq", 
+                "similarity": 0.6761904761904761, 
+                "ulan_name": "Elwes, Helen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500106658"
+            }, 
+            {
+                "museum_name": "Darlene Delbecq", 
+                "similarity": 0.6738095238095237, 
+                "ulan_name": "Berkenblit, Ellen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500330316"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5895": [
             {
                 "museum_name": "Randolph L. Coats", 
@@ -2939,6 +4115,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500125533"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5926": [
+            {
+                "museum_name": "Geoffrey Beene", 
+                "similarity": 0.6902777777777778, 
+                "ulan_name": "P\u00e9ne, F.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500041567"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/595": [
             {
                 "museum_name": "Frank Duveneck", 
@@ -2947,12 +4131,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500006974"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/5954": [
+            {
+                "museum_name": "Narcissa N. Thorne", 
+                "similarity": 0.7092592592592591, 
+                "ulan_name": "Navarro Moreno, Aurelia", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500040569"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/5996": [
             {
                 "museum_name": "Frances Gladding", 
                 "similarity": 0.8121428571428572, 
                 "ulan_name": "Godwin, Frank", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500123831"
+            }, 
+            {
+                "museum_name": "Frances Gladding", 
+                "similarity": 0.6952380952380952, 
+                "ulan_name": "Lagrange, Andr\u00e9", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500091233"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6022": [
+            {
+                "museum_name": "Louisiana Bendolph", 
+                "similarity": 0.7574074074074073, 
+                "ulan_name": "Relph, Susan", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500165795"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6023": [
@@ -2963,12 +4169,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500124543"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6028": [
+            {
+                "museum_name": "Jon Gibson", 
+                "similarity": 0.7333333333333333, 
+                "ulan_name": "Oneto, Gilberto", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500105045"
+            }, 
+            {
+                "museum_name": "Jon Gibson", 
+                "similarity": 0.7194444444444443, 
+                "ulan_name": "Richardson, Jane", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500079208"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6029": [
             {
                 "museum_name": "Ronnie Landfield", 
                 "similarity": 1.0, 
                 "ulan_name": "Landfield, Ronnie", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500333906"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6030": [
+            {
+                "museum_name": "Daryl Trivieri", 
+                "similarity": 0.7250000000000001, 
+                "ulan_name": "Batsry, Irit", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500088754"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6035": [
@@ -3051,6 +4279,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500021744"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/629": [
+            {
+                "museum_name": "Blanche Stillson", 
+                "similarity": 0.713095238095238, 
+                "ulan_name": "Ellot, B.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500036521"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/637": [
             {
                 "museum_name": "John W. Hardrick", 
@@ -3067,12 +4303,80 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500122244"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6456": [
+            {
+                "museum_name": "Ronald Markman", 
+                "similarity": 0.6952380952380952, 
+                "ulan_name": "Zalkalns, Valda", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500052233"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6457": [
+            {
+                "museum_name": "Marjorie Organ", 
+                "similarity": 0.7861111111111111, 
+                "ulan_name": "Bouraine, Marcel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500332768"
+            }, 
+            {
+                "museum_name": "Marjorie Organ", 
+                "similarity": 0.7068452380952381, 
+                "ulan_name": "Cornish, M.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500101360"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6458": [
+            {
+                "museum_name": "Helen Mowrey", 
+                "similarity": 0.7492063492063492, 
+                "ulan_name": "M\u00f6rner, Stellan", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500107616"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6460": [
+            {
+                "museum_name": "Martin Barooshian", 
+                "similarity": 0.7055555555555555, 
+                "ulan_name": "Altisent, Aurora", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500038130"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6463": [
             {
                 "museum_name": "Roger Shimomura", 
                 "similarity": 1.0, 
                 "ulan_name": "Shimomura, Roger", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500334023"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6466": [
+            {
+                "museum_name": "David E. Henry", 
+                "similarity": 0.7031746031746032, 
+                "ulan_name": "Perea Caveda, Enrique", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500087287"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6495": [
+            {
+                "museum_name": "Terence D. La Noue", 
+                "similarity": 0.75, 
+                "ulan_name": "La Noue, Terence", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065430"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6521": [
+            {
+                "museum_name": "Marcella Comes", 
+                "similarity": 0.7547222222222223, 
+                "ulan_name": "Flores, Maravillas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500038722"
+            }, 
+            {
+                "museum_name": "Marcella Comes", 
+                "similarity": 0.7214285714285714, 
+                "ulan_name": "Maes, Jacques", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500156399"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6522": [
@@ -3089,6 +4393,12 @@
                 "similarity": 0.9166666666666666, 
                 "ulan_name": "Hills, Anna Althea", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500199472"
+            }, 
+            {
+                "museum_name": "Anna A. Hills", 
+                "similarity": 0.7772486772486772, 
+                "ulan_name": "Clarke, William Hanna", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500031789"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6542": [
@@ -3099,12 +4409,26 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500123831"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/658": [
+            {
+                "museum_name": "Adams, Ansel Easton", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Adams, Ansel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026108"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6618": [
             {
                 "museum_name": "Francis L. Mora", 
                 "similarity": 0.8392857142857143, 
                 "ulan_name": "Mora, F. Luis", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500012333"
+            }, 
+            {
+                "museum_name": "Francis L. Mora", 
+                "similarity": 0.7759964726631393, 
+                "ulan_name": "Salisbury, Frank O.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006385"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6716": [
@@ -3121,6 +4445,12 @@
                 "similarity": 0.9875, 
                 "ulan_name": "Kleeman, Ron", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500016628"
+            }, 
+            {
+                "museum_name": "Ron Kleemann", 
+                "similarity": 0.686111111111111, 
+                "ulan_name": "Rojas, Elmar", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500118396"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/684": [
@@ -3147,6 +4477,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500341441"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6897": [
+            {
+                "museum_name": "Jeffrey Becom", 
+                "similarity": 0.6761904761904761, 
+                "ulan_name": "Peacock, Percy", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500088635"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6909": [
             {
                 "museum_name": "Suzanne Jackson", 
@@ -3163,12 +4501,32 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500015094"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6912": [
+            {
+                "museum_name": "Georges LaChance", 
+                "similarity": 0.7313492063492063, 
+                "ulan_name": "Charchoune, Serge", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500007384"
+            }, 
+            {
+                "museum_name": "Georges LaChance", 
+                "similarity": 0.7182539682539683, 
+                "ulan_name": "Gachal, E.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500140403"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/6915": [
             {
                 "museum_name": "Frank Spradling", 
                 "similarity": 0.8475, 
                 "ulan_name": "Staudigl, Franz", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500358924"
+            }, 
+            {
+                "museum_name": "Frank Spradling", 
+                "similarity": 0.6853174603174602, 
+                "ulan_name": "Bransom, Paul", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015249"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/693": [
@@ -3177,6 +4535,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Secunda, Arthur", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500003478"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/6969": [
+            {
+                "museum_name": "Alice Woods", 
+                "similarity": 0.7180952380952381, 
+                "ulan_name": "Woronyn, A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500052074"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/699": [
@@ -3201,6 +4567,20 @@
                 "similarity": 1.0, 
                 "ulan_name": "Gilmore, Kate", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500294130"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/705": [
+            {
+                "museum_name": "Rose, Robin", 
+                "similarity": 0.7717857142857143, 
+                "ulan_name": "Russell, Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002980"
+            }, 
+            {
+                "museum_name": "Rose, Robin", 
+                "similarity": 0.74, 
+                "ulan_name": "Probst, Reiner", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500101117"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/706": [
@@ -3233,6 +4613,12 @@
                 "similarity": 0.9166666666666666, 
                 "ulan_name": "Warthen, Ferol Sibley", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500339010"
+            }, 
+            {
+                "museum_name": "Ferol S. Warthen", 
+                "similarity": 0.715873015873016, 
+                "ulan_name": "Eichstaedt, E. A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500240696"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/7108": [
@@ -3283,6 +4669,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500003468"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/733": [
+            {
+                "museum_name": "Charles J. Fiscus", 
+                "similarity": 0.7297883597883598, 
+                "ulan_name": "Bache, Jules S.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500072248"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/737": [
             {
                 "museum_name": "Wolf, Henry", 
@@ -3297,6 +4691,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Olinsky, Ivan Gregorovitch", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500030617"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7388": [
+            {
+                "museum_name": "Julian Lovato", 
+                "similarity": 0.7329365079365079, 
+                "ulan_name": "Jelinek, Slavko", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500279795"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/739": [
@@ -3323,12 +4725,36 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500053701"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7444": [
+            {
+                "museum_name": "William Craig Sr.", 
+                "similarity": 0.7676190476190475, 
+                "ulan_name": "Sharon, W. C.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500044784"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/7474": [
             {
                 "museum_name": "Dickson Reeder", 
                 "similarity": 1.0, 
                 "ulan_name": "Reeder, Dickson", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500333008"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7523": [
+            {
+                "museum_name": "Wang Yachen", 
+                "similarity": 0.7416666666666667, 
+                "ulan_name": "Zheng, Chang", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500335150"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7545": [
+            {
+                "museum_name": "William Lamson", 
+                "similarity": 0.7563492063492063, 
+                "ulan_name": "Villegas, Jason", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500294250"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/760": [
@@ -3345,6 +4771,28 @@
                 "similarity": 1.0, 
                 "ulan_name": "Bontecou, Lee", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500024833"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7624": [
+            {
+                "museum_name": "Herbert W. Faulkner", 
+                "similarity": 0.7242063492063493, 
+                "ulan_name": "Walton, E. A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500118981"
+            }, 
+            {
+                "museum_name": "Herbert W. Faulkner", 
+                "similarity": 0.7105820105820105, 
+                "ulan_name": "Woodroffe, Walter Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500276921"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/7635": [
+            {
+                "museum_name": "Phillip Tennant", 
+                "similarity": 0.7142857142857143, 
+                "ulan_name": "Bennett, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500007653"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/767": [
@@ -3449,6 +4897,14 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500086218"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8251": [
+            {
+                "museum_name": "Mario Yrisarry", 
+                "similarity": 0.7066666666666667, 
+                "ulan_name": "Yarowsky, Morris", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500104198"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/826": [
             {
                 "museum_name": "Margulies, Joseph", 
@@ -3489,12 +4945,56 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500059909"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8504": [
+            {
+                "museum_name": "Charlotte Leaming", 
+                "similarity": 0.7779100529100529, 
+                "ulan_name": "Chaleye, Jean", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500067164"
+            }, 
+            {
+                "museum_name": "Charlotte Leaming", 
+                "similarity": 0.7714285714285715, 
+                "ulan_name": "Crotti, Jean", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500031208"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8506": [
+            {
+                "museum_name": "Grace R. Dean", 
+                "similarity": 0.7611111111111111, 
+                "ulan_name": "Groot, Gerardus de", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500100933"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/854": [
             {
                 "museum_name": "Dunning, Robert Spear", 
                 "similarity": 1.0, 
                 "ulan_name": "Dunning, Robert Spear", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500105651"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8545": [
+            {
+                "museum_name": "Blanche Grant", 
+                "similarity": 0.7492063492063492, 
+                "ulan_name": "Bla\u017eek, Anton\u00edn", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500265693"
+            }, 
+            {
+                "museum_name": "Blanche Grant", 
+                "similarity": 0.7047619047619047, 
+                "ulan_name": "Panne, R.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500161142"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8548": [
+            {
+                "museum_name": "Frank Mechau", 
+                "similarity": 0.6944444444444444, 
+                "ulan_name": "Berman, Mieczyslaw", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500084460"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/8557": [
@@ -3505,12 +5005,32 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500335076"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/859": [
+            {
+                "museum_name": "de Forest, Lockwood", 
+                "similarity": 0.75, 
+                "ulan_name": "Forest, Lockwood de, Sr.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018434"
+            }, 
+            {
+                "museum_name": "de Forest, Lockwood", 
+                "similarity": 0.7471560846560846, 
+                "ulan_name": "Delaune, Robert L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500286700"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/8616": [
             {
                 "museum_name": "Steven DeVries", 
                 "similarity": 0.8043650793650794, 
                 "ulan_name": "Menzies, Stephen", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500059684"
+            }, 
+            {
+                "museum_name": "Steven DeVries", 
+                "similarity": 0.7832010582010582, 
+                "ulan_name": "Paternite, Stephen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065131"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/862": [
@@ -3519,6 +5039,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Krafft, Carl R.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500008739"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8653": [
+            {
+                "museum_name": "Jean Lodge", 
+                "similarity": 0.7520833333333333, 
+                "ulan_name": "D\u00f6rflinger, Johannes", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500095258"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/869": [
@@ -3535,6 +5063,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Forsyth, Constance", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500334452"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/8780": [
+            {
+                "museum_name": "William J. Kennedy", 
+                "similarity": 0.721410934744268, 
+                "ulan_name": "Hern\u00e1ndez, Julio L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500319440"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/882": [
@@ -3605,6 +5141,20 @@
                 "similarity": 0.8916666666666666, 
                 "ulan_name": "Wells, Charles", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500052034"
+            }, 
+            {
+                "museum_name": "Bell, Charles", 
+                "similarity": 0.7405952380952381, 
+                "ulan_name": "Apple, Billy", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500103154"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9072": [
+            {
+                "museum_name": "Edward Fesser", 
+                "similarity": 0.7166666666666668, 
+                "ulan_name": "Stead, Frederick", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500173647"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/9124": [
@@ -3615,12 +5165,40 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500004592"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9156": [
+            {
+                "museum_name": "Sadie Loshinsky", 
+                "similarity": 0.6888888888888888, 
+                "ulan_name": "Havinden, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001580"
+            }, 
+            {
+                "museum_name": "Sadie Loshinsky", 
+                "similarity": 0.6853174603174602, 
+                "ulan_name": "Saulter, Leon", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500055529"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9158": [
+            {
+                "museum_name": "June C. Wayne", 
+                "similarity": 0.6666666666666666, 
+                "ulan_name": "Wayne, June", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500051984"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/926": [
             {
                 "museum_name": "Estes, Richard", 
                 "similarity": 0.8416666666666666, 
                 "ulan_name": "Treaster, Richard", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500073355"
+            }, 
+            {
+                "museum_name": "Estes, Richard", 
+                "similarity": 0.7333333333333333, 
+                "ulan_name": "Metzkes, Elrid", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065436"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/929": [
@@ -3669,6 +5247,12 @@
                 "similarity": 0.9666666666666667, 
                 "ulan_name": "Barker, Lawrence", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500057475"
+            }, 
+            {
+                "museum_name": "Laurence Barker", 
+                "similarity": 0.7576388888888889, 
+                "ulan_name": "Saurer, L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500085202"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/9574": [
@@ -3695,12 +5279,34 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500001248"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9665": [
+            {
+                "museum_name": "Larry Stark", 
+                "similarity": 0.7583333333333333, 
+                "ulan_name": "Burry, Mark", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500106156"
+            }, 
+            {
+                "museum_name": "Larry Stark", 
+                "similarity": 0.7333333333333334, 
+                "ulan_name": "Tarkhanyan, A.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500062982"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/9666": [
             {
                 "museum_name": "Ezrom Legae", 
                 "similarity": 1.0, 
                 "ulan_name": "Legae, Ezrom", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500356948"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9690": [
+            {
+                "museum_name": "Flora Schofield", 
+                "similarity": 0.6895502645502646, 
+                "ulan_name": "Contine, Leonard", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500086677"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/978": [
@@ -3725,6 +5331,12 @@
                 "similarity": 0.8500000000000001, 
                 "ulan_name": "Rivet, Rick", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500127415"
+            }, 
+            {
+                "museum_name": "Rick Arnitz", 
+                "similarity": 0.7513888888888889, 
+                "ulan_name": "Richman, Martin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500256192"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/9825": [
@@ -3741,12 +5353,26 @@
                 "ulan_uri": "http://vocab.getty.edu/ulan/500059252"
             }
         ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/985": [
+            {
+                "museum_name": "La Noue, Terence David", 
+                "similarity": 0.75, 
+                "ulan_name": "La Noue, Terence", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500065430"
+            }
+        ], 
         "http://data.americanartcollaborative.org/ima/actor/id/9886": [
             {
                 "museum_name": "Michael Falco", 
                 "similarity": 0.8273809523809524, 
                 "ulan_name": "Michelet, Alice", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500191421"
+            }, 
+            {
+                "museum_name": "Michael Falco", 
+                "similarity": 0.7238095238095238, 
+                "ulan_name": "Mallows, Muriel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500156695"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/997": [
@@ -3755,6 +5381,14 @@
                 "similarity": 1.0, 
                 "ulan_name": "Wiley, William T.", 
                 "ulan_uri": "http://vocab.getty.edu/ulan/500022350"
+            }
+        ], 
+        "http://data.americanartcollaborative.org/ima/actor/id/9974": [
+            {
+                "museum_name": "Carlotta Petrina", 
+                "similarity": 0.7017857142857142, 
+                "ulan_name": "Sterling, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500232444"
             }
         ], 
         "http://data.americanartcollaborative.org/ima/actor/id/999": [
