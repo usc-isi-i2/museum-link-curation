@@ -1,6 +1,12 @@
 from config import *
 from dbMgr import *
 
+@app.before_request
+def clear_trailing():
+    rp = request.path 
+    if rp != '/' and rp.endswith('/'):
+        return redirect(rp[:-1])
+
 @app.route('/test')
 def default():
     return render_template('login.html')

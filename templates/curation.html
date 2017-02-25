@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -13,8 +12,8 @@
   
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen"/>
     
     <style>
         body{
@@ -98,13 +97,24 @@
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
                     if (xhr.status == "500"){
                         Materialize.toast("Something went wrong. Please try again!", 2000);
-                        window.location.href = '/';
                     }
-                    else{
-                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                    else if (xhr.status == "400"){
+                        rsp =  JSON.parse(xhr.responseText);
+                        console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + rsp["error"]);
+                        Materialize.toast(rsp["error"], 2000);
+                        
                         window.setTimeout(function() {
-                            window.location.href = '/profile';
-                        }, 2500);
+                            if (rsp["error"].includes("Sparql Endpoint not responding")){
+                                $('.progress').hide();
+                                Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000);
+                            }
+                            else if (rsp["error"].includes("not have any tags associated")){
+                                Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                                window.setTimeout(function() {
+                                    window.location.href = '/profile';
+                                }, 2500);
+                            }
+                        },2500);
                     }
                 }
             });

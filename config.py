@@ -18,19 +18,18 @@ else:
 
 # Flask configuration
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 CORS(app)
 app.config['SECRET_KEY'] = 'top secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-
 # restful, usrdb and login_manager instance
 api = Api(app)
 
 usrdb = SQLAlchemy(app)
+
 lm = LoginManager(app)
-
-
 lm.login_view = 'index'
 lm.session_protection = 'strong'
 

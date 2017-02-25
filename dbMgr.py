@@ -1,4 +1,5 @@
 import csv, datetime, json, os
+from urllib2 import HTTPError
 from random import randint
 from pprint import pprint
 from bson.objectid import ObjectId
@@ -283,16 +284,17 @@ def getQuestionsForUID(uid,count):
     
     # If User with uid not present return error, otherwise get tags for user
     userOid = dbC[dname]["curator"].find_one({'uid':uid})
+    
     if userOid == None or userOid['_id'] == None:
         print "User not found. \n"
-        return None
+        return [], "User not found"
     else:
         #print "Found uid's objectID ",userOid
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
     if userTags == []:
-        print "User does not have any tags associated with their profile. \n"
-        return []
+        print "User does not have any tags associated with their profile.\n"
+        return [], "User does not have any tags associated with their profile"
     
     # Questions to be served...
     q = []
@@ -361,7 +363,7 @@ def getQuestionsForUID(uid,count):
             {'$set': {'lastSeen':datetime.datetime.utcnow()}},
             return_document=ReturnDocument.AFTER) ]
             
-    return q_new
+    return q_new,"success"
 
 # Basic Pre processing to help matching obvious values
 def preProcess(value):
@@ -395,7 +397,12 @@ def retrieveProperties(uri):
     sparql.setQuery(f.read().replace('???',uri))
     sparql.setReturnFormat(JSON)
     
-    rs = sparql.query().convert()
+    try:
+        rs = sparql.query().convert()
+    except HTTPError as e:
+        print " Sparql endpoint threw HTTPError({0}): {1}\n".format(e.errno, e.strerror)
+        return None
+    
     rs = rs['results']['bindings'][0]
     
     data = {}
@@ -584,6 +591,10 @@ def dumpCurationResults(args,filepath):
                     # Get properties from left and right side.
                     left = retrieveProperties(q["uri1"])
                     right = retrieveProperties(q["uri2"])
+                    
+                    if left == None or right == None:
+                        return 
+                        
                     matches = getMatches(left, right)
                     
                     a["attributes"] = {"matched":{},"unmatched":{}}
