@@ -1,7 +1,7 @@
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation - Register</title>
     
@@ -22,11 +22,10 @@
     </style>
 
 </head>
-
-<body>
+<div id="body" style="text-align:center;margin-left:auto; margin-right:auto">
     <div>{% include 'header.html' %}</div>
     
-    <div id="body"><center>
+    <div id="body">
     <br><br><br>
     <div class="container" style="width:20%"> 
         <div class="modal-header">
@@ -46,17 +45,16 @@
                     <input id="pw" name="pw" type="password" class="form-control input-lg" placeholder="Password">
                 </div>
                 <div class="form-group">
-                    <button id = "submit-btn" class="btn btn-primary btn-lg btn-block">Create</button>
+                    <button style="text-align:center;margin-left:auto; margin-right:auto" id = "submit-btn" class="btn btn-primary btn-lg btn-block">Create</button>
                 </div>
             </form>
             <br><br><br><br><br><br>
             <form class="form col-md-12 center-block" action="login" method="GET" >
                 <div class="form-group">
-                    <button id = "register-btn" class="btn btn-primary btn-lg btn-block btn-gray">Login</button>
+                    <button style="text-align:center;margin-left:auto; margin-right:auto" id = "register-btn" class="btn btn-primary btn-lg btn-block btn-gray">Login</button>
                 </div>
             </form>
-          
-            <p><strong><center>{{ rsp }}</center></strong>
+            <p style="text-align:center;margin-left:auto; margin-right:auto">{{ rsp }}</p>
         </div>
     </div>
     </center>

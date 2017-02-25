@@ -1,7 +1,7 @@
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation</title>
     
@@ -38,7 +38,7 @@
       <br><br><br><br><br><br><br><br><br>
       <br><br><br><br><br><br><br><br>
       <div class="row center">
-        <a href="{{ url_for('oauth_authorize', provider='facebook') }}" id="submit" class="waves-effect waves-light indigo darken-2 btn-large">Log in with Facebook</a>
+        <a href="{{url_for('oauth_authorize', provider='facebook') }}" id="submit" class="waves-effect waves-light indigo darken-2 btn-large">Log in with Facebook</a>
       </div>
       <div class="container" style="height:50vh"></div>
     </div>

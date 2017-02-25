@@ -1,8 +1,8 @@
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation - Profile</title>
     
@@ -29,7 +29,7 @@
                 success: function(data){
                 
                     // Update tags
-                    $('#nameHeading').append("Welcome, "+data.name)
+                    $('#nameHeading').text("Welcome, "+data.name)
                     for(i = 0; i < data.tags.length; i++) {
                         $('#'+data.tags[i]).prop('checked', true);
                     }
@@ -121,12 +121,12 @@
     
 </head>
 <body>
-    <div> {% include 'header.html' %}
+    <div> {% include 'header.html' %}</div>
     <div id="body">
     
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
-            <h1 id="nameHeading" class="header center black-text"></h1>
+            <h1 id="nameHeading" class="header center black-text">Welcome, curator</h1>
             <div class="row center">
                 <h5 class="header col s12 light">You can update your preferred museums below and also track progress.</h5>
             </div>
