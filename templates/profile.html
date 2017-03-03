@@ -11,6 +11,7 @@
     <script src="static/js/materialize.js"></script>
     <script src="static/js/init.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -20,8 +21,9 @@
     <script>
         $(document).ready(function () {
         
+            // Code to get tags and other profile info
             var p = '{{server}}'.concat("/user");
-
+            var d = {}
             $.ajax({
                 method: 'GET',
                 url: p,
@@ -33,55 +35,11 @@
                     for(i = 0; i < data.tags.length; i++) {
                         $('#'+data.tags[i]).prop('checked', true);
                     }
-                    
-                    // Update statistics - D3 visualization
-                    var width = 400;
-                    var height = 400;
-                    var radius = (Math.min(width, height) / 2) - 10;
-                    var formatNumber = d3.format(",d");
-                    var x = d3.scale.linear().range([0, 2 * Math.PI]);
-                    var y = d3.scale.sqrt().range([0, radius]);
-                    var color = d3.scale.category10();
-                    var partition = d3.layout.partition().value(function(d) { return d.size; });
-
-                    var arc = d3.svg.arc()
-                        .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
-                        .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
-                        .innerRadius(function(d) { return Math.max(0, y(d.y)); })
-                        .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
-
-                    var svg = d3.select("#chart").append("svg")
-                        .attr("width", width)
-                        .attr("height", height)
-                        .append("g")
-                        .attr("transform", "translate(" + width / 2 + "," + (height / 2) + ")");
-    
-                    // Draw the pie chart
-                    svg.selectAll("path")
-                       .data(partition.nodes(data.payload))
-                       .enter().append("path")
-                       .attr("d", arc)
-                       .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
-                       .on("click", click)
-                       .append("title")
-                       .text(function(d) { return d.name + "\n" + formatNumber(d.value); });
-
-                    function click(d) {
-                        svg.transition().duration(750).tween("scale", function() {
-                            var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]);
-                            var yd = d3.interpolate(y.domain(), [d.y, 1]);
-                            var yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
-                            return function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); };
-                      })
-                      .selectAll("path")
-                      .attrTween("d", function(d) { return function() { return arc(d); }; });
-                    }
-
-                    d3.select(self.frameElement).style("height", height + "px");
-                    
+                    d = data
                 }
             });
             
+            // save tags button action listener
             $("#save").click(function(e){
                 e.preventDefault()
                 
@@ -107,15 +65,42 @@
                 });
             });
             
+            // Interactive chart
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+            
+                var s = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', { role: 'annotation' } ]]
+                for (var t in d.payload){
+                    if (t == "ulan"){continue;}
+                    var j = d.payload[t];
+                    var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
+                    s.push([t,j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
+                }
+                console.log(s)
+                
+                var data = google.visualization.arrayToDataTable(s);
+              
+                var view = new google.visualization.DataView(data);
+
+                var options = {
+                    width: 800,
+                    height: 500,
+                    legend: { position: 'top', maxLines: 3 },
+                    bar: { groupWidth: '63%' },
+                    isStacked: true,
+                    colors:['#4CAF50','#F44336','#F9A825','lightgray']
+                };
+              
+                var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+                chart.draw(view, options);
+            }
         });
     </script>
     
     <style>
         #body {
             min-height: calc(100vh - 10px);
-        }
-        path {
-            stroke: #000;
         }
     </style>
     
@@ -140,6 +125,7 @@
 
             <div class="col s12 m6 push-m1">
                 <div class="icon-block">
+                    <br><br><br><br>
                     {% for tag in keys %}
                         <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
                         <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
@@ -151,11 +137,9 @@
                     <br/><br/>
                 </div>
             </div>
-
-            <div class="col s12 m4 push-m1">
-                <div id="chart"></div>
+            <div class="col s12 m6 pull-m1">
+                <div id="barchart_values"></div>
             </div>
-
         </div>
       </div>
     </div>

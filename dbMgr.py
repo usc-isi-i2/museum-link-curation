@@ -13,7 +13,7 @@ def db_init(resetU, resetD):
     
         # Backup
         export = {"data":{"codes":[3,4,5], "tags":museums.keys() }}
-        dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
+        #dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
     
         if resetU:
             cleanDatabases()
