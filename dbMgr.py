@@ -1,4 +1,5 @@
 import csv, datetime, json, os
+from urllib2 import HTTPError
 from random import randint
 from pprint import pprint
 from bson.objectid import ObjectId
@@ -12,7 +13,7 @@ def db_init(resetU, resetD):
     
         # Backup
         export = {"data":{"codes":[3,4,5], "tags":museums.keys() }}
-        dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
+        #dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
     
         if resetU:
             cleanDatabases()
@@ -283,16 +284,17 @@ def getQuestionsForUID(uid,count):
     
     # If User with uid not present return error, otherwise get tags for user
     userOid = dbC[dname]["curator"].find_one({'uid':uid})
+    
     if userOid == None or userOid['_id'] == None:
         print "User not found. \n"
-        return None
+        return [], "User not found"
     else:
         #print "Found uid's objectID ",userOid
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
     if userTags == []:
-        print "User does not have any tags associated with their profile. \n"
-        return []
+        print "User does not have any tags associated with their profile.\n"
+        return [], "User does not have any tags associated with their profile"
     
     # Questions to be served...
     q = []
@@ -361,7 +363,7 @@ def getQuestionsForUID(uid,count):
             {'$set': {'lastSeen':datetime.datetime.utcnow()}},
             return_document=ReturnDocument.AFTER) ]
             
-    return q_new
+    return q_new,"success"
 
 # Basic Pre processing to help matching obvious values
 def preProcess(value):
@@ -395,7 +397,12 @@ def retrieveProperties(uri):
     sparql.setQuery(f.read().replace('???',uri))
     sparql.setReturnFormat(JSON)
     
-    rs = sparql.query().convert()
+    try:
+        rs = sparql.query().convert()
+    except HTTPError as e:
+        print " Sparql endpoint threw HTTPError({0}): {1}\n".format(e.errno, e.strerror)
+        return None
+    
     rs = rs['results']['bindings'][0]
     
     data = {}
@@ -577,11 +584,38 @@ def dumpCurationResults(args,filepath):
             for q in questions:
                 a = {}
                 if tid in q['tags']:
+                    
+                    # Get similarity meta data and URIs
                     a["similarity"] = q["similarity"]
-                    a["uri1"] = q["uri1"]
-                    a["uri2"] = q["uri2"]
+                    
+                    # Get properties from left and right side.
+                    left = retrieveProperties(q["uri1"])
+                    right = retrieveProperties(q["uri2"])
+                    
+                    if left == None or right == None:
+                        return 
+                        
+                    matches = getMatches(left, right)
+                    
+                    a["attributes"] = {"matched":{},"unmatched":{}}
+                    
+                    # Unmatched
+                    for i in range(0, len(matches["Unmatched"]["name"])):
+                        if matches["Unmatched"]["name"][i] == "URI":
+                            a["uri1"] = matches["Unmatched"]["lValue"][i]
+                            a["uri2"] = matches["Unmatched"]["rValue"][i]
+                        else:
+                            a["attributes"]["unmatched"][matches["Unmatched"]["name"][i]] = [matches["Unmatched"]["lValue"][i], matches["Unmatched"]["rValue"][i] ]
+                    
+                    # matched
+                    for i in range(0, len(matches["ExactMatch"]["name"])):
+                        a["attributes"]["matched"][matches["ExactMatch"]["name"][i]] = matches["ExactMatch"]["value"][i]
+                    
+                    # Get current json dump and append this pair
                     temp = out["payload"]
                     temp.append(a)
+                    
+                    # Write it back
                     out["payload"] = temp
                     out["count"] += 1
             

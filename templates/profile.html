@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation - Profile</title>
     
@@ -11,28 +10,36 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="static/js/materialize.js"></script>
     <script src="static/js/init.js"></script>
-  
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen"/>
     
     <script>
         $(document).ready(function () {
+        
+            // Code to get tags and other profile info
             var p = '{{server}}'.concat("/user");
-
+            var d = {}
             $.ajax({
                 method: 'GET',
                 url: p,
                 contentType: 'application/json',
                 success: function(data){
-                    $('#nameHeading').append("Welcome, "+data.name)
+                
+                    // Update tags
+                    $('#nameHeading').text("Welcome, "+data.name)
                     for(i = 0; i < data.tags.length; i++) {
                         $('#'+data.tags[i]).prop('checked', true);
                     }
+                    d = data
                 }
             });
             
+            // save tags button action listener
             $("#save").click(function(e){
                 e.preventDefault()
                 
@@ -58,6 +65,35 @@
                 });
             });
             
+            // Interactive chart
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+                var s = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', { role: 'annotation' } ]]
+                for (var i = 0; i < d.keys.length; i++){
+                    var t = d.keys[i]
+                    if (t == "ulan"){continue;}
+                    var j = d.payload[t];
+                    var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
+                    s.push([t,j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
+                }
+                
+                var data = google.visualization.arrayToDataTable(s);
+              
+                var view = new google.visualization.DataView(data);
+
+                var options = {
+                    width: 800,
+                    height: 500,
+                    legend: { position: 'top', maxLines: 3 },
+                    bar: { groupWidth: '63%' },
+                    isStacked: true,
+                    colors:['#4CAF50','#F44336','#F9A825','lightgray']
+                };
+              
+                var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+                chart.draw(view, options);
+            }
         });
     </script>
     
@@ -69,14 +105,14 @@
     
 </head>
 <body>
-    <div> {% include 'header.html' %}
+    <div> {% include 'header.html' %}</div>
     <div id="body">
     
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
-            <h1 id="nameHeading" class="header center black-text"></h1>
+            <h1 id="nameHeading" class="header center black-text">Welcome, curator</h1>
             <div class="row center">
-                <h5 class="header col s12 light">You can update your preferred museums below. You can also see your (left) and overall system (right) statistics below.</h5>
+                <h5 class="header col s12 light">You can update your preferred museums below and also track progress.</h5>
             </div>
         </div>
     </div>
@@ -85,29 +121,24 @@
         <div class="section">
 
         <div class="row">
-            <div class="col s11 m3">
-                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
-            </div>
 
-            <div class="col s11 m5">
+            <div class="col s12 m6 push-m1">
                 <div class="icon-block">
+                    <br><br><br><br>
                     {% for tag in keys %}
                         <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
                         <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
                     {% endfor %}
-                
-                    <br/><br/><br/>
-                
+                    <br/><br/>
                     <form name ="profile_tag_select">
-                        <center><button id = "save" type="submit" class="waves-effect waves-light btn-large">Save Changes</button></center>
+                        <button id = "save" type="submit" class="waves-effect waves-light btn-large">Save Changes</button>
                     </form>
+                    <br/><br/>
                 </div>
             </div>
-
-            <div class="col s11 m3">
-                <!--div style="height:10%;width:10%">{% include 'charts.html' %}</div-->
+            <div class="col s12 m6 pull-m1">
+                <div id="barchart_values"></div>
             </div>
-        
         </div>
       </div>
     </div>

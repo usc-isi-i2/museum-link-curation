@@ -1,54 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-    
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="static/js/materialize.js"></script>
-    <script src="static/js/init.js"></script>
-  
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<nav class="teal">
+    <div class="nav-wrapper container">
+        <div id="logo-container" class="brand-logo thin">
+            <a href="/curation"><img src="static/images/logo.png" alt="logo" height="40" style="margin-right:2px"/>Link Curation</a>
+        </div>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="/about" title="What is this tool about">About</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="/curation" title="Curate the data">Curate</a></li>
+                <li><a href="/profile" title="Update and view your profile">Profile</a></li>
+                <li><a href="/results" title="Browse/download already curated results">Results</a></li>
+            {% else %}
+                <li><a href="/curation" title="Log in the system">Login</a></li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}" title="Log out of the system">Logout</a></li>
+            {% endif %}
+        </ul>
 
-</head>
-
-<body>
-  <nav class="teal" role="navigation">
-    <div class="nav-wrapper container"><img src="static/images/logo.png" height="80%" style="margin-right:2px"><a id="logo-container" href="/curation" class="brand-logo thin">Link Curation</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="/about" title="What is this tool about">About</a></li>
-        {% if current_user.is_authenticated %}
-            <li><a href="/curation" title="Curate the data">Curate</a></li>
-            <li><a href="/profile" title="Update and view your profile">Profile</a></li>
-            <li><a href="/results" title="Browse/download already curated results">Results</a></li>
-        {% else %}
-            <li><a href="/curation" title="Log in the system">Login</a></li>
-        {% endif %}
-        {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('logout') }}" title="Log out of the system">Logout</a></li>
-        {% endif %}
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="/about" title="What is this tool about">About</a></li>
-        {% if current_user.is_authenticated %}
-            <li><a href="/curation" title="Curate the data">Curate</a></li>
-            <li><a href="/profile" title="Update and view your profile">Profile</a></li>
-            <li><a href="/results" title="Browse/download already curated results">Results</a></li>
-        {% else %}
-            <li><a href="/curation" title="Log in the system">Login</a></li>
-        {% endif %}
-        {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('logout') }}" title="Log out of the system">Logout</a></li>
-        {% endif %}
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="/about" title="What is this tool about">About</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="/curation" title="Curate the data">Curate</a></li>
+                <li><a href="/profile" title="Update and view your profile">Profile</a></li>
+                <li><a href="/results" title="Browse/download already curated results">Results</a></li>
+            {% else %}
+                <li><a href="/curation" title="Log in the system">Login</a></li>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}" title="Log out of the system">Logout</a></li>
+            {% endif %}
+        </ul>
+        
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        
     </div>
-  </nav>
-  
-  </body>
-</html>
+</nav>

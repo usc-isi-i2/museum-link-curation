@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation</title>
     
@@ -13,8 +12,8 @@
   
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen"/>
     
     <style>
         body{
@@ -41,6 +40,10 @@
         var qid = ''
         
         $(document).ready(function(){ 
+        
+            document.getElementById("aY").disabled = true;
+            document.getElementById("aN").disabled = true;
+            document.getElementById("aNS").disabled = true;
         
             populateCards();
         
@@ -89,18 +92,30 @@
                             window.location.href = '/profile';
                         }, 2500);
                     }
-                    /*
-                    for(i = 0; i < data.length; i++)
-                    {
-                        populateCard(data[i],i);
-                    }*/
                 },
-                error: function(xhr, status, error){
-                    //Materialize.toast(xhr["responseText"], 2000);
-                    Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
-                    window.setTimeout(function() {
-                        window.location.href = '/profile';
-                    }, 2500);
+                error: function(xhr){
+                    console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
+                    if (xhr.status == "500"){
+                        Materialize.toast("Something went wrong. Please try again!", 2000);
+                    }
+                    else if (xhr.status == "400"){
+                        rsp =  JSON.parse(xhr.responseText);
+                        console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + rsp["error"]);
+                        Materialize.toast(rsp["error"], 2000);
+                        
+                        window.setTimeout(function() {
+                            if (rsp["error"].includes("Sparql Endpoint not responding")){
+                                $('.progress').hide();
+                                Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000);
+                            }
+                            else if (rsp["error"].includes("not have any tags associated")){
+                                Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                                window.setTimeout(function() {
+                                    window.location.href = '/profile';
+                                }, 2500);
+                            }
+                        },2500);
+                    }
                 }
             });
         };
@@ -115,16 +130,19 @@
                     populateHeadings(data.Unmatched);
                     populateExactMatch(data.ExactMatch);
                     populateNoMatch(data.Unmatched);
+                    var h = "<tr class='cyan darken-2 white-text thin'><th colspan='2' style='text-align:center'> Similarity Score: "+data.score+"</th></tr>";
+                    $('#cardHeading').append(h);
                 },  
                 success: function (card) {
                     $('.progress').hide();
+                    document.getElementById("aY").disabled = false;
+                    document.getElementById("aN").disabled = false;
+                    document.getElementById("aNS").disabled = false;
                     console.log("loading...done")                    
                     qid = data['qid']
                 },
                 complete: function () {
-                    //populateHeadings(data.Unmatched, divid);
-                    //populateExactMatch(data.ExactMatch, divid);
-                    //populateNoMatch(data.Unmatched, divid);
+                    // Do something useful may be
                 }
             });
         };
@@ -132,7 +150,9 @@
         function populateHeadings(data){
             console.log(data)
             var h = "";
-            h += "<tr class='deep-purple darken-2 white-text thin'><th style='text-align:center'>"+data.leftT+"</th><th style='text-align:center'>"+data.rightT+"</th></tr>";
+            h += "<tr class='cyan darken-4 white-text thin'>"
+            h += "<th style='text-align:center'>"+data.leftT+"</th>";
+            h += "<th style='text-align:center'>"+data.rightT+"</th></tr>";
             $('#cardHeading').append(h);
         };
         
@@ -142,17 +162,21 @@
             var names = data.name;
             var values = data.value;
             
-            if(names.length == 0){
-                tr += "<tr><td colspan='3' style='text-align:center'>None of the records matched</td></tr>";
+            if(names.length == 0) {
+                tr += "<tr><td colspan='3' style='text-align:center'>None of the fields match</td></tr>";
             }
             else {
+                if (names.length == 1 && contains(names,"Name")){
+                    tr += "<tr><td colspan='3' style='text-align:center'>None of the other fields match</td></tr>";
+                }
+            
                 for (var index in names) {
                     tr += "<tr>"
                     
                     // Special handling of Name
                     if (names[index] == "Name") {
                         var heading = document.getElementById("cardHeading");
-                        heading.innerHTML += "<tr class='deep-purple darken-4 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
+                        heading.innerHTML += "<tr class='cyan darken-3 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
                     }
                     else {
                         tr += "<td style='text-align:right'>" + names[index] + "</td>";
@@ -172,7 +196,7 @@
             
             var tr = "";
             if(names.length == 0){
-                tr += "<tr><td colspan='3' style='text-align:center'>None that do not match</td></tr>";
+                tr += "<tr><td colspan='3' style='text-align:center'>All attributes are matching.</td></tr>";
             }
             else
             {            
@@ -186,7 +210,7 @@
                     }                    
                     else if (names[index] == "Name") {
                         var heading = document.getElementById("cardHeading");
-                        heading.innerHTML += "<tr class='deep-purple darken-4 white-text'><td style='text-align:center'>"+lValues[index]+"</td><td style='text-align:center'>"+rValues[index]+"</td></tr>";
+                        heading.innerHTML += "<tr class='cyan darken-3 white-text'><td style='text-align:center'>"+lValues[index]+"</td><td style='text-align:center'>"+rValues[index]+"</td></tr>";
                     }
                     else {
                         
@@ -208,6 +232,15 @@
             $('#noMatch').append(tr);
         };
         
+        function contains(ary, elem){
+            for (var i = 0; i<ary.length;i++){
+                if (ary[i] == elem){
+                    return true;
+                }
+            }
+            return false;
+        };
+        
         function submitAnswer(answer, qid, comment){
             var sv = '{{server}}'.concat("/answer");
             var payload = new Object();
@@ -227,9 +260,7 @@
                 }
             });
         };
-       </script>
     </script>
-    
 </head>
 
 <body>

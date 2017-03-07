@@ -21,9 +21,12 @@ class recordLinkage:
 
     def v1Matching(self, ulanentity, entity):
         # Check if ulan entity birth year belong to any of the block keys.
+        if 'byear' not in entity:
+            return None
+            
         if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
             # do string similarity
-            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
+            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.66)
             if match['match']:
                 return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
@@ -59,7 +62,7 @@ class recordLinkage:
     # Run record linkage against base database with blocking on birth year
     def findPotentialMatches(self, d, version, output_folder):
         if d:
-            datasets = [d]
+            datasets = d.split()
         else:
             # Create list of all datasets available
             datasets = [dname[:dname.index('.')] for dname in os.listdir(self.basedir)]
@@ -114,7 +117,7 @@ class recordLinkage:
                 
                 # Sort potential matches based on matching score and select top N
                 potential_matches = sorted( potential_matches ,key=lambda x: x['similarity']['score'],reverse=True )
-                
+                perfactMatch = False
                 for i in range(0,self.topN):
                     
                     # Break if no potential matches 
@@ -126,6 +129,10 @@ class recordLinkage:
                     elif len(potential_matches)-1 < i:
                         print "Enough matches were not found for entity", entity
                         break
+                        
+                    elif perfactMatch and potential_matches[i]['similarity']['score'] < 1:
+                        print "Found all perfect matched for entity ", entity
+                        break
 
                     out.write(json.dumps(potential_matches[i]))
                     out.write('\n')
@@ -133,7 +140,7 @@ class recordLinkage:
                     # Break if perfect match is found
                     if potential_matches[i]['similarity']['score'] == 1:
                         print "Found perfect match for entity ", entity
-                        break
+                        perfactMatch = True
 
             # Close output file handle
             out.close()
@@ -161,7 +168,7 @@ class recordLinkage:
             return {"match":False}
 
     # Match names using hybrid jaccard, default threshold = 0.8
-    def matchNames_hj(self,s1,s2, threshold=0.8):
+    def matchNames_hj(self,s1,s2, threshold=0.67):
 
         sys.path.append(os.path.join(self.absdir,'..','HybridJaccard'))
         from hybridJaccard import HybridJaccard
@@ -173,8 +180,8 @@ class recordLinkage:
         s2 = unidecode(unicode(s2.encode('utf-8'),'utf-8')).strip().lower()
 
         # Keep only alpha numerics
-        s1 = re.sub('[^A-Za-z0-9 ]+', '', s1)
-        s2 = re.sub('[^A-Za-z0-9 ]+', '', s2)
+        s1 = re.sub('[^A-Za-z0-9 ]+', ' ', s1)
+        s2 = re.sub('[^A-Za-z0-9 ]+', ' ', s2)
 
         match['score'] = sm.sim_measure(s1.split(), s2.split())
         
@@ -195,8 +202,8 @@ class recordLinkage:
         # do some pre processing to do fair comparison
         s1 = unidecode(unicode(s1.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
         s2 = unidecode(unicode(s2.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
-        s1 = re.sub('[^A-Za-z0-9 ]+', '', s1)
-        s2 = re.sub('[^A-Za-z0-9 ]+', '', s2)
+        s1 = re.sub('[^A-Za-z0-9 ]+', ' ', s1)
+        s2 = re.sub('[^A-Za-z0-9 ]+', ' ', s2)
         
         scoring = swalign.NucleotideScoringMatrix(sw_match, sw_mismatch)
         sw = swalign.LocalAlignment(scoring,gap_penalty=-0.5) 

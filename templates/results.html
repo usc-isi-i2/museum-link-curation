@@ -1,9 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE  html>
 <html lang="en">
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <link rel="shortcut icon" type="image/x-icon" href="static/images/main.png">
     <title>Link Curation - Curated Results</title>
     
@@ -14,11 +13,12 @@
   
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen"/>
     
     <script>
     $(document).ready(function(){ 
+        $('#progress').hide();
         $('select').material_select();
         
         $("#download").click(function(e){
@@ -38,9 +38,23 @@
                 url: sv,
                 data: json_data,
                 contentType: 'application/json',
+                
+                beforeSend: function(){
+                    $('#progress').show();
+                    document.getElementById("download").disabled = true;
+                    console.log("downloading...")
+                },
                 success: function(data){
                     console.log("File Created!");
+                    $('#progress').hide();
+                    document.getElementById("download").disabled = false;
                     window.location.href = "/download";
+                },
+                error: function(xhr){
+                    console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
+                    Materialize.toast("Something went wrong. Please try again!",5000);
+                    $('#progress').hide();
+                    document.getElementById("download").disabled = false;
                 }
             });
         });
@@ -62,7 +76,8 @@
         <div class="container">
             <div class="row center">
                 <br><br>
-                <div class="header col s12 m6">
+                
+                <div class="header col s12 m5">
                     <select multiple id="museums" >
                         <option value="" disabled selected>Choose museum(s)</option>
                         {% for tag in keys %}
@@ -70,7 +85,8 @@
                         {% endfor %}
                     </select>
                 </div>
-                <div class="header col s12 m4">
+                
+                <div class="header col s12 m5">
                     <select multiple id="codes">
                         <option value="" disabled selected>Choose pair status(s)</option>
                         <option value="3">Match</option>
@@ -80,18 +96,34 @@
                 </div>
                 
                 <div class="header col s12 m2">
-                <form name ="download_data">
-                    <button id = "download" type="submit" class="btn-large" >Export</button>
-                </form>
+                    <form name ="download_data">
+                        <div id="progress" class="preloader-wrapper small active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button id = "download" type="submit" class="btn-large" >
+                            Export
+                        </button>
+                    </form>
                 </div>
+                
             </div>
         </div>
     </div>
     
-    <div class="section no-pad-bot" id="index-banner">
+    <div class="section no-pad-bot">
         <div class="container">
             <div class="row center">
-                <iframe class="header col s12 light" src="datatable" frameborder="0" height="1000px" ></iframe>
+                <iframe class="header col s12 light" src="datatable" style="border:0" height="1000" ></iframe>
             </div>
         </div>
     </div>

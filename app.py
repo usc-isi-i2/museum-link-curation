@@ -158,16 +158,16 @@ class userMgr(Resource):
         print "Input received: {} \n".format(request.json)
         
         if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
+            return {'error':"Couldn't authenticate user."}, 400
         
         if request.json == None:
-            return {'message': 'No input provided'}, 400
+            return {'error': 'No input provided'}, 400
         
         # Update tag for a user
         if 'tags' in request.json:
             #print request.json["tags"], type(request.json["tags"])
             if type(request.json["tags"]) != list:
-                return {'message': 'Tags type should be list of String'}, 400
+                return {'error': 'Tags type should be list of String'}, 400
                 
             tags = []
             for tag in request.json['tags']:
@@ -176,7 +176,7 @@ class userMgr(Resource):
                     t = dbC[dname]["tag"].find_one({'tagname':tag.lower()})
                     if t == None:
                         message = 'tag with name <{}> does not exist'.format(tag)
-                        return {'message': message}, 400
+                        return {'error': message}, 400
                     tags = tags + [t["_id"]]
 
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'tags':tags}})
@@ -185,16 +185,16 @@ class userMgr(Resource):
         if 'name' in request.json:
             #print request.json["name"], type(request.json["name"])
             if type(request.json["name"]) != str and type(request.json["name"]) != unicode:
-                return {'message': 'Name type should by String'}, 400
+                return {'error': 'Name type should by String'}, 400
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'name':request.json["name"]}})
         
         # Update rating of a user
         if 'rating' in request.json:
             #print request.json["name"], type(request.json["name"])
             if type(request.json["rating"]) != int:
-                return {'message': 'Rating type should by integer'}, 400
+                return {'error': 'Rating type should by integer'}, 400
             if request.json["rating"] > 5 or request.json["rating"] < 0:
-                return {'message': 'Rating should be between 0-5 only'}, 400
+                return {'error': 'Rating should be between 0-5 only'}, 400
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'rating':request.json["rating"]}})
         
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
@@ -204,7 +204,7 @@ class userMgr(Resource):
     # Return user profile information
     def get(self):
         if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
+            return {'error':"Couldn't authenticate user."}, 400
         
         # getStats about all the questions answered by this user
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
@@ -227,8 +227,8 @@ class userMgr(Resource):
                     stats[tag]["unmatched"] += 1
                 elif q['status'] == statuscodes["Non-conclusive"]:
                     stats[tag]["no-conclusion"] += 1
-
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'progress':stats}
+                    
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums,'keys':sorted(museums.keys())}
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
@@ -315,21 +315,6 @@ def downloadFile():
     
     if request.method == 'GET':
         return send_from_directory(directory=rootdir, filename="results.json",as_attachment=True)
-
-# Handle RESTful API for getting data about link verifications
-class dataMgr(Resource):
-    
-    def get(self):
-        print "Input received: {} \n".format(request.args)
-        
-        if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
-            
-        stats = {}
-        for tag in museums.keys():
-            stats[tag] = {"matched":museums[tag]['matchedQ'],"unmatched":museums[tag]['unmatchedQ'],"no-conclusion":museums[tag]['unconcludedQ'],"Total":museums[tag]['totalQ']}
-            
-        return stats
     
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):
@@ -340,7 +325,7 @@ class questMgr(Resource):
         print "Input received: {} \n".format(request.json)
         
         if request.json == None:
-            return {'message': 'No input provided'}, 400
+            return {'error': 'No input provided'}, 400
         else:
             return createQuestionsFromPairs(request.json)
     
@@ -349,7 +334,7 @@ class questMgr(Resource):
         print "Input received: {} \n".format(request.args)
         
         if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
+            return {'error':"Couldn't authenticate user."}, 400
 
         if request.args.get('count') == None:
             count = 1
@@ -365,23 +350,25 @@ class questMgr(Resource):
                 stats = False
 
         qs = getQuestionsForUser(count,stats)
-        #pprint(qs)
+        if qs == []:
+            return {"error":"Couldn't retrieve any questions."}, 400
+        
         return qs
     
 # Handle RESTful API for submitting answer
 class ansMgr(Resource):
     
     def put(self):
-        print "Input received: {} \n".format(request.get_json())    
+        #print "Input received: {} \n".format(request.get_json())    
         print "Input received: {} \n".format(request.json)
-        print "Input received: {} \n".format(request.data)
-        print "Input received: {} \n".format(request.args)
+        #print "Input received: {} \n".format(request.data)
+        #print "Input received: {} \n".format(request.args)
         
         if not current_user.is_authenticated:
-            return {'status':"Couldn't authenticate user."}, 400
+            return {'error':"Couldn't authenticate user."}, 400
         
         if request.json == None:
-            return {'status': 400, 'message': 'No input provided'}
+            return {'error': 'No input provided'}, 400
         
         # Input validation
         if not 'comment' in request.json:
@@ -390,14 +377,14 @@ class ansMgr(Resource):
             a_comment = request.json['comment']
             
         if not 'value' in request.json:
-            return {'message': 'value not provided with ther request'}, 400
+            return {'error': 'value not provided with ther request'}, 400
         if not 'qid' in request.json:
-            return {'message': 'qid not provided with ther request'}, 400
+            return {'error': 'qid not provided with ther request'}, 400
         
         a_value = request.json['value']
         
         if a_value not in [1,2,3] :
-            return {'message': 'value should be either 1 (Yes) or 2 (No) or 3 (Not Sure) '}, 400
+            return {'error': 'value should be either 1 (Yes) or 2 (No) or 3 (Not Sure) '}, 400
         
         qid = request.json['qid']
         uid = current_user.email
@@ -405,9 +392,9 @@ class ansMgr(Resource):
         
         rsp = submitAnswer(qid,answer,uid)
         if rsp["status"] == False:
-            return {'message':rsp["message"]},400
+            return {'error':rsp["message"]},400
         else:
-            return {'message':rsp["message"]}
+            return {'error':rsp["message"]}
 
 def createQuestionsFromPairs(jsonData):
     bulkOutput = []
@@ -415,11 +402,11 @@ def createQuestionsFromPairs(jsonData):
         payload = jsonData['payload'][i]
         #print "\n Processing payload: ",payload
         if not 'uri1' in payload:
-            return {'message': 'uri1 not provided with the request'}, 400
+            return {'error': 'uri1 not provided with the request'}, 400
         if not 'uri2' in payload:
-            return {'message': 'uri2 not provided with the request'}, 400
+            return {'error': 'uri2 not provided with the request'}, 400
         if not 'dedupe' in payload:
-            return {'message': 'dedupe not provided with the request'}, 400
+            return {'error': 'dedupe not provided with the request'}, 400
         
         uri1 = payload['uri1']
         uri2 = payload['uri2']
@@ -446,13 +433,17 @@ def getQuestionsForUser(count,stats):
     uid = current_user.email
     
     # Get questions
-    questions = getQuestionsForUID(uid, count)
+    questions,rsp = getQuestionsForUID(uid, count)
     
     # Get matching and non matching fields based on config file and sparql queries
     if questions != None and questions != []:
-        return populateQuestionsWithFields(questions, stats)
+        q,rsp = populateQuestionsWithFields(questions, stats)
+        if q != []:
+            return q
+        else:
+            return {'error':rsp}, 400
     else:
-        return {'status':"Couldn't retrieve questions mostly because user not found."}, 400
+        return {'error':rsp}, 400
 
 # For every question, query sparql endpoint based on queries defined in config file
 def populateQuestionsWithFields(questions, stats):
@@ -462,6 +453,10 @@ def populateQuestionsWithFields(questions, stats):
         left = retrieveProperties(question['uri1'])
         right = retrieveProperties(question['uri2'])
 
+        # Sparql query failed, sparql endpoint is down for either ULAN or aac
+        if left == None or right == None:
+            return [], "Sparql Endpoint not responding"
+            
         #print "\nLeft\n  "
         #pprint(left)
         #print "\nRight\n "
@@ -473,12 +468,14 @@ def populateQuestionsWithFields(questions, stats):
         
         if stats == True:
             s = getStats(question)
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
+            output += [{'qid': str(question['_id']), "score":format(question["similarity"]["score"], '.3f'),
+                "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
         else:
-            output += [{'qid': str(question['_id']),"ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
+            output += [{'qid': str(question['_id']), "score":format(question["similarity"]["score"], '.3f'),
+                "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
         
         #print output
-    return output
+    return output,"success"
 
         
 if __name__ == '__main__':
@@ -516,10 +513,9 @@ if __name__ == '__main__':
     # Initialize mongo db
     db_init(resetU, resetD)
     
-    api.add_resource(dataMgr, '/stats',endpoint='stats')
-    api.add_resource(userMgr, '/user',endpoint='user')
-    api.add_resource(questMgr, '/question',endpoint='question')
-    api.add_resource(ansMgr, '/answer',endpoint='answer')
+    api.add_resource(userMgr, '/user', endpoint='user')
+    api.add_resource(questMgr, '/question', endpoint='question')
+    api.add_resource(ansMgr, '/answer', endpoint='answer')
     
     # Start the app
     app.run(threaded=True,debug=False) 
