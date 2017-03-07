@@ -69,15 +69,14 @@
             google.charts.load("current", {packages:["corechart"]});
             google.charts.setOnLoadCallback(drawChart);
             function drawChart() {
-            
                 var s = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', { role: 'annotation' } ]]
-                for (var t in d.payload){
+                for (var i = 0; i < d.keys.length; i++){
+                    var t = d.keys[i]
                     if (t == "ulan"){continue;}
                     var j = d.payload[t];
                     var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
                     s.push([t,j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
                 }
-                console.log(s)
                 
                 var data = google.visualization.arrayToDataTable(s);
               

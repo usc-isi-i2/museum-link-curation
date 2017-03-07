@@ -228,7 +228,7 @@ class userMgr(Resource):
                 elif q['status'] == statuscodes["Non-conclusive"]:
                     stats[tag]["no-conclusion"] += 1
                     
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums}
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums,'keys':sorted(museums.keys())}
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
