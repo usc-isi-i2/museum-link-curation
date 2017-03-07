@@ -117,7 +117,7 @@ class recordLinkage:
                 
                 # Sort potential matches based on matching score and select top N
                 potential_matches = sorted( potential_matches ,key=lambda x: x['similarity']['score'],reverse=True )
-                
+                perfactMatch = False
                 for i in range(0,self.topN):
                     
                     # Break if no potential matches 
@@ -129,6 +129,10 @@ class recordLinkage:
                     elif len(potential_matches)-1 < i:
                         print "Enough matches were not found for entity", entity
                         break
+                        
+                    elif perfactMatch and potential_matches[i]['similarity']['score'] < 1:
+                        print "Found all perfect matched for entity ", entity
+                        break
 
                     out.write(json.dumps(potential_matches[i]))
                     out.write('\n')
@@ -136,7 +140,7 @@ class recordLinkage:
                     # Break if perfect match is found
                     if potential_matches[i]['similarity']['score'] == 1:
                         print "Found perfect match for entity ", entity
-                        break
+                        perfactMatch = True
 
             # Close output file handle
             out.close()
