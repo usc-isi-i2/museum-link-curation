@@ -137,18 +137,11 @@ class recordLinkage:
                         if match_v1['uri2'] not in current_matches:
                             potential_matches.append(match_v1)
                             current_matches.add(match_v1['uri2'])
-                        #print(match_v1, "V1", current_matches)
 
                     match_v2 = self.v2Matching(ulanentity, entity)
                     if match_v2:
                         match_v2['ulan_name'] = ulanentity['name']['value']
                         match_v2['museum_name']  = entity['name']['value']
-                        '''
-                        if match_v1 and match_v1['uri1'] in current_matches:
-                            existing_matches = current_matches[match_v1['uri1']]
-                            if match_v2['uri2'] in existing_matches:
-                                continue
-                        '''
                         if match_v2['uri2'] not in current_matches:
                             potential_matches.append(match_v2)
                             current_matches.add(match_v2['uri2'])
@@ -156,7 +149,6 @@ class recordLinkage:
 
                 # Close ULAN entities file handle
                 ulanentities.close()
-                #print(potential_matches)
                 # Sort potential matches based on matching score and select top N
                 potential_matches = sorted( potential_matches ,key=lambda x: x['similarity']['score'],reverse=True )
                 perfactMatch = False
@@ -280,18 +272,12 @@ def main():
     parser = OptionParser()
     parser.add_option("-d", "--data_set", dest="data_set", type="string",
                       help="Data sets")
-    #parser.add_option("-v", "--version", dest="version", type="string",
-    #                  help="version of matching [v2 or v1]")
     parser.add_option("-o", "--output_folder", dest="output_folder", type="string",
                       help="Output folder containing result")
 
     (options, args) = parser.parse_args()
-    #version = options.version
     data_set = options.data_set
     output_folder = options.output_folder
-
-    #if version is None:
-    #    raise StandardError('Version needed: Please check python recordLinkage -h')
 
     if output_folder is None:
         output_folder = 'questions'
