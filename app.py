@@ -206,6 +206,7 @@ class userMgr(Resource):
         if not current_user.is_authenticated:
             return {'error':"Couldn't authenticate user."}, 400
         
+        print('HELLLLLLLLLLLLLLLLL)))))))))))))))))')
         # getStats about all the questions answered by this user
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
         answers = dbC[dname]["answer"].find({'author':current_user.email})
@@ -431,7 +432,7 @@ def createQuestionsFromPairs(jsonData):
 def getQuestionsForUser(count,stats):
     # current user
     uid = current_user.email
-    
+    print(uid, 'OOOOOOOOOOOOOLLLLLLLLLL')
     # Get questions
     questions,rsp = getQuestionsForUID(uid, count)
     

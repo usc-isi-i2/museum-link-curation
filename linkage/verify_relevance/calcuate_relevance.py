@@ -27,7 +27,9 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 import json, sys,os
 import museum_graph_api_config as config
 SPARQL_ENDPOINT = "http://data.americanartcollaborative.org/sparql"
+ULAN_SPARQL_ENDPOINT = "http://vocab.getty.edu/sparql"
 from collections import defaultdict
+
 
 def calculate_relevance(ipfile, museum):
 
@@ -38,7 +40,7 @@ def calculate_relevance(ipfile, museum):
 	total_uri_set = set()
 	sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 	sparql.setReturnFormat(JSON)
-	museum_dict = {'GM': 'GM', 'IMA': 'ima'}
+	museum_dict = {'GM': 'GM', 'IMA': 'ima', 'WAM': 'wam'}
 
 	data_dict = defaultdict(list)
 	query = ''
@@ -93,26 +95,6 @@ def calculate_relevance(ipfile, museum):
 			else:
 				tn.add(parent_uri)
 
-
-			'''
-			data_dict[parent_uri].append({'ulan_uri': ulan_uri, 'similarity': similarity_score})
-			squery = query.replace('PARENT_URI', parent_uri)
-			sparql.setQuery(squery)
-			output = sparql.query().convert()
-			#print(parent_uri, output)
-			if len(output['results']['bindings']) > 0:
-				total_uri_set.add(parent_uri)
-				bindings = set()
-				for binding in output['results']['bindings']:
-					bindings.add(binding['lod_identifier']['value'])
-					for v in data_dict[parent_uri]:
-						v['correct_ulan_uri'] = binding['lod_identifier']['value']
-
-				if ulan_uri in bindings:
-					success_uri.add(parent_uri)
-			else:
-				tn.add(parent_uri)
-			'''
 	precision = 0
 	recall = 0
 	if len(total_uri_set) > 0:
@@ -128,10 +110,60 @@ def calculate_relevance(ipfile, museum):
 		true_negatives[f] = data_dict[f]
 
 	false_negatives = list(set(ground_truth.keys()) - set(data_dict.keys()))
+
+	fp = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'get_author_name_birth_year.sparql')
+	with open(fp, 'r') as query_file:
+		q1 = query_file.read()
+
+	# get_ulan_uri.sparql has sparql query to fetch ULAN ID for Actor URI
+	fp = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'get_ulan_uri.sparql')
+	with open(fp, 'r') as query_file:
+		q2 = query_file.read()
+
+	fp = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'get_ulan_author_birth_date.sparql')
+	with open(fp, 'r') as query_file:
+		q3 = query_file.read()
+
+	f_negatives = {}
+	for f in false_negatives:
+		f_negatives[f] = {}
+
+		sparql = SPARQLWrapper(SPARQL_ENDPOINT)
+		sparql.setReturnFormat(JSON)
+		q = q1.replace('AUTHOR_URI', f)
+		sparql.setQuery(q)
+		result = sparql.query().convert()
+		
+		for v in result['results']['bindings']:
+			f_negatives[f]['musuem_name'] = v['name']['value']
+			if 'byear' in v:
+				f_negatives[f]['musuem_year'] = v['byear']['value']
+		
+
+		sparql = SPARQLWrapper(SPARQL_ENDPOINT)
+		sparql.setReturnFormat(JSON)
+		q = q2.replace('PARENT_URI', f)
+		sparql.setQuery(q)
+		result = sparql.query().convert()
+		for v in result['results']['bindings']:
+			ulan_uri = v['lod_identifier']['value']
+
+		sparql = SPARQLWrapper(ULAN_SPARQL_ENDPOINT)
+		sparql.setReturnFormat(JSON)
+		q = q3.replace('ULAN_URI', ulan_uri)
+		sparql.setQuery(q)
+		result = sparql.query().convert()
+		for v in result['results']['bindings']:
+			f_negatives[f]['ulan_name'] = v['name']['value']
+			if 'byear' in v:
+				f_negatives[f]['ulan_birth_year'] = v['byear']['value']
+
+
+	#print(f_negatives)
 	f_score = 0
 	if (precision + recall) > 0:
 		f_score = (2 * precision * recall) / (precision + recall)
-	result = {'false_positives': false_positives , 'false_negatives': false_negatives, 'true_negatives': true_negatives,
+	result = {'false_positives': false_positives , 'false_negatives': f_negatives, 'true_negatives': true_negatives,# 'f': false_negatives,
 				'total': [len(total_uri_set),len(data_dict.keys()), total_match_count], 'success': len(success_uri), 'precision': precision, 'recall': recall,
 				'f_score': f_score}
 	print(json.dumps(result,indent=4,sort_keys=True))

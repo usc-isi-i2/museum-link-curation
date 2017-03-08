@@ -9,7 +9,7 @@ from collections import defaultdict
 def get_musuem_ulan_matches(musuem):
 	sparql = SPARQLWrapper(SPARQL_ENDPOINT)
 	sparql.setReturnFormat(JSON)
-	museum_dict = {'GM': 'GM', 'IMA': 'ima'}
+	museum_dict = {'GM': 'GM', 'IMA': 'ima', 'WAM': 'wam'}
 
 	data_dict = defaultdict(list)
 	query = ''

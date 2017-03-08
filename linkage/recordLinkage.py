@@ -13,22 +13,52 @@ class recordLinkage:
 
     basedatabase = "ulan"
     basedir = 'dataset'
-    topN = 2
+    #get topN matches
+    topN = 3
+    #block first N characters
+    firstN = 2
     absdir = os.path.dirname(os.path.realpath(__file__))
     
     def __init__(self,base):
         self.basedatabase = base
 
+    #Checks if firstN characters of name match; extract all space separated tokens from the name
+    def check_name_match(self, museum_author_name, ulan_name):
+        if isinstance(ulan_name, unicode):
+            a = unidecode(ulan_name)
+        else:
+            a = unidecode(unicode(ulan_name.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
+        if isinstance(museum_author_name, unicode):
+            b = unidecode(museum_author_name)
+        else:
+            b = unidecode(unicode(museum_author_name.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
+
+        #print(a,b)
+        # Keep only alpha numerics
+        a = re.sub('[^A-Za-z0-9 ]+', '', a)
+        b = re.sub('[^A-Za-z0-9 ]+', '', b)
+
+        #extract all space separated tokens from the names
+        tk_a = a.split(' ')
+        tk_b = b.split(' ')
+
+        for t1 in tk_a:
+            for t2 in tk_b:
+                if t1[:self.firstN] == t2[:self.firstN]:
+                    return True
+
+        return False
+
+
     def v1Matching(self, ulanentity, entity):
         # Check if ulan entity birth year belong to any of the block keys.
-        if 'byear' not in entity:
-            return None
-            
-        if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
-            # do string similarity
-            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.66)
-            if match['match']:
-                return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
+        #print(ulanentity)
+        if 'byear' in entity: 
+            if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
+                # do string similarity
+                match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
+                if match['match']:
+                    return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
                 return None
         else:
@@ -36,31 +66,22 @@ class recordLinkage:
 
     #default check first 2 characters of the last name before matching Names
     def v2Matching(self, ulanentity, entity, k=2):
-        #Format -  LastName, FirstName
         ulan_author_name = ulanentity['name']['value']
-        #Format -  FirstName LastName
         museum_author_name = entity['name']['value']
 
-        m = unidecode(unicode(ulan_author_name.encode('utf-8'),'utf-8')).strip().lower()
-        n = unidecode(unicode(museum_author_name.encode('utf-8'),'utf-8')).strip().lower()
-
-        #extract last name and get matching if first k=2 characters match
-        ulan_last_name = m.split(',')[0]
-        museum_last_name = n.split(' ')[-1]
-
-
-        #print(ulan_last_name, ulanentity['name']['value'], museum_last_name, entity['name']['value'])
-        if ulan_last_name[:k] == museum_last_name[:k]:
+        name_blocking_match = self.check_name_match(museum_author_name, ulan_author_name)
+        if name_blocking_match:
             # do string similarity
             match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.9)
-            #print(match)
             if match['match']:
                 return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
             else:
                 return None
+        else:
+            return None
                 
     # Run record linkage against base database with blocking on birth year
-    def findPotentialMatches(self, d, version, output_folder):
+    def findPotentialMatches(self, d, output_folder):
         if d:
             datasets = d.split()
         else:
@@ -98,23 +119,44 @@ class recordLinkage:
                 potential_matches = []
                 
                 ulanentities = open(os.path.join(self.absdir,self.basedir,self.basedatabase+".json"))
+                current_matches = set()
                 for ulanentity in ulanentities:
                     # convert line read into json
                     ulanentity = json.loads(ulanentity)
-                    
-                    if version == 'v1':
-                        match = self.v1Matching(ulanentity, entity)
-                    elif version == 'v2':
-                        match = self.v2Matching(ulanentity, entity)
+                    '''
+                        Get matches by both blocking by birth year and name blocking of first 2 characters
+                        Add threshold to take the topN matches
 
-                    if match:
-                        match['ulan_name'] = ulanentity['name']['value']
-                        match['museum_name']  = entity['name']['value']
-                        potential_matches.append(match)
-                 
+                        v1 blocks on birthyear
+                        v2 blocks on firstN characters
+                    '''
+                    match_v1 = self.v1Matching(ulanentity, entity)
+                    if match_v1:
+                        match_v1['ulan_name'] = ulanentity['name']['value']
+                        match_v1['museum_name']  = entity['name']['value']
+                        if match_v1['uri2'] not in current_matches:
+                            potential_matches.append(match_v1)
+                            current_matches.add(match_v1['uri2'])
+                        #print(match_v1, "V1", current_matches)
+
+                    match_v2 = self.v2Matching(ulanentity, entity)
+                    if match_v2:
+                        match_v2['ulan_name'] = ulanentity['name']['value']
+                        match_v2['museum_name']  = entity['name']['value']
+                        '''
+                        if match_v1 and match_v1['uri1'] in current_matches:
+                            existing_matches = current_matches[match_v1['uri1']]
+                            if match_v2['uri2'] in existing_matches:
+                                continue
+                        '''
+                        if match_v2['uri2'] not in current_matches:
+                            potential_matches.append(match_v2)
+                            current_matches.add(match_v2['uri2'])
+
+
                 # Close ULAN entities file handle
                 ulanentities.close()
-                
+                #print(potential_matches)
                 # Sort potential matches based on matching score and select top N
                 potential_matches = sorted( potential_matches ,key=lambda x: x['similarity']['score'],reverse=True )
                 perfactMatch = False
@@ -141,6 +183,7 @@ class recordLinkage:
                     if potential_matches[i]['similarity']['score'] == 1:
                         print "Found perfect match for entity ", entity
                         perfactMatch = True
+
 
             # Close output file handle
             out.close()
@@ -237,18 +280,18 @@ def main():
     parser = OptionParser()
     parser.add_option("-d", "--data_set", dest="data_set", type="string",
                       help="Data sets")
-    parser.add_option("-v", "--version", dest="version", type="string",
-                      help="version of matching [v2 or v1]")
+    #parser.add_option("-v", "--version", dest="version", type="string",
+    #                  help="version of matching [v2 or v1]")
     parser.add_option("-o", "--output_folder", dest="output_folder", type="string",
                       help="Output folder containing result")
 
     (options, args) = parser.parse_args()
-    version = options.version
+    #version = options.version
     data_set = options.data_set
     output_folder = options.output_folder
 
-    if version is None:
-        raise StandardError('Version needed: Please check python recordLinkage -h')
+    #if version is None:
+    #    raise StandardError('Version needed: Please check python recordLinkage -h')
 
     if output_folder is None:
         output_folder = 'questions'
@@ -256,7 +299,7 @@ def main():
     start_time = time.time()
     
     rl = recordLinkage('ulan')
-    rl.findPotentialMatches(data_set, version, output_folder)
+    rl.findPotentialMatches(data_set, output_folder)
     
     print("--- %s seconds ---" % (time.time() - start_time))
         

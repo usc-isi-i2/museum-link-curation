@@ -7,7 +7,7 @@ from pymongo import MongoClient, ReturnDocument, ASCENDING, DESCENDING
 from unidecode import unidecode
 import os, json, sys, getopt
 
-devmode = False
+devmode = True
 
 if devmode:
     server = "http://localhost:5000/"
@@ -33,7 +33,7 @@ lm = LoginManager(app)
 lm.login_view = 'index'
 lm.session_protection = 'strong'
 
-confidenceLevel = 2
+confidenceLevel = 1
 dname = "linkVerification"
 
 def append_default_dict(x):
