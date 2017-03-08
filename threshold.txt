@@ -16,5 +16,5 @@ puam 2 3
 saam 2 3
 ulan 2 3
 #viaf 2 3
-wam 1 1
+wam 2 3
 #ycba 2 3
