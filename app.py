@@ -480,35 +480,18 @@ def populateQuestionsWithFields(questions, stats):
         
 if __name__ == '__main__':
     
-    # Read command line options
-    try:
-        opts, args = getopt.getopt(sys.argv[1:],"r:u:",["resetDataset=","resetUsers="])
-    except getopt.GetoptError:
-        print 'Invalid options/arguments supplied'
-        print '  Usage: python app.py -r <True/False> -u <True/False>'
-        sys.exit(2)
-    
-    if (len(opts) == 0 and len(sys.argv) > 1) or len(args) > 0:
-        print 'Invalid options/arguments supplied'
-        print '  Usage: python app.py -r <True/False> -u <True/False>'
-        sys.exit(2)
-        
     # Process command line options
+    parser = OptionParser()
+    parser.add_option("-d", "--reset_dataset", dest="reset_dataset", type="string",help="Reset all data sets (True/False)")
+    parser.add_option("-u", "--reset_users", dest="reset_users", type="string", help="Reset all users (True/False)")
+
     resetD = False
     resetU = False
-    for opt, arg in opts:
-        #print opt, arg
-        if opt in ("-r", "--resetDataset"):
-            if arg.lower() == 'true':
-                resetD = True
-        elif opt in ("-u", "--resetUsers"):
-            if arg.lower() == 'true':
-                resetU = True
-        else:
-            print 'Invalid options/arguments supplied'
-            print '  Usage: python app.py -r <True/False> -u <True/False>'
-            sys.exit(2)
-    
+    (options, args) = parser.parse_args()
+    if options.reset_dataset and options.reset_dataset.lower() == "true":
+        resetD = True
+    if options.reset_users and options.reset_users.lower() == "true":
+        resetU = True
     
     # Initialize mongo db
     db_init(resetU, resetD)

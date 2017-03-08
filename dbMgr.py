@@ -9,12 +9,14 @@ from config import *
 # dbC and dname are mongoDb based database for entities and their curation data
 def db_init(resetU, resetD):
 
+    # Reset all datasets
     if resetD:
     
         # Backup
         export = {"data":{"codes":[3,4,5], "tags":museums.keys() }}
-        #dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
+        dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
     
+        # Reset all users
         if resetU:
             cleanDatabases()
             createDatabase()
@@ -24,7 +26,7 @@ def db_init(resetU, resetD):
             cleanDatabase('question')
             cleanDatabase('answer')
             createDatabase()
-
+            
     updateConfig()
     #pprint(museums)
     #printDatabases()
@@ -65,15 +67,15 @@ def cleanDatabase(docname):
             
 # Create database with default values for curation
 def createDatabase():
-    populateTags()
     
-    #populateCurators()
+    # Reset tags table
+    populateTags()    
+    # Reset questions table
     populateQuestions()
-    #populateEntities()
     
 #Tag
-    #tagname, string 
-
+    #tagname, string
+    
 # Populate database with default tags
 def populateTags():
     # Add all standard tags
@@ -157,8 +159,8 @@ def populateQuestions():
     basedir = os.path.join("linkage", "questions")
     datasets = [d[:d.index('.')] for d in os.listdir(basedir)]
     
+    # Reload all datasets
     for dataset in datasets:
-            
         f = dataset+'.json'
         f = os.path.join(rootdir,'linkage','questions',f)
         populateQuestionsFromJSON(f)
@@ -487,8 +489,8 @@ def submitAnswer(qid, answer, uid):
         #Check if user has already answered the question
         # Check authors in all answers if current user has already answered the question
         for aid in q["decision"]:
-            answer = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
-            if answer and answer["author"] == uid:
+            ans = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
+            if ans and ans["author"] == uid:
                 #print "User has already submitted answer to question ", qid
                 message = "User has already submitted answer to question with qid {}".format(qid)
                 return {"status":False,"message":message}
@@ -586,30 +588,19 @@ def dumpCurationResults(args,filepath):
                 if tid in q['tags']:
                     
                     # Get similarity meta data and URIs
-                    a["similarity"] = q["similarity"]
+                    a["record linkage score"] = q["similarity"]["score"]
+                    a["id1"] = q["uri1"]
+                    a["id2"] = q["uri2"]
                     
-                    # Get properties from left and right side.
-                    left = retrieveProperties(q["uri1"])
-                    right = retrieveProperties(q["uri2"])
-                    
-                    if left == None or right == None:
-                        return 
-                        
-                    matches = getMatches(left, right)
-                    
-                    a["attributes"] = {"matched":{},"unmatched":{}}
-                    
-                    # Unmatched
-                    for i in range(0, len(matches["Unmatched"]["name"])):
-                        if matches["Unmatched"]["name"][i] == "URI":
-                            a["uri1"] = matches["Unmatched"]["lValue"][i]
-                            a["uri2"] = matches["Unmatched"]["rValue"][i]
-                        else:
-                            a["attributes"]["unmatched"][matches["Unmatched"]["name"][i]] = [matches["Unmatched"]["lValue"][i], matches["Unmatched"]["rValue"][i] ]
-                    
-                    # matched
-                    for i in range(0, len(matches["ExactMatch"]["name"])):
-                        a["attributes"]["matched"][matches["ExactMatch"]["name"][i]] = matches["ExactMatch"]["value"][i]
+                    if q["status"] == statuscodes["Agreement"]:
+                        a["match"] = "True"
+                        a["human curated score"] =  "True"
+                    elif q["status"] == statuscodes["Disagreement"]:
+                        a["match"] = "False"
+                        a["human curated score"] =  "False"
+                    elif q["status"] == statuscodes["Non-conclusive"]:
+                        a["match"] = "Unknown"
+                        a["human curated score"] =  "Unknown"
                     
                     # Get current json dump and append this pair
                     temp = out["payload"]
