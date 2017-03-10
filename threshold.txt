@@ -3,7 +3,7 @@
 aac 2 3
 #aat 2 3
 acm 2 3
-autry 1 1
+autry 2 3
 cbm 2 3
 ccma 2 3
 #dbpedia 2 3
