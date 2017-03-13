@@ -1,14 +1,22 @@
 ##Scripts to generate URI matches
 
-###recordLinkage.py
+###downloadData.py
 ```
-### Run single dataset
+python downloadData.py
+```
+
+###recordLinkage.py
+
+#### Run single dataset
+```
 python recordLinkage.py --data_set=gm --output_folder=/path/to/result/folder
-
-### Run multiple datasets
+```
+#### Run multiple datasets
+```
 python recordLinkage.py --data_set="gm autry" --output_folder=/path/to/result/folder
-
-### Run on all datasets
+```
+##### Run on all datasets
+```
 python recordLinkage.py --output_folder=/path/to/result/folder
 
 ```

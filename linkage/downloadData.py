@@ -21,6 +21,8 @@ for f in files:
     else:
         sparql = SPARQLWrapper(map['aac'])
         
+    print "Downloading ",base," dataset"
+        
     sparql.setQuery(f_in.read())
     sparql.setReturnFormat(JSON)
     results = sparql.query().convert()
