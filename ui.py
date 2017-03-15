@@ -27,8 +27,10 @@ def datatable():
         
 @app.route('/cards')
 def cards():
+    print "Input received: {} \n".format(request.args)
     if current_user.is_authenticated:
-        return render_template('cards.html')
+        return render_template('card'+request.args.get('id')+'.html')
+        #return render_template('card.html')
     else:
         return redirect(url_for('index'))
         

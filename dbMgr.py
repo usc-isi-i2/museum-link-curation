@@ -356,6 +356,17 @@ def getQuestionsForUID(uid,count):
                 if len(q) == count:
                     break
 
+    # Get all the matching for given question(s)
+    for question in q:
+        # Search all questions with same uri1 (non-ULAN)
+        temp = dbC[dname]["question"].find({"uri1":question["uri1"]})
+        
+        # Remove original question from list, sort temp list and add it back
+        q.remove(question)
+        temp = sorted(temp,key=lambda x:x["similarity"]["score"],reverse=True)
+        for t in temp:
+            q = q + [t]        
+        
     q_new = []
     # Update lastSeen for all questions that are being returned
     for question in q:
