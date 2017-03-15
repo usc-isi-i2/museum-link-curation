@@ -238,7 +238,9 @@
         };
         
         function populateHeadings(data,cid){
-            console.log(data)
+            console.log("Populating heading...")
+            console.log("left tag: "+data.leftT)
+            console.log("right tag: "+data.rightT)
             var h = "";
             h += "<tr class='cyan darken-4 white-text thin'>"
             h += "<th style='text-align:center'>"+data.leftT+"</th>";
@@ -247,6 +249,7 @@
         };
         
         function populateExactMatch(data,cid) {
+            console.log("Populating exact matches...")
             console.log(data)
             var tr = "";
             var names = data.name;
@@ -256,7 +259,7 @@
                 tr += "<tr><td colspan='3' style='text-align:center'>None of the fields match</td></tr>";
             }
             else {
-                if (names.length == 1 && contains(names,"Name")){
+                if (names.length == 1 && contains(names,"name")){
                     tr += "<tr><td colspan='3' style='text-align:center'>None of the other fields match</td></tr>";
                 }
             
@@ -264,7 +267,7 @@
                     tr += "<tr>"
                     
                     // Special handling of Name
-                    if (names[index] == "Name") {
+                    if (names[index] == "name") {
                         var heading = document.getElementById("cardHeading"+cid);
                         heading.innerHTML += "<tr class='cyan darken-3 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
                     }
@@ -279,6 +282,7 @@
         };
         
         function populateNoMatch(data,cid) {
+            console.log("Populating non matches...")
             console.log(data)
             var names = data.name;
             var lValues = data.lValue;
@@ -293,14 +297,39 @@
                 for(var index in names) {
                     tr += "<tr>";
                     
-                    if (names[index] == "URI") {
+                    if (names[index] == "uri") {
                         tr += "<td style='text-align:right;'>" + names[index] + "</td>";
                         tr += "<td style='text-align:right;padding-right:15px;'><a href='" + lValues[index] + "' target='_blank'>" + lValues[index] + "</a></td>";
                         tr += "<td style='text-align:left;padding-left:15px;'><a href='" + rValues[index] + "' target='_blank'>" + rValues[index] + "</a></td>";
                     }                    
-                    else if (names[index] == "Name") {
+                    else if (names[index] == "name") {
                         var heading = document.getElementById("cardHeading"+cid);
                         heading.innerHTML += "<tr class='cyan darken-3 white-text'><td style='text-align:center'>"+lValues[index]+"</td><td style='text-align:center'>"+rValues[index]+"</td></tr>";
+                    }
+                    else if (names[index] == "object_links"){
+                        tr += "<td style='text-align:right;'>" + names[index] + "</td>";
+                        
+                        if (lValues[index].length == 0) {
+                            tr += "<td style='text-align:right;padding-right:15px;'>" + "-" + "</td>";
+                        }
+                        else {
+                            tr += "<td style='text-align:right;padding-right:15px;'><ul>";
+                            for(var i in lValues[index]) {
+                                tr += "<li><a href='" + lValues[index][i] + "' target='_blank'>" + lValues[index][i] + "</a></li>";
+                            }
+                            tr += "</ul></td>";
+                        }
+                        
+                        if (rValues[index].length == 0) {
+                            tr += "<td style='text-align:left;padding-left:15px;;'>" + "-" + "</td>";
+                        }
+                        else {
+                            tr += "<td style='text-align:right;padding-right:15px;'><ul>";
+                            for(var i in rValues[index]) {
+                                tr += "<li><a href='" + rValues[index][i] + "' target='_blank'>" + rValues[index][i] + "</a></li>";
+                            }
+                            tr += "</ul></td>";
+                        }
                     }
                     else {
                         

@@ -70,9 +70,6 @@ museums = {#"aaa":append_default_dict({"uri":"/aaa/","ranking":1,"name":"Archive
 
 statuscodes = {"NotStarted":1,"InProgress":2,"Agreement":3,"Disagreement":4,"Non-conclusive":5}
 
-field_desc = {'uri':"URI", 'name': 'Name', 'byear': 'Birth Date', 'bplace': 'Birth Place', 
-    'dyear':'Death Date', 'dplace': 'Death Place', 'gender': 'Gender', 'nationality': 'Nationality'}
-
 rootdir = os.path.dirname(os.path.abspath(__file__))
 
 # Load API keys from file
