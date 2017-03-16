@@ -15,7 +15,7 @@ SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_lin
         OPTIONAL {
             ?uri crm:P92i_was_brought_into_existence_by ?o3.
             ?o3 crm:P7_took_place_at ?o4.
-            ?o4 rdfs:labe ?bplace.
+            ?o4 rdfs:label ?bplace.
 		}
         OPTIONAL {
             ?uri crm:P93i_was_taken_out_of_existence_by ?o5.
@@ -25,7 +25,7 @@ SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_lin
         OPTIONAL {
             ?uri crm:P93i_was_taken_out_of_existence_by ?o7.
             ?o7 crm:P7_took_place_at ?o8.
-            ?o8 rdfs:labe ?bplace.
+            ?o8 rdfs:label ?bplace.
 		}
         OPTIONAL {
             ?uri crm:P2_has_type ?o9.

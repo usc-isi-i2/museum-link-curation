@@ -69,7 +69,7 @@
                 
                 // Update ids
                 $('#card').attr('id', 'card'+i)
-                $('.progress').attr('class', 'progress'+i)
+                $('#progress').attr('id', 'progress'+i)
                 $('#cardHeading').attr('id', 'cardHeading'+i)
                 $('#exactMatch').attr('id', 'exactMatch'+i)
                 $('#noMatch').attr('id', 'noMatch'+i)
@@ -109,12 +109,12 @@
                     answerComments[id-1] = document.getElementById("usercomment"+id).value;
                     $('#usercomment'+id).val('');
                     $('#usercomment'+id).trigger('autoresize');
-                    $('#card'+id).hide();
+                    $('#card'+id).slideUp();
                     if (answerCount == questionCount){
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 2000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
                     }
                 });
                 $("#aN"+i).on("click",function(){
@@ -126,12 +126,12 @@
                     answerComments[id-1] = document.getElementById("usercomment"+id).value;
                     $('#usercomment'+id).val('');
                     $('#usercomment'+id).trigger('autoresize');
-                    $('#card'+id).hide();
+                    $('#card'+id).slideUp();
                     if (answerCount == questionCount){
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 2000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
                     }
                 });
                 $("#aNS"+i).on("click",function(){
@@ -143,12 +143,12 @@
                     answerComments[id-1] = document.getElementById("usercomment"+id).value;
                     $('#usercomment'+id).val('');
                     $('#usercomment'+id).trigger('autoresize');
-                    $('#card'+id).hide();
+                    $('#card'+id).slideUp();
                     if (answerCount == questionCount){
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 2000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
                     }
                 });
             }
@@ -159,6 +159,11 @@
             $.ajax({
                 type: "GET",
                 url: sv,
+                beforeSend: function(){
+                    for(i=0;i<maxCards;i++){
+                        $('#progress'+i).show();
+                    }
+                },  
                 success: function(data){
                     if (data.length > 0)
                     {
@@ -167,9 +172,11 @@
                             if (i <= data.length){
                                 populateCard(data[i-1],i);
                                 questionCount = questionCount + 1;
+                                $('#progress'+i).hide();
                             }
                             else{
                                 // Hide empty cards
+                                $('#progress'+i).hide();
                                 $('#card'+i).hide();
                             }
                         }
@@ -194,7 +201,9 @@
                         
                         window.setTimeout(function() {
                             if (rsp["error"].includes("Sparql Endpoint not responding")){
-                                $('.progress1').hide();
+                                for(i=0;i<maxCards;i++){
+                                    $('#progress'+i).hide();
+                                }
                                 Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000);
                             }
                             else if (rsp["error"].includes("not have any tags associated")){
@@ -210,31 +219,22 @@
         };
         
         function populateCard(data,cid) {
-            $.ajax({
-                method: "GET",
-                url: "/cards?id="+cid,
-                beforeSend: function(){
-                    $('.progress'+cid).show();
-                    console.log("loading...")
-                    populateHeadings(data.Unmatched,cid);
-                    populateExactMatch(data.ExactMatch,cid);
-                    populateNoMatch(data.Unmatched,cid);
-                    var h = "<tr class='cyan darken-2 white-text thin'><th colspan='2' style='text-align:center'> Similarity Score: "+data.score+"</th></tr>";
-                    $('#cardHeading'+cid).append(h);
-                },  
-                success: function (card) {
-                    $('.progress'+cid).hide();
-                    document.getElementById("aY"+cid).disabled = false;
-                    document.getElementById("aN"+cid).disabled = false;
-                    document.getElementById("aNS"+cid).disabled = false;
-                    console.log("loading...done")                    
-                    var qidid = parseInt(cid) - 1
-                    qid[qidid] = data['qid']
-                },
-                complete: function () {
-                    // Do something useful may be
-                }
-            });
+        
+            // Start progress bar and load all the content
+            console.log("loading...")
+            populateHeadings(data.Unmatched,cid);
+            populateExactMatch(data.ExactMatch,cid);
+            populateNoMatch(data.Unmatched,cid);
+            var h = "<tr class='cyan darken-2 white-text thin'><th colspan='2' style='text-align:center'> Similarity Score: "+data.score+"</th></tr>";
+            $('#cardHeading'+cid).append(h);
+            
+            // Disable progress bar and enable buttons
+            document.getElementById("aY"+cid).disabled = false;
+            document.getElementById("aN"+cid).disabled = false;
+            document.getElementById("aNS"+cid).disabled = false;
+            console.log("loading...done")                    
+            var qidid = parseInt(cid) - 1
+            qid[qidid] = data['qid']
         };
         
         function populateHeadings(data,cid){
