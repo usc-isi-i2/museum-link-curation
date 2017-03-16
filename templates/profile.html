@@ -33,7 +33,8 @@
                     $('#nameHeading').text("Welcome, "+data.name)
                     
                     // Prepare data for chart
-                    var rows = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', { role: 'annotation' }, {role: 'tooltip'} ]];
+                    var rows = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', 
+                                    {role:'annotation'} ]];
                     var totals = {}
     
                     for(i = 0; i < data.keys.length; i++) {
@@ -41,30 +42,29 @@
                         totals[data.keys[i]] = 0;
                         var j = data.payload[data.keys[i]];
                         var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
-                        rows.push([data.keys[i],j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'','']);
+                        rows.push([data.keys[i],j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
                     }
                     
                     // Scale values to the percentage
                     for(var i = 0; i < data.keys.length ; i++){
-                        //console.log(rows[i+1])
                         for(var j=1;j<5;j++){
                             totals[data.keys[i]] = totals[data.keys[i]] + rows[i+1][j];
                         }
-                        //console.log(totals[data.keys[i]])
                         for(var j=1;j<5;j++){
                             rows[i+1][j] = Math.round(100*rows[i+1][j]/totals[data.keys[i]]);
                         }
                         
                         // Custom tool tip for all 
-                        var tooltip = '<div><b>'+data.keys[i]+'</b></br>'+
-                                    'Matched: '+rows[i+1][1]+' ( '+rows[i+1][1]*totals[data.keys[i]]/100+'% )</br>'+
-                                    'Unmatched: '+rows[i+1][2]+' ( '+rows[i+1][2]*totals[data.keys[i]]/100+'% )</br>'+
-                                    'Not Sure: '+rows[i+1][3]+' ( '+rows[i+1][3]*totals[data.keys[i]]/100+'% )</br>'+
-                                    'Not Curated: '+rows[i+1][4]+' ( '+rows[i+1][4]*totals[data.keys[i]]/100+'% )</br></div>';
-                                    
+                        var tooltip = '<div style="padding:5px 5px 5px 5px;"><b>'+data.keys[i].toUpperCase()+'</b></br></br>'+
+                                    '<table style="border:1px solid black"><tr><td>status</td><td>count</td><td>percentage</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][1]+'</td><td>'+rows[i+1][1]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][2]+'</td><td>'+rows[i+1][2]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][3]+'</td><td>'+rows[i+1][3]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][4]+'</td><td>'+rows[i+1][4]*totals[data.keys[i]]/100+'%</td></tr></table></div>';
+
                         rows[i+1][5] = totals[data.keys[i]]
-                        //rows[i+1][6] = tooltip
-                        //console.log(rows[i+1])
+                        //rows[i+1][6] = "";
+                        //rows[i+1][6] = tooltip;
                     };
                     
                     // Interactive chart
@@ -72,18 +72,17 @@
                     google.charts.setOnLoadCallback(drawChart);
 
                     function drawChart() {
-                        var dataA = google.visualization.arrayToDataTable(rows);                        
+                        var dataA = google.visualization.arrayToDataTable(rows);
                         var view = new google.visualization.DataView(dataA);
                         var options = {
                             width: 800,
                             height: 500,
                             legend: { position: 'top'},
                             bar: { groupWidth: '60%' },
-                            vAxis: {viewWindowMode: 'maximized'},
+                            tooltip: {showColorCode: true},
                             //tooltip: {isHtml: true},
-                            isStacked: true,
-                            colors:['#4CAF50','#F44336','#F9A825','lightgray'],
-                            //hAxis: { textPosition: 'none' },
+                            isStacked: 'percent',
+                            colors:['#4CAF50','#F44336','#F9A825','#d3d3d3'],
                         };
                         //var chart = new google.visualization.BarChart(document.getElementById("chart-"+data.keys[i]));
                         var chart = new google.visualization.BarChart(document.getElementById("charts"));
@@ -124,6 +123,9 @@
         #body {
             min-height: calc(100vh - 10px);
         }
+        #charts > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(5) > g > g > g > text:nth-child(2){
+            fill: black;
+        },
     </style>
     
 </head>
