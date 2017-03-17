@@ -156,16 +156,16 @@ class recordLinkage:
                     
                     # Break if no potential matches 
                     if len(potential_matches) == 0:
-                        print "No matches were found for entity", entity
+                        #print "No matches were found for entity", entity
                         break
                         
                     # Break if not enough potential matches 
                     elif len(potential_matches)-1 < i:
-                        print "Enough matches were not found for entity", entity
+                        #print "Enough matches were not found for entity", entity
                         break
                         
                     elif perfactMatch and potential_matches[i]['similarity']['score'] < 1:
-                        print "Found all perfect matched for entity ", entity
+                        #print "Found all perfect matched for entity ", entity
                         break
 
                     out.write(json.dumps(potential_matches[i]))
@@ -173,7 +173,7 @@ class recordLinkage:
                     
                     # Break if perfect match is found
                     if potential_matches[i]['similarity']['score'] == 1:
-                        print "Found perfect match for entity ", entity
+                        #print "Found perfect match for entity ", entity
                         perfactMatch = True
 
 
