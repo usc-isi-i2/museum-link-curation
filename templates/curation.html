@@ -273,7 +273,12 @@
                     }
                     else {
                         tr += "<td style='text-align:right'>" + names[index] + "</td>";
-                        tr += "<td style='text-align:center' colspan='2'>" + values[index] + "</td>";
+			if (values[index] == null || values[index] == "" || values[index] == []){
+	                        tr += "<td style='text-align:center' colspan='2'> None </td>";
+			}
+			else{
+				tr += "<td style='text-align:center' colspan='2'>"+ values[index] +"</td>";
+			}
                     }
                     tr += "</tr>";
                 }
@@ -310,7 +315,7 @@
                         tr += "<td style='text-align:right;'>" + names[index] + "</td>";
                         
                         if (lValues[index].length == 0) {
-                            tr += "<td style='text-align:right;padding-right:15px;'>" + "-" + "</td>";
+                            tr += "<td style='text-align:right;padding-right:15px;'> None </td>";
                         }
                         else {
                             tr += "<td style='text-align:right;padding-right:15px;'><ul>";
@@ -321,7 +326,7 @@
                         }
                         
                         if (rValues[index].length == 0) {
-                            tr += "<td style='text-align:left;padding-left:15px;;'>" + "-" + "</td>";
+                            tr += "<td style='text-align:left;padding-left:15px;;'> None </td>";
                         }
                         else {
                             tr += "<td style='text-align:right;padding-right:15px;'><ul>";
@@ -336,12 +341,12 @@
                         tr += "<td style='text-align:right'>" + names[index] + "</td>";
                         
                         if (lValues[index] == null)
-                            tr += "<td style='text-align:right;padding-right:15px;'>" + "-" + "</td>";
+                            tr += "<td style='text-align:right;padding-right:15px;'> None </td>";
                         else
                             tr += "<td style='text-align:right;padding-right:15px;'>" + lValues[index] + "</td>";
                         
                         if (rValues[index] == null)
-                            tr += "<td style='text-align:left;padding-left:15px;;'>" + "-" + "</td>";
+                            tr += "<td style='text-align:left;padding-left:15px;;'> None </td>";
                         else
                             tr += "<td style='text-align:left;padding-left:15px;'>" + rValues[index] + "</td>";
                     }

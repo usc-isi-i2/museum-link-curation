@@ -1,4 +1,4 @@
-SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_links
+SELECT ?uri ?name ?birth_year ?birth_place ?death_year ?death_place ?gender ?nationality ?object_links
     WHERE {
       	BIND(<???> AS ?uri)
         OPTIONAL {
@@ -8,12 +8,12 @@ SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_lin
         OPTIONAL {
             ?uri foaf:focus ?o2.
             ?o2 gvp:biographyPreferred ?o3.
-            ?o3 gvp:estStart ?byear.
-		}
+            ?o3 gvp:estStart ?birth_year.
+	}
         OPTIONAL {
             ?uri foaf:focus ?o4.
             ?o4 gvp:biographyPreferred ?o5.
-            ?o5 gvp:estEnd ?dyear.
+            ?o5 gvp:estEnd ?death_year.
         }
         OPTIONAL {
             ?uri foaf:focus ?o6.
@@ -28,7 +28,7 @@ SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_lin
             ?o11 schema:birthPlace ?o12.
             ?o13 foaf:focus ?o12;
                  gvp:prefLabelGVP ?o14.
-            ?o14 xl:literalForm ?bplace.
+            ?o14 xl:literalForm ?birth_place.
         }
         OPTIONAL {
             ?uri foaf:focus ?o15.
@@ -36,7 +36,7 @@ SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_lin
             ?o16 schema:deathPlace ?o17.
             ?o18 foaf:focus ?o17;
                  gvp:prefLabelGVP ?o19.
-            ?o19 xl:literalForm ?dplace.
+            ?o19 xl:literalForm ?death_place.
         }
         OPTIONAL {
             ?uri foaf:focus ?o20.
