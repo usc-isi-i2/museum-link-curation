@@ -23,19 +23,71 @@
         
             // Code to get tags and other profile info
             var p = '{{server}}'.concat("/user");
-            var d = {}
             $.ajax({
                 method: 'GET',
                 url: p,
                 contentType: 'application/json',
                 success: function(data){
                 
-                    // Update tags
+                    // Update tags and create necessary variables for chart
                     $('#nameHeading').text("Welcome, "+data.name)
-                    for(i = 0; i < data.tags.length; i++) {
+                    
+                    // Prepare data for chart
+                    var rows = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', 
+                                    {role:'annotation'} ]];
+                    var totals = {}
+    
+                    for(i = 0; i < data.keys.length; i++) {
                         $('#'+data.tags[i]).prop('checked', true);
+                        totals[data.keys[i]] = 0;
+                        var j = data.payload[data.keys[i]];
+                        var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
+                        rows.push([data.keys[i],j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
                     }
-                    d = data
+                    
+                    // Scale values to the percentage
+                    for(var i = 0; i < data.keys.length ; i++){
+                        for(var j=1;j<5;j++){
+                            totals[data.keys[i]] = totals[data.keys[i]] + rows[i+1][j];
+                        }
+                        for(var j=1;j<5;j++){
+                            rows[i+1][j] = Math.round(100*rows[i+1][j]/totals[data.keys[i]]);
+                        }
+                        
+                        // Custom tool tip for all 
+                        var tooltip = '<div style="padding:5px 5px 5px 5px;"><b>'+data.keys[i].toUpperCase()+'</b></br></br>'+
+                                    '<table style="border:1px solid black"><tr><td>status</td><td>count</td><td>percentage</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][1]+'</td><td>'+rows[i+1][1]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][2]+'</td><td>'+rows[i+1][2]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][3]+'</td><td>'+rows[i+1][3]*totals[data.keys[i]]/100+'%</td></tr>'+
+                                    '<tr><td>Matched</td><td>'+rows[i+1][4]+'</td><td>'+rows[i+1][4]*totals[data.keys[i]]/100+'%</td></tr></table></div>';
+
+                        rows[i+1][5] = totals[data.keys[i]]
+                        //rows[i+1][6] = "";
+                        //rows[i+1][6] = tooltip;
+                    };
+                    
+                    // Interactive chart
+                    google.charts.load("current", {packages:["corechart"]});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                        var dataA = google.visualization.arrayToDataTable(rows);
+                        var view = new google.visualization.DataView(dataA);
+                        var options = {
+                            width: 800,
+                            height: 500,
+                            legend: { position: 'top'},
+                            bar: { groupWidth: '60%' },
+                            tooltip: {showColorCode: true},
+                            //tooltip: {isHtml: true},
+                            isStacked: 'percent',
+                            colors:['#4CAF50','#F44336','#F9A825','#d3d3d3'],
+                        };
+                        //var chart = new google.visualization.BarChart(document.getElementById("chart-"+data.keys[i]));
+                        var chart = new google.visualization.BarChart(document.getElementById("charts"));
+                        chart.draw(view, options);
+                    }
                 }
             });
             
@@ -64,36 +116,6 @@
                     }
                 });
             });
-            
-            // Interactive chart
-            google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-                var s = [['Museum', 'Matched', 'Unmatched', 'Not Sure', 'Not curated', { role: 'annotation' } ]]
-                for (var i = 0; i < d.keys.length; i++){
-                    var t = d.keys[i]
-                    if (t == "ulan"){continue;}
-                    var j = d.payload[t];
-                    var unanswered = j["totalQ"] - j["matchedQ"] - j["unmatchedQ"] - j["unconcludedQ"];
-                    s.push([t,j["matchedQ"],j["unmatchedQ"],j["unconcludedQ"],unanswered,'']);
-                }
-                
-                var data = google.visualization.arrayToDataTable(s);
-              
-                var view = new google.visualization.DataView(data);
-
-                var options = {
-                    width: 800,
-                    height: 500,
-                    legend: { position: 'top', maxLines: 3 },
-                    bar: { groupWidth: '63%' },
-                    isStacked: true,
-                    colors:['#4CAF50','#F44336','#F9A825','lightgray']
-                };
-              
-                var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
-                chart.draw(view, options);
-            }
         });
     </script>
     
@@ -101,6 +123,9 @@
         #body {
             min-height: calc(100vh - 10px);
         }
+        #charts > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(5) > g > g > g > text:nth-child(2){
+            fill: black;
+        },
     </style>
     
 </head>
@@ -137,7 +162,7 @@
                 </div>
             </div>
             <div class="col s12 m6 pull-m1">
-                <div id="barchart_values"></div>
+                <div id="charts"></div>
             </div>
         </div>
       </div>

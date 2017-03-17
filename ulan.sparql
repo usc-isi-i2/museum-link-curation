@@ -1,4 +1,4 @@
-SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality
+SELECT ?uri ?name ?byear ?bplace ?dyear ?dplace ?gender ?nationality ?object_links
     WHERE {
       	BIND(<???> AS ?uri)
         OPTIONAL {

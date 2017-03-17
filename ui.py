@@ -24,14 +24,7 @@ def datatable():
         return render_template('datatable.html',server=server[:-1],keys=sorted(museums.keys()),data=returnCurationResults())
     else:
         return redirect(url_for('index'))
-        
-@app.route('/cards')
-def cards():
-    if current_user.is_authenticated:
-        return render_template('cards.html')
-    else:
-        return redirect(url_for('index'))
-        
+
 @app.route('/spec')
 def show_specs():
     return render_template('spec.html',server=server[7:-1])

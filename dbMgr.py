@@ -356,6 +356,17 @@ def getQuestionsForUID(uid,count):
                 if len(q) == count:
                     break
 
+    # Get all the matching for given question(s)
+    for question in q:
+        # Search all questions with same uri1 (non-ULAN)
+        temp = dbC[dname]["question"].find({"uri1":question["uri1"]})
+        
+        # Remove original question from list, sort temp list and add it back
+        q.remove(question)
+        temp = sorted(temp,key=lambda x:x["similarity"]["score"],reverse=True)
+        for t in temp:
+            q = q + [t]        
+        
     q_new = []
     # Update lastSeen for all questions that are being returned
     for question in q:
@@ -405,12 +416,18 @@ def retrieveProperties(uri):
         print " Sparql endpoint threw HTTPError({0}): {1}\n".format(e.errno, e.strerror)
         return None
     
-    rs = rs['results']['bindings'][0]
-    
     data = {}
-    for key in rs.keys():
-        data[key] = rs[key]['value']
+    for key in rs['results']['bindings'][0].keys():
+        data[key] = rs['results']['bindings'][0][key]['value']
 
+    # Special treatment to Object URIs
+    olinks = []
+    if "object_links" in rs['results']['bindings'][0]:
+        for r in rs['results']['bindings']:
+            olinks.append(r["object_links"]["value"])
+        
+    data["object_links"] = olinks
+        
     f.close()
     return data
     
@@ -418,12 +435,17 @@ def getMatches(left,right):
     # output format
     exactMatch = {"name":[],"value":[]}
     
-    unmatched = {"name":["URI"],"lValue":[left["uri"]],"rValue":[right["uri"]], "leftT":findTag(left["uri"]).upper(), "rightT":findTag(right["uri"]).upper()}
+    unmatched = {"name":[],"lValue":[],"rValue":[], "leftT":findTag(left["uri"]).upper(), "rightT":findTag(right["uri"]).upper()}
     
     for field in right.keys():
+        
         # URI are not going to match 
         if field == 'uri':
+            unmatched["name"].append(field)
+            unmatched["lValue"].append(left[field])
+            unmatched["rValue"].append(right[field])
             continue
+        
         if field in left.keys() and field in right.keys():
             
             # Basic Pre processing to help matching obvious values
@@ -431,18 +453,18 @@ def getMatches(left,right):
             rVal = preProcess(right[field])
             
             if lVal == rVal:
-                exactMatch["name"].append(field_desc[field])
+                exactMatch["name"].append(field)
                 exactMatch["value"].append(lVal)
             else:
-                unmatched["name"].append(field_desc[field])
+                unmatched["name"].append(field)
                 unmatched["lValue"].append(left[field])
                 unmatched["rValue"].append(right[field])
         elif field in left:
-            unmatched["name"].append(field_desc[field])
+            unmatched["name"].append(field)
             unmatched["lValue"].append(left[field])
             unmatched["rValue"].append(None)
         elif field in right:
-            unmatched["name"].append(field_desc[field])
+            unmatched["name"].append(field)
             unmatched["lValue"].append(None)
             unmatched["rValue"].append(right[field])
     

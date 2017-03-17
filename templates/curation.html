@@ -37,42 +37,121 @@
     </style>
     
     <script>
-        var qid = ''
+        var maxCards = 3;
+        var qid = new Array(maxCards);
+        var answerIds = new Array(maxCards);
+        var answerComments = new Array(maxCards);
+        var questionCount = 0;
+        var answerCount = 0;
         
         $(document).ready(function(){ 
+            
+            // Load all cards
+            /*
+            for(i=1;i<=maxCards;i++){
+                console.log("Creating html for card "+i);
+                
+                //var html = document.getElementById('cards');
+                // Load all html
+                //html += "<div>";
+                $("#cards").append("<div>");
+                
+                $(function(){
+                    $("#cards").load("card.html");
+                });
+                
+                $.get("card.html", function(data){
+                    $('#cards').html(data);
+                });
+                // Load standard card html
+                //$('#cards').append(html);
+                //$("#cards").load("card.html");
+                
+                // Update ids
+                $('#card').attr('id', 'card'+i)
+                $('#progress').attr('id', 'progress'+i)
+                $('#cardHeading').attr('id', 'cardHeading'+i)
+                $('#exactMatch').attr('id', 'exactMatch'+i)
+                $('#noMatch').attr('id', 'noMatch'+i)
+                $('#aY').attr('id', 'aY'+i)
+                $('#aN').attr('id', 'aN'+i)
+                $('#aNS').attr('id', 'aNS'+i)
+                $('#commentbox').attr('id', 'commentbox'+i)
+                $('#usercomment').attr('id', 'usercomment'+i)
+                $('#commentbox').append("<label for='usercomment"+i+"'>Comments (optional)</label>")
+                
+                // close div and put new line
+                $("#cards").append("</div>");
+                $("#cards").append("<br><br><br>");
+                
+                console.log(document.getElementById('#cards'));
+            }*/
         
-            document.getElementById("aY").disabled = true;
-            document.getElementById("aN").disabled = true;
-            document.getElementById("aNS").disabled = true;
+            // Disable all buttons
+            for(i=1;i<=maxCards;i++){
+                document.getElementById("aY"+i).disabled = true;
+                document.getElementById("aN"+i).disabled = true;
+                document.getElementById("aNS"+i).disabled = true;
+            }
         
+            // Send get call and populate card content
             populateCards();
-        
-            $("#aY").click(function(e){
-                e.preventDefault(e);
-                console.log("Yes: Comment is "+document.getElementById("usercomment").value);
-                console.log("Question id - "+qid);
-                submitAnswer(1,qid,document.getElementById("usercomment").value);
-                
-                $('#usercomment').val('');
-                $('#usercomment').trigger('autoresize');
-                
-            });
-            $("#aN").on("click",function(){
-                console.log("No: Comment is "+document.getElementById("usercomment").value);
-                console.log("Question id - "+qid);
-                submitAnswer(2,qid,document.getElementById("usercomment").value);
-                
-                $('#usercomment').val('');
-                $('#usercomment').trigger('autoresize');
-            });
-            $("#aNS").on("click",function(){
-                console.log("NotSure: Comment is "+document.getElementById("usercomment").value);
-                console.log("Question id - "+qid);
-                submitAnswer(3,qid,document.getElementById("usercomment").value);
-                
-                $('#usercomment').val('');
-                $('#usercomment').trigger('autoresize');
-            });
+            
+            // Logic for accepting answers and sending them to server
+            for(i=1;i<=maxCards;i++){
+                console.log("Setting up action listener for buttons of card "+i)
+                $("#aY"+i).click(function(){
+                    var id = parseInt(this.id.substring(2,3));
+                    console.log("Yes: Comment is "+document.getElementById("usercomment"+id).value);
+                    console.log("Question id - "+qid[id-1]);
+                    answerCount = answerCount + 1;
+                    answerIds[id-1] = 1;
+                    answerComments[id-1] = document.getElementById("usercomment"+id).value;
+                    $('#usercomment'+id).val('');
+                    $('#usercomment'+id).trigger('autoresize');
+                    $('#card'+id).slideUp();
+                    if (answerCount == questionCount){
+                        submitAnswer();
+                    }
+                    else{
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                    }
+                });
+                $("#aN"+i).on("click",function(){
+                    var id = parseInt(this.id.substring(2,3));
+                    console.log("No: Comment is "+document.getElementById("usercomment"+id).value);
+                    console.log("Question id - "+qid[id-1]);
+                    answerCount = answerCount + 1;
+                    answerIds[id-1] = 2;
+                    answerComments[id-1] = document.getElementById("usercomment"+id).value;
+                    $('#usercomment'+id).val('');
+                    $('#usercomment'+id).trigger('autoresize');
+                    $('#card'+id).slideUp();
+                    if (answerCount == questionCount){
+                        submitAnswer();
+                    }
+                    else{
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                    }
+                });
+                $("#aNS"+i).on("click",function(){
+                    var id = parseInt(this.id.substring(3,4));
+                    console.log("NotSure: Comment is "+document.getElementById("usercomment"+id).value);
+                    console.log("Question id - "+qid[id-1]);
+                    answerCount = answerCount + 1;
+                    answerIds[id-1] = 3;
+                    answerComments[id-1] = document.getElementById("usercomment"+id).value;
+                    $('#usercomment'+id).val('');
+                    $('#usercomment'+id).trigger('autoresize');
+                    $('#card'+id).slideUp();
+                    if (answerCount == questionCount){
+                        submitAnswer();
+                    }
+                    else{
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                    }
+                });
+            }
         });
         
         function populateCards(){
@@ -80,10 +159,27 @@
             $.ajax({
                 type: "GET",
                 url: sv,
+                beforeSend: function(){
+                    for(i=0;i<maxCards;i++){
+                        $('#progress'+i).show();
+                    }
+                },  
                 success: function(data){
                     if (data.length > 0)
                     {
-                        populateCard(data[0],0);
+                        for(i=1;i<=maxCards;i++){
+                            console.log("Populating card "+i)
+                            if (i <= data.length){
+                                populateCard(data[i-1],i);
+                                questionCount = questionCount + 1;
+                                $('#progress'+i).hide();
+                            }
+                            else{
+                                // Hide empty cards
+                                $('#progress'+i).hide();
+                                $('#card'+i).hide();
+                            }
+                        }
                     }
                     else
                     {
@@ -105,7 +201,9 @@
                         
                         window.setTimeout(function() {
                             if (rsp["error"].includes("Sparql Endpoint not responding")){
-                                $('.progress').hide();
+                                for(i=0;i<maxCards;i++){
+                                    $('#progress'+i).hide();
+                                }
                                 Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000);
                             }
                             else if (rsp["error"].includes("not have any tags associated")){
@@ -120,43 +218,38 @@
             });
         };
         
-        function populateCard(data,divid) {
-            $.ajax({
-                method: "GET",
-                url: "/cards",
-                beforeSend: function(){
-                    $('.progress').show();
-                    console.log("loading...")
-                    populateHeadings(data.Unmatched);
-                    populateExactMatch(data.ExactMatch);
-                    populateNoMatch(data.Unmatched);
-                    var h = "<tr class='cyan darken-2 white-text thin'><th colspan='2' style='text-align:center'> Similarity Score: "+data.score+"</th></tr>";
-                    $('#cardHeading').append(h);
-                },  
-                success: function (card) {
-                    $('.progress').hide();
-                    document.getElementById("aY").disabled = false;
-                    document.getElementById("aN").disabled = false;
-                    document.getElementById("aNS").disabled = false;
-                    console.log("loading...done")                    
-                    qid = data['qid']
-                },
-                complete: function () {
-                    // Do something useful may be
-                }
-            });
+        function populateCard(data,cid) {
+        
+            // Start progress bar and load all the content
+            console.log("loading...")
+            populateHeadings(data.Unmatched,cid);
+            populateExactMatch(data.ExactMatch,cid);
+            populateNoMatch(data.Unmatched,cid);
+            var h = "<tr class='cyan darken-2 white-text thin'><th colspan='2' style='text-align:center'> Similarity Score: "+data.score+"</th></tr>";
+            $('#cardHeading'+cid).append(h);
+            
+            // Disable progress bar and enable buttons
+            document.getElementById("aY"+cid).disabled = false;
+            document.getElementById("aN"+cid).disabled = false;
+            document.getElementById("aNS"+cid).disabled = false;
+            console.log("loading...done")                    
+            var qidid = parseInt(cid) - 1
+            qid[qidid] = data['qid']
         };
         
-        function populateHeadings(data){
-            console.log(data)
+        function populateHeadings(data,cid){
+            console.log("Populating heading...")
+            console.log("left tag: "+data.leftT)
+            console.log("right tag: "+data.rightT)
             var h = "";
             h += "<tr class='cyan darken-4 white-text thin'>"
             h += "<th style='text-align:center'>"+data.leftT+"</th>";
             h += "<th style='text-align:center'>"+data.rightT+"</th></tr>";
-            $('#cardHeading').append(h);
+            $('#cardHeading'+cid).append(h);
         };
         
-        function populateExactMatch(data) {
+        function populateExactMatch(data,cid) {
+            console.log("Populating exact matches...")
             console.log(data)
             var tr = "";
             var names = data.name;
@@ -166,7 +259,7 @@
                 tr += "<tr><td colspan='3' style='text-align:center'>None of the fields match</td></tr>";
             }
             else {
-                if (names.length == 1 && contains(names,"Name")){
+                if (names.length == 1 && contains(names,"name")){
                     tr += "<tr><td colspan='3' style='text-align:center'>None of the other fields match</td></tr>";
                 }
             
@@ -174,8 +267,8 @@
                     tr += "<tr>"
                     
                     // Special handling of Name
-                    if (names[index] == "Name") {
-                        var heading = document.getElementById("cardHeading");
+                    if (names[index] == "name") {
+                        var heading = document.getElementById("cardHeading"+cid);
                         heading.innerHTML += "<tr class='cyan darken-3 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
                     }
                     else {
@@ -185,10 +278,11 @@
                     tr += "</tr>";
                 }
             }
-            $('#exactMatch').append(tr);
+            $('#exactMatch'+cid).append(tr);
         };
         
-        function populateNoMatch(data) {
+        function populateNoMatch(data,cid) {
+            console.log("Populating non matches...")
             console.log(data)
             var names = data.name;
             var lValues = data.lValue;
@@ -203,14 +297,39 @@
                 for(var index in names) {
                     tr += "<tr>";
                     
-                    if (names[index] == "URI") {
+                    if (names[index] == "uri") {
                         tr += "<td style='text-align:right;'>" + names[index] + "</td>";
                         tr += "<td style='text-align:right;padding-right:15px;'><a href='" + lValues[index] + "' target='_blank'>" + lValues[index] + "</a></td>";
                         tr += "<td style='text-align:left;padding-left:15px;'><a href='" + rValues[index] + "' target='_blank'>" + rValues[index] + "</a></td>";
                     }                    
-                    else if (names[index] == "Name") {
-                        var heading = document.getElementById("cardHeading");
+                    else if (names[index] == "name") {
+                        var heading = document.getElementById("cardHeading"+cid);
                         heading.innerHTML += "<tr class='cyan darken-3 white-text'><td style='text-align:center'>"+lValues[index]+"</td><td style='text-align:center'>"+rValues[index]+"</td></tr>";
+                    }
+                    else if (names[index] == "object_links"){
+                        tr += "<td style='text-align:right;'>" + names[index] + "</td>";
+                        
+                        if (lValues[index].length == 0) {
+                            tr += "<td style='text-align:right;padding-right:15px;'>" + "-" + "</td>";
+                        }
+                        else {
+                            tr += "<td style='text-align:right;padding-right:15px;'><ul>";
+                            for(var i in lValues[index]) {
+                                tr += "<li><a href='" + lValues[index][i] + "' target='_blank'>" + lValues[index][i] + "</a></li>";
+                            }
+                            tr += "</ul></td>";
+                        }
+                        
+                        if (rValues[index].length == 0) {
+                            tr += "<td style='text-align:left;padding-left:15px;;'>" + "-" + "</td>";
+                        }
+                        else {
+                            tr += "<td style='text-align:right;padding-right:15px;'><ul>";
+                            for(var i in rValues[index]) {
+                                tr += "<li><a href='" + rValues[index][i] + "' target='_blank'>" + rValues[index][i] + "</a></li>";
+                            }
+                            tr += "</ul></td>";
+                        }
                     }
                     else {
                         
@@ -229,7 +348,7 @@
                     tr += "</tr>";
                 }
             }
-            $('#noMatch').append(tr);
+            $('#noMatch'+cid).append(tr);
         };
         
         function contains(ary, elem){
@@ -241,24 +360,30 @@
             return false;
         };
         
-        function submitAnswer(answer, qid, comment){
-            var sv = '{{server}}'.concat("/answer");
-            var payload = new Object();
-            payload.value = answer;
-            payload.qid = qid;
-            payload.comment = comment;
-            console.log("submitting "+JSON.stringify(payload))
-            
-            $.ajax({
-                method: "PUT",
-                url: sv,
-                data: JSON.stringify(payload),
-                contentType: 'application/json',
-                success: function(data){
-                    console.log("Answer Successfully submitted");
-                    window.location.href = "/curation";
-                }
-            });
+        // Submit all answers together only
+        function submitAnswer(){
+        
+            // For all answers
+            for(i=1;i<=questionCount;i++){
+                var sv = '{{server}}'.concat("/answer");
+                var payload = new Object();
+                payload.value = answerIds[i-1];
+                payload.qid = qid[i-1];
+                payload.comment = answerComments[i-1];
+                console.log("Submitting answer "+answerIds[i-1]+" to card "+i+" with comment "+answerComments[i-1])
+                $.ajax({
+                    method: "PUT",
+                    url: sv,
+                    data: JSON.stringify(payload),
+                    contentType: 'application/json',
+                    success: function(data){
+                        if (i > questionCount){
+                            window.location.href = "/curation";
+                            i = 0;
+                        }
+                    },
+                });
+            }
         };
     </script>
 </head>
@@ -266,6 +391,7 @@
 <body>
     <div>{% include 'header.html' %}</div>
     <br><br><br>
+    <!--div id="cards"></div-->
     <div class="container" id="body" style="height:100%">
         <div>{% include 'cards.html' %}</div>
     </div>
