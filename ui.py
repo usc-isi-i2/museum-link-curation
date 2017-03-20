@@ -32,8 +32,34 @@ def show_specs():
 @app.route('/profile')
 def show_user_profile():
     if current_user.is_authenticated:
+        # Get Keys
         keys = [t for t in sorted(museums.keys()) if t != "ulan" ]
-        return render_template('profile.html',keys=keys,museums=museums,server=server[:-1])
+        
+        # Get User stats
+        # getStats about all the questions answered by this user
+        u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
+        answers = dbC[dname]["answer"].find({'author':current_user.email})
+        
+        # Initialize per museum stats 
+        stats = {}
+        for tag in museums.keys():
+            stats[tag] = {"matched":0,"unmatched":0,"no-conclusion":0}
+        
+        for a in answers:
+            # find question and check its current status 
+            q = dbC[dname]["question"].find_one({'_id':ObjectId(a['qid'])})
+            
+            for tag in q['tags']:
+                tag = dbC[dname]["tag"].find_one({'_id':ObjectId(tag)})['tagname']
+                if q['status'] == statuscodes["Agreement"]:
+                    stats[tag]["matched"] += 1
+                elif q['status'] == statuscodes["Disagreement"]:
+                    stats[tag]["unmatched"] += 1
+                elif q['status'] == statuscodes["Non-conclusive"]:
+                    stats[tag]["no-conclusion"] += 1
+                    
+        return render_template('profile.html',keys=keys,museums=museums,userStats=stats,server=server[:-1])
+    
     return redirect('/login')
                 
 @app.route('/results')

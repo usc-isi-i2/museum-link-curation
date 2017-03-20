@@ -208,25 +208,6 @@ class userMgr(Resource):
         
         # getStats about all the questions answered by this user
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
-        answers = dbC[dname]["answer"].find({'author':current_user.email})
-        
-        # Initialize per museum stats 
-        stats = {}
-        for tag in museums.keys():
-            stats[tag] = {"matched":0,"unmatched":0,"no-conclusion":0}
-        
-        for a in answers:
-            # find question and check its current status 
-            q = dbC[dname]["question"].find_one({'_id':ObjectId(a['qid'])})
-            
-            for tag in q['tags']:
-                tag = dbC[dname]["tag"].find_one({'_id':ObjectId(tag)})['tagname']
-                if q['status'] == statuscodes["Agreement"]:
-                    stats[tag]["matched"] += 1
-                elif q['status'] == statuscodes["Disagreement"]:
-                    stats[tag]["unmatched"] += 1
-                elif q['status'] == statuscodes["Non-conclusive"]:
-                    stats[tag]["no-conclusion"] += 1
                     
         return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums,'keys':sorted(museums.keys())}
     

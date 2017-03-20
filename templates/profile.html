@@ -147,12 +147,12 @@
 
         <div class="row">
 
-            <div class="col s12 m6 push-m1">
+            <div class="col s12 m6">
                 <div class="icon-block">
                     <br><br><br><br>
                     {% for tag in keys %}
                         <input id={{tag}} type="checkbox" class="filled-in" name="museums" value={{tag}} />
-                        <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/>
+                        <label for={{tag}} class="black-text"> {{museums[tag]['name']}} ( {{tag}} ) </label><br/><br/>
                     {% endfor %}
                     <br/><br/>
                     <form name ="profile_tag_select">
@@ -161,8 +161,29 @@
                     <br/><br/>
                 </div>
             </div>
-            <div class="col s12 m6 pull-m1">
-                <div id="charts"></div>
+            <div class="col s12 m6">
+                <table class="highlight bordered">
+                    <tr><th>Museum</th><th>Matched</th><th>Unmatched</th><th>Not Sure</th><th>Not Curated</th><th>Total</th><tr/>
+                    {% for tag in keys %}
+                        <tr>
+                            <td>{{tag}}</td>
+                            <td title=" Total Matched : {{ museums[tag]['matchedQ'] }}, Your contribution : {{userStats[tag]['matched']}}.">
+                            {{ userStats[tag]['matched'] }} / {{ museums[tag]['matchedQ'] }}</td>
+                            <td title=" Total Unmatched : {{ museums[tag]['unmatchedQ'] }}, Your contribution : {{userStats[tag]['unmatched']}}.">
+                            {{ userStats[tag]['unmatched'] }} / {{ museums[tag]['unmatchedQ'] }}</td>
+                            <td title=" Total Not Sure : {{ museums[tag]['unconcludedQ'] }}, Your contribution : {{userStats[tag]['no-conclusion']}}.">
+                            {{ userStats[tag]['no-conclusion'] }} / {{ museums[tag]['unconcludedQ'] }}</td>
+                            <td title="Remaining Pairs">{{museums[tag]['totalQ'] - museums[tag]['matchedQ'] - museums[tag]['unmatchedQ'] - museums[tag]['unconcludedQ']}}</td>
+                            <td title="Total Pairs">{{museums[tag]['totalQ']}}</td>
+                        <tr/>
+                    {% endfor %}
+                </table>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <center><div id="charts"></div><center>
             </div>
         </div>
       </div>
