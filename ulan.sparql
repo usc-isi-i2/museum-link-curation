@@ -1,6 +1,6 @@
 SELECT ?uri ?name ?birth_year ?birth_place ?death_year ?death_place ?gender ?nationality ?object_links
     WHERE {
-      	BIND(<???> AS ?uri)
+        BIND(<???> AS ?uri)
         OPTIONAL {
             ?uri xl:prefLabel ?o1.
             ?o1 gvp:term ?name.
@@ -9,7 +9,7 @@ SELECT ?uri ?name ?birth_year ?birth_place ?death_year ?death_place ?gender ?nat
             ?uri foaf:focus ?o2.
             ?o2 gvp:biographyPreferred ?o3.
             ?o3 gvp:estStart ?birth_year.
-	}
+        }
         OPTIONAL {
             ?uri foaf:focus ?o4.
             ?o4 gvp:biographyPreferred ?o5.

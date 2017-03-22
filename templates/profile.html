@@ -125,7 +125,7 @@
         }
         #charts > div > div:nth-child(1) > div > svg > g:nth-child(4) > g:nth-child(5) > g > g > g > text:nth-child(2){
             fill: black;
-        },
+        }
     </style>
     
 </head>
@@ -162,16 +162,21 @@
                 </div>
             </div>
             <div class="col s12 m6">
-                <table class="highlight bordered">
-                    <tr><th>Museum</th><th>Matched</th><th>Unmatched</th><th>Not Sure</th><th>Not Curated</th><th>Total</th><tr/>
+                <table align="center" class="highlight bordered centered">
+                    <tr><td><b>Museum</b></td>
+                    <td><b>Matched</b></td>
+                    <td><b>Unmatched</b></td>
+                    <td><b>Not Sure</b></td>
+                    <td><b>Not Curated</b></td>
+                    <td><b>Total</b></td><tr/>
                     {% for tag in keys %}
                         <tr>
                             <td>{{tag}}</td>
-                            <td title=" Total Matched : {{ museums[tag]['matchedQ'] }}, Your contribution : {{userStats[tag]['matched']}}.">
+                            <td title=" Your contribution : {{userStats[tag]['matched']}} / Total Matched : {{ museums[tag]['matchedQ'] }}">
                             {{ userStats[tag]['matched'] }} / {{ museums[tag]['matchedQ'] }}</td>
-                            <td title=" Total Unmatched : {{ museums[tag]['unmatchedQ'] }}, Your contribution : {{userStats[tag]['unmatched']}}.">
+                            <td title=" Your contribution : {{userStats[tag]['unmatched']}} / Total Unmatched : {{ museums[tag]['unmatchedQ'] }}">
                             {{ userStats[tag]['unmatched'] }} / {{ museums[tag]['unmatchedQ'] }}</td>
-                            <td title=" Total Not Sure : {{ museums[tag]['unconcludedQ'] }}, Your contribution : {{userStats[tag]['no-conclusion']}}.">
+                            <td title=" Your contribution : {{userStats[tag]['no-conclusion']}} / Total Not Sure : {{ museums[tag]['unconcludedQ'] }}">
                             {{ userStats[tag]['no-conclusion'] }} / {{ museums[tag]['unconcludedQ'] }}</td>
                             <td title="Remaining Pairs">{{museums[tag]['totalQ'] - museums[tag]['matchedQ'] - museums[tag]['unmatchedQ'] - museums[tag]['unconcludedQ']}}</td>
                             <td title="Total Pairs">{{museums[tag]['totalQ']}}</td>

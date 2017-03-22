@@ -114,7 +114,7 @@
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000,'rounded');
                     }
                 });
                 $("#aN"+i).on("click",function(){
@@ -131,7 +131,7 @@
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000,'rounded');
                     }
                 });
                 $("#aNS"+i).on("click",function(){
@@ -148,7 +148,7 @@
                         submitAnswer();
                     }
                     else{
-                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000);
+                        Materialize.toast("You will need to answer all cards before new pairs are shown.", 3000,'rounded');
                     }
                 });
             }
@@ -183,7 +183,7 @@
                     }
                     else
                     {
-                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000,'rounded');
                         window.setTimeout(function() {
                             window.location.href = '/profile';
                         }, 2500);
@@ -192,22 +192,22 @@
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
                     if (xhr.status == "500"){
-                        Materialize.toast("Something went wrong. Please try again!", 2000);
+                        Materialize.toast("Something went wrong. Please try again!", 2000,'rounded');
                     }
                     else if (xhr.status == "400"){
                         rsp =  JSON.parse(xhr.responseText);
                         console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + rsp["error"]);
-                        Materialize.toast(rsp["error"], 2000);
+                        Materialize.toast(rsp["error"], 2000,'rounded');
                         
                         window.setTimeout(function() {
                             if (rsp["error"].includes("Sparql Endpoint not responding")){
                                 for(i=0;i<maxCards;i++){
                                     $('#progress'+i).hide();
                                 }
-                                Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000);
+                                Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000,'rounded');
                             }
                             else if (rsp["error"].includes("not have any tags associated")){
-                                Materialize.toast("Please update your preferred museums. Redirecting...", 2000);
+                                Materialize.toast("Please update your preferred museums. Redirecting...", 2000,'rounded');
                                 window.setTimeout(function() {
                                     window.location.href = '/profile';
                                 }, 2500);
@@ -273,12 +273,12 @@
                     }
                     else {
                         tr += "<td style='text-align:right'>" + names[index] + "</td>";
-			if (values[index] == null || values[index] == "" || values[index] == []){
-	                        tr += "<td style='text-align:center' colspan='2'> None </td>";
-			}
-			else{
-				tr += "<td style='text-align:center' colspan='2'>"+ values[index] +"</td>";
-			}
+                        if (values[index] == null || values[index] == "" || values[index] == []){
+                            tr += "<td style='text-align:center' colspan='2'> None </td>";
+                        }
+                        else{
+                            tr += "<td style='text-align:center' colspan='2'>"+ values[index] +"</td>";
+                        }
                     }
                     tr += "</tr>";
                 }
@@ -396,7 +396,6 @@
 <body>
     <div>{% include 'header.html' %}</div>
     <br><br><br>
-    <!--div id="cards"></div-->
     <div class="container" id="body" style="height:100%">
         <div>{% include 'cards.html' %}</div>
     </div>
