@@ -68,7 +68,15 @@ def show_results_page():
         keys = [t.upper() for t in sorted(museums.keys())]
         return render_template('results.html',keys=keys,server=server[:-1])
     return redirect('/login')
-        
+
+@app.route('/stats',methods=['GET'])
+def get_museum_stats():
+    tag = request.args['tag'].lower()
+    print "Received stats request for tag : "+tag
+    if current_user.is_authenticated:
+        return jsonify(museums[tag])
+    return jsonify({})
+    
 @app.route('/about')
 def about():
     return render_template('about.html')

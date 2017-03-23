@@ -96,6 +96,7 @@
         
             // Send get call and populate card content
             populateCards();
+            $('#stats_card').hide();
             
             // Logic for accepting answers and sending them to server
             for(i=1;i<=maxCards;i++){
@@ -155,12 +156,12 @@
         });
         
         function populateCards(){
-           var sv = '{{server}}'.concat("/question?stats=true&count=1");
+           var sv = '{{server}}'.concat("/question?stats=false&count=1");
             $.ajax({
                 type: "GET",
                 url: sv,
                 beforeSend: function(){
-                    for(i=0;i<maxCards;i++){
+                    for(i=1;i<=maxCards;i++){
                         $('#progress'+i).show();
                     }
                 },  
@@ -192,7 +193,13 @@
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
                     if (xhr.status == "500"){
-                        Materialize.toast("Something went wrong. Please try again!", 2000,'rounded');
+                        Materialize.toast("Something went wrong. Please back in sometime!", 2000,'rounded');
+                        for(i=1;i<=maxCards;i++){
+                            $('#card'+i).hide();
+                        }
+                        window.setTimeout(function() {
+                            window.location.href = '/curation';
+                        },4000);
                     }
                     else if (xhr.status == "400"){
                         rsp =  JSON.parse(xhr.responseText);
@@ -201,7 +208,7 @@
                         
                         window.setTimeout(function() {
                             if (rsp["error"].includes("Sparql Endpoint not responding")){
-                                for(i=0;i<maxCards;i++){
+                                for(i=1;i<=maxCards;i++){
                                     $('#progress'+i).hide();
                                 }
                                 Materialize.toast("Try again in some time or ensure that sparql endpoints are up!", 2000,'rounded');
@@ -232,9 +239,24 @@
             document.getElementById("aY"+cid).disabled = false;
             document.getElementById("aN"+cid).disabled = false;
             document.getElementById("aNS"+cid).disabled = false;
-            console.log("loading...done")                    
+            console.log("loading...done")
             var qidid = parseInt(cid) - 1
             qid[qidid] = data['qid']
+            
+            // Get statistics on currently loaded card
+            var sv = '{{server}}'.concat("/stats?tag="+data.Unmatched.leftT);
+            $.ajax({
+                type: "GET",
+                url: sv,
+                success: function(data){
+                    console.log("Received stats");
+                    console.log(data);
+                    var completed = data.matchedQ + data.unmatchedQ + data.unconcludedQ;
+                    var total = data.totalQ;
+                    $('#stats_card').show();
+                    document.getElementById("matchingStats").innerHTML = 'Completed '+completed+'/'+total;
+                }
+            });
         };
         
         function populateHeadings(data,cid){
@@ -395,7 +417,16 @@
 
 <body>
     <div>{% include 'header.html' %}</div>
-    <br><br><br>
+    <br>
+    <div class="row">
+        <div class="col s4"></div>
+        <div class="col s4">
+            <div id="stats_card" class="card black">
+                <div class="card-content white-text"><p id="matchingStats" style="text-align:center"></p></div>
+            </div>
+        </div>
+        <div class="col s4"></div>
+    </div>
     <div class="container" id="body" style="height:100%">
         <div>{% include 'cards.html' %}</div>
     </div>
