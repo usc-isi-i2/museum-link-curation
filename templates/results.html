@@ -20,10 +20,9 @@
     $(document).ready(function(){ 
         $('#progress').hide();
         $('select').material_select();
-        
+    
         // Download jsonlines
         $("#jsonlines").click(function(e){
-            e.preventDefault()
             
             var tags = $('#museums').val();
             var codes = $('#codes').val();
@@ -49,7 +48,7 @@
                     console.log("File Created!");
                     $('#progress').hide();
                     document.getElementById("jsonlines").disabled = false;
-                    window.location.href = "/download?type=jsonlines";
+                    window.location.href = "/jsonlines";
                 },
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
@@ -62,13 +61,12 @@
         
         // Download triples
         $("#triples").click(function(e){
-            e.preventDefault()
             
             var tags = $('#museums').val();
             var codes = $('#codes').val();
             
             var userObj = new Object();
-            userObj.data = {"tags":tags,"codes":codes,"type":"triples"};
+            userObj.data = {"tags":tags,"type":"triples"};
             json_data = JSON.stringify(userObj);
             console.log(json_data);
             var sv = '{{server}}'.concat("/export");
@@ -88,7 +86,7 @@
                     console.log("File Created!");
                     $('#progress').hide();
                     document.getElementById("triples").disabled = false;
-                    window.location.href = "/download?type=triples";
+                    window.location.href = "/triples";
                 },
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
@@ -98,8 +96,8 @@
                 }
             });
         });
-        
     });
+    
     </script>
     
     <style>
@@ -117,7 +115,7 @@
         <div class="container">
             <div class="row center">
                 <br><br>
-                <h5> Download the curated results in json format </h5>
+                <h5> Download the curated results (Tip: Select ulan to download all data!) </h5>
                 <br><br>
                 <div class="header col s12 m4">
                     <select multiple id="museums" >

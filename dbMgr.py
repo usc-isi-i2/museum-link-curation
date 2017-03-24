@@ -590,6 +590,15 @@ def submitAnswer(qid, answer, uid):
 # Parameter format: {"museum tag":[status codes...],...}
 def dumpCurationResults(args,filepath):
 
+    tags = []
+    if 'ulan' in args['data']['tags']:
+        tags = ["ulan"]
+    else:
+        tags = args['data']['tags']
+    
+    #print "Dumping data for museums : {}".format(tags)
+    logging.info("Dumping data for museums : {}".format(tags))
+
     # Download json lines 
     if args["data"]["type"] == "jsonlines":
         if filepath:
@@ -598,10 +607,10 @@ def dumpCurationResults(args,filepath):
             f = open(os.path.join(rootdir,"results.json"),'w')
                 
         statuses = [int(s) for s in args['data']['codes']]
-        for museum in args['data']['tags']:
+        for tag in tags:
             for status in statuses:
             
-                tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})
+                tid = dbC[dname]["tag"].find_one({'tagname':tag})
                 
                 if (tid != None):
                     tid = tid['_id']
@@ -638,9 +647,9 @@ def dumpCurationResults(args,filepath):
         else:
             f = open(os.path.join(rootdir,"results.nt"),'w')
             
-        for museum in args['data']['tags']:
+        for tag in tags:
             # Find only questions that were matched
-            tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})
+            tid = dbC[dname]["tag"].find_one({'tagname':tag})
             if (tid != None):
                 tid = tid['_id']
                 questions = dbC[dname]["question"].find({'status':statuscodes["Agreement"]})
