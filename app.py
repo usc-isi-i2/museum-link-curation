@@ -60,6 +60,7 @@ def login():
     if request.method == 'POST': 
     
         #print request.form
+        logging.info('Input received: {}'.format(request.form))
         
         if not request.form['uname']:
             rsp = "Username can't be blank. Please try again."
@@ -102,6 +103,7 @@ def register():
     if request.method == 'POST': 
     
         #print request.form
+        logging.info('Input received: {}'.format(request.form))
         
         if not request.form['uname']:
             rsp = "User name can't be blank. Please try again."
@@ -128,6 +130,7 @@ def register():
         name = request.form['name']
         pw = encrypt_password(request.form['pw'].encode('utf-8'))
         #print userid, name, pw
+        logging.info('{} {} {}'.format(userid, name, pw))
         
         # Add to user database
         user = User(email=userid, password=pw)
@@ -152,7 +155,8 @@ class userMgr(Resource):
     
     # Update User (Curator) profile. 
     def put(self):
-        print "Input received: {} \n".format(request.json)
+        #print "Input received: {} \n".format(request.json)
+        logging.info('Input received: {}'.format(request.json))
         
         if not current_user.is_authenticated:
             return {'error':"Couldn't authenticate user."}, 400
@@ -163,6 +167,7 @@ class userMgr(Resource):
         # Update tag for a user
         if 'tags' in request.json:
             #print request.json["tags"], type(request.json["tags"])
+            #logging.info("{}, {}".format(request.json["tags"], type(request.json["tags"])))
             if type(request.json["tags"]) != list:
                 return {'error': 'Tags type should be list of String'}, 400
                 
@@ -181,6 +186,7 @@ class userMgr(Resource):
         # Update name of a user
         if 'name' in request.json:
             #print request.json["name"], type(request.json["name"])
+            logging.info("{], {}".format(request.json["name"], type(request.json["name"])))
             if type(request.json["name"]) != str and type(request.json["name"]) != unicode:
                 return {'error': 'Name type should by String'}, 400
             dbC[dname]["curator"].find_one_and_update({'uid':current_user.email},{'$set': {'name':request.json["name"]}})
@@ -188,6 +194,7 @@ class userMgr(Resource):
         # Update rating of a user
         if 'rating' in request.json:
             #print request.json["name"], type(request.json["name"])
+            logging.info("{}, {}".format(request.json["name"], type(request.json["name"])))
             if type(request.json["rating"]) != int:
                 return {'error': 'Rating type should by integer'}, 400
             if request.json["rating"] > 5 or request.json["rating"] < 0:
@@ -256,7 +263,8 @@ def oauth_callback(provider):
     
     user = User.query.filter_by(email=email).first()
     if not user:
-        print ("Created new user\n")
+        #print "Created new user with email",email
+        logging.info("Created new user with email : {}".format(email))
         user = User(email=email)
         usrdb.session.add(user)
         usrdb.session.commit()
@@ -275,7 +283,8 @@ def logout():
 @app.route('/export', methods=['PUT'])
 def export():
     if request.method == 'PUT':
-        print "PUT Input received: {} \n".format(request.json)
+        #print "PUT Input received: {} \n".format(request.json)
+        logging.info("PUT Input received: {}".format(request.json))
         
         if not current_user.is_authenticated:
             return redirect(url_for('index'))
@@ -290,7 +299,8 @@ class questMgr(Resource):
 
     # Retrieve set of questions and send it as a response
     def get(self):
-        print "Input received: {} \n".format(request.args)
+        #print "Input received: {} \n".format(request.args)
+        logging.info("Input received: {}".format(request.args))
         
         if not current_user.is_authenticated:
             return {'error':"Couldn't authenticate user."}, 400
@@ -314,10 +324,8 @@ class questMgr(Resource):
 class ansMgr(Resource):
     
     def put(self):
-        #print "Input received: {} \n".format(request.get_json())    
-        print "Input received: {} \n".format(request.json)
-        #print "Input received: {} \n".format(request.data)
-        #print "Input received: {} \n".format(request.args)
+        #print "Input received: {} \n".format(request.json)
+        logging.info("Input received: {}".format(request.json))
         
         if not current_user.is_authenticated:
             return {'error':"Couldn't authenticate user."}, 400
@@ -383,14 +391,14 @@ def populateQuestionsWithFields(questions, stats):
         # Sparql query failed, sparql endpoint is down for either ULAN or aac
         if left == None or right == None:
             return [], "Sparql Endpoint not responding"
-            
-        #print "\nLeft\n  "
+
+        #logging.info(left)
         #pprint(left)
-        #print "\nRight\n "
+        #logging.info(right)
         #pprint(right)
         
         matches = getMatches(left, right)
-        #print "\nmatches :\n"
+        #logging.info(matches)
         #pprint(matches)
         
         if stats == True:
@@ -402,6 +410,7 @@ def populateQuestionsWithFields(questions, stats):
                 "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
         
         #print output
+        #logging.info(output)
     return output,"success"
 
         

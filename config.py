@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS, cross_origin
 from pymongo import MongoClient, ReturnDocument, ASCENDING, DESCENDING
 from unidecode import unidecode
-import os, json, sys, getopt
+import os, json, sys, getopt, logging, logging.handlers
 from optparse import OptionParser
 
 devmode = False
@@ -24,6 +24,18 @@ CORS(app)
 app.config['SECRET_KEY'] = 'top secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Handle server logging
+app.logger.setLevel(logging.DEBUG)  # use the native logger of flask
+app.logger.disabled = False
+logging.basicConfig(filename='server.log',level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+handler = logging.handlers.RotatingFileHandler("server.log",'a',maxBytes=1024 * 1024 * 100,backupCount=20)
+formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(name)s: \t%(message)s")
+handler.setFormatter(formatter)
+app.logger.addHandler(handler)
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.DEBUG)
+log.addHandler(handler)
 
 # restful, usrdb and login_manager instance
 api = Api(app)

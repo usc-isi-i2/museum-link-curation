@@ -35,37 +35,46 @@ def db_init(resetU, resetD):
     
 # Print the database just to check current data
 def printDatabases():
-    print "\nPrinting ",dname," if it exists"
+    #print "\nPrinting ",dname," if it exists"
+    logging.info("Printing {} if it exists".format(dname))
     for cname in dbC[dname].collection_names(include_system_collections=False):
-        print "\nPrinting Collection ",cname
+        #print "\nPrinting Collection ",cname
+        logging.info("Printing Collection {}".format(cname))
         for val in dbC[dname][cname].find():
-            print " \n", val
-        print "\n"
+            #print " \n", val
+            logging.info(val)
+        #print "\n"
 
 # Removes all the data from all tables of given database
 def cleanDatabases():
-    print "\nDropping database",dname,"if it exists"
+    #print "\nDropping database",dname,"if it exists"
+    logging.info("Dropping database {} if it exists".format(dname))
     
     for cname in dbC[dname].collection_names(include_system_collections=False):
-        print "\nDropping collection (aka database)",cname
+        #print "\nDropping collection (aka database)",cname
+        logging.info("Dropping collection (aka database) {}".format(cname))
         dbC[dname][cname].drop()
-    print "\n"
+    #print "\n"
 
 # Print particular Document from a Collection
 def printDatabase(docname):
-    print "\nPrinting Collection ",docname
+    #print "\nPrinting Collection ",docname
+    logging.info("Printing Collection {}".format(docname))
     for val in dbC[dname][docname].find():
-        print " \n", val
-    print "\n"
+        #print " \n", val
+        logging.info(val)
+    #print "\n"
     
 # Clean particular Document from a Collection
 def cleanDatabase(docname):
-    print "\nDropping collection (aka database)",docname
+    #print "\nDropping collection (aka database)",docname
+    logging.info("Dropping collection (aka database)".format(docname))
     #for val in dbC[dname][docname].find():
         #print "\nDropping: ",val
+        #logging.info("Dropping: {}".format(val))
     dbC[dname][docname].delete_many({})
-    dbC[dname][docname].drop()            
-    print "\n"
+    dbC[dname][docname].drop()
+    #print "\n"
             
 # Create database with default values for curation
 def createDatabase():
@@ -143,7 +152,8 @@ def populateCurators():
 def addCurator(ce):
     status = dbC[dname]["curator"].insert_one(ce).acknowledged
     if status:
-        print 'Added curator {}\n'.format(ce)
+        #print 'Added curator {}\n'.format(ce)
+        logging.info('Added curator {}'.format(ce))
     
 # Question
     #status, integer: {"NotStarted":1,"InProgress":2,"Agreement":3,"Disagreement":4,"Non-conclusive":5}
@@ -215,7 +225,8 @@ def populateQuestionsFromJSON(f):
         if devmode and count == 100:
             break
      
-    print ("Populated {} questions from {}.".format(count,f))
+    #print "Populated {} questions from {}".format(count,f)
+    logging.info("Populated {} questions from {}".format(count,f))
     #printDatabase("question")
     
 #Find tag from the uri
@@ -260,14 +271,17 @@ def getQuestionsForUID(uid,count):
     userOid = dbC[dname]["curator"].find_one({'uid':uid})
     
     if userOid == None or userOid['_id'] == None:
-        print "User not found. \n"
+        #print "User not found. \n"
+        logging.info("User not found.")
         return [], "User not found"
     else:
         #print "Found uid's objectID ",userOid
+        #logging.info("Found uid's objectID {}".format(userOid))
         userTags = dbC[dname]["curator"].find_one({'uid':uid})['tags']
     
     if userTags == []:
-        print "User does not have any tags associated with their profile.\n"
+        #print "User does not have any tags associated with their profile.\n"
+        logging.info("User does not have any tags associated with their profile.")
         return [], "User does not have any tags associated with their profile"
     
     # Questions to be served...
@@ -354,6 +368,7 @@ def getQuestionsForUID(uid,count):
 def preProcess(value):
     
     #print "Pre processing : "+str(value)+" with type : "+str(type(value))
+    #logging.info("Pre processing : {} with type : {}".format(str(value),str(type(value))))
     
     if type(value) == str or type(value) == int or type(value) == unicode:
         # First convert int to strings
@@ -367,6 +382,7 @@ def preProcess(value):
         value = unidecode(value)
     
     #print "Pre processed : "+str(value)+" with type : "+str(type(value))
+    #logging.info("Pre processed : {} with type : {}".format(str(value),str(type(value))))
 
     return value
 
@@ -385,7 +401,8 @@ def retrieveProperties(uri):
     try:
         rs = sparql.query().convert()
     except HTTPError as e:
-        print " Sparql endpoint threw HTTPError({0}): {1}\n".format(e.errno, e.strerror)
+        #print "Sparql endpoint threw HTTPError({0}): {1}\n".format(e.errno, e.strerror)
+        logging.info("Sparql endpoint threw HTTPError({0}): {1}".format(e.errno, e.strerror))
         return None
     
     data = {}
@@ -457,6 +474,7 @@ def getStats(q):
                 noNotSure = noNotSure + 1
 
     #print 'Yes is {}, No is {}, Undecided is {} \n'.format(noNo,noYes,noNotSure)
+    #logging.info('Yes is {}, No is {}, Undecided is {}'.format(noNo,noYes,noNotSure))
     return {"Yes":noYes,"No":noNo,"Not Sure":noNotSure}
     
 #Answer
@@ -471,14 +489,17 @@ def submitAnswer(qid, answer, uid):
     
     if q == None:
         #print "Submit answer failed for qid: ", qid
+        #logging.info("Submit answer failed for qid: {}".format(qid))
         message = "Question not found for qid: {}".format(qid)
         return {"status":False,"message":message}
     elif q['status'] == statuscodes["Agreement"] or q['status'] == statuscodes["Disagreement"] or q['status'] == statuscodes["Non-conclusive"]:
         #print "Question has already been answered by prescribed number of curators, qid: ", qid
+        #logging.info("Question has already been answered by prescribed number of curators, qid: {}".format(qid))
         message = "Predetermined number of curators have already answered question with qid {}".format(qid)
         return {"status":False,"message":message}
     else:
         #print "Found the question"
+        #logging.info("Found the question")
         
         #Check if user has already answered the question
         # Check authors in all answers if current user has already answered the question
@@ -486,17 +507,20 @@ def submitAnswer(qid, answer, uid):
             ans = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
             if ans and ans["author"] == uid:
                 #print "User has already submitted answer to question ", qid
+                logging.info("User has already submitted answer to question ", qid)
                 message = "User has already submitted answer to question with qid {}".format(qid)
                 return {"status":False,"message":message}
         
         a = dbC[dname]["answer"].insert_one(answer)
         aid = a.inserted_id
         if a.acknowledged:
-            print 'Added answer {}\n'.format(answer)
+            #print 'Added answer {}\n'.format(answer)
+            logging.info('Added answer {}'.format(answer))
         
         # update decision with answer object id
         q['decision'] = q['decision']+[aid]
         #print "decision is: ", q['decision']
+        #logging.info("decision is: {}".format(q['decision']))
         
         # retrieve all answers
         noYes = 0
@@ -529,7 +553,9 @@ def submitAnswer(qid, answer, uid):
                 confidenceNotSure = museums[tag]['confidenceNotSure']
     
         #print "current Y/N/NA: ",noYes,noNo,noNotSure
+        #logging.info("current Y/N/NA: {}, {}, {}".format(noYes,noNo,noNotSure))
         #print "confidence Y-N/NA: ",confidenceYesNo,confidenceNotSure
+        #logging.info("confidence Y-N/NA: {}-{}".format(confidenceYesNo,confidenceNotSure))
     
         if noYes == confidenceYesNo:
             q['status'] = statuscodes["Agreement"] # Update to, Agreement 
@@ -555,7 +581,8 @@ def submitAnswer(qid, answer, uid):
             #projection={'_id':False,'status':True},
             return_document=ReturnDocument.AFTER)
         
-        print "Updated question document {}\n".format(q)
+        #print "Updated question document {}\n".format(q)
+        logging.info("Updated question document {}".format(q))
         #printDatabase("answer")
         return {"status":True,"message":"Appended answer to question's decision list"}
 
@@ -601,7 +628,8 @@ def dumpCurationResults(args,filepath):
                             f.writelines(json.dumps(a))
                             f.writelines("\n")
         
-        print "Data dumped in file ", f.name
+        #print "Data dumped in file ", f.name
+        logging.info("Data dumped in file {}".format(f.name))
         
     # Download N3 triples for matches only
     elif args["data"]["type"] == "triples":
@@ -624,7 +652,8 @@ def dumpCurationResults(args,filepath):
                         s = "<"+q["uri1"]+"> <http://www.w3.org/2002/07/owl#sameAs> <"+q["uri2"]+"> .\n"
                         f.writelines(s)
         
-        print "Data dumped in file ", f.name
+        #print "Data dumped in file ", f.name
+        logging.info("Data dumped in file {}".format(f.name))
 
 def returnCurationResults():
     results = {"matched":[],"unmatched":[]}

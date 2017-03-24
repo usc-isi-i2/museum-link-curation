@@ -11,6 +11,11 @@ def clear_trailing():
 def default():
     return render_template('login.html')
     
+@app.before_request
+def before():
+    logging.info("Received request with header: {}".format(request.headers))
+    pass
+    
 @app.route('/curation')
 def show_curation():
     if current_user.is_authenticated:
@@ -85,7 +90,8 @@ def show_results_page():
 @app.route('/stats',methods=['GET'])
 def get_museum_stats():
     tag = request.args['tag'].lower()
-    print "Received stats request for tag : "+tag
+    #print "Received stats request for tag : "+tag
+    logging.info("Received stats request for tag : {}".format(tag))
     if current_user.is_authenticated:
         return jsonify(museums[tag])
     return redirect('/login')
