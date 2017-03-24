@@ -13,9 +13,10 @@ def db_init(resetU, resetD):
     if resetD:
     
         # Backup
-        export = {"data":{"codes":[3,4,5], "tags":museums.keys() }}
-        if (dbC[dname]["tag"] == None):
-            dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
+        export = {"data":{"tags":museums.keys(),"type":"triples"}}
+        dumpCurationResults(export,os.path.join(rootdir,"backup.nt"))
+        export = {"data":{"codes":[3,4,5], "tags":museums.keys(),"type":"jsonlines"}}
+        dumpCurationResults(export,os.path.join(rootdir,"backup.json"))
     
         # Reset all users
         if resetU:
@@ -152,7 +153,7 @@ def addCurator(ce):
     #uri1, for now, just a URI related to a specific artist
     #uri2, for now, just another URI related to same specific artist
     #decision, list of object IDs from Answer
-    #similarity , dict, meta data about similarity algorithm and its output from record linkage
+    #record linkage score , double, similarity score calculated by record linkage module
     
 # Populate default set of questions
 def populateQuestions():
@@ -171,7 +172,7 @@ def populateQuestions():
     dbC[dname]["question"].create_index([("tags", ASCENDING)])
     dbC[dname]["question"].create_index([("status", ASCENDING)])
     dbC[dname]["question"].create_index([("decision", ASCENDING)])
-    dbC[dname]["question"].create_index([("similarity", ASCENDING)])
+    dbC[dname]["question"].create_index([("record linkage score", ASCENDING)])
     dbC[dname]["question"].create_index([("lastSeen",DESCENDING)])
     #printDatabase("question")
 
@@ -189,18 +190,18 @@ def populateQuestionsFromJSON(f):
         q = json.loads(q)
         
         # Find tags
-        tag0 = findTag(q["uri1"])
-        tag1 = findTag(q["uri2"])
+        tag1 = findTag(q["id1"])
+        tag2 = findTag(q["id2"])
         
         # Build document
         qe = {"status":statuscodes["NotStarted"],
-              "uniqueURI":generateUniqueURI(q["uri1"],q["uri2"]),
+              "uniqueURI":generateUniqueURI(q["id1"],q["id2"]),
               "lastSeen": datetime.datetime.utcnow(),
-              "tags":[dbC[dname]["tag"].find_one({'tagname':tag0})['_id'],dbC[dname]["tag"].find_one({'tagname':tag1})['_id'] ],
-              "uri1":q["uri1"],
-              "uri2":q["uri2"],
+              "tags":[dbC[dname]["tag"].find_one({'tagname':tag1})['_id'],dbC[dname]["tag"].find_one({'tagname':tag2})['_id'] ],
+              "uri1":q["id1"],
+              "uri2":q["id2"],
               "decision": [], # Should be updated in submit answer
-              "similarity": q["similarity"]
+              "record linkage score": q["record linkage score"]
         }
          
         # Add Document
@@ -208,8 +209,8 @@ def populateQuestionsFromJSON(f):
         count += 1
         
         # Update Statistics
-        museums[tag0]['totalQ'] += 1
         museums[tag1]['totalQ'] += 1
+        museums[tag2]['totalQ'] += 1
         
         if devmode and count == 100:
             break
@@ -251,37 +252,7 @@ def generateUniqueURI(uri1,uri2):
         return uri1+uri2
     else:
         return uri2+uri1
-        
-def addOrUpdateQuestion(uri1,uri2,similarity):
-    uuri = generateUniqueURI(uri1,uri2)
-    q = dbC[dname]["question"].find_one({'uniqueURI':uuri})
-    
-    # If uuri exists, ignore linkage as this request is coming second time, just return decision
-    if q != None:
-        print "Question instance already exists\n"
-        if q["decision"] == []:
-            return None
-        else:
-            return q["decision"]
-    # Create new question
-    else:
-        qe = {"status":1,
-              "uniqueURI":uuri,
-              "lastSeen": datetime.datetime.utcnow(),
-              "tags":[dbC[dname]["tag"].find_one({'tagname':findTag(uri1)})['_id'],
-                      dbC[dname]["tag"].find_one({'tagname':findTag(uri2)})['_id'] ],
-               "uri1":uri1,
-               "uri2":uri2,
-               "decision": [], #Should be updated in submit answer
-               "similarity ": similarity 
-             }
-        status = dbC[dname]["question"].insert_one(qe).acknowledged
-        
-        if status:
-            print 'Added question {}\n'.format(qe)
-        
-        return None
-        
+
 # Retrieve set of questions from database based on tags, lastseen, unanswered vs in progress
 def getQuestionsForUID(uid,count):
     
@@ -364,9 +335,9 @@ def getQuestionsForUID(uid,count):
         
         # Remove original question from list, sort temp list and add it back
         q.remove(question)
-        temp = sorted(temp,key=lambda x:x["similarity"]["score"],reverse=True)
+        temp = sorted(temp,key=lambda x:x["record linkage score"],reverse=True)
         for t in temp:
-            q = q + [t]        
+            q = q + [t]
         
     q_new = []
     # Update lastSeen for all questions that are being returned
@@ -592,57 +563,76 @@ def submitAnswer(qid, answer, uid):
 # Parameter format: {"museum tag":[status codes...],...}
 def dumpCurationResults(args,filepath):
 
-    if filepath:
-        f = open(filepath,'w')
-    else:
-        f = open(os.path.join(rootdir,"results.json"),'w')
-    
-    out = {"count":0,"payload":[]}
-    
-    statuses = [int(s) for s in args['data']['codes']]
-    for museum in args['data']['tags']:
-        for status in statuses:
+    # Download json lines 
+    if args["data"]["type"] == "jsonlines":
+        if filepath:
+            f = open(filepath,'w')
+        else:
+            f = open(os.path.join(rootdir,"results.json"),'w')
+                
+        statuses = [int(s) for s in args['data']['codes']]
+        for museum in args['data']['tags']:
+            for status in statuses:
+            
+                tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})
+                
+                if (tid != None):
+                    tid = tid['_id']
+                    questions = dbC[dname]["question"].find({'status':status})
+                    
+                    for q in questions:
+                        a = {}
+                        if tid in q['tags']:
+                            
+                            # Get similarity meta data and URIs
+                            a["record linkage score"] = q["record linkage score"]
+                            a["human curated"] =  True
+                            a["id1"] = q["uri1"]
+                            a["id2"] = q["uri2"]
+                            
+                            if q["status"] == statuscodes["Agreement"]:
+                                a["match"] = "Matched"
+                            elif q["status"] == statuscodes["Disagreement"]:
+                                a["match"] = "Unmatched"
+                            elif q["status"] == statuscodes["Non-conclusive"]:
+                                a["match"] = "non-conclusive"
+
+                            # Dump the output in json file
+                            f.writelines(json.dumps(a))
+                            f.writelines("\n")
         
-            tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})['_id']
-            questions = dbC[dname]["question"].find({'status':status})
+        print "Data dumped in file ", f.name
+        
+    # Download N3 triples for matches only
+    elif args["data"]["type"] == "triples":
+        if filepath:
+            f = open(filepath,'w')
+        else:
+            f = open(os.path.join(rootdir,"results.nt"),'w')
             
-            for q in questions:
-                a = {}
-                if tid in q['tags']:
-                    
-                    # Get similarity meta data and URIs
-                    a["record linkage score"] = q["similarity"]["score"]
-                    a["id1"] = q["uri1"]
-                    a["id2"] = q["uri2"]
-                    
-                    if q["status"] == statuscodes["Agreement"]:
-                        a["match"] = "True"
-                        a["human curated score"] =  "True"
-                    elif q["status"] == statuscodes["Disagreement"]:
-                        a["match"] = "False"
-                        a["human curated score"] =  "False"
-                    elif q["status"] == statuscodes["Non-conclusive"]:
-                        a["match"] = "Unknown"
-                        a["human curated score"] =  "Unknown"
-                    
-                    # Get current json dump and append this pair
-                    temp = out["payload"]
-                    temp.append(a)
-                    
-                    # Write it back
-                    out["payload"] = temp
-                    out["count"] += 1
-            
-    # Dump the output in json file
-    f.writelines(json.dumps(out,indent=4))
-    
-    print "Data dumped in file ", f.name
+        for museum in args['data']['tags']:
+            # Find only questions that were matched
+            tid = dbC[dname]["tag"].find_one({'tagname':museum.lower()})
+            if (tid != None):
+                tid = tid['_id']
+                questions = dbC[dname]["question"].find({'status':statuscodes["Agreement"]})
+                
+                for q in questions:
+                    a = {}
+                    if tid in q['tags']:
+                        # Generate and dump triples
+                        s = "<"+q["uri1"]+"> <http://www.w3.org/2002/07/owl#sameAs> <"+q["uri2"]+"> .\n"
+                        f.writelines(s)
+        
+        print "Data dumped in file ", f.name
 
 def returnCurationResults():
     results = {"matched":[],"unmatched":[]}
     
     # Get all the questions that are concluded successful
-    questions = dbC[dname]["question"].find( {'$or': [{'status':statuscodes['Agreement']},{'status':statuscodes['Disagreement']},{'status':statuscodes['Non-conclusive']}] } )
+    questions = dbC[dname]["question"].find( {'$or': [{'status':statuscodes['Agreement']},
+                                                {'status':statuscodes['Disagreement']},
+                                                {'status':statuscodes['Non-conclusive']}] })
     
     # Run loop over questions and populate uri(s) and yes/no votes
     for q in questions:

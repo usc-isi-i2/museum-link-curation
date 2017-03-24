@@ -73,15 +73,15 @@ def calculate_relevance(ipfile, museum):
 	with open(ipfile, 'r') as ip:
 		for line in ip:
 			data = json.loads(line)
-			parent_uri = data["uri1"]
-			ulan_uri = data["uri2"]
-			similarity_score = float(data["similarity"]["score"])
+			parent_uri = data["id1"]
+			ulan_uri = data["id2"]
+			similarity_score = float(data["record linkage score"])
 
 			k = {'ulan_uri': ulan_uri, 'similarity': similarity_score}
-			if 'ulan_name' in data:
-				k['ulan_name'] = data['ulan_name']
-			if 'museum_name' in data:
-				k['museum_name'] = data['museum_name']
+			if 'ulan_name' in data["linkage"]:
+				k['ulan_name'] = data["linkage"]['ulan_name']
+			if 'museum_name' in data["linkage"]:
+				k['museum_name'] = data["linkage"]['museum_name']
 
 			data_dict[parent_uri].append(k)
 

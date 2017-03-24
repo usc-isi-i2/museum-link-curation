@@ -1,0 +1,1303 @@
+{
+    "f_score": 0, 
+    "false_negatives": {}, 
+    "false_positives": {}, 
+    "precision": 0, 
+    "recall": 0, 
+    "success": 0, 
+    "total": [
+        0, 
+        143, 
+        0.0
+    ], 
+    "true_negatives": {
+        "http://data.thewalters.org/constituent/104": [
+            {
+                "museum_name": "L\u00e9on Gruel", 
+                "similarity": 1.0, 
+                "ulan_name": "Gruel, L\u00e9on", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500056026"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/15444": [
+            {
+                "museum_name": "William Cooper", 
+                "similarity": 1.0, 
+                "ulan_name": "Cooper, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500007695"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/15739": [
+            {
+                "museum_name": "Louis Prang", 
+                "similarity": 1.0, 
+                "ulan_name": "Prang, Louis", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017351"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/16295": [
+            {
+                "museum_name": "British", 
+                "similarity": 0.9407407407407408, 
+                "ulan_name": "Breitwish", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500094103"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/16412": [
+            {
+                "museum_name": "Pietro della Vecchia", 
+                "similarity": 1.0, 
+                "ulan_name": "Pietro della Vecchia", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500012994"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/16509": [
+            {
+                "museum_name": "Michele Fanoli", 
+                "similarity": 1.0, 
+                "ulan_name": "Fanoli, Michele", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500298220"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/18739": [
+            {
+                "museum_name": "James Callowhill", 
+                "similarity": 1.0, 
+                "ulan_name": "Callowhill, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500100701"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/18740": [
+            {
+                "museum_name": "James Clarence Callowhill", 
+                "similarity": 1.0, 
+                "ulan_name": "Callowhill, James Clarence", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500120564"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/1910": [
+            {
+                "museum_name": "Charles Paul Gruppe", 
+                "similarity": 1.0, 
+                "ulan_name": "Gruppe, Charles Paul", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000753"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/1949": [
+            {
+                "museum_name": "James Crawford Thom", 
+                "similarity": 1.0, 
+                "ulan_name": "Thom, James Crawford", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500014226"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/1964": [
+            {
+                "museum_name": "James McDougal Hart", 
+                "similarity": 1.0, 
+                "ulan_name": "Hart, James McDougal", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015240"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/1965": [
+            {
+                "museum_name": "William Dunlap", 
+                "similarity": 1.0, 
+                "ulan_name": "Dunlap, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500347176"
+            }, 
+            {
+                "museum_name": "William Dunlap", 
+                "similarity": 1.0, 
+                "ulan_name": "Dunlap, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500027594"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2050": [
+            {
+                "museum_name": "Jacob Hurd", 
+                "similarity": 1.0, 
+                "ulan_name": "Hurd, Jacob", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500066811"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/20957": [
+            {
+                "museum_name": "Charles Meunier", 
+                "similarity": 0.9619047619047619, 
+                "ulan_name": "Meynier, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500020752"
+            }, 
+            {
+                "museum_name": "Charles Meunier", 
+                "similarity": 0.9571428571428571, 
+                "ulan_name": "Mugnier, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500334396"
+            }, 
+            {
+                "museum_name": "Charles Meunier", 
+                "similarity": 0.9238095238095239, 
+                "ulan_name": "Mercier, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500011510"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2099": [
+            {
+                "museum_name": "James McNeill Whistler", 
+                "similarity": 1.0, 
+                "ulan_name": "Whistler, James McNeill", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500012432"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/21059": [
+            {
+                "museum_name": "Ambrose Duval", 
+                "similarity": 1.0, 
+                "ulan_name": "Duval, Ambrose", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019732"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2112": [
+            {
+                "museum_name": "Richard Caton Woodville", 
+                "similarity": 1.0, 
+                "ulan_name": "Woodville, Richard Caton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001002"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2132": [
+            {
+                "museum_name": "Ellen Sharples", 
+                "similarity": 1.0, 
+                "ulan_name": "Sharples, Ellen", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017071"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2224": [
+            {
+                "museum_name": "William Oliver Stone", 
+                "similarity": 1.0, 
+                "ulan_name": "Stone, William Oliver", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500335398"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2380": [
+            {
+                "museum_name": "John Wesley Jarvis", 
+                "similarity": 1.0, 
+                "ulan_name": "Jarvis, John Wesley", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500008614"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2423": [
+            {
+                "museum_name": "Charles Robert Leslie", 
+                "similarity": 1.0, 
+                "ulan_name": "Leslie, Charles Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500025044"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2444": [
+            {
+                "museum_name": "Childe Hassam", 
+                "similarity": 1.0, 
+                "ulan_name": "Hassam, Childe", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018088"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2568": [
+            {
+                "museum_name": "Rembrandt van Rijn", 
+                "similarity": 1.0, 
+                "ulan_name": "Rembrandt van Rijn", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500011051"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2579": [
+            {
+                "museum_name": "Charles Willson Peale", 
+                "similarity": 1.0, 
+                "ulan_name": "Peale, Charles Willson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017914"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2584": [
+            {
+                "museum_name": "James Wattles", 
+                "similarity": 1.0, 
+                "ulan_name": "Wattles, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019790"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2633": [
+            {
+                "museum_name": "John Singleton Copley", 
+                "similarity": 1.0, 
+                "ulan_name": "Copley, John Singleton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500009177"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2742": [
+            {
+                "museum_name": "William Stanley Haseltine", 
+                "similarity": 1.0, 
+                "ulan_name": "Haseltine, William Stanley", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006808"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2743": [
+            {
+                "museum_name": "Benjamin West", 
+                "similarity": 1.0, 
+                "ulan_name": "West, Benjamin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026989"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2782": [
+            {
+                "museum_name": "Archibald Robertson", 
+                "similarity": 1.0, 
+                "ulan_name": "Robertson, Archibald", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500059702"
+            }, 
+            {
+                "museum_name": "Archibald Robertson", 
+                "similarity": 1.0, 
+                "ulan_name": "Robertson, Archibald", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002809"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2795": [
+            {
+                "museum_name": "Charles Fraser", 
+                "similarity": 1.0, 
+                "ulan_name": "Fraser, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500027085"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2924": [
+            {
+                "museum_name": "Herman Maril", 
+                "similarity": 1.0, 
+                "ulan_name": "Maril, Herman", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021383"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2956": [
+            {
+                "museum_name": "Frank Blackwell Mayer", 
+                "similarity": 1.0, 
+                "ulan_name": "Mayer, Frank Blackwell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017304"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/2965": [
+            {
+                "museum_name": "Alexander Hay Ritchie", 
+                "similarity": 1.0, 
+                "ulan_name": "Ritchie, Alexander Hay", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500062511"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3094": [
+            {
+                "museum_name": "George Henry Boughton", 
+                "similarity": 1.0, 
+                "ulan_name": "Boughton, George Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006925"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3131": [
+            {
+                "museum_name": "Nathaniel Rogers", 
+                "similarity": 1.0, 
+                "ulan_name": "Rogers, Nathaniel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500014728"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3209": [
+            {
+                "museum_name": "Anne Hall", 
+                "similarity": 1.0, 
+                "ulan_name": "Hall, Anne", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001614"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32093": [
+            {
+                "museum_name": "Arthur Warren", 
+                "similarity": 0.9583333333333333, 
+                "ulan_name": "McArthur, Warren", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500232615"
+            }, 
+            {
+                "museum_name": "Arthur Warren", 
+                "similarity": 0.9288888888888889, 
+                "ulan_name": "Wasner, Arthur", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500081960"
+            }, 
+            {
+                "museum_name": "Arthur Warren", 
+                "similarity": 0.9246031746031746, 
+                "ulan_name": "Carther, Warren", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500292487"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3217": [
+            {
+                "museum_name": "Louis Comfort Tiffany", 
+                "similarity": 1.0, 
+                "ulan_name": "Tiffany, Louis Comfort", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500030415"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32203": [
+            {
+                "museum_name": "William Matthews", 
+                "similarity": 1.0, 
+                "ulan_name": "Matthews, William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500275121"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3226": [
+            {
+                "museum_name": "Hans Schuler", 
+                "similarity": 0.9714285714285714, 
+                "ulan_name": "Schulze, Hans", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500110054"
+            }, 
+            {
+                "museum_name": "Hans Schuler", 
+                "similarity": 0.9607142857142857, 
+                "ulan_name": "Schultes, Hans", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500059559"
+            }, 
+            {
+                "museum_name": "Hans Schuler", 
+                "similarity": 0.9541666666666666, 
+                "ulan_name": "Schiller, Hans", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500269083"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3235": [
+            {
+                "museum_name": "Reuben Robert Kramer", 
+                "similarity": 1.0, 
+                "ulan_name": "Kramer, Reuben Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500058431"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32699": [
+            {
+                "museum_name": "Bass Otis", 
+                "similarity": 1.0, 
+                "ulan_name": "Bass, Otis", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500013139"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32762": [
+            {
+                "museum_name": "Alfred Jones", 
+                "similarity": 1.0, 
+                "ulan_name": "Jones, Alfred", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029331"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32842": [
+            {
+                "museum_name": "John Chester Buttre", 
+                "similarity": 1.0, 
+                "ulan_name": "Buttre, John Chester", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500079940"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/32873": [
+            {
+                "museum_name": "John Vanderlyn", 
+                "similarity": 1.0, 
+                "ulan_name": "Vanderlyn, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002618"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3309": [
+            {
+                "museum_name": "John Henry Brown", 
+                "similarity": 1.0, 
+                "ulan_name": "Brown, John Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500007666"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3323": [
+            {
+                "museum_name": "Rembrandt Peale", 
+                "similarity": 1.0, 
+                "ulan_name": "Peale, Rembrandt", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019719"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/33560": [
+            {
+                "museum_name": "C. M. B.", 
+                "similarity": 0.9027777777777778, 
+                "ulan_name": "Ehrmanns, C. B.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500062975"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3363": [
+            {
+                "museum_name": "Albert Bierstadt", 
+                "similarity": 1.0, 
+                "ulan_name": "Bierstadt, Albert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001248"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/33650": [
+            {
+                "museum_name": "Dora Wheeler Keith", 
+                "similarity": 1.0, 
+                "ulan_name": "Keith, Dora Wheeler", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019507"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/33658": [
+            {
+                "museum_name": "Nicolaes Maes", 
+                "similarity": 1.0, 
+                "ulan_name": "Maes, Nicolaes", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015747"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3368": [
+            {
+                "museum_name": "Henry Inman", 
+                "similarity": 1.0, 
+                "ulan_name": "Inman, Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021656"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/33710": [
+            {
+                "museum_name": "Victor Kullberg", 
+                "similarity": 0.9097222222222223, 
+                "ulan_name": "M\u00fcller, Victor", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019670"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/34313": [
+            {
+                "museum_name": "Henry Thompson", 
+                "similarity": 1.0, 
+                "ulan_name": "Thompson, Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500020112"
+            }, 
+            {
+                "museum_name": "Henry Thompson", 
+                "similarity": 1.0, 
+                "ulan_name": "Thompson, Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500191622"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3468": [
+            {
+                "museum_name": "Thomas Charles Farrer", 
+                "similarity": 1.0, 
+                "ulan_name": "Farrer, Thomas Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500017621"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3609": [
+            {
+                "museum_name": "Mary Cassatt", 
+                "similarity": 1.0, 
+                "ulan_name": "Cassatt, Mary", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500012368"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3649": [
+            {
+                "museum_name": "Francis Hopkinson Smith", 
+                "similarity": 1.0, 
+                "ulan_name": "Smith, Francis Hopkinson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016368"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3651": [
+            {
+                "museum_name": "William Jacob Baer", 
+                "similarity": 1.0, 
+                "ulan_name": "Baer, William Jacob", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500024490"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3657": [
+            {
+                "museum_name": "Bryson Burroughs", 
+                "similarity": 1.0, 
+                "ulan_name": "Burroughs, Bryson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016036"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3725": [
+            {
+                "museum_name": "John Ramage", 
+                "similarity": 1.0, 
+                "ulan_name": "Ramage, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500116378"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3753": [
+            {
+                "museum_name": "John William Casilear", 
+                "similarity": 1.0, 
+                "ulan_name": "Casilear, John William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500013823"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3775": [
+            {
+                "museum_name": "Florence MacKubin", 
+                "similarity": 0.9624999999999999, 
+                "ulan_name": "McKubbin, Florence", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000794"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3783": [
+            {
+                "museum_name": "Frederic Remington", 
+                "similarity": 1.0, 
+                "ulan_name": "Remington, Frederic", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500024759"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3784": [
+            {
+                "museum_name": "Robert Cary Long, Jr.", 
+                "similarity": 1.0, 
+                "ulan_name": "Long, Robert Cary, Jr.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500092398"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3802": [
+            {
+                "museum_name": "Edward Greene Malbone", 
+                "similarity": 1.0, 
+                "ulan_name": "Malbone, Edward Greene", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023492"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3824": [
+            {
+                "museum_name": "Philips Wouwermans", 
+                "similarity": 0.99, 
+                "ulan_name": "Wouwerman, Philips", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019917"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3835": [
+            {
+                "museum_name": "Alexandre-Gabriel Decamps", 
+                "similarity": 1.0, 
+                "ulan_name": "Decamps, Alexandre-Gabriel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500022285"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3862": [
+            {
+                "museum_name": "Gilbert Stuart", 
+                "similarity": 1.0, 
+                "ulan_name": "Stuart, Gilbert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500010392"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/3950": [
+            {
+                "museum_name": "Washington Allston", 
+                "similarity": 1.0, 
+                "ulan_name": "Allston, Washington", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016005"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4055": [
+            {
+                "museum_name": "John George Brown", 
+                "similarity": 1.0, 
+                "ulan_name": "Brown, John George", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000315"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4076": [
+            {
+                "museum_name": "Henry Brintnell Bounetheau", 
+                "similarity": 1.0, 
+                "ulan_name": "Bounetheau, Henry Brintnell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029863"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4187": [
+            {
+                "museum_name": "Joseph Wood", 
+                "similarity": 1.0, 
+                "ulan_name": "Wood, Joseph", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500005039"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4196": [
+            {
+                "museum_name": "Andrew John Henry Way", 
+                "similarity": 1.0, 
+                "ulan_name": "Way, Andrew John Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018224"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4203": [
+            {
+                "museum_name": "Martin Johnson Heade", 
+                "similarity": 1.0, 
+                "ulan_name": "Heade, Martin Johnson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000888"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4284": [
+            {
+                "museum_name": "John McLenan", 
+                "similarity": 0.969047619047619, 
+                "ulan_name": "McLean, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500022202"
+            }, 
+            {
+                "museum_name": "John McLenan", 
+                "similarity": 0.9321428571428572, 
+                "ulan_name": "MacLean, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500289546"
+            }, 
+            {
+                "museum_name": "John McLenan", 
+                "similarity": 0.9130158730158731, 
+                "ulan_name": "McHale, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500012535"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4333": [
+            {
+                "museum_name": "Maurits Frederik Hendrik de Haas", 
+                "similarity": 0.9885714285714287, 
+                "ulan_name": "De Haas, Mauritz Frederik Hendrik", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500081561"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4398": [
+            {
+                "museum_name": "Thomas Cromwell Corner", 
+                "similarity": 1.0, 
+                "ulan_name": "Corner, Thomas Cromwell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500003170"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4477": [
+            {
+                "museum_name": "Horatio Walker", 
+                "similarity": 1.0, 
+                "ulan_name": "Walker, Horatio", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029159"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4486": [
+            {
+                "museum_name": "Alfred Jacob Miller", 
+                "similarity": 1.0, 
+                "ulan_name": "Miller, Alfred Jacob", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500003941"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4578": [
+            {
+                "museum_name": "Charles Loring Elliott", 
+                "similarity": 1.0, 
+                "ulan_name": "Elliott, Charles Loring", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500013029"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4584": [
+            {
+                "museum_name": "William Louis Sonntag", 
+                "similarity": 1.0, 
+                "ulan_name": "Sonntag, William Louis", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500010750"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4587": [
+            {
+                "museum_name": "Augustus Hoppin", 
+                "similarity": 1.0, 
+                "ulan_name": "Hoppin, Augustus", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500110996"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4588": [
+            {
+                "museum_name": "L. Fischer", 
+                "similarity": 0.9047619047619049, 
+                "ulan_name": "Richter, L.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500109602"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4606": [
+            {
+                "museum_name": "Erastus Dow Palmer", 
+                "similarity": 0.980952380952381, 
+                "ulan_name": "Palmer, Erasmus Dow", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023296"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4636": [
+            {
+                "museum_name": "Anna Claypoole Peale", 
+                "similarity": 1.0, 
+                "ulan_name": "Peale, Anna Claypoole", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500010523"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4652": [
+            {
+                "museum_name": "Eastman Johnson", 
+                "similarity": 1.0, 
+                "ulan_name": "Johnson, Eastman", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500008685"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4673": [
+            {
+                "museum_name": "Frederic Edwin Church", 
+                "similarity": 1.0, 
+                "ulan_name": "Church, Frederic Edwin", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500115265"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4706": [
+            {
+                "museum_name": "Thomas Seir Cummings", 
+                "similarity": 1.0, 
+                "ulan_name": "Cummings, Thomas Seir", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500096121"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4721": [
+            {
+                "museum_name": "William Henry Rinehart", 
+                "similarity": 1.0, 
+                "ulan_name": "Rinehart, William Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500031700"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4784": [
+            {
+                "museum_name": "Richard Buckner Gruelle", 
+                "similarity": 1.0, 
+                "ulan_name": "Gruelle, Richard Buckner", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500022367"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4805": [
+            {
+                "museum_name": "Alexander Phimister Proctor", 
+                "similarity": 1.0, 
+                "ulan_name": "Proctor, Alexander Phimister", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500024193"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4937": [
+            {
+                "museum_name": "Edward Dalton Marchant", 
+                "similarity": 1.0, 
+                "ulan_name": "Marchant, Edward Dalton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006315"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4979": [
+            {
+                "museum_name": "Enoch Wood Perry", 
+                "similarity": 1.0, 
+                "ulan_name": "Perry, Enoch Wood", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500028627"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/4986": [
+            {
+                "museum_name": "George Augustus Baker", 
+                "similarity": 1.0, 
+                "ulan_name": "Baker, George Augustus", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500027491"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5023": [
+            {
+                "museum_name": "William M. Hart", 
+                "similarity": 0.9416666666666668, 
+                "ulan_name": "Harris, William M.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500280705"
+            }, 
+            {
+                "museum_name": "William M. Hart", 
+                "similarity": 0.9259259259259259, 
+                "ulan_name": "Hay, William M.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500144580"
+            }, 
+            {
+                "museum_name": "William M. Hart", 
+                "similarity": 0.9142857142857143, 
+                "ulan_name": "Hart, William Matthew", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500028540"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5235": [
+            {
+                "museum_name": "John James Audubon", 
+                "similarity": 1.0, 
+                "ulan_name": "Audubon, John James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016578"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5244": [
+            {
+                "museum_name": "Olin Levi Warner", 
+                "similarity": 1.0, 
+                "ulan_name": "Warner, Olin Levi", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500001669"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5305": [
+            {
+                "museum_name": "Thomas Sully", 
+                "similarity": 1.0, 
+                "ulan_name": "Sully, Thomas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006873"
+            }, 
+            {
+                "museum_name": "Thomas Sully", 
+                "similarity": 1.0, 
+                "ulan_name": "Sully, Thomas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500083473"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5359": [
+            {
+                "museum_name": "Christian Schussele", 
+                "similarity": 1.0, 
+                "ulan_name": "Schussele, Christian", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029871"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5375": [
+            {
+                "museum_name": "Asher Brown Durand", 
+                "similarity": 1.0, 
+                "ulan_name": "Durand, Asher Brown", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500026080"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5542": [
+            {
+                "museum_name": "Theobald Chartran", 
+                "similarity": 1.0, 
+                "ulan_name": "Chartran, Th\u00e9obald", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500015217"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5652": [
+            {
+                "museum_name": "William E. Bartlett", 
+                "similarity": 0.9111111111111111, 
+                "ulan_name": "Bartlett, William Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500008601"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5701": [
+            {
+                "museum_name": "Canaletto", 
+                "similarity": 1.0, 
+                "ulan_name": "Canaletto", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500115269"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5702": [
+            {
+                "museum_name": "James Reid Lambdin", 
+                "similarity": 1.0, 
+                "ulan_name": "Lambdin, James Reid", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016533"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5737": [
+            {
+                "museum_name": "George Lethbridge Saunders", 
+                "similarity": 1.0, 
+                "ulan_name": "Saunders, George Lethbridge", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023648"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5745": [
+            {
+                "museum_name": "Enoch Wood Perry", 
+                "similarity": 1.0, 
+                "ulan_name": "Perry, Enoch Wood", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500028627"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5793": [
+            {
+                "museum_name": "Edward Berge", 
+                "similarity": 1.0, 
+                "ulan_name": "Berge, Edward", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500043301"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5805": [
+            {
+                "museum_name": "Carl Bersch", 
+                "similarity": 0.9125, 
+                "ulan_name": "Berg, Carl", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500043809"
+            }, 
+            {
+                "museum_name": "Carl Bersch", 
+                "similarity": 0.9121428571428571, 
+                "ulan_name": "Bruschi, Carlo", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500241814"
+            }, 
+            {
+                "museum_name": "Carl Bersch", 
+                "similarity": 0.9111111111111112, 
+                "ulan_name": "Carl, Erich", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500283940"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5813": [
+            {
+                "museum_name": "William Trost Richards", 
+                "similarity": 1.0, 
+                "ulan_name": "Richards, William Trost", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500014455"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5827": [
+            {
+                "museum_name": "John Robinson", 
+                "similarity": 1.0, 
+                "ulan_name": "Robinson, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500195564"
+            }, 
+            {
+                "museum_name": "John Robinson", 
+                "similarity": 1.0, 
+                "ulan_name": "Robinson, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500016584"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5861": [
+            {
+                "museum_name": "Henry Colton Shumway", 
+                "similarity": 1.0, 
+                "ulan_name": "Shumway, Henry Colton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500336964"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5876": [
+            {
+                "museum_name": "Raphaelle Peale", 
+                "similarity": 1.0, 
+                "ulan_name": "Peale, Raphaelle", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500004821"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5877": [
+            {
+                "museum_name": "John William Hill", 
+                "similarity": 1.0, 
+                "ulan_name": "Hill, John William", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500002786"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5886": [
+            {
+                "museum_name": "Robert Field", 
+                "similarity": 1.0, 
+                "ulan_name": "Field, Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500110876"
+            }, 
+            {
+                "museum_name": "Robert Field", 
+                "similarity": 1.0, 
+                "ulan_name": "Field, Robert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500119517"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5940": [
+            {
+                "museum_name": "Ralph Albert Blakelock", 
+                "similarity": 1.0, 
+                "ulan_name": "Blakelock, Ralph Albert", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023101"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5965": [
+            {
+                "museum_name": "Alvan Clark", 
+                "similarity": 1.0, 
+                "ulan_name": "Clark, Alvan", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500009532"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/5999": [
+            {
+                "museum_name": "George Inness", 
+                "similarity": 0.9833333333333334, 
+                "ulan_name": "Innes, George", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500193969"
+            }, 
+            {
+                "museum_name": "George Inness", 
+                "similarity": 0.9111111111111112, 
+                "ulan_name": "Minne, George", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500029293"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6249": [
+            {
+                "museum_name": "John Singer Sargent", 
+                "similarity": 1.0, 
+                "ulan_name": "Sargent, John Singer", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023972"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6256": [
+            {
+                "museum_name": "Greek", 
+                "similarity": 0.9066666666666667, 
+                "ulan_name": "Grebe", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500054029"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6329": [
+            {
+                "museum_name": "John Henry Dolph", 
+                "similarity": 1.0, 
+                "ulan_name": "Dolph, John Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500020491"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6408": [
+            {
+                "museum_name": "Fran\u00e7ois R\u00e9gis Gignoux", 
+                "similarity": 1.0, 
+                "ulan_name": "Gignoux, R\u00e9gis Fran\u00e7ois", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500024375"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6447": [
+            {
+                "museum_name": "William Russell Birch", 
+                "similarity": 1.0, 
+                "ulan_name": "Birch, William Russell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500018910"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6500": [
+            {
+                "museum_name": "David Hunter Strother", 
+                "similarity": 1.0, 
+                "ulan_name": "Strother, David Hunter", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021144"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6620": [
+            {
+                "museum_name": "Johannes Adam Simon Oertel", 
+                "similarity": 1.0, 
+                "ulan_name": "Oertel, Johannes Adam Simon", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500032127"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6799": [
+            {
+                "museum_name": "Felix Octavius Carr Darley", 
+                "similarity": 1.0, 
+                "ulan_name": "Darley, Felix Octavius Carr", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000679"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6804": [
+            {
+                "museum_name": "John Spitzer", 
+                "similarity": 0.9666666666666667, 
+                "ulan_name": "Spier, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500282227"
+            }, 
+            {
+                "museum_name": "John Spitzer", 
+                "similarity": 0.9333333333333333, 
+                "ulan_name": "Spiller, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500096632"
+            }, 
+            {
+                "museum_name": "John Spitzer", 
+                "similarity": 0.9130952380952382, 
+                "ulan_name": "Spitler, Johannes", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500061473"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6813": [
+            {
+                "museum_name": "Charles Lanman", 
+                "similarity": 1.0, 
+                "ulan_name": "Lanman, Charles", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500025128"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6855": [
+            {
+                "museum_name": "Henry Inman", 
+                "similarity": 1.0, 
+                "ulan_name": "Inman, Henry", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021656"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6911": [
+            {
+                "museum_name": "Hugh Bolton Jones", 
+                "similarity": 1.0, 
+                "ulan_name": "Jones, Hugh Bolton", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500004141"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6963": [
+            {
+                "museum_name": "James Peale", 
+                "similarity": 0.9466666666666667, 
+                "ulan_name": "Peele, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500103571"
+            }, 
+            {
+                "museum_name": "James Peale", 
+                "similarity": 0.9466666666666667, 
+                "ulan_name": "Peile, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500063230"
+            }, 
+            {
+                "museum_name": "James Peale", 
+                "similarity": 0.9333333333333333, 
+                "ulan_name": "Neale, James", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500000898"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/6974": [
+            {
+                "museum_name": "Edwin Lord Weeks", 
+                "similarity": 1.0, 
+                "ulan_name": "Weeks, Edwin Lord", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500023842"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7068": [
+            {
+                "museum_name": "Alfred Thompson Bricher", 
+                "similarity": 1.0, 
+                "ulan_name": "Bricher, Alfred Thompson", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500021690"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7070": [
+            {
+                "museum_name": "John Wood Dodge", 
+                "similarity": 1.0, 
+                "ulan_name": "Dodge, John Wood", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019552"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7083": [
+            {
+                "museum_name": "Thomas Cole", 
+                "similarity": 1.0, 
+                "ulan_name": "Cole, Thomas", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500028323"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7115": [
+            {
+                "museum_name": "William Jacob Hays Sr.", 
+                "similarity": 1.0, 
+                "ulan_name": "Hays, William Jacob, Sr.", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500061713"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7118": [
+            {
+                "museum_name": "John La Farge", 
+                "similarity": 1.0, 
+                "ulan_name": "La Farge, John", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500022926"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7125": [
+            {
+                "museum_name": "Richard Morrell Staigg", 
+                "similarity": 1.0, 
+                "ulan_name": "Staigg, Richard Morrell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500013689"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7142": [
+            {
+                "museum_name": "Samuel Colman", 
+                "similarity": 1.0, 
+                "ulan_name": "Colman, Samuel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500031860"
+            }, 
+            {
+                "museum_name": "Samuel Colman", 
+                "similarity": 1.0, 
+                "ulan_name": "Colman, Samuel", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500115714"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/7693": [
+            {
+                "museum_name": "Master of the Maximilian Schoolbooks", 
+                "similarity": 1.0, 
+                "ulan_name": "Master of the Maximilian Schoolbooks", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500099027"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/8549": [
+            {
+                "museum_name": "Edward Mitchell Bannister", 
+                "similarity": 1.0, 
+                "ulan_name": "Bannister, Edward Mitchell", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500006433"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/8550": [
+            {
+                "museum_name": "Edmonia Lewis", 
+                "similarity": 1.0, 
+                "ulan_name": "Lewis, Edmonia", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500128440"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/8661": [
+            {
+                "museum_name": "Henry Ossawa Tanner", 
+                "similarity": 1.0, 
+                "ulan_name": "Tanner, Henry Ossawa", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500005351"
+            }
+        ], 
+        "http://data.thewalters.org/constituent/8662": [
+            {
+                "museum_name": "Robert Seldon Duncanson", 
+                "similarity": 1.0, 
+                "ulan_name": "Duncanson, Robert Seldon", 
+                "ulan_uri": "http://vocab.getty.edu/ulan/500019769"
+            }
+        ]
+    }
+}

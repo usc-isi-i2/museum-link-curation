@@ -165,7 +165,7 @@
                         $('#progress'+i).show();
                     }
                 },  
-                success: function(data){
+                success: function(data, textStatus, xhr){
                     if (data.length > 0)
                     {
                         for(i=1;i<=maxCards;i++){
@@ -184,10 +184,11 @@
                     }
                     else
                     {
-                        Materialize.toast("Please update your preferred museums. Redirecting...", 2000,'rounded');
+                        console.log(textStatus)
+                        Materialize.toast("Well done! No more un-curated matches for this museum!", 4000,'rounded');
                         window.setTimeout(function() {
-                            window.location.href = '/profile';
-                        }, 2500);
+                            window.location.href = '/done';
+                        }, 4500);
                     }
                 },
                 error: function(xhr){

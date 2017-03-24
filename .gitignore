@@ -10,3 +10,5 @@ emails.txt
 *.pyc
 results.json
 backup.json
+results.nt
+backup.nt

@@ -17,6 +17,19 @@ def show_curation():
         return render_template('curation.html')
     else:
         return redirect(url_for('index'))
+        
+@app.route('/download', methods=['GET'])
+def downloadFile():
+
+    if not current_user.is_authenticated:
+        return redirect(url_for('index'))
+    
+    if request.method == 'GET' and request.args['type'] == "triples":
+        return send_from_directory(directory=rootdir, filename="results.nt",as_attachment=True)
+    elif request.method == 'GET' and request.args['type'] == "jsonlines":
+        return send_from_directory(directory=rootdir, filename="results.json",as_attachment=True)
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/datatable')
 def datatable():
@@ -75,7 +88,17 @@ def get_museum_stats():
     print "Received stats request for tag : "+tag
     if current_user.is_authenticated:
         return jsonify(museums[tag])
-    return jsonify({})
+    return redirect('/login')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.route('/done')
+def done():
+    if current_user.is_authenticated:
+        return render_template('done.html')
+    return redirect('/login')
     
 @app.route('/about')
 def about():

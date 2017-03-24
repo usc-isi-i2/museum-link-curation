@@ -142,9 +142,6 @@ def register():
             
     return render_template('register.html')
     '''
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
 
 @app.route('/answer/<option>')
 def redirectAnswer(option):
@@ -287,29 +284,10 @@ def export():
         dumpCurationResults(request.json,None)
         
         return jsonify({})
-
-@app.route('/download', methods=['GET'])
-def downloadFile():
-
-    if not current_user.is_authenticated:
-        return redirect(url_for('index'))
-    
-    if request.method == 'GET':
-        return send_from_directory(directory=rootdir, filename="results.json",as_attachment=True)
     
 # Handle RESTful API for getting/submitting questions
 class questMgr(Resource):
-    
-    # Create questions from dedupe provided pairs, 
-    # deprecated as questions are loaded from matched data dumped in json from record linkage program like dedupe or silk.
-    def post(self):
-        print "Input received: {} \n".format(request.json)
-        
-        if request.json == None:
-            return {'error': 'No input provided'}, 400
-        else:
-            return createQuestionsFromPairs(request.json)
-    
+
     # Retrieve set of questions and send it as a response
     def get(self):
         print "Input received: {} \n".format(request.args)
@@ -330,11 +308,7 @@ class questMgr(Resource):
             else:
                 stats = False
 
-        qs = getQuestionsForUser(count,stats)
-        if qs == []:
-            return {"error":"Couldn't retrieve any questions."}, 400
-        
-        return qs
+        return getQuestionsForUser(count,stats)
     
 # Handle RESTful API for submitting answer
 class ansMgr(Resource):
@@ -377,37 +351,6 @@ class ansMgr(Resource):
         else:
             return {'error':rsp["message"]}
 
-def createQuestionsFromPairs(jsonData):
-    bulkOutput = []
-    for i in range(0,jsonData['count']):
-        payload = jsonData['payload'][i]
-        #print "\n Processing payload: ",payload
-        if not 'uri1' in payload:
-            return {'error': 'uri1 not provided with the request'}, 400
-        if not 'uri2' in payload:
-            return {'error': 'uri2 not provided with the request'}, 400
-        if not 'dedupe' in payload:
-            return {'error': 'dedupe not provided with the request'}, 400
-        
-        uri1 = payload['uri1']
-        uri2 = payload['uri2']
-        dedupe = payload['dedupe']
-        
-        decision = addOrUpdateQuestion(uri1,uri2,dedupe)
-        #printDatabase("question")
-        
-        output = {"Value":[],"Comment":[]}
-        if decision != None:
-            # Iterate over decision documents and send various comments and actual answer
-            for aid in decision:
-                a = dbC[dname]["answer"].find_one({'_id':ObjectId(aid)})
-                output["Value"] = output["Value"]+[a["value"]]
-                output["Comment"] = output["Comment"]+[a["comment"]]
-                bulkOutput = bulkOutput+[output]
-        else:
-            bulkOutput = bulkOutput+[output]
-    return bulkOutput
-
 # Get question and related fields in nicer format for current user
 def getQuestionsForUser(count,stats):
     # current user
@@ -424,7 +367,10 @@ def getQuestionsForUser(count,stats):
         else:
             return {'error':rsp}, 400
     else:
-        return {'error':rsp}, 400
+        if questions == [] and rsp == "success":
+            return []
+        else:
+            return {'error':rsp}, 400
 
 # For every question, query sparql endpoint based on queries defined in config file
 def populateQuestionsWithFields(questions, stats):
@@ -449,10 +395,10 @@ def populateQuestionsWithFields(questions, stats):
         
         if stats == True:
             s = getStats(question)
-            output += [{'qid': str(question['_id']), "score":format(question["similarity"]["score"], '.3f'),
+            output += [{'qid': str(question['_id']), "score":format(question["record linkage score"], '.3f'),
                 "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched'],"stats":s}]
         else:
-            output += [{'qid': str(question['_id']), "score":format(question["similarity"]["score"], '.3f'),
+            output += [{'qid': str(question['_id']), "score":format(question["record linkage score"], '.3f'),
                 "ExactMatch":matches["ExactMatch"],"Unmatched":matches['Unmatched']}]
         
         #print output

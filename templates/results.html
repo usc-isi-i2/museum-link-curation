@@ -21,14 +21,15 @@
         $('#progress').hide();
         $('select').material_select();
         
-        $("#download").click(function(e){
+        // Download jsonlines
+        $("#jsonlines").click(function(e){
             e.preventDefault()
             
             var tags = $('#museums').val();
             var codes = $('#codes').val();
             
             var userObj = new Object();
-            userObj.data = {"tags":tags,"codes":codes};
+            userObj.data = {"tags":tags,"codes":codes,"type":"jsonlines"};
             json_data = JSON.stringify(userObj);
             console.log(json_data);
             var sv = '{{server}}'.concat("/export");
@@ -41,23 +42,63 @@
                 
                 beforeSend: function(){
                     $('#progress').show();
-                    document.getElementById("download").disabled = true;
+                    document.getElementById("jsonlines").disabled = true;
                     console.log("downloading...")
                 },
                 success: function(data){
                     console.log("File Created!");
                     $('#progress').hide();
-                    document.getElementById("download").disabled = false;
-                    window.location.href = "/download";
+                    document.getElementById("jsonlines").disabled = false;
+                    window.location.href = "/download?type=jsonlines";
                 },
                 error: function(xhr){
                     console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
                     Materialize.toast("Something went wrong. Please try again!",5000);
                     $('#progress').hide();
-                    document.getElementById("download").disabled = false;
+                    document.getElementById("jsonlines").disabled = false;
                 }
             });
         });
+        
+        // Download triples
+        $("#triples").click(function(e){
+            e.preventDefault()
+            
+            var tags = $('#museums').val();
+            var codes = $('#codes').val();
+            
+            var userObj = new Object();
+            userObj.data = {"tags":tags,"codes":codes,"type":"triples"};
+            json_data = JSON.stringify(userObj);
+            console.log(json_data);
+            var sv = '{{server}}'.concat("/export");
+            
+            $.ajax({
+                method: 'PUT',
+                url: sv,
+                data: json_data,
+                contentType: 'application/json',
+                
+                beforeSend: function(){
+                    $('#progress').show();
+                    document.getElementById("triples").disabled = true;
+                    console.log("downloading...")
+                },
+                success: function(data){
+                    console.log("File Created!");
+                    $('#progress').hide();
+                    document.getElementById("triples").disabled = false;
+                    window.location.href = "/download?type=triples";
+                },
+                error: function(xhr){
+                    console.log('Request Status: ' + xhr.status + ' \nStatus Text: ' + xhr.statusText + ' \nResponse Text: ' + xhr.responseText);
+                    Materialize.toast("Something went wrong. Please try again!",5000);
+                    $('#progress').hide();
+                    document.getElementById("triples").disabled = false;
+                }
+            });
+        });
+        
     });
     </script>
     
@@ -77,8 +118,8 @@
             <div class="row center">
                 <br><br>
                 <h5> Download the curated results in json format </h5>
-		<br><br>
-                <div class="header col s12 m5">
+                <br><br>
+                <div class="header col s12 m4">
                     <select multiple id="museums" >
                         <option value="" disabled selected>Choose museum(s)</option>
                         {% for tag in keys %}
@@ -87,7 +128,7 @@
                     </select>
                 </div>
                 
-                <div class="header col s12 m5">
+                <div class="header col s12 m4">
                     <select multiple id="codes">
                         <option value="" disabled selected>Choose pair status(s)</option>
                         <option value="3">Match</option>
@@ -96,7 +137,7 @@
                     </select>
                 </div>
                 
-                <div class="header col s12 m2">
+                <div class="header col s12 m4">
                     <form name ="download_data">
                         <div id="progress" class="preloader-wrapper small active">
                             <div class="spinner-layer spinner-green-only">
@@ -111,9 +152,8 @@
                                 </div>
                             </div>
                         </div>
-                        <button id = "download" type="submit" class="btn-large" >
-                            Export
-                        </button>
+                        <button id = "jsonlines" type="submit" class="btn" >Jsonlines</button>
+                        <button id = "triples" type="submit" class="btn" >Triples</button>
                     </form>
                 </div>
                 

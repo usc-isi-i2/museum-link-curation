@@ -49,34 +49,47 @@ class recordLinkage:
 
         return False
 
-
     def v1Matching(self, ulanentity, entity):
         # Check if ulan entity birth year belong to any of the block keys.
         #print(ulanentity)
+        
+        linkage = {"match":False}
+        
         if 'byear' in entity: 
             if self.preprocessBirth(ulanentity['byear']['value']) == self.preprocessBirth(entity['byear']['value']):
                 # do string similarity
-                match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
-                if match['match']:
-                    return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
-            else:
-                return None
+                linkage = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.8)
+                
+        # If threshold was met
+        if linkage['match']:
+            return {"id1":entity['uri']['value'],
+                    "id2":ulanentity['uri']['value'],
+                    "record linkage score":linkage["score"],
+                    "human curated":False,
+                    "linkage":{}}
         else:
             return None
+            
 
     #default check first 2 characters of the last name before matching Names
     def v2Matching(self, ulanentity, entity, k=2):
+    
         ulan_author_name = ulanentity['name']['value']
         museum_author_name = entity['name']['value']
-
+        
+        linkage = {"match":False}
+        
         name_blocking_match = self.check_name_match(museum_author_name, ulan_author_name)
         if name_blocking_match:
             # do string similarity
-            match = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.9)
-            if match['match']:
-                return {"uri1":entity['uri']['value'],"uri2":ulanentity['uri']['value'],"similarity":match}
-            else:
-                return None
+            linkage = self.matchNames(ulanentity['name']['value'], entity['name']['value'],'hj', 0.9)
+
+        if linkage['match']:
+            return {"id1":entity['uri']['value'],
+                    "id2":ulanentity['uri']['value'],
+                    "record linkage score":linkage["score"],
+                    "human curated":False,
+                    "linkage":{}}
         else:
             return None
                 
@@ -132,25 +145,25 @@ class recordLinkage:
                     '''
                     match_v1 = self.v1Matching(ulanentity, entity)
                     if match_v1:
-                        match_v1['ulan_name'] = ulanentity['name']['value']
-                        match_v1['museum_name']  = entity['name']['value']
-                        if match_v1['uri2'] not in current_matches:
+                        match_v1['linkage']['ulan_name'] = ulanentity['name']['value']
+                        match_v1['linkage']['museum_name']  = entity['name']['value']
+                        if match_v1['id2'] not in current_matches:
                             potential_matches.append(match_v1)
-                            current_matches.add(match_v1['uri2'])
+                            current_matches.add(match_v1['id2'])
 
                     match_v2 = self.v2Matching(ulanentity, entity)
                     if match_v2:
-                        match_v2['ulan_name'] = ulanentity['name']['value']
-                        match_v2['museum_name']  = entity['name']['value']
-                        if match_v2['uri2'] not in current_matches:
+                        match_v2['linkage']['ulan_name'] = ulanentity['name']['value']
+                        match_v2['linkage']['museum_name']  = entity['name']['value']
+                        if match_v2['id2'] not in current_matches:
                             potential_matches.append(match_v2)
-                            current_matches.add(match_v2['uri2'])
+                            current_matches.add(match_v2['id2'])
 
 
                 # Close ULAN entities file handle
                 ulanentities.close()
                 # Sort potential matches based on matching score and select top N
-                potential_matches = sorted( potential_matches ,key=lambda x: x['similarity']['score'],reverse=True )
+                potential_matches = sorted( potential_matches ,key=lambda x: x['record linkage score'],reverse=True )
                 perfactMatch = False
                 for i in range(0,self.topN):
                     
@@ -164,7 +177,7 @@ class recordLinkage:
                         #print "Enough matches were not found for entity", entity
                         break
                         
-                    elif perfactMatch and potential_matches[i]['similarity']['score'] < 1:
+                    elif perfactMatch and potential_matches[i]['record linkage score'] < 1:
                         #print "Found all perfect matched for entity ", entity
                         break
 
@@ -172,7 +185,7 @@ class recordLinkage:
                     out.write('\n')
                     
                     # Break if perfect match is found
-                    if potential_matches[i]['similarity']['score'] == 1:
+                    if potential_matches[i]['record linkage score'] == 1:
                         #print "Found perfect match for entity ", entity
                         perfactMatch = True
 
@@ -193,16 +206,14 @@ class recordLinkage:
         else:
             return 0
         
-    # Match names using specified technique,, default threshold = 0.4
+    # Match names using specified technique
     def matchNames(self, s1, s2, technique, threshold):
         if technique == "hj": # Hybrid Jaccard
             return self.matchNames_hj(s1, s2, threshold)
-        elif technique == "sw": # Smith Waterman
-            return self.matchNames_sw(s1, s2, threshold)
         else:
             return {"match":False}
 
-    # Match names using hybrid jaccard, default threshold = 0.8
+    # Match names using hybrid jaccard, default threshold = 0.67
     def matchNames_hj(self,s1,s2, threshold=0.67):
 
         sys.path.append(os.path.join(self.absdir,'..','HybridJaccard'))
@@ -223,48 +234,6 @@ class recordLinkage:
         if match['score'] > threshold:
             match['match'] = True
         
-        return match
-          
-    # Match names using hybrid jaccard, default threshold = 66 # 2*match >= mismatch
-    def matchNames_sw(self,s1,s2, threshold=66):
-   
-        import swalign # Smith Waterman
-
-        sw_match = 2
-        sw_mismatch = -1
-        match = {'match':False}
-        
-        # do some pre processing to do fair comparison
-        s1 = unidecode(unicode(s1.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
-        s2 = unidecode(unicode(s2.decode('unicode-escape').encode('utf-8'),'utf-8')).strip().lower()
-        s1 = re.sub('[^A-Za-z0-9 ]+', ' ', s1)
-        s2 = re.sub('[^A-Za-z0-9 ]+', ' ', s2)
-        
-        scoring = swalign.NucleotideScoringMatrix(sw_match, sw_mismatch)
-        sw = swalign.LocalAlignment(scoring,gap_penalty=-0.5) 
-        alignment = sw.align(s1,s2) 
-        #alignment.dump()
-        
-        match['score'] = alignment.score
-        match['matchC'] = alignment.matches
-        match['matchP'] = alignment.identity * 100
-        match['mismatches'] = alignment.mismatches
-
-        match['tool'] = 'swalign'
-        match['version'] = pkg_resources.get_distribution('swalign').version
-        
-        # Check word count weighted score 
-        words = s1.split()
-        words.extend(s2.split())
-        avgwordlen = 0
-        for word in words:
-            avgwordlen += len(word)
-                        
-        avgwordlen = round(avgwordlen/float(len(words)))
-                        
-        if match['matchP'] > threshold and match['matchC'] >= avgwordlen:
-            match['match'] = True
-       
         return match
 
 def main():
