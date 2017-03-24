@@ -13,7 +13,8 @@ def default():
     
 @app.before_request
 def before():
-    logging.info("Received request with header: {}".format(request.headers))
+    logging.info("IP address: {}".format(request.remote_addr))
+    #logging.info("Received request with header: {}".format(request.headers))
     pass
     
 @app.route('/curation')
