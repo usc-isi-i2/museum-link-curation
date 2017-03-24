@@ -84,7 +84,7 @@ def show_user_profile():
 @app.route('/results')
 def show_results_page():
     if current_user.is_authenticated:
-        keys = [t.upper() for t in sorted(museums.keys())]
+        keys = [t for t in sorted(museums.keys())]
         return render_template('results.html',keys=keys,server=server[:-1])
     return redirect('/login')
 

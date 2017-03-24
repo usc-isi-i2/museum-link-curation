@@ -212,8 +212,8 @@ class userMgr(Resource):
         
         # getStats about all the questions answered by this user
         u = dbC[dname]["curator"].find_one({'uid':current_user.email},projection={'_id':False})
-                    
-        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums,'keys':sorted(museums.keys())}
+        keys = [t for t in sorted(museums.keys()) if t != "ulan"]
+        return {"username":u["uid"],"name":u["name"],"tags":getTags(u),"rating":u["rating"],'payload':museums,'keys':keys}
     
 class User(UserMixin, usrdb.Model):
     __tablename__ = 'users'
