@@ -287,6 +287,7 @@
                 }
             
                 for (var index in names) {
+                    var fields = false;
                     
                     // Special handling of Name
                     if (names[index] == "name") {
@@ -294,17 +295,21 @@
                         heading.innerHTML += "<tr class='cyan darken-3 white-text'><td colspan='2' style='text-align:center'>"+values[index]+"</td></tr>"; 
                     }
                     else {
-                        if (values[index] == null || values[index] == "" || values[index] == []){
-                            //tr += "<td style='text-align:center' colspan='2'> None </td>";
-                        }
-                        else{
+                        if (!(values[index] == null || values[index] == "" || values[index] == [])){
                             tr += "<tr>"
                             tr += "<td style='text-align:right'>" + names[index] + "</td>";
                             tr += "<td style='text-align:center' colspan='2'>"+ values[index] +"</td>";
                             tr += "</tr>";
+                            fields = true;
                         }
                     }
                 }
+                
+                // If no  new fields were added than add standard text
+                if (!fields){
+                    tr += "<tr><td colspan='3' style='text-align:center'>None of the fields match</td></tr>";
+                }
+
             }
             $('#exactMatch'+cid).append(tr);
         };
