@@ -40,7 +40,7 @@ class FacebookSignIn(OAuthSignIn):
             client_secret=self.consumer_secret,
             authorize_url='https://graph.facebook.com/oauth/authorize',
             access_token_url='https://graph.facebook.com/oauth/access_token',
-            base_url='https://graph.facebook.com/v2.7'
+            base_url='https://graph.facebook.com/v2.8'
         )
 
     def authorize(self):
@@ -58,7 +58,8 @@ class FacebookSignIn(OAuthSignIn):
             oauth_session = self.service.get_auth_session(
                 data={'code': request.args['code'],
                     'grant_type': 'authorization_code',
-                    'redirect_uri': self.get_callback_url()}
+                    'redirect_uri': self.get_callback_url()},
+                decoder=json.loads
             )   
         except ConnectionError:
             return (None,None,None)
